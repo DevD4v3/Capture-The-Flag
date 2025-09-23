@@ -78,15 +78,15 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {Color1}Capture The Flag is an open source project. 
         ///{Color1}Check out its official repository: 
-        ///{Color2}https://github.com/MrDave1999/Capture-The-Flag
-        ///{Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
+        ///{Color2}https://github.com/DevD4v3/Capture-The-Flag
+        ///{Color1}Creator and programmer: {Color2}DevD4v3 (Dave Roman)
         ///{Color1}Mappers:{Color2} 
         ///DragonZafiro, Elorreli, amirab, JamesT85,
         ///TheYoungCapone, B4MB1[MC], iMaster, mihaibr,
         ///UnuAlex, SpikY_, Niktia_Ruchkov, Amads, denis_32,
         ///Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
         ///SENiOR, saawan, Risq, Famous, Leo and Pyraeus.
-        ///{Color1}Acknowledgments to:{Colo [rest of string was truncated]&quot;;.
+        ///{Color1}Acknowledgments to:{Color2 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Credits {
             get {
