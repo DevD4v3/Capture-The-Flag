@@ -3,25 +3,25 @@
 ![SA-MP logo](https://github.com/user-attachments/assets/dd12935e-5897-470b-ab06-a72b492a521c)
 
 <p align="center">
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
   </a>
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/.NET%208.0-SampSharp.net-blue" />
   </a>
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/GameMode-CSharp-yellow" />
   </a>
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/Team%20Deathmatch-+Ranks-green" />
   </a>
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/License-AGPL%203.0%20license-orange" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://github.com/user-attachments/assets/2991265d-4626-4da5-839d-58a7ba2042e7" />
   </a>
 </p>
@@ -71,31 +71,31 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 <details>
 <summary>sa-mp-000</summary>
 
-![sa-mp-000](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-000.png)
+![sa-mp-000](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-000.png)
 </details>
 
 <details>
 <summary>sa-mp-001</summary>
 
-![sa-mp-001](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-001.png)
+![sa-mp-001](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-001.png)
 </details>
 
 <details>
 <summary>sa-mp-002</summary>
 
-![sa-mp-002](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-002.png)
+![sa-mp-002](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-002.png)
 </details>
 
 <details>
 <summary>sa-mp-003</summary>
 
-![sa-mp-003](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-003.png)
+![sa-mp-003](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-003.png)
 </details>
 
 <details>
 <summary>sa-mp-004</summary>
 
-![sa-mp-004](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-004.png)
+![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-004.png)
 </details>
 
 ## Technologies used
@@ -107,7 +107,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 ### Softwares
 - [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools)
 - [Open Multiplayer](https://github.com/openmultiplayer)
-- [CompileApp-FS](https://github.com/MrDave1999/CompileApp-FS)
+- [CompileApp-FS](https://github.com/DevD4v3/CompileApp-FS)
 - [Visual Studio 2022](https://visualstudio.microsoft.com)
 - [vscode](https://github.com/microsoft/vscode)
 - [MariaDB](https://github.com/mariadb)
@@ -132,9 +132,9 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 - [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)
 - [Microsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.EnvironmentVariables)
 - [BCrypt.Net-Next](https://github.com/BcryptNet/bcrypt.net)
-- [DotEnv.Core](https://github.com/MrDave1999/dotenv.core)
+- [DotEnv.Core](https://github.com/DevD4v3/dotenv.core)
 - [YeSql.Net](https://github.com/ose-net/yesql.net)
-- [seztion-parser](https://github.com/MrDave1999/seztion-parser)
+- [seztion-parser](https://github.com/DevD4v3/seztion-parser)
 - [Serilog.Sinks.Console](https://github.com/serilog/serilog-sinks-console)
 - [Serilog.Sinks.File](https://github.com/serilog/serilog-sinks-file)
 - [Serilog.Extensions.Logging](https://github.com/serilog/serilog-extensions-logging)
@@ -174,7 +174,7 @@ These concepts have been applied to this project:
 ## Deployment without Docker
 
 - You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
-- You need to download the [ctf-win.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
+- You need to download the [ctf-win.zip](https://github.com/DevD4v3/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
 - Once downloaded, modify the `.env` file according to your needs.
 - Run the `omp-server.exe`.
 
@@ -182,7 +182,7 @@ These concepts have been applied to this project:
 
 - Clone the repository:
 ```sh
-git clone https://github.com/MrDave1999/Capture-The-Flag.git
+git clone https://github.com/DevD4v3/Capture-The-Flag.git
 ```
 - Change directory:
 ```sh
@@ -251,7 +251,7 @@ SQLite__DataSource=C:\Users\mrdave\OneDrive\Desktop\gamemode.db
 ```sh
 sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
 ```
-See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
+See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/dev/scripts) for more information.
 
 ### MariaDB
 
@@ -276,14 +276,14 @@ MariaDB__Password=123456789
 ```sh
 mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
 ```
-See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
+See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/dev/scripts) for more information.
 
 ## Architectural overview
 
 <details>
 <summary><b>Show diagram</b></summary>
 
-![overview](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/architectural-overview.png)
+![overview](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/architectural-overview.png)
 
 </details>
 
@@ -300,7 +300,7 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 
 ## Credits
 
-- [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) for creating the "Capture The Flag" game mode.
+- [DevD4v3](https://github.com/DevD4v3/Capture-The-Flag) for creating the "Capture The Flag" game mode.
 - [Parca_35](https://www.youtube.com/channel/UCQUOz-GEp0jMtmGzUEQWElQ) for helping test the game mode.
 - [ikkentim](https://github.com/ikkentim/SampSharp) for creating the SampSharp framework.
 - [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) for creating NTD (TextDraw Editor).
@@ -350,4 +350,4 @@ Follow the steps below:
 
 ## License
 
-This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/LICENSE)
+This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/LICENSE)
