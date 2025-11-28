@@ -3,10 +3,10 @@
 public class CreatePlayer
 {
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void Create_WhenCalled_ShouldCreatePlayerAndSetAccountId(IRepositoryManager source)
+    public void Create_WhenCalled_ShouldCreatePlayerAndSetAccountId(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerInfo = new PlayerInfo();

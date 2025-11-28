@@ -3,10 +3,10 @@
 public class GetTopPlayers
 {
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetByTotalKills_WhenSeedDataIsAvailable_ShouldReturnPlayersOrderedByTotalKills(IRepositoryManager source)
+    public void GetByTotalKills_WhenSeedDataIsAvailable_ShouldReturnPlayersOrderedByTotalKills(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         ITopPlayersRepository topPlayersRepository = repositoryManager.TopPlayersRepository;
         Result<MaxTopPlayers> result = MaxTopPlayers.Create(6);
@@ -30,10 +30,10 @@ public class GetTopPlayers
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetByTotalKills_WhenSeedDataIsNotAvailable_ShouldReturnEmptyCollection(IRepositoryManager source)
+    public void GetByTotalKills_WhenSeedDataIsNotAvailable_ShouldReturnEmptyCollection(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.RemoveSeedData();
         ITopPlayersRepository topPlayersRepository = repositoryManager.TopPlayersRepository;
         Result<MaxTopPlayers> result = MaxTopPlayers.Create(6);
@@ -48,10 +48,10 @@ public class GetTopPlayers
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetByMaxKillingSpree_WhenSeedDataIsAvailable_ShouldReturnPlayersOrderedByMaxKillingSpree(IRepositoryManager source)
+    public void GetByMaxKillingSpree_WhenSeedDataIsAvailable_ShouldReturnPlayersOrderedByMaxKillingSpree(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         ITopPlayersRepository topPlayersRepository = repositoryManager.TopPlayersRepository;
         Result<MaxTopPlayers> result = MaxTopPlayers.Create(6);
@@ -75,10 +75,10 @@ public class GetTopPlayers
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetByMaxKillingSpree_WhenSeedDataIsNotAvailable_ShouldReturnEmptyCollection(IRepositoryManager source)
+    public void GetByMaxKillingSpree_WhenSeedDataIsNotAvailable_ShouldReturnEmptyCollection(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.RemoveSeedData();
         ITopPlayersRepository topPlayersRepository = repositoryManager.TopPlayersRepository;
         Result<MaxTopPlayers> result = MaxTopPlayers.Create(6);
