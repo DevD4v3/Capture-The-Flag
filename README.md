@@ -1,22 +1,31 @@
-# Capture The Flag
+<h1 align="center">🎮 Capture The Flag</h1>
 
-![SA-MP logo](https://github.com/user-attachments/assets/dd12935e-5897-470b-ab06-a72b492a521c)
+<p align="center">
+  <strong>A fast-paced C# game mode for open.mp — featuring two teams, two flags, and pure competitive chaos.</strong>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd12935e-5897-470b-ab06-a72b492a521c" alt="SA-MP logo" />
+</p>
 
 <p align="center">
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/.NET%208.0-SampSharp.net-blue" />
+    <img src="https://img.shields.io/badge/.NET-8.0-blue" />
+  </a>
+  <a href="https://github.com/DevD4v3/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/Framework-SampSharp.net-purple" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/GameMode-CSharp-yellow" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/Team%20Deathmatch-+Ranks-green" />
+    <img src="https://img.shields.io/badge/Mode-Team%20Deathmatch%20+%20Ranks-green" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/License-AGPL%203.0%20license-orange" />
+    <img src="https://img.shields.io/badge/License-AGPL%203.0-orange" />
   </a>
 </p>
 
