@@ -1,12 +1,12 @@
 ﻿namespace Persistence.Tests.Common;
 
-public class RepositoryManagerTestCases : IEnumerable<IRepositoryManager>
+public class RepositoryManagerTestCases : IEnumerable<DatabaseProvider>
 {
-    public IEnumerator<IRepositoryManager> GetEnumerator()
+    public IEnumerator<DatabaseProvider> GetEnumerator()
     {
-        yield return new InMemoryRepositoryManager();
-        yield return new SqliteRepositoryManager();
-        yield return new MariaDbRepositoryManager();
+        yield return DatabaseProvider.InMemory;
+        yield return DatabaseProvider.Sqlite;
+        yield return DatabaseProvider.MariaDb;
     }
 
     IEnumerator IEnumerable.GetEnumerator()

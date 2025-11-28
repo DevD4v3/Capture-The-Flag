@@ -3,10 +3,10 @@
 public class GetPlayerOrDefault
 {
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetOrDefault_WhenPlayerExists_ShouldReturnPlayerInfo(IRepositoryManager source)
+    public void GetOrDefault_WhenPlayerExists_ShouldReturnPlayerInfo(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "moderator_player";
@@ -23,10 +23,10 @@ public class GetPlayerOrDefault
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetOrDefault_WhenPlayerDoesNotExist_ShouldReturnNull(IRepositoryManager source)
+    public void GetOrDefault_WhenPlayerDoesNotExist_ShouldReturnNull(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "NotFound";

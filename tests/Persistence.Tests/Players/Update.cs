@@ -3,10 +3,10 @@
 public class UpdatePlayer
 {
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdatePlayerName(IRepositoryManager source)
+    public void ShouldUpdatePlayerName(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var oldName = "Moderator_Player";
@@ -23,10 +23,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdatePlayerPassword(IRepositoryManager source)
+    public void ShouldUpdatePlayerPassword(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -43,10 +43,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateTotalKills(IRepositoryManager source)
+    public void ShouldUpdateTotalKills(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -63,10 +63,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateTotalDeaths(IRepositoryManager source)
+    public void ShouldUpdateTotalDeaths(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -83,10 +83,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateMaxKillingSpree(IRepositoryManager source)
+    public void ShouldUpdateMaxKillingSpree(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -103,10 +103,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateBroughtFlags(IRepositoryManager source)
+    public void ShouldUpdateBroughtFlags(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -124,10 +124,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateCapturedFlags(IRepositoryManager source)
+    public void ShouldUpdateCapturedFlags(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -145,10 +145,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateDroppedFlags(IRepositoryManager source)
+    public void ShouldUpdateDroppedFlags(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -166,10 +166,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateReturnedFlags(IRepositoryManager source)
+    public void ShouldUpdateReturnedFlags(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -187,10 +187,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateHeadShots(IRepositoryManager source)
+    public void ShouldUpdateHeadShots(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -208,10 +208,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateRole(IRepositoryManager source)
+    public void ShouldUpdateRole(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -228,10 +228,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateSkin(IRepositoryManager source)
+    public void ShouldUpdateSkin(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -248,10 +248,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateRank(IRepositoryManager source)
+    public void ShouldUpdateRank(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
@@ -268,10 +268,10 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void ShouldUpdateLastConnection(IRepositoryManager source)
+    public void ShouldUpdateLastConnection(DatabaseProvider provider)
     {
         // Arrange
-        using var repositoryManager = source;
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
         repositoryManager.InitializeSeedData();
         IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
