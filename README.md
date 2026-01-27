@@ -120,8 +120,9 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 
 **Death and respawn**
 - When a player dies:
-  - They respawn after X seconds
-  - They respawn at their team’s base
+  - Players respawn at their team’s base
+  - A random spawn position is selected for the player (spawn location is not fixed)
+  - No additional spawn protection is applied
   - If they were carrying a flag, the flag drop rule applies
 
 **Match end conditions**
