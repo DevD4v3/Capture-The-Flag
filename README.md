@@ -89,7 +89,7 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 #### Flag Rules
 
 **Stealing the enemy flag**
-- A player can steal the enemy flag by entering the enemy flag interaction area.
+- A player can steal the enemy flag by picking up the flag pickup at the enemy base, marked by a square icon on the map.
 - A player can carry only one flag at a time.
 
 **Capturing (scoring a capture)**
