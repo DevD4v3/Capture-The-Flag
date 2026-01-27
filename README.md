@@ -67,13 +67,70 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 
 ## Gameplay
 
-The Beta team plays against the Alpha team. The aim is to carry the enemy's flag to the spawn of the own flag. The own flag needs to be at the spawn to score. So you have to conquer the opponent's flag and defend your own team's one at the same time. It's necessary for the whole team to work together tactically to win.
+The Beta team plays against the Alpha team. The goal is to steal the enemy team’s flag and bring it back to the spawn of your own flag.
 
-The team which which got more points after 15 minutes wins. If both teams have the same points after the time is up, it's a draw. 
+To score, your own flag must be at its base, so teams must attack and defend at the same time. Team coordination and tactical play are essential to win.
 
-Beware! Enemies will see flag carriers on their radar as well!
+The match lasts 15 minutes. The team with the most captures when time runs out wins.  
+If both teams have the same number of captures, the match ends in a draw.
 
-In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or also see the [play list](https://www.youtube.com/playlist?list=PLBM-9TMXSAJjsWn4zmg1ua7eof9Aj83fS).
+Beware! Enemies can see flag carriers on their radar.
+
+In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE  
+You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM-9TMXSAJjsWn4zmg1ua7eof9Aj83fS
+
+### Gameplay Rules
+
+#### Game Objective
+- Steal the enemy team’s flag and bring it back to your base to score a capture.
+- The match does not end when a team reaches a specific number of captures.
+- The match only ends when the timer runs out.
+
+#### Flag Rules
+
+**Stealing the enemy flag**
+- A player can steal the enemy flag by entering the enemy flag interaction area.
+- A player can carry only one flag at a time.
+
+**Capturing (scoring a capture)**
+- To score a capture, all of the following conditions must be met:
+  - The player is carrying the enemy flag
+  - The player reaches their own base or capture zone
+  - The player’s team flag is at its base position
+- If the team’s flag has been stolen or is dropped somewhere on the map, a capture cannot be scored.
+
+**Flag carrier death**
+- If a player dies while carrying the enemy flag:
+  - The flag is dropped on the ground at the player’s current position
+  - The player stops being the flag carrier
+
+**Flag carrier disconnection**
+- If a player disconnects while carrying the enemy flag:
+  - The flag is dropped on the ground at the player’s last known position
+  - The player is removed from the match
+
+**Flag carrier inactivity (pause)**
+- If a flag carrier remains paused or inactive for 30 seconds:
+  - the enemy flag is automatically returned to its base
+  - the player stops being the flag carrier
+
+**Flag auto-return**
+- If a flag remains dropped on the map and is not recovered:
+  - It automatically returns to its base after 120 seconds
+
+**Death and respawn**
+- When a player dies:
+  - They respawn after X seconds
+  - They respawn at their team’s base
+  - If they were carrying a flag, the flag drop rule applies
+
+**Match end conditions**
+- The match ends only when the timer reaches zero.
+- The team with the highest number of captures wins.
+- If both teams have the same number of captures:
+  - The match ends in a draw
+  - There is no sudden death
+
 
 ## Screenshots
 
