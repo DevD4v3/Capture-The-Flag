@@ -133,6 +133,21 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
   - There is no sudden death
 
 
+### Round Transition
+
+- Every 15 minutes, the current map ends and a new map is loaded.
+- During map rotation:
+  - All connected players are frozen
+  - Players are switched to spectator mode
+- A 10-second "loading map" countdown is displayed before the new round starts.
+- Teams are rebalanced based on player performance from the previous round:
+  - Players are reassigned to teams according to their scores
+  - Team balance is calculated automatically by the system
+- Players are not sent to the class selection screen:
+  - Respawn is automatic
+  - The system decides the spawn and team assignment
+
+
 ## Screenshots
 
 <details>
