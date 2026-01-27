@@ -132,7 +132,7 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
   - The match ends in a draw
   - There is no sudden death
 
-**Round Transition**
+#### Round Transition Rules
 
 - Every 15 minutes, the current map ends and a new map is loaded.
 - During map rotation:
