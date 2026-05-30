@@ -24,7 +24,12 @@ public static class PersistenceMariaDBServicesExtensions
                 .AddSingleton<IPlayerRepository, PlayerRepository>()
                 .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
-        var path = Path.Combine("yesql", typeof(PersistenceMariaDBServicesExtensions).Namespace);
+        var path = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "gamemode",
+            "yesql",
+            typeof(PersistenceMariaDBServicesExtensions).Namespace
+        );
         ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
         services.AddSingleton(sqlCollection);
         return services;

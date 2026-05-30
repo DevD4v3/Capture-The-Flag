@@ -27,7 +27,7 @@ public class MapInfoService
     {
         ArgumentNullException.ThrowIfNull(map);
         var basePath = AppContext.BaseDirectory;
-        var path = Path.Combine(basePath, "Maps", "Files", $"{map.Name}.ini");
+        var path = Path.Combine(basePath, "gamemode", "Maps", "Files", $"{map.Name}.ini");
         ISectionsData sections = SectionsFile.Load(path);
         SpawnLocation[] alphaTeamLocations = GetSpawnLocations(sections["AlphaTeamLocations"]);
         SpawnLocation[] betaTeamLocations = GetSpawnLocations(sections["BetaTeamLocations"]);

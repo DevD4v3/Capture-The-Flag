@@ -6,7 +6,7 @@ public class MapCollection
     static MapCollection() => SetMapNamesFromFileSystem();
     private static void SetMapNamesFromFileSystem()
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "Maps", "Files");
+        var path = Path.Combine(AppContext.BaseDirectory, "gamemode", "Maps", "Files");
         var random = new Random();
         string[] names = Directory.GetFiles(path);
         random.Shuffle(names);
