@@ -27,7 +27,7 @@ public class ClassSelectionSystem(
     /// This callback is called when a player changes class at class selection (and when class selection first appears).
     /// </summary>
     [Event]
-    public void OnPlayerRequestClass(Player player, int classId)
+    public void OnPlayerRequestClass(Player player, Class @class)
     {
         if (player.HasForcedClassSelectionAfterDeath())
         {
@@ -43,7 +43,7 @@ public class ClassSelectionSystem(
         player.Angle = 111.68f;
         player.Interior = 0;
         player.PlaySound(soundId: 1132);
-        Team selectedTeam = classId == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
+        Team selectedTeam = @class.Id == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
         string gameText = selectedTeam.GetAvailabilityMessage();
         player.GameText(gameText, 999999999, 3);
         player.Team = (int)selectedTeam.Id;

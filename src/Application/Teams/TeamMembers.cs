@@ -16,7 +16,7 @@ public class TeamMembers : IEnumerable<Player>
     /// <param name="player">The player to remove.</param>
     public void Remove(Player player)
     {
-        bool playerIsNotFound = !_players.Remove(player.Entity.Handle);
+        bool playerIsNotFound = !_players.Remove(player.Id);
         if(playerIsNotFound)
         {
             var message = Smart.Format(Messages.PlayerNotFound, new { player.Name });
@@ -33,7 +33,7 @@ public class TeamMembers : IEnumerable<Player>
     /// <param name="player">The player to add.</param>
     public void Add(Player player)
     {
-        bool exists = !_players.TryAdd(player.Entity.Handle, player);
+        bool exists = !_players.TryAdd(player.Id, player);
         if (exists)
         {
             var message = Smart.Format(Messages.MemberAlreadyExists, new { player.Name });

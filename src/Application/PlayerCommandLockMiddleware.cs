@@ -1,7 +1,7 @@
 ﻿namespace CTF.Application;
 
 public class PlayerCommandLockMiddleware(
-    IEntityManager entityManager, 
+    IEntityManager entityManager,
     EventDelegate next,
     MapRotationService mapRotationService)
 {
@@ -15,11 +15,10 @@ public class PlayerCommandLockMiddleware(
     /// </returns>
     public object Invoke(EventContext context)
     {
-        int playerId = (int)context.Arguments[0];
-        EntityId entity = SampEntities.GetPlayerId(playerId);
-        Player player = entityManager.GetComponent<Player>(entity);
+        EntityId playerId = (EntityId)context.Arguments[0];
+        Player player = entityManager.GetComponent<Player>(playerId);
 
-        if(player.IsUnauthenticated())
+        if (player.IsUnauthenticated())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
             return null;
@@ -31,7 +30,7 @@ public class PlayerCommandLockMiddleware(
             return null;
         }
 
-        if(mapRotationService.IsMapLoading())
+        if (mapRotationService.IsMapLoading())
         {
             player.SendClientMessage(Color.Red, Messages.CommandLockMapLoading);
             return null;

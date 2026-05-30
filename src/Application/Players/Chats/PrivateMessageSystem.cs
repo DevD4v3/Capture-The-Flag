@@ -21,8 +21,8 @@ public class PrivateMessageSystem(IEntityManager entityManager) : ISystem
             return;
         }
 
-        int senderId = sender.Entity.Handle;
-        int receiverId = receiver.Entity.Handle;
+        int senderId = sender.Id;
+        int receiverId = receiver.Id;
         sender.SendClientMessage(Color.Yellow, $"PM to {receiver.Name}({receiverId}): {message}");
         sender.PlaySound(1058);
         receiver.SendClientMessage(Color.Yellow, $"PM from {sender.Name}({senderId}): {message}");

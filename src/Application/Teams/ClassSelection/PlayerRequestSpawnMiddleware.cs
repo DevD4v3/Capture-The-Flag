@@ -15,9 +15,8 @@ public class PlayerRequestSpawnMiddleware(
     /// </returns>
     public object Invoke(EventContext context)
     {
-        int playerId = (int)context.Arguments[0];
-        EntityId entity = SampEntities.GetPlayerId(playerId);
-        Player player = entityManager.GetComponent<Player>(entity);
+        EntityId playerId = (EntityId)context.Arguments[0];
+        Player player = entityManager.GetComponent<Player>(playerId);
         if (player.IsUnauthenticated())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);

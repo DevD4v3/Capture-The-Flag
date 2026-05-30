@@ -1,4 +1,6 @@
-﻿namespace CTF.Application.Players.AFK;
+﻿using SampSharp.OpenMp.Core.Std.Chrono;
+
+namespace CTF.Application.Players.AFK;
 
 public class PlayerPauseSystem(
     ITimerService timerService,
@@ -40,7 +42,7 @@ public class PlayerPauseSystem(
     }
 
     [Event]
-    public void OnPlayerUpdate(PlayerDataComponent playerDataComponent) 
+    public void OnPlayerUpdate(PlayerDataComponent playerDataComponent, TimePoint _) 
     {
         playerDataComponent.LastUpdateTick = timeProvider.GetUtcNow().Ticks;
     }
