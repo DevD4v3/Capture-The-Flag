@@ -39,9 +39,9 @@ public class Flag
             index: 0, 
             modelId: (int)Model, 
             bone: Bone.Spine, 
-            offset: new Vector3(-0.057000, -0.108999, 0.075000), 
-            rotation: new Vector3(171.500030, 66.200012, -4.100002), 
-            scale: new Vector3(1.0, 1.0, 1.0), 
+            offset: new Vector3(-0.057000f, -0.108999f, 0.075000f), 
+            rotation: new Vector3(171.500030f, 66.200012f, -4.100002f), 
+            scale: new Vector3(1.0f, 1.0f, 1.0f), 
             materialColor1: ColorHex,
             materialColor2: ColorHex);
     }

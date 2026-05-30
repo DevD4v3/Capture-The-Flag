@@ -9,8 +9,8 @@ public class ClassSelectionSystem(
     [Event]
     public void OnGameModeInit(IServerService serverService)
     {
-        serverService.AddPlayerClass((int)Team.Alpha.SkinId, new Vector3(0, 0, 0), 0);
-        serverService.AddPlayerClass((int)Team.Beta.SkinId, new Vector3(0, 0, 0), 0);
+        serverService.AddPlayerClass((int)Team.Alpha.SkinId, new Vector3(0f, 0f, 0f), 0);
+        serverService.AddPlayerClass((int)Team.Beta.SkinId, new Vector3(0f, 0f, 0f), 0);
     }
 
     [Event]
@@ -37,9 +37,9 @@ public class ClassSelectionSystem(
         }
 
         player.Color = Team.None.ColorHex;
-        player.Position = new Vector3(-1389.137451, 3314.043701, 20.493314);
-        player.CameraPosition = new Vector3(-1399.776000, 3310.254150, 21.525623);
-        player.SetCameraLookAt(new Vector3(-1395.072143, 3311.873291, 22.027709));
+        player.Position = new Vector3(-1389.137451f, 3314.043701f, 20.493314f);
+        player.CameraPosition = new Vector3(-1399.776000f, 3310.254150f, 21.525623f);
+        player.SetCameraLookAt(new Vector3(-1395.072143f, 3311.873291f, 22.027709f));
         player.Angle = 111.68f;
         player.Interior = 0;
         player.PlaySound(soundId: 1132);
