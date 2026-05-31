@@ -10,6 +10,13 @@ public class Startup : IEcsStartup
 
     public void ConfigureServices(IServiceCollection services, IConfiguration _)
     {
+        var envVars = new EnvLoader()
+            #if DEBUG
+            .EnableFileNotFoundException()
+            #endif
+            .AddEnvFile(Path.Combine(Directory.GetCurrentDirectory(), ".env"))
+            .Load();
+
         IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
