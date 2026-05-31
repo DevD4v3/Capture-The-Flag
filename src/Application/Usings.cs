@@ -4,6 +4,7 @@ global using System.Collections;
 global using System.Globalization;
 global using System.Reflection;
 global using System.Text.RegularExpressions;
+global using SampSharp.Streamer.Entities;
 global using Color = SampSharp.Entities.SAMP.Color;
 global using SmartFormat;
 global using SeztionParser;

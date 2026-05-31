@@ -38,7 +38,7 @@ public class TeamIconService
         {
             _redMapIcon = _streamerService.CreateDynamicMapIcon(
                 position: position,
-                mapIcon: (MapIcon)Team.Alpha.Flag.Icon,
+                type: (MapIcon)Team.Alpha.Flag.Icon,
                 streamDistance: 5000f,
                 interior: currentMap.Interior,
                 color: Team.Alpha.Flag.ColorHex
@@ -48,7 +48,7 @@ public class TeamIconService
         {
             _blueMapIcon = _streamerService.CreateDynamicMapIcon(
                 position: position,
-                mapIcon: (MapIcon)Team.Beta.Flag.Icon,
+                type: (MapIcon)Team.Beta.Flag.Icon,
                 streamDistance: 5000f,
                 interior: currentMap.Interior,
                 color: Team.Beta.Flag.ColorHex

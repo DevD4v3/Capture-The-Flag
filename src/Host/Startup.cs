@@ -27,8 +27,8 @@ public class Startup : IEcsStartup
             .AddApplicationServices()
             .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
-            .AddSingleton<IStreamerService, StreamerService>()
-            .AddSingleton(configuration);
+            .AddSingleton(configuration)
+            .AddStreamer();
 
         // Add systems to the services collection
         services
@@ -43,6 +43,7 @@ public class Startup : IEcsStartup
             .EnableExceptionHandler()
             .RegisterMiddlewares()
             .RegisterPauseEventHandlers()
-            .RegisterMapEventHandlers();
+            .RegisterMapEventHandlers()
+            .EnableStreamerEvents();
     }
 }

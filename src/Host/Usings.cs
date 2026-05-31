@@ -1,7 +1,8 @@
-﻿global using SampSharp.Core;
-global using SampSharp.Entities;
+﻿global using SampSharp.Entities;
 global using SampSharp.Entities.SAMP;
+global using SampSharp.Entities.SAMP.Commands;
 global using SampSharp.Streamer.Entities;
+global using SampSharp.OpenMp.Core;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
