@@ -10,6 +10,6 @@ public class OnFlagAtBasePosition : IFlagEvent
     public void Handle(Team team, Player player)
     {
         var text = Smart.Format(Messages.OnFlagAtBasePosition, new { team.GameText });
-        player.GameText(text, 5000, 3);
+        player.GameText(text, TimeSpan.FromSeconds(5), GameTextStyle.Style3);
     }
 }

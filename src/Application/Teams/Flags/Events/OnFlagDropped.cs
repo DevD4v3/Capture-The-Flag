@@ -25,7 +25,7 @@ public class OnFlagDropped(
             team.ColorName
         });
         worldService.SendClientMessage(team.ColorHex, message);
-        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag dropped!", 5000, 3);
+        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag dropped!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
 
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.AddDroppedFlags();

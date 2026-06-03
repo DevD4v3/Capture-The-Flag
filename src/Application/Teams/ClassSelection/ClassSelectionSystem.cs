@@ -45,7 +45,7 @@ public class ClassSelectionSystem(
         player.PlaySound(soundId: 1132);
         Team selectedTeam = @class.Id == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
         string gameText = selectedTeam.GetAvailabilityMessage();
-        player.GameText(gameText, 999999999, 3);
+        player.GameText(gameText, TimeSpan.FromMilliseconds(999999999), GameTextStyle.Style3);
         player.Team = (int)selectedTeam.Id;
     }
 

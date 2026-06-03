@@ -53,7 +53,7 @@ public class ChangeRoleSystem(
         });
 
         playerRepository.UpdateRole(targetPlayerInfo);
-        targetPlayer.GameText(gameText, 4000, 3);
+        targetPlayer.GameText(gameText, TimeSpan.FromSeconds(4), GameTextStyle.Style3);
         currentPlayer.SendClientMessage(Color.Yellow, message);
     }
 
@@ -109,7 +109,7 @@ public class ChangeRoleSystem(
         PlayerInfo playerInfo = currentPlayer.GetInfo();
         playerInfo.SetRole(RoleId.Admin);
         playerRepository.UpdateRole(playerInfo);
-        currentPlayer.GameText(gameText, 4000, 3);
+        currentPlayer.GameText(gameText, TimeSpan.FromSeconds(4), GameTextStyle.Style3);
         currentPlayer.GetComponent<FailedAttemptCountComponent>()?.Destroy();
     }
 

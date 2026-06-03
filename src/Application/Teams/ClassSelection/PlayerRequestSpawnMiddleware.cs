@@ -33,7 +33,7 @@ public class PlayerRequestSpawnMiddleware(
         if (selectedTeam.IsFull())
         {
             string gameText = selectedTeam.GetAvailabilityMessage();
-            player.GameText(gameText, 999999999, 3);
+            player.GameText(gameText, TimeSpan.FromMilliseconds(999999999), GameTextStyle.Style3);
             return false;
         }
 

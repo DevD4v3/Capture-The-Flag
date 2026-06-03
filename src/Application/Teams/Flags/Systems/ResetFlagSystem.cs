@@ -44,7 +44,7 @@ public class ResetFlagSystem(
         teamPickupService.DestroyExteriorMarker(team);
         teamSoundsService.PlayFlagReturnedSound(team);
         flagAutoReturnTimer.Stop(team);
-        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", 5000, 3);
+        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }

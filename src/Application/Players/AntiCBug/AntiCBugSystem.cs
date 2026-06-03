@@ -35,7 +35,7 @@ public class AntiCBugSystem(
             long elapsedTime = currentTime - lastFiredTimeComponent.Value;
             if (elapsedTime < 1)
             {
-                player.GameText("~r~~h~DON'T C-BUG!", 3000, 4);
+                player.GameText("~r~~h~DON'T C-BUG!", TimeSpan.FromSeconds(3), GameTextStyle.Style4);
                 player.ApplyAnimation(
                     animationLibrary: "PED", 
                     animationName: "getup", 
@@ -44,8 +44,8 @@ public class AntiCBugSystem(
                     lockX: false, 
                     lockY: false, 
                     freeze: false, 
-                    time: 0, 
-                    forceSync: false
+                    time: TimeSpan.FromSeconds(0),
+                    syncType: PlayerAnimationSyncType.NoSync
                 );
             }
         }
