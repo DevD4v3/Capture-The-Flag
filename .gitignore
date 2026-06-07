@@ -30,6 +30,7 @@ samp-npc
 components/
 omp-server.exe
 omp-server
+gamemode/
 
 # logs
 logs/
