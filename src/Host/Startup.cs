@@ -14,7 +14,7 @@ public class Startup : IEcsStartup
             #if DEBUG
             .EnableFileNotFoundException()
             #endif
-            .AddEnvFile(Path.Combine(Directory.GetCurrentDirectory(), ".env"))
+            .AddEnvFile(".env")
             .Load();
 
         IConfigurationRoot configuration = new ConfigurationBuilder()
