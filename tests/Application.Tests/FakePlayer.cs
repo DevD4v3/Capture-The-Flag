@@ -5,19 +5,25 @@ public class FakePlayer : Player
     private float _health = 100;
     private float _armour = 0;
     private int _score = 0;
+    private string _name;
     private readonly int _id;
-    private readonly Guid _type;
-    public FakePlayer(int id, string name, TeamId team = TeamId.NoTeam)
+
+    public FakePlayer(int id, string name, TeamId team = TeamId.NoTeam) 
+        : base(Substitute.For<IOmpEntityProvider>(), default)
     {
         _id = id;
-        _type = Guid.NewGuid();
-        Name = name;
+        _name = name;
         Team = (int)team;
     }
 
-    public override string Name { get; set; }
+    public override string Name
+    {
+        get => _name;
+        [Obsolete("Use SetName(string) instead")]
+        set => SetName(value);
+    }
     public override int Team { get; set; }
-    public override EntityId Entity => new(_type, _id);
+    public override int Id => _id;
     public override bool RemoveAttachedObject(int index) => true;
     public override bool SetAttachedObject(
         int index,
@@ -28,6 +34,11 @@ public class FakePlayer : Player
         Vector3 scale,
         Color materialColor1,
         Color materialColor2) => true;
+
+    public override void SetName(string name)
+    {
+        _name = name;
+    }
 
     public override float Health 
     { 

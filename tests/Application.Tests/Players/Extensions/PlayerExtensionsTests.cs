@@ -75,6 +75,10 @@ public class PlayerExtensionsTests
 
     private class FakePlayer1 : Player
     {
+        public FakePlayer1() : base(Substitute.For<IOmpEntityProvider>(), default)
+        {
+        }
+
         public override T GetComponent<T>()
         {
             return null;
@@ -83,6 +87,10 @@ public class PlayerExtensionsTests
 
     private class FakePlayer2 : Player
     {
+        public FakePlayer2() : base(Substitute.For<IOmpEntityProvider>(), default)
+        {
+        }
+
         public bool IsAuthenticated { get; set; } = true;
         public override T GetComponent<T>()
         {
