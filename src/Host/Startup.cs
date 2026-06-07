@@ -30,6 +30,9 @@ public class Startup : IEcsStartup
             .AddSingleton(configuration)
             .AddStreamer();
 
+        services.RemoveAll<ICommandTextFormatter>();
+        services.AddSingleton<ICommandTextFormatter, CommandUsageFormatter>();
+
         // Add systems to the services collection
         services
             .AddSystemsInAssembly(typeof(ApplicationServicesExtensions).Assembly)
