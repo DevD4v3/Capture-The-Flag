@@ -10,7 +10,7 @@ public class PlayerCommandLockMiddleware(
     /// </summary>
     /// <param name="context">Contains context information about the fired event.</param>
     /// <returns>
-    /// <see langword="null"/> if any condition is met to block the command.
+    /// <see langword="true"/> if any condition is met to block the command.
     /// Otherwise, it proceeds to the next middleware or action.
     /// </returns>
     public object Invoke(EventContext context)
@@ -21,19 +21,19 @@ public class PlayerCommandLockMiddleware(
         if (player.IsUnauthenticated())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
-            return null;
+            return true;
         }
 
         if (player.IsInClassSelection())
         {
             player.SendClientMessage(Color.Red, Messages.CommandLockClassSelection);
-            return null;
+            return true;
         }
 
         if (mapRotationService.IsMapLoading())
         {
             player.SendClientMessage(Color.Red, Messages.CommandLockMapLoading);
-            return null;
+            return true;
         }
 
         return next(context);
