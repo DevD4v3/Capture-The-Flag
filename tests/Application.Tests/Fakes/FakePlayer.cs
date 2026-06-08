@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Tests;
+﻿namespace CTF.Application.Tests.Fakes;
 
 public class FakePlayer : Player
 {
