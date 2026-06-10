@@ -12,7 +12,7 @@ public class PlayerRankUpdater(IPlayerRepository playerRepository)
             if (nextRank.IsMax())
             {
                 var message = Smart.Format(Messages.PromotedToRole, new { RoleName = RoleId.VIP });
-                player.GameText(message, 4000, 3);
+                player.GameText(message, TimeSpan.FromSeconds(4), GameTextStyle.Style3);
                 player.SendClientMessage(Color.Orange, message);
                 playerInfo.SetRole(RoleId.VIP);
                 playerRepository.UpdateRole(playerInfo);

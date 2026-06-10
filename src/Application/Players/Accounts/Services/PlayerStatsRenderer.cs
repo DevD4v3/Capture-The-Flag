@@ -11,12 +11,12 @@ public class PlayerStatsRenderer(IWorldService worldService)
 
         PlayerTextDraw playerTextDraw = worldService.CreatePlayerTextDraw(
             player, 
-            position: new Vector2(319.000000, 433.000000), 
+            position: new Vector2(319.000000f, 433.000000f), 
             string.Empty
         );
         playerTextDraw.Font = TextDrawFont.Slim;
-        playerTextDraw.LetterSize = new Vector2(0.279166, 1.350000);
-        playerTextDraw.TextSize = new Vector2(12.000000, 640.000000);
+        playerTextDraw.LetterSize = new Vector2(0.279166f, 1.350000f);
+        playerTextDraw.TextSize = new Vector2(12.000000f, 640.000000f);
         playerTextDraw.Outline = 1;
         playerTextDraw.Shadow = 0;
         playerTextDraw.Alignment = TextDrawAlignment.Center;

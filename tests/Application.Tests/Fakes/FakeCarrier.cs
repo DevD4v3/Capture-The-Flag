@@ -1,7 +1,12 @@
-﻿namespace CTF.Application.Tests.Teams.Flags;
+﻿namespace CTF.Application.Tests.Fakes;
 
 public class FakeCarrier : Player
 {
+    public FakeCarrier() : base(Substitute.For<IOmpEntityProvider>(), default)
+    {
+        
+    }
+
     public override bool SetAttachedObject(
         int index,
         int modelId,

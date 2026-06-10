@@ -8,21 +8,19 @@ on:
     branches:
       - dev
 env:
-  DOTNET_VERSION: '8.x'
+  DOTNET_VERSION: '10.x'
 
 jobs:
   unit_testing:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: Setup .NET ${{ env.DOTNET_VERSION }}
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Setup .NET 6.x
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.x'
     - name: Execute unit tests
       run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
 
@@ -44,14 +42,12 @@ jobs:
           --health-retries=3
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: Setup .NET ${{ env.DOTNET_VERSION }}
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Setup .NET 6.x
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.x'
     - name: Check MariaDB version
       run: docker exec mariadb mariadb --version
     - name: Check SQLite version

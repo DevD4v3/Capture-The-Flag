@@ -76,7 +76,7 @@ public class ComboSystem : ISystem
             ComboName = selectedCombo.Name
         });
         _worldService.SendClientMessage(Color.Yellow, message);
-        _worldService.GameText(Messages.ComboUsage, 5000, 3);
+        _worldService.GameText(Messages.ComboUsage, TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         _playerStatsRenderer.UpdateTextDraw(player);
     }
 }

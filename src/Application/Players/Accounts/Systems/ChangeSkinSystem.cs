@@ -21,7 +21,7 @@ public class ChangeSkinSystem(IPlayerRepository playerRepository) : ISystem
         }
 
         player.Skin = newSkinId;
-        player.GameText($"Skin ID {newSkinId}", 3000, 4);
+        player.GameText($"Skin ID {newSkinId}", TimeSpan.FromSeconds(3), GameTextStyle.Style4);
         playerRepository.UpdateSkin(playerInfo);
         var message = Smart.Format(Messages.SavedSkin, new { playerInfo.SkinId });
         player.SendClientMessage(Color.Yellow, message);

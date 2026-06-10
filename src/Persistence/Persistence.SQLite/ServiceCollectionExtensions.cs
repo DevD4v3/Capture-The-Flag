@@ -20,7 +20,7 @@ public static class PersistenceSQLiteServicesExtensions
                 .AddSingleton<IPlayerRepository, PlayerRepository>()
                 .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
-        var path = Path.Combine("yesql", typeof(PersistenceSQLiteServicesExtensions).Namespace);
+        var path = Path.Combine(GameModePaths.Sql, typeof(PersistenceSQLiteServicesExtensions).Namespace);
         ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
         services.AddSingleton(sqlCollection);
         return services;

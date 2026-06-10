@@ -1,23 +1,20 @@
-﻿namespace CTF.Host;
-
-public class Program
+﻿namespace SampSharp
 {
-    static void Main(string[] args)
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("SampSharp.SourceGenerator", "1.0.0.0")]
+    public static class Entrypoint
     {
-        var envVars = new EnvLoader()
-            #if DEBUG
-            .EnableFileNotFoundException()
-            #endif
-            .AddEnvFile(".env")
-            .Load();
+        private static readonly global::CTF.Host.Startup _startup = new();
+        private static SampSharp.OpenMp.Core.StartupContext _context;
+        [global::System.Runtime.InteropServices.UnmanagedCallersOnlyAttribute]
+        public static void Initialize(SampSharp.OpenMp.Core.SampSharpInitParams inf)
+        {
+            _context = new SampSharp.OpenMp.Core.StartupContext(inf);
+            _context.InitializeUsing(_startup);
+        }
 
-        var encoding = $"{envVars["CodePageEncoding"]}.txt";
-        var basePath = Path.Combine(Directory.GetCurrentDirectory(), "codepages");
-        var path = Path.Combine(basePath, encoding);
-        new GameModeBuilder()
-            .UseEcs<Startup>()
-            .UseEncoding(path)
-            .RedirectConsoleOutput()
-            .Run();
+        public static void Main()
+        {
+            SampSharp.OpenMp.Core.StartupContext.MainInfoProvider();
+        }
     }
 }

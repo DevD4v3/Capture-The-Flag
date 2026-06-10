@@ -44,7 +44,7 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
                 continue;
             }
 
-            if (index.IsEvenInteger())
+            if (int.IsEvenInteger(index))
             {
                 alphaTeam.Members.Add(player);
                 playerInfo.SetTeam(alphaTeam.Id);

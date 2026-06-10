@@ -53,12 +53,12 @@ public class FlagSystem(
         else if (pickup.Model == (int)ExteriorMarker.Red)
         {
             if (player.Team == (int)TeamId.Alpha)
-                player.GameText(Messages.RedFlagIsNotAtBasePosition, 5000, 3);
+                player.GameText(Messages.RedFlagIsNotAtBasePosition, TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         }
         else if (pickup.Model == (int)ExteriorMarker.Blue)
         {
             if (player.Team == (int)TeamId.Beta)
-                player.GameText(Messages.BlueFlagIsNotAtBasePosition, 5000, 3);
+                player.GameText(Messages.BlueFlagIsNotAtBasePosition, TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         }
     }
 }

@@ -5,10 +5,8 @@ public partial class PlayerInfo
     private const string PlayerNamePattern = @"^[0-9a-zA-Z\[\]\(\)\$\@._=]+$";
     private const int NoSkin = -1;
     private const int NoAccount = -1;
-    #if NET8_0_OR_GREATER
     [GeneratedRegex(PlayerNamePattern)]
     private static partial Regex PlayerNameRegex();
-    #endif
 
     public PlayerInfo() { }
 
@@ -92,13 +90,8 @@ public partial class PlayerInfo
         if (value.Length < 3 || value.Length > 20)
             return Result.Failure(Messages.PlayerNameLength);
 
-        #if NET6_0
-        if (!Regex.IsMatch(value, PlayerNamePattern))
-            return Result.Failure(Messages.InvalidNickName);
-        #else
         if (!PlayerNameRegex().IsMatch(value))
             return Result.Failure(Messages.InvalidNickName);
-        #endif
 
         Name = value;
         return Result.Success();

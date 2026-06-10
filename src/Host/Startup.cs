@@ -1,9 +1,22 @@
 ﻿namespace CTF.Host;
 
-public class Startup : IStartup
+public class Startup : IEcsStartup
 {
-    public void Configure(IServiceCollection services)
+    public void Initialize(IStartupContext context)
     {
+        context.UseEntities()
+            .UseCommands();
+    }
+
+    public void ConfigureServices(IServiceCollection services, IConfiguration _)
+    {
+        var envVars = new EnvLoader()
+            #if DEBUG
+            .EnableFileNotFoundException()
+            #endif
+            .AddEnvFile(".env")
+            .Load();
+
         IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
             .Build();
@@ -14,8 +27,11 @@ public class Startup : IStartup
             .AddApplicationServices()
             .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
-            .AddSingleton<IStreamerService, StreamerService>()
-            .AddSingleton(configuration);
+            .AddSingleton(configuration)
+            .AddStreamer();
+
+        services.RemoveAll<ICommandTextFormatter>();
+        services.AddSingleton<ICommandTextFormatter, CommandUsageFormatter>();
 
         // Add systems to the services collection
         services
@@ -31,9 +47,6 @@ public class Startup : IStartup
             .RegisterMiddlewares()
             .RegisterPauseEventHandlers()
             .RegisterMapEventHandlers()
-            .EnableSampEvents()
-            .EnablePlayerCommands()
-            .EnableRconCommands()
             .EnableStreamerEvents();
     }
 }

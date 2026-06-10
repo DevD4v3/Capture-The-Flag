@@ -4,8 +4,8 @@ public class FlagLocations
 {
     public static readonly FlagLocations Empty = new()
     {
-        Red  = new Vector3(0, 0, 0),
-        Blue = new Vector3(0, 0, 0)
+        Red  = new Vector3(0f, 0f, 0f),
+        Blue = new Vector3(0f, 0f, 0f)
     };
 
     public required Vector3 Red { get; init; }

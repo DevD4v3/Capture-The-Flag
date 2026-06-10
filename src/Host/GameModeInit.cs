@@ -14,9 +14,9 @@ public class GameModeInit(
 
         serverService.SendRconCommand("loadfs EntryMap");
         serverService.SendRconCommand("loadfs RemoveBuilding");
-        serverService.SendRconCommand($"name {serverSettings.HostName}");
-        serverService.SendRconCommand($"language {serverSettings.LanguageText}");
-        serverService.SendRconCommand($"website {serverSettings.WebUrl}");
+        serverService.SetServerName(serverSettings.HostName);
+        serverService.SetLanguage(serverSettings.LanguageText);
+        serverService.SetWebsiteUrl(serverSettings.WebUrl);
         serverService.SetGameModeText(serverSettings.GameModeText);
         serverService.UsePlayerPedAnims();
         serverService.DisableInteriorEnterExits();

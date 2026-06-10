@@ -6,7 +6,7 @@ public class PlayerExtensionsTests
     public void GetInfo_WhenNoAccountComponent_ShouldThrowInvalidOperationException()
     {
         // Arrange
-        var fakePlayer = new FakePlayer1();
+        var fakePlayer = new FakePlayer2();
 
         // Act
         Action act = () => fakePlayer.GetInfo();
@@ -19,7 +19,7 @@ public class PlayerExtensionsTests
     public void GetInfo_WhenAccountComponentIsAssigned_ShouldNotThrowInvalidOperationException()
     {
         // Arrange
-        var fakePlayer = new FakePlayer2();
+        var fakePlayer = new FakePlayer3();
 
         // Act
         Action act = () => fakePlayer.GetInfo();
@@ -32,7 +32,7 @@ public class PlayerExtensionsTests
     public void IsUnauthenticated_WhenPlayerIsUnauthenticated_ShouldReturnsTrue()
     {
         // Arrange
-        var fakePlayer = new FakePlayer2()
+        var fakePlayer = new FakePlayer3()
         {
             IsAuthenticated = false
         };
@@ -48,7 +48,7 @@ public class PlayerExtensionsTests
     public void IsUnauthenticated_WhenPlayerIsAuthenticated_ShouldReturnsFalse()
     {
         // Arrange
-        var fakePlayer = new FakePlayer2()
+        var fakePlayer = new FakePlayer3()
         {
             IsAuthenticated = true
         };
@@ -64,30 +64,12 @@ public class PlayerExtensionsTests
     public void IsUnauthenticated_WhenNoAccountComponent_ShouldThrowInvalidOperationException()
     {
         // Arrange
-        var fakePlayer = new FakePlayer1();
+        var fakePlayer = new FakePlayer2();
 
         // Act
         Action act = () => fakePlayer.IsUnauthenticated();
 
         // Assert
         act.Should().Throw<InvalidOperationException>();
-    }
-
-    private class FakePlayer1 : Player
-    {
-        public override T GetComponent<T>()
-        {
-            return null;
-        }
-    }
-
-    private class FakePlayer2 : Player
-    {
-        public bool IsAuthenticated { get; set; } = true;
-        public override T GetComponent<T>()
-        {
-            var accountComponent = new AccountComponent(new PlayerInfo(), IsAuthenticated);
-            return accountComponent as T;
-        }
     }
 }

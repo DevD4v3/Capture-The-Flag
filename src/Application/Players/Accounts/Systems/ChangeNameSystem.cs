@@ -24,7 +24,7 @@ public class ChangeNameSystem(
 
         var message = Smart.Format(Messages.NameSuccessfullyChanged, new { OldName = oldName, NewName = newName });
         worldService.SendClientMessage(Color.Yellow, message);
-        player.Name = newName;
+        player.SetName(newName);
         playerRepository.UpdateName(playerInfo);
     }
 }
