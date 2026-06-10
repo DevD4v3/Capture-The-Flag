@@ -13,12 +13,16 @@ COPY ["src/Persistence/Persistence.InMemory/*.csproj", "src/Persistence/Persiste
 COPY ["src/Persistence/Persistence.MariaDB/*.csproj", "src/Persistence/Persistence.MariaDB/"]
 COPY ["src/Persistence/Persistence.SQLite/*.csproj", "src/Persistence/Persistence.SQLite/"]
 COPY ["src/Persistence/*.props", "src/Persistence/"]
+
+COPY ["external/SampSharp/Directory.Build.props", "external/SampSharp/"]
+COPY ["external/SampSharp/Directory.Packages.props", "external/SampSharp/"]
 COPY ["external/SampSharp/src/SampSharp.OpenMp.Core/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Core/"]
 COPY ["external/SampSharp/src/SampSharp.OpenMp.Entities/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Entities/"]
 COPY ["external/SampSharp/src/SampSharp.OpenMp.Entities.Commands/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Entities.Commands/"]
 COPY ["external/SampSharp/src/SampSharp.SourceGenerator/*.csproj", "external/SampSharp/src/SampSharp.SourceGenerator/"]
 COPY ["external/SampSharp/src/SampSharp.Analyzer/*.csproj", "external/SampSharp/src/SampSharp.Analyzer/"]
 COPY ["external/SampSharp/src/SampSharp.CodeFixes/*.csproj", "external/SampSharp/src/SampSharp.CodeFixes/"]
+
 WORKDIR /app/src/Host
 RUN dotnet restore
 
