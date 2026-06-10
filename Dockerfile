@@ -52,6 +52,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     libstdc++6 \
     libatomic1 \
+    jq \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
@@ -62,3 +63,7 @@ COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["codepages/*.txt", "codepages/"]
 COPY ["plugins/*.so", "components/"]
 COPY ["config.json", "config.json"]
+COPY ["entrypoint.sh", "entrypoint.sh"]
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]

@@ -3,8 +3,6 @@ services:
     build: .
     env_file: .env
     mem_limit: ${MemoryLimit}
-    command: >
-      bash -c "./omp-server"
     ports:
       - ${Port}:${Port}/udp
     environment:
