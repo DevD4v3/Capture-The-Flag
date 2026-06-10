@@ -52,6 +52,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     libstdc++6 \
     libatomic1 \
+    jq \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
