@@ -36,7 +36,7 @@ RUN dotnet publish -c Release -o /app/out --no-restore
 # Download open.mp server
 #
 FROM ubuntu:22.04 AS tools
-RUN apt-get update && apt-get install -y --no-install-recommends wget
+RUN apt-get update && apt-get install -y --no-install-recommends wget xz-utils
 WORKDIR /open-mp
 ENV OPENMP_VERSION="1.5.8.3079"
 RUN wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz --no-check-certificate \
