@@ -4,11 +4,7 @@ services:
     env_file: .env
     mem_limit: ${MemoryLimit}
     command: >
-      bash -c "sed -i 's/lagcompmode 1/lagcompmode ${LagCompMode}/' server.cfg 
-      && sed -i 's/maxplayers 30/maxplayers ${MaxPlayers}/' server.cfg 
-      && sed -i 's/port 7777/port ${Port}/' server.cfg 
-      && sed -i 's/^password/password ${ServerPassword}/' server.cfg 
-      && ./omp-server"
+      bash -c "./omp-server"
     ports:
       - ${Port}:${Port}/udp
     environment:
