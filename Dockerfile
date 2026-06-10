@@ -41,7 +41,6 @@ WORKDIR /open-mp
 ENV OPENMP_VERSION="1.5.8.3079"
 RUN wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz --no-check-certificate \
     && tar -xf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz \
-    && mv open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}/Server Server \
     && rm -f open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
 
 #
