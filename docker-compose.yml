@@ -3,7 +3,6 @@ services:
     build: .
     env_file: .env
     mem_limit: ${MemoryLimit}
-    command: ./entrypoint.sh
     ports:
       - ${Port}:${Port}/udp
     environment:

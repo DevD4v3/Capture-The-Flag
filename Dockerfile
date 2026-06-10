@@ -63,3 +63,7 @@ COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["codepages/*.txt", "codepages/"]
 COPY ["plugins/*.so", "components/"]
 COPY ["config.json", "config.json"]
+COPY ["entrypoint.sh", "entrypoint.sh"]
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
