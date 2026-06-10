@@ -200,7 +200,7 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 - [draw.io](https://app.diagrams.net)
 - [Docker](https://github.com/docker)
 - [Portainer](https://github.com/portainer/portainer)
-https://github.com/OpenSamp/SampSharp.OpenMp.Streamer
+
 ### Frameworks and libraries
 - [.NET SDK 10.0](https://github.com/dotnet/runtime)
 - [SampSharp](https://github.com/ikkentim/SampSharp)
