@@ -25,6 +25,4 @@
     <PackageReference Include="BCrypt.Net-Next" />
   </ItemGroup>
 
-  <Import Project="CopySQLiteLibrary.targets" />
-
 </Project>

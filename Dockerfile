@@ -1,11 +1,9 @@
 #
 # Build stage/image
 #
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /app
 COPY *.props .
-# .NET 8.0 is required because the game mode uses C# 12.0.
-COPY --from=mcr.microsoft.com/dotnet/sdk:8.0 /usr/share/dotnet /usr/share/dotnet
 
 # Copy csproj and restore as distinct layers
 COPY ["src/Host/*.csproj", "src/Host/"]
@@ -15,56 +13,52 @@ COPY ["src/Persistence/Persistence.InMemory/*.csproj", "src/Persistence/Persiste
 COPY ["src/Persistence/Persistence.MariaDB/*.csproj", "src/Persistence/Persistence.MariaDB/"]
 COPY ["src/Persistence/Persistence.SQLite/*.csproj", "src/Persistence/Persistence.SQLite/"]
 COPY ["src/Persistence/*.props", "src/Persistence/"]
+
+COPY ["external/SampSharp/Directory.Build.props", "external/SampSharp/"]
+COPY ["external/SampSharp/Directory.Packages.props", "external/SampSharp/"]
+COPY ["external/SampSharp/src/SampSharp.OpenMp.Core/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Core/"]
+COPY ["external/SampSharp/src/SampSharp.OpenMp.Entities/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Entities/"]
+COPY ["external/SampSharp/src/SampSharp.OpenMp.Entities.Commands/*.csproj", "external/SampSharp/src/SampSharp.OpenMp.Entities.Commands/"]
+COPY ["external/SampSharp/src/SampSharp.SourceGenerator/*.csproj", "external/SampSharp/src/SampSharp.SourceGenerator/"]
+COPY ["external/SampSharp/src/SampSharp.Analyzer/*.csproj", "external/SampSharp/src/SampSharp.Analyzer/"]
+COPY ["external/SampSharp/src/SampSharp.CodeFixes/*.csproj", "external/SampSharp/src/SampSharp.CodeFixes/"]
+
 WORKDIR /app/src/Host
-RUN dotnet restore -p:TargetFramework=net6.0
+RUN dotnet restore
 
 # Copy everything else and build
 COPY ["src/", "/app/src/"]
-RUN dotnet publish --framework=net6.0 -c Release -o /app/out --no-restore
+COPY ["external/", "/app/external/"]
+
+RUN dotnet publish -c Release -o /app/out --no-restore
 
 #
-# Download open.mp server and dotnet linux-x86 
+# Download open.mp server
 #
 FROM ubuntu:22.04 AS tools
-RUN apt-get update && apt-get install -y --no-install-recommends wget
-
+RUN apt-get update && apt-get install -y --no-install-recommends wget xz-utils
 WORKDIR /open-mp
-ENV OPEN_MP_VERSION="1.4.0.2779"
-RUN wget https://github.com/openmultiplayer/open.mp/releases/download/v${OPEN_MP_VERSION}/open.mp-linux-x86.tar.gz --no-check-certificate \
-    && tar -xf open.mp-linux-x86.tar.gz \
-    && rm -f open.mp-linux-x86.tar.gz
-WORKDIR /open-mp/Server
-RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles config.json
-
-WORKDIR /runtime
-ENV TARGET_FRAMEWORK="6.0.35"
-ENV VERSION="6.0.35-97"
-RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v${VERSION}/dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz --no-check-certificate \
-    && mkdir runtime \
-    && tar -xf dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz -C runtime \
-    && rm -f dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz \
-    && cp -rf runtime/shared/Microsoft.NETCore.App/${TARGET_FRAMEWORK}/** . \
-    && rm -rf runtime
+ENV OPENMP_VERSION="1.5.8.3079"
+RUN wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz --no-check-certificate \
+    && tar -xf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz \
+    && rm -f open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
 
 #
 # Final stage/image
 #
-FROM ubuntu:22.04
+FROM  mcr.microsoft.com/dotnet/runtime:10.0
 WORKDIR /app
-RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libc6:i386 \
-    libstdc++6:i386 \
-    libssl3:i386 \
-    libicu-dev:i386 \
+    openssl \
+    libstdc++6 \
+    libatomic1 \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
+COPY --from=tools /open-mp/Server .
+COPY --from=build /app/out gamemode
 COPY ["gamemodes/*.amx", "gamemodes/"]
 COPY ["filterscripts/*.amx", "filterscripts/"]
-COPY ["plugins/*.so", "plugins/"]
 COPY ["codepages/*.txt", "codepages/"]
-COPY ["server.cfg.example", "server.cfg"]
-COPY --from=tools /runtime runtime
-COPY --from=tools /open-mp/Server .
-COPY --from=build /app/out bin
+COPY ["plugins/*.so", "components/"]
+COPY ["config.json", "config.json"]
