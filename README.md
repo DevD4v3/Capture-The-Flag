@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/.NET-8.0-blue" />
+    <img src="https://img.shields.io/badge/.NET-10.0-blue" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
     <img src="https://img.shields.io/badge/Framework-SampSharp.net-purple" />
@@ -200,12 +200,12 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 - [draw.io](https://app.diagrams.net)
 - [Docker](https://github.com/docker)
 - [Portainer](https://github.com/portainer/portainer)
-
+https://github.com/OpenSamp/SampSharp.OpenMp.Streamer
 ### Frameworks and libraries
-- [.NET SDK 8.0](https://github.com/dotnet/runtime)
+- [.NET SDK 10.0](https://github.com/dotnet/runtime)
 - [SampSharp](https://github.com/ikkentim/SampSharp)
-- [SampSharp-streamer](https://github.com/ikkentim/SampSharp-streamer)
-- [samp-streamer-plugin](https://github.com/samp-incognito/samp-streamer-plugin)
+- [SampSharp.OpenMp.Streamer](https://github.com/OpenSamp/SampSharp.OpenMp.Streamer)
+- [omp-streamer-component](https://github.com/OpenSamp/omp-streamer-component)
 - [SmartFormat](https://github.com/axuno/SmartFormat)
 - [MySqlConnector](https://github.com/mysql-net/MySqlConnector)
 - [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite)
