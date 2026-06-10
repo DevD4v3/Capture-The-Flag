@@ -1,8 +1,10 @@
 #!/bin/bash
 
 echo "Starting entrypoint..."
-echo "Port=$Port"
+echo "LagCompMode=$LagCompMode"
 echo "MaxPlayers=$MaxPlayers"
+echo "Port=$Port"
+echo "ServerPassword=$ServerPassword"
 
 jq "
   .game.lag_compensation_mode = ${LagCompMode}
