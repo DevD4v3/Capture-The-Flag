@@ -6,8 +6,11 @@
 public class MapInfoService
 {
     private CurrentMap _currentMap;
-    public MapInfoService(MapCollection mapCollection)
+    private string _mapsPath;
+
+    public MapInfoService(MapCollection mapCollection, string mapsPath)
     {
+        _mapsPath = mapsPath;
         int defaultMapId = 0;
         IMap defaultMap = mapCollection.GetById(defaultMapId).Value;
         Load(defaultMap);
@@ -26,7 +29,7 @@ public class MapInfoService
     public void Load(IMap map)
     {
         ArgumentNullException.ThrowIfNull(map);
-        var path = Path.Combine(GameModePaths.Maps, $"{map.Name}.ini");
+        var path = Path.Combine(_mapsPath, $"{map.Name}.ini");
         ISectionsData sections = SectionsFile.Load(path);
         SpawnLocation[] alphaTeamLocations = GetSpawnLocations(sections["AlphaTeamLocations"]);
         SpawnLocation[] betaTeamLocations = GetSpawnLocations(sections["BetaTeamLocations"]);
