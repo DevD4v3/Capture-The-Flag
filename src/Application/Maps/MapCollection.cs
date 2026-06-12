@@ -4,9 +4,9 @@ public class MapCollection
 {
     private Map[] _maps;
 
-    public MapCollection(string path)
+    public MapCollection(string mapsPath)
     {
-        LoadFromDirectory(path);
+        LoadFromDirectory(mapsPath);
     }
 
     public int Count => _maps.Length;
@@ -50,10 +50,10 @@ public class MapCollection
         public string Name { get; init; }
     }
 
-    private void LoadFromDirectory(string path)
+    private void LoadFromDirectory(string mapsPath)
     {
         var random = new Random();
-        string[] names = Directory.GetFiles(path);
+        string[] names = Directory.GetFiles(mapsPath);
         random.Shuffle(names);
         _maps = new Map[names.Length];
         for (int i = 0; i < names.Length; i++)
