@@ -18,22 +18,12 @@ public class MapRotationService(
     private readonly TimeLeft _timeLeft = new();
     public TimeLeft TimeLeft => _timeLeft;
     public bool IsMapLoading() => _isMapLoading;
+    public IMap NextMap => _forcedNextMap ?? MapCollection.GetNext(mapInfoService.CurrentMap);
 
     public delegate void LoadingMapEventHandler();
     public delegate void LoadedMapEventHandler();
     public event LoadingMapEventHandler LoadingMapEvent;
     public event LoadedMapEventHandler LoadedMapEvent;
-
-    public IMap NextMap
-    {
-        get
-        {
-            if (_forcedNextMap is not null)
-                return _forcedNextMap;
-
-            return MapCollection.GetNext(mapInfoService.CurrentMap);
-        }
-    }
 
     public void ForceNextMap(IMap map)
     {
