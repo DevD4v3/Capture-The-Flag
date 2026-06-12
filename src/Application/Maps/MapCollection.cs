@@ -51,6 +51,12 @@ public class MapCollection
             Result<IMap>.Success(map);
     }
 
+    public static IMap GetNext(IMap current)
+    {
+        int nextMapId = (current.Id + 1) % Count;
+        return GetById(nextMapId).Value;
+    }
+
     private class Map : IMap
     {
         public int Id { get; init; }

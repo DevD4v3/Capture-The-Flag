@@ -127,21 +127,6 @@ public class CurrentMapTests
            .WithParameterName(nameof(betaTeamLocations));
     }
 
-    [TestCaseSource(typeof(GetNextMapTestCases))]
-    public void NextMap_WhenMapIsObtained_ShouldReturnsNextMap((IMap Map, IMap Expected) data)
-    {
-        // Arrange
-        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
-        FlagLocations flagLocations = FlagLocations.Empty;
-        var currentMap = new CurrentMap(data.Map, spawnLocations, spawnLocations, flagLocations);
-
-        // Act
-        IMap actual = currentMap.NextMap;
-
-        // Assert
-        actual.Should().Be(data.Expected);
-    }
-
     [Test]
     public void GetMapNameAsText_WhenNameIsObtained_ShouldReturnsValidStringFormat()
     {
@@ -157,25 +142,6 @@ public class CurrentMapTests
 
         // Assert
         actual.Should().Be(expectedString);
-    }
-
-    [Test]
-    public void SetNextMap_WhenArgumentIsNull_ShouldThrowArgumentNullException()
-    {
-        // Arrange
-        IMap map = MapCollection.GetById(0).Value;
-        IMap nextMap = default;
-        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
-        FlagLocations flagLocations = FlagLocations.Empty;
-        var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
-
-        // Act
-        Action act = () => currentMap.SetNextMap(nextMap);
-
-        // Assert
-        act.Should()
-           .Throw<ArgumentNullException>()
-           .WithParameterName(nameof(nextMap));
     }
 
     [TestCase(TeamId.Alpha)]

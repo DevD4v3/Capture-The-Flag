@@ -13,15 +13,34 @@ public class MapRotationService(
 {
     private LoadTime _loadTime;
     private TimerReference _timerReference;
+    private bool _isMapLoading;
+    private IMap _forcedNextMap;
     private readonly TimeLeft _timeLeft = new();
     public TimeLeft TimeLeft => _timeLeft;
-    private bool _isMapLoading;
     public bool IsMapLoading() => _isMapLoading;
 
     public delegate void LoadingMapEventHandler();
     public delegate void LoadedMapEventHandler();
     public event LoadingMapEventHandler LoadingMapEvent;
     public event LoadedMapEventHandler LoadedMapEvent;
+
+    public IMap NextMap
+    {
+        get
+        {
+            if (_forcedNextMap is not null)
+                return _forcedNextMap;
+
+            CurrentMap currentMap = mapInfoService.Read();
+            return MapCollection.GetNext(currentMap);
+        }
+    }
+
+    public void ForceNextMap(IMap map)
+    {
+        ArgumentNullException.ThrowIfNull(map);
+        _forcedNextMap = map;
+    }
 
     public void StartRotationTimer()
     {
@@ -69,9 +88,9 @@ public class MapRotationService(
         foreach (Player player in players)
             player.ToggleSpectating(true);
 
-        string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { currentMap.NextMap.Name });
+        IMap nextMap = NextMap;
+        string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { nextMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
-        IMap nextMap = currentMap.NextMap;
         mapInfoService.Load(nextMap);
         Team.Alpha.Flag.RemoveCarrier();
         Team.Beta.Flag.RemoveCarrier();
@@ -90,6 +109,7 @@ public class MapRotationService(
     private void OnLoadedMap()
     {
         _isMapLoading = false;
+        _forcedNextMap = default;
         LoadedMapEvent?.Invoke();
         TimeLeft.Reset();
         CurrentMap currentMap = mapInfoService.Read();

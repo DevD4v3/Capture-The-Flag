@@ -3,9 +3,8 @@
 /// <summary>
 /// Represents the current information of a map.
 /// </summary>
-public class CurrentMap
+public class CurrentMap : IMap
 {
-    private IMap _nextMap;
     private readonly Random _random = new();
     public const int DefaultInterior  = 0;
     public const int DefaultWeather   = 10;
@@ -18,7 +17,6 @@ public class CurrentMap
     public int Interior { get; }
     public int Weather { get; }
     public int WorldTime { get; }
-    public IMap NextMap => _nextMap;
 
     public CurrentMap(
         IMap map, 
@@ -48,16 +46,10 @@ public class CurrentMap
         Interior = interior;
         Weather = weather;
         WorldTime = worldTime;
-        int nextMapId = (Id + 1) % MapCollection.Count;
-        _nextMap = MapCollection.GetById(nextMapId).Value;
     }
 
-    public string GetMapNameAsText() => $"Map: ~w~{Name}";
-    public void SetNextMap(IMap nextMap)
-    {
-        ArgumentNullException.ThrowIfNull(nextMap);
-        _nextMap = nextMap;
-    }
+    public string GetMapNameAsText() 
+        => $"Map: ~w~{Name}";
 
     public SpawnLocation GetRandomSpawnLocation(TeamId team) => team switch
     {

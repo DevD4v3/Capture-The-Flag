@@ -95,4 +95,39 @@ public class MapCollectionTests
         result.IsSuccess.Should().BeTrue();
         result.Value.Name.Should().Be(expectedMapName);
     }
+
+    [TestCase(0, 1)]
+    [TestCase(1, 2)]
+    [TestCase(2, 3)]
+    [TestCase(3, 4)]
+    [TestCase(4, 5)]
+    [TestCase(5, 6)]
+    [TestCase(6, 7)]
+    [TestCase(7, 8)]
+    [TestCase(31, 32)]
+    public void GetNext_WhenMapExists_ShouldReturnsNextMap(int currentId, int expectedId)
+    {
+        // Arrange
+        IMap current = MapCollection.GetById(currentId).Value;
+
+        // Act
+        IMap next = MapCollection.GetNext(current);
+
+        // Assert
+        next.Id.Should().Be(expectedId);
+    }
+
+    [Test]
+    public void GetNext_WhenCurrentMapIsLast_ShouldWrapToFirstMap()
+    {
+        // Arrange
+        IMap lastMap = MapCollection.GetById(MapCollection.Count - 1).Value;
+        IMap firstMap = MapCollection.GetById(0).Value;
+
+        // Act
+        IMap next = MapCollection.GetNext(lastMap);
+
+        // Assert
+        next.Should().Be(firstMap);
+    }
 }
