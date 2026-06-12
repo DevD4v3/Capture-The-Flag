@@ -1,4 +1,4 @@
-﻿namespace CTF.Application;
+﻿namespace CTF.Application.Players;
 
 public class PlayerCommandLockMiddleware(
     IEntityManager entityManager,
