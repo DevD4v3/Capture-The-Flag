@@ -13,17 +13,8 @@ public static class GameModePaths
             Root,
             "yesql");
 
-    private static string Root
-    {
-        get
-        {
-            // open.mp executes the gamemode from the server root directory,
-            // while tests execute from the test output directory.
-            // Fall back to the current directory when the "gamemode" folder is not present.
-            var gameModePath = Path.Combine(Directory.GetCurrentDirectory(), "gamemode");
-            return Directory.Exists(gameModePath)
-                ? gameModePath
-                : Directory.GetCurrentDirectory();
-        }
-    }
+    private static string Root => 
+        Path.Combine(
+            Directory.GetCurrentDirectory(), 
+            "gamemode");
 }

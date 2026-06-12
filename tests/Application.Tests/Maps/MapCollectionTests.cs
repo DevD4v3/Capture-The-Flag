@@ -1,6 +1,4 @@
-﻿using CTF.Application.Common.Paths;
-
-namespace CTF.Application.Tests.Maps;
+﻿namespace CTF.Application.Tests.Maps;
 
 public class MapCollectionTests
 {
@@ -10,7 +8,7 @@ public class MapCollectionTests
     [SetUp]
     public void SetUp()
     {
-        _maps = new MapCollection(GameModePaths.Maps);
+        _maps = new MapCollection(TestPaths.Maps);
     }
 
     [TestCase("de")]
