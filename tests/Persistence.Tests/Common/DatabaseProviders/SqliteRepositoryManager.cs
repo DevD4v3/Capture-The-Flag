@@ -11,7 +11,7 @@ public class SqliteRepositoryManager : IRepositoryManager
         IConfiguration configuration = EnvConfigurationBuilder.Instance;
         services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
-        services.AddPersistenceSQLiteServices(configuration);
+        services.AddPersistenceSQLiteServices(configuration, TestPaths.Sql);
         _serviceProvider = services.BuildServiceProvider();
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
         TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();

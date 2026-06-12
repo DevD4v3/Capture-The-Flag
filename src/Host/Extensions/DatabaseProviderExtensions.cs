@@ -6,11 +6,12 @@ public static class DatabaseProviderExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        string sqlPath = GameModePaths.Sql;
         var providers = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase)
         {
             { "InMemory", () => services.AddPersistenceInMemoryServices() },
-            { "SQLite",   () => services.AddPersistenceSQLiteServices(configuration) },
-            { "MariaDb",  () => services.AddPersistenceMariaDBServices(configuration) },
+            { "SQLite",   () => services.AddPersistenceSQLiteServices(configuration, sqlPath) },
+            { "MariaDb",  () => services.AddPersistenceMariaDBServices(configuration, sqlPath) },
         };
 
         string selectedProvider = configuration["DatabaseProvider"];

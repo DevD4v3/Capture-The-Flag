@@ -13,6 +13,7 @@ global using DotEnv.Core;
 global using CTF.Application;
 global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;
+global using CTF.Application.Common.Paths;
 global using CTF.Application.Players;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.AFK;

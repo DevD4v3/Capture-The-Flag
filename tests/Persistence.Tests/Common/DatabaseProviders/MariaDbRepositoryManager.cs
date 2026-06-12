@@ -11,7 +11,7 @@ public class MariaDbRepositoryManager : IRepositoryManager
         IConfiguration configuration = EnvConfigurationBuilder.Instance;
         services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
-        services.AddPersistenceMariaDBServices(configuration);
+        services.AddPersistenceMariaDBServices(configuration, TestPaths.Sql);
         _serviceProvider = services.BuildServiceProvider();
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
         TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();
