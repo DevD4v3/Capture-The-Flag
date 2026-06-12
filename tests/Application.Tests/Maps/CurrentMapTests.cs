@@ -26,7 +26,7 @@ public class CurrentMapTests
     public void Constructor_WhenAlphaTeamLocationsIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> alphaTeamLocations = default;
         List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
@@ -47,7 +47,7 @@ public class CurrentMapTests
     public void Constructor_WhenBetaTeamLocationsIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> betaTeamLocations = default;
         List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
@@ -68,7 +68,7 @@ public class CurrentMapTests
     public void Constructor_WhenFlagLocationsIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
         List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = default;
@@ -89,7 +89,7 @@ public class CurrentMapTests
     public void Constructor_WhenAlphaTeamLocationsIsEmpty_ShouldThrowArgumentException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> alphaTeamLocations = [];
         List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
@@ -110,7 +110,7 @@ public class CurrentMapTests
     public void Constructor_WhenBetaTeamLocationsIsEmpty_ShouldThrowArgumentException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
         List<SpawnLocation> betaTeamLocations = [];
         FlagLocations flagLocations = FlagLocations.Empty;
@@ -131,7 +131,7 @@ public class CurrentMapTests
     public void GetMapNameAsText_WhenNameIsObtained_ShouldReturnsValidStringFormat()
     {
         // Arrange
-        IMap map = MapCollection.GetByName("RC_Battlefield").Value;
+        IMap map = new FakeMap(id: 0, name: "RC_Battlefield");
         List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
         var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
@@ -149,7 +149,7 @@ public class CurrentMapTests
     public void GetRandomSpawnLocation_WhenTeamIsAlphaOrBeta_ShouldReturnsSpawnLocation(TeamId team)
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
         var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
@@ -166,7 +166,7 @@ public class CurrentMapTests
     public void GetRandomSpawnLocation_WhenTeamIsNotAlphaOrBeta_ShouldThrowNotSupportedException()
     {
         // Arrange
-        IMap map = MapCollection.GetById(0).Value;
+        IMap map = new FakeMap();
         List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
         FlagLocations flagLocations = FlagLocations.Empty;
         TeamId team = TeamId.NoTeam;

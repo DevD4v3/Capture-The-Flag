@@ -1,14 +1,18 @@
-﻿namespace CTF.Application.Tests.Maps;
+﻿using CTF.Application.Common.Paths;
+
+namespace CTF.Application.Tests.Maps;
 
 public class MapInfoServiceTests
 {
+    private static readonly MapCollection s_maps = new(GameModePaths.Maps);
+
     [Test]
     public void Constructor_WhenLoadMethodIsNotInvoked_CurrentMapShouldNotBeNull()
     {
         // Arrange
 
         // Act
-        var service = new MapInfoService();
+        var service = new MapInfoService(s_maps);
         CurrentMap currentMap = service.CurrentMap;
 
         // Assert
@@ -19,7 +23,7 @@ public class MapInfoServiceTests
     public void Load_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
-        var service = new MapInfoService();
+        var service = new MapInfoService(s_maps);
         IMap map = default;
 
         // Act
@@ -35,8 +39,8 @@ public class MapInfoServiceTests
     public void Load_WhenMapIsLoadedFromFileSystem_ShouldCreateInstanceOfTypeCurrentMap(CurrentMap expectedCurrentMap)
     {
         // Arrange
-        var service = new MapInfoService();
-        IMap map = MapCollection.GetById(expectedCurrentMap.Id).Value;
+        var service = new MapInfoService(s_maps);
+        IMap map = s_maps.GetById(expectedCurrentMap.Id).Value;
 
         // Act
         service.Load(map);
@@ -192,7 +196,7 @@ public class MapInfoServiceTests
                 worldTime: 22);
         }
 
-        private static IMap GetMap(string name) => MapCollection.GetByName(name).Value;
+        private static IMap GetMap(string name) => s_maps.GetByName(name).Value;
         IEnumerator IEnumerable.GetEnumerator()
             => this.GetEnumerator();
     }

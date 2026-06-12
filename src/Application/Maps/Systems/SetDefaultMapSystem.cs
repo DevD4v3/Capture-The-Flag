@@ -4,6 +4,7 @@ public class SetDefaultMapSystem(
     IWorldService worldService,
     IServerService serverService,
     MapInfoService mapInfoService,
+    MapCollection mapCollection,
     TeamPickupService teamPickupService,
     TeamIconService teamIconService,
     MapTextDrawRenderer mapTextDrawRenderer,
@@ -12,7 +13,7 @@ public class SetDefaultMapSystem(
     [Event]
     public void OnGameModeInit()
     {
-        Result<IMap> mapResult = MapCollection.GetByName(serverSettings.MapName);
+        Result<IMap> mapResult = mapCollection.GetByName(serverSettings.MapName);
         if (mapResult.IsSuccess)
         {
             mapInfoService.Load(mapResult.Value);

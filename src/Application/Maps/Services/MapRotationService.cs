@@ -5,6 +5,7 @@ public class MapRotationService(
     IWorldService worldService,
     ITimerService timerService,
     MapInfoService mapInfoService,
+    MapCollection mapCollection,
     MapTextDrawRenderer mapTextDrawRenderer,
     TeamIconService teamIconService,
     TeamPickupService teamPickupService,
@@ -18,7 +19,7 @@ public class MapRotationService(
     private readonly TimeLeft _timeLeft = new();
     public TimeLeft TimeLeft => _timeLeft;
     public bool IsMapLoading => _isMapLoading;
-    public IMap NextMap => _forcedNextMap ?? MapCollection.GetNext(mapInfoService.CurrentMap);
+    public IMap NextMap => _forcedNextMap ?? mapCollection.GetNext(mapInfoService.CurrentMap);
 
     public delegate void LoadingMapEventHandler();
     public delegate void LoadedMapEventHandler();

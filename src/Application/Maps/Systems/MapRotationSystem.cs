@@ -4,6 +4,7 @@ public class MapRotationSystem(
     IWorldService worldService,
     IDialogService dialogService,
     MapRotationService mapRotationService,
+    MapCollection mapCollection,
     MapTextDrawRenderer mapTextDrawRenderer) : ISystem
 {
     private int _connectedPlayers;
@@ -73,9 +74,9 @@ public class MapRotationSystem(
             return;
 
         var listDialog = new ListDialog(string.Empty, "Select", "Close");
-        IEnumerable<IMap> maps = string.IsNullOrEmpty(findBy) ? 
-            MapCollection.GetAll() : 
-            MapCollection.GetAll(findBy);
+        IEnumerable<IMap> maps = string.IsNullOrEmpty(findBy) ?
+            mapCollection.GetAll() :
+            mapCollection.GetAll(findBy);
 
         IMap nextMap = mapRotationService.NextMap;
         foreach (IMap map in maps)
@@ -92,12 +93,12 @@ public class MapRotationSystem(
             return;
         }
 
-        listDialog.Caption = $"Maps: {listDialog.Rows.Count}/{MapCollection.Count}";
+        listDialog.Caption = $"Maps: {listDialog.Rows.Count}/{mapCollection.Count}";
         ListDialogResponse listDialogResponse = await dialogService.ShowAsync(player, listDialog);
         if (listDialogResponse.Response == DialogResponse.LeftButton)
         {
             int selectedMapId = (int)listDialogResponse.Item.Tag;
-            IMap selectedMap = MapCollection.GetById(selectedMapId).Value;
+            IMap selectedMap = mapCollection.GetById(selectedMapId).Value;
             ShowConfirmationDialog(player, selectedMap);
         }
     }
