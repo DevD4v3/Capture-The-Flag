@@ -18,7 +18,7 @@ public class TeamIconService
     public void CreateFromBasePosition(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        CurrentMap currentMap = _mapInfoService.Read();
+        CurrentMap currentMap = _mapInfoService.CurrentMap;
         if (team.Id == TeamId.Alpha)
         {
             CreateFromVector3(team, currentMap.FlagLocations.Red);
@@ -32,7 +32,7 @@ public class TeamIconService
     public void CreateFromVector3(Team team, Vector3 position) 
     {
         ArgumentNullException.ThrowIfNull(team);
-        CurrentMap currentMap = _mapInfoService.Read();
+        CurrentMap currentMap = _mapInfoService.CurrentMap;
         Destroy(team);
         if (team.Id == TeamId.Alpha)
         {

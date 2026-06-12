@@ -20,7 +20,7 @@ public class TeamPickupService
     public void CreateFlagFromBasePosition(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        CurrentMap currentMap = _mapInfoService.Read();
+        CurrentMap currentMap = _mapInfoService.CurrentMap;
         if (team.Id == TeamId.Alpha)
         {
             CreateFlagFromVector3(team, currentMap.FlagLocations.Red);
@@ -77,7 +77,7 @@ public class TeamPickupService
     public void CreateExteriorMarker(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        CurrentMap currentMap = _mapInfoService.Read();
+        CurrentMap currentMap = _mapInfoService.CurrentMap;
         DestroyExteriorMarker(team);
         if (team.Id == TeamId.Alpha)
         {

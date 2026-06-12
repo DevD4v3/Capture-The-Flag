@@ -9,7 +9,7 @@ public class MapInfoServiceTests
 
         // Act
         var service = new MapInfoService();
-        CurrentMap currentMap = service.Read();
+        CurrentMap currentMap = service.CurrentMap;
 
         // Assert
         currentMap.Should().NotBeNull();
@@ -40,7 +40,7 @@ public class MapInfoServiceTests
 
         // Act
         service.Load(map);
-        CurrentMap actual = service.Read();
+        CurrentMap actual = service.CurrentMap;
 
         // Assert
         actual.Should().BeEquivalentTo(expectedCurrentMap);

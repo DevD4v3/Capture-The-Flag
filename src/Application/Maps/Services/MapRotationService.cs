@@ -31,8 +31,7 @@ public class MapRotationService(
             if (_forcedNextMap is not null)
                 return _forcedNextMap;
 
-            CurrentMap currentMap = mapInfoService.Read();
-            return MapCollection.GetNext(currentMap);
+            return MapCollection.GetNext(mapInfoService.CurrentMap);
         }
     }
 
@@ -81,8 +80,7 @@ public class MapRotationService(
         else
             worldService.SendClientMessage(Color.Yellow, Messages.TiedTeams);
 
-        CurrentMap currentMap = mapInfoService.Read();
-        serverService.SendRconCommand($"unloadfs {currentMap.Name}");
+        serverService.SendRconCommand($"unloadfs {mapInfoService.CurrentMap.Name}");
 
         IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
         foreach (Player player in players)
@@ -112,7 +110,7 @@ public class MapRotationService(
         _forcedNextMap = default;
         LoadedMapEvent?.Invoke();
         TimeLeft.Reset();
-        CurrentMap currentMap = mapInfoService.Read();
+        CurrentMap currentMap = mapInfoService.CurrentMap;
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
         static void HandlePlayerAction(Player player, PlayerInfo playerInfo)

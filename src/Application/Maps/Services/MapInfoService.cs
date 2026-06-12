@@ -14,9 +14,9 @@ public class MapInfoService
     }
 
     /// <summary>
-    /// Reads the current information from a map.
+    /// Gets the current information from a map.
     /// </summary>
-    public CurrentMap Read() => _currentMap;
+    public CurrentMap CurrentMap => _currentMap;
 
     /// <summary>
     /// Loads map information from the file system.
