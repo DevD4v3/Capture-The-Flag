@@ -3,7 +3,6 @@
 public class MapRotationSystem(
     IWorldService worldService,
     IDialogService dialogService,
-    MapInfoService mapInfoService,
     MapRotationService mapRotationService,
     MapTextDrawRenderer mapTextDrawRenderer) : ISystem
 {
@@ -74,14 +73,14 @@ public class MapRotationSystem(
             return;
 
         var listDialog = new ListDialog(string.Empty, "Select", "Close");
-        CurrentMap currentMap = mapInfoService.Read();
         IEnumerable<IMap> maps = string.IsNullOrEmpty(findBy) ? 
             MapCollection.GetAll() : 
             MapCollection.GetAll(findBy);
 
+        IMap nextMap = mapRotationService.NextMap;
         foreach (IMap map in maps)
         {
-            if (map.Id == currentMap.NextMap.Id)
+            if (map.Id == nextMap.Id)
                 listDialog.Add(text: $"{map.Name} {Color.Red}[Next Map]", tag: map.Id);
             else
                 listDialog.Add(text: map.Name, tag: map.Id);
@@ -132,8 +131,7 @@ public class MapRotationSystem(
                 MapName = selectedMap.Name
             });
             worldService.SendClientMessage(Color.Orange, message);
-            CurrentMap currentMap = mapInfoService.Read();
-            currentMap.SetNextMap(selectedMap);
+            mapRotationService.ForceNextMap(selectedMap);
         }
         else if(confirmationDialogResponse.Response == DialogResponse.RightButtonOrCancel)
         {
@@ -143,8 +141,7 @@ public class MapRotationSystem(
                 MapName = selectedMap.Name
             });
             worldService.SendClientMessage(Color.Orange, message);
-            CurrentMap currentMap = mapInfoService.Read();
-            currentMap.SetNextMap(selectedMap);
+            mapRotationService.ForceNextMap(selectedMap);
         }
     }
 }
