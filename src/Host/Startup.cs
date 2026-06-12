@@ -35,7 +35,7 @@ public class Startup : IEcsStartup
 
         // Add systems to the services collection
         services
-            .AddSystemsInAssembly(typeof(ApplicationServicesExtensions).Assembly)
+            .AddSystemsInAssembly(typeof(CurrentMap).Assembly)
             .AddSystemsInAssembly(typeof(Startup).Assembly);
     }
 
