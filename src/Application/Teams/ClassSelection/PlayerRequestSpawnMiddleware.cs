@@ -23,7 +23,7 @@ public class PlayerRequestSpawnMiddleware(
             return false;
         }
 
-        if (mapRotationService.IsMapLoading())
+        if (mapRotationService.IsMapLoading)
         {
             player.SendClientMessage(Color.Red, Messages.MapIsLoading);
             return false;

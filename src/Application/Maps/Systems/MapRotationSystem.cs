@@ -114,7 +114,7 @@ public class MapRotationSystem(
         if (confirmationDialogResponse.Response == DialogResponse.Disconnected)
             return;
         
-        if (mapRotationService.IsMapLoading())
+        if (mapRotationService.IsMapLoading)
         {
             player.SendClientMessage(Color.Red, Messages.MapIsLoading);
             return;

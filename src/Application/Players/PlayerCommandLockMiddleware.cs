@@ -30,7 +30,7 @@ public class PlayerCommandLockMiddleware(
             return true;
         }
 
-        if (mapRotationService.IsMapLoading())
+        if (mapRotationService.IsMapLoading)
         {
             player.SendClientMessage(Color.Red, Messages.CommandLockMapLoading);
             return true;

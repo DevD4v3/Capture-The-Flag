@@ -17,7 +17,7 @@ public class MapRotationService(
     private IMap _forcedNextMap;
     private readonly TimeLeft _timeLeft = new();
     public TimeLeft TimeLeft => _timeLeft;
-    public bool IsMapLoading() => _isMapLoading;
+    public bool IsMapLoading => _isMapLoading;
     public IMap NextMap => _forcedNextMap ?? MapCollection.GetNext(mapInfoService.CurrentMap);
 
     public delegate void LoadingMapEventHandler();

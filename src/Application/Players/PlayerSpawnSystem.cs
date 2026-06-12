@@ -20,7 +20,7 @@ public class PlayerSpawnSystem(
         {
             player.Skin = playerInfo.SkinId;
         }
-        if (mapRotationService.IsMapLoading())
+        if (mapRotationService.IsMapLoading)
         {
             player.ToggleSpectating(true);
         }
