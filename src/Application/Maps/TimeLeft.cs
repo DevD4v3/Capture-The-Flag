@@ -76,7 +76,7 @@ public class TimeLeft
     /// to avoid memory reallocations caused by string interpolation.
     /// </summary>
     /// <remarks>
-    /// This decision was made because the text will be updated every 1 ms by a timer.
+    /// This decision was made because the text will be updated every 1s by a timer.
     /// </remarks>
     private unsafe void UpdateTextDraw()
     {
