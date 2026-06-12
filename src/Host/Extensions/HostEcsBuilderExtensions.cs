@@ -49,4 +49,13 @@ public static class HostEcsBuilderExtensions
         mapRotationService.LoadingMapEvent += rocketLauncherSystem.OnLoadingMap;
         return builder;
     }
+
+    public static IEcsBuilder RegisterMiddlewares(this IEcsBuilder builder)
+    {
+        builder
+            .UseMiddleware<PlayerCommandLockMiddleware>(name: "OnPlayerCommandText")
+            .UseMiddleware<PlayerRequestSpawnMiddleware>(name: "OnPlayerRequestSpawn");
+
+        return builder;
+    }
 }

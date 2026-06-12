@@ -1,4 +1,4 @@
-﻿namespace CTF.Application;
+﻿namespace CTF.Host.Extensions;
 
 public static class ApplicationServicesExtensions
 {
