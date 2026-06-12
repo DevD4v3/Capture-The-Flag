@@ -1,8 +1,17 @@
-﻿namespace CTF.Application.Tests.Maps;
+﻿using CTF.Application.Common.Paths;
+
+namespace CTF.Application.Tests.Maps;
 
 public class MapCollectionTests
 {
-    static readonly int[] InvalidMapCases = [-1, 1000, MapCollection.Count];
+    static readonly int[] InvalidMapCases = [-1, 1000];
+    private MapCollection _maps;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _maps = new MapCollection(GameModePaths.Maps);
+    }
 
     [TestCase("de")]
     [TestCase("DE")]
@@ -26,7 +35,7 @@ public class MapCollectionTests
         ];
 
         // Act
-        IEnumerable<IMap> maps = MapCollection.GetAll(findBy);
+        IEnumerable<IMap> maps = _maps.GetAll(findBy);
         string[] actual = maps.Select(map => map.Name).ToArray();
 
         // Assert
@@ -40,9 +49,23 @@ public class MapCollectionTests
         string expectedMessage = Messages.InvalidMap;
 
         // Act
-        Result<IMap> result = MapCollection.GetById(mapId);
+        Result<IMap> result = _maps.GetById(mapId);
 
         // Asserts
+        result.IsSuccess.Should().BeFalse();
+        result.Message.Should().Be(expectedMessage);
+    }
+
+    [Test]
+    public void GetById_WhenMapIdEqualsCount_ShouldReturnsFailureResult()
+    {
+        // Arrange
+        string expectedMessage = Messages.InvalidMap;
+
+        // Act
+        Result<IMap> result = _maps.GetById(_maps.Count);
+
+        // Assert
         result.IsSuccess.Should().BeFalse();
         result.Message.Should().Be(expectedMessage);
     }
@@ -54,10 +77,8 @@ public class MapCollectionTests
     [TestCase(4)]
     public void GetById_WhenMapIdIsValid_ShouldReturnsSuccessResult(int mapId)
     {
-        // Arrange
-
         // Act
-        Result<IMap> result = MapCollection.GetById(mapId);
+        Result<IMap> result = _maps.GetById(mapId);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
@@ -69,11 +90,11 @@ public class MapCollectionTests
     public void GetByName_WhenMapNameIsNotFound_ShouldReturnsFailureResult()
     {
         // Arrange
-        string mapName = "NotFound"; 
+        string mapName = "NotFound";
         string expectedMessage = Messages.MapNotFound;
 
         // Act
-        Result<IMap> result = MapCollection.GetByName(mapName);
+        Result<IMap> result = _maps.GetByName(mapName);
 
         // Asserts
         result.IsSuccess.Should().BeFalse();
@@ -89,7 +110,7 @@ public class MapCollectionTests
         string expectedMapName = "de_aztec";
 
         // Act
-        Result<IMap> result = MapCollection.GetByName(mapName);
+        Result<IMap> result = _maps.GetByName(mapName);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
@@ -108,10 +129,10 @@ public class MapCollectionTests
     public void GetNext_WhenMapExists_ShouldReturnsNextMap(int currentId, int expectedId)
     {
         // Arrange
-        IMap current = MapCollection.GetById(currentId).Value;
+        IMap current = _maps.GetById(currentId).Value;
 
         // Act
-        IMap next = MapCollection.GetNext(current);
+        IMap next = _maps.GetNext(current);
 
         // Assert
         next.Id.Should().Be(expectedId);
@@ -121,11 +142,11 @@ public class MapCollectionTests
     public void GetNext_WhenCurrentMapIsLast_ShouldWrapToFirstMap()
     {
         // Arrange
-        IMap lastMap = MapCollection.GetById(MapCollection.Count - 1).Value;
-        IMap firstMap = MapCollection.GetById(0).Value;
+        IMap lastMap = _maps.GetById(_maps.Count - 1).Value;
+        IMap firstMap = _maps.GetById(0).Value;
 
         // Act
-        IMap next = MapCollection.GetNext(lastMap);
+        IMap next = _maps.GetNext(lastMap);
 
         // Assert
         next.Should().Be(firstMap);

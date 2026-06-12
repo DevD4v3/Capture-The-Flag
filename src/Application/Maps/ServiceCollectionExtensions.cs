@@ -7,7 +7,8 @@ public static class MapServicesExtensions
         services
             .AddSingleton<MapInfoService>()
             .AddSingleton<MapRotationService>()
-            .AddSingleton<MapTextDrawRenderer>();
+            .AddSingleton<MapTextDrawRenderer>()
+            .AddSingleton(_ => new MapCollection(GameModePaths.Maps));
 
         return services;
     }

@@ -6,10 +6,10 @@
 public class MapInfoService
 {
     private CurrentMap _currentMap;
-    public MapInfoService()
+    public MapInfoService(MapCollection mapCollection)
     {
         int defaultMapId = 0;
-        IMap defaultMap = MapCollection.GetById(defaultMapId).Value;
+        IMap defaultMap = mapCollection.GetById(defaultMapId).Value;
         Load(defaultMap);
     }
 
