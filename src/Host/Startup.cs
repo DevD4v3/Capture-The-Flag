@@ -5,7 +5,8 @@ public class Startup : IEcsStartup
     public void Initialize(IStartupContext context)
     {
         context.UseEntities()
-            .UseCommands();
+            .UseConsoleCommands()
+            .UsePlayerCommands(opts => opts.UsageMessageColor = Color.Red);
     }
 
     public void ConfigureServices(IServiceCollection services, IConfiguration _)
