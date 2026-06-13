@@ -10,8 +10,14 @@ public static class MapServicesExtensions
             .AddSingleton<MapInfoService>()
             .AddSingleton<MapRotationService>()
             .AddSingleton<MapTextDrawRenderer>()
-            .AddSingleton(sp => new MapInfoService(sp.GetRequiredService<MapCollection>(), mapsPath))
-            .AddSingleton(_ => new MapCollection(mapsPath));
+            .AddSingleton(_ => new MapCollection(mapsPath))
+            .AddSingleton(sp =>
+            {
+                var maps = sp.GetRequiredService<MapCollection>();
+                return new MapInfoService(
+                    initialMap: maps.GetById(0).Value,
+                    mapsPath: mapsPath);
+            }); ;
 
         return services;
     }

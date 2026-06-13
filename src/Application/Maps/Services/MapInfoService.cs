@@ -6,14 +6,12 @@
 public class MapInfoService
 {
     private CurrentMap _currentMap;
-    private string _mapsPath;
+    private readonly string _mapsPath;
 
-    public MapInfoService(MapCollection mapCollection, string mapsPath)
+    public MapInfoService(IMap initialMap, string mapsPath)
     {
         _mapsPath = mapsPath;
-        int defaultMapId = 0;
-        IMap defaultMap = mapCollection.GetById(defaultMapId).Value;
-        Load(defaultMap);
+        Load(initialMap);
     }
 
     /// <summary>

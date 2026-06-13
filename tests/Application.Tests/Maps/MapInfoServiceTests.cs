@@ -8,20 +8,24 @@ public class MapInfoServiceTests
     public void Constructor_WhenLoadMethodIsNotInvoked_CurrentMapShouldNotBeNull()
     {
         // Arrange
+        var expectedMap = "cs_deagle5";
+        IMap initialMap = s_maps.GetByName(expectedMap).Value;
 
         // Act
-        var service = new MapInfoService(s_maps, TestPaths.Maps);
+        var service = new MapInfoService(initialMap, TestPaths.Maps);
         CurrentMap currentMap = service.CurrentMap;
 
         // Assert
         currentMap.Should().NotBeNull();
+        currentMap.Name.Should().Be(expectedMap);
     }
 
     [Test]
     public void Load_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
-        var service = new MapInfoService(s_maps, TestPaths.Maps);
+        IMap initialMap = new FakeMap();
+        var service = new MapInfoService(initialMap, TestPaths.Maps);
         IMap map = default;
 
         // Act
@@ -37,7 +41,9 @@ public class MapInfoServiceTests
     public void Load_WhenMapIsLoadedFromFileSystem_ShouldCreateInstanceOfTypeCurrentMap(CurrentMap expectedCurrentMap)
     {
         // Arrange
-        var service = new MapInfoService(s_maps, TestPaths.Maps);
+        var expectedMap = "cs_deagle5";
+        IMap initialMap = s_maps.GetByName(expectedMap).Value;
+        var service = new MapInfoService(initialMap, TestPaths.Maps);
         IMap map = s_maps.GetById(expectedCurrentMap.Id).Value;
 
         // Act
