@@ -8,7 +8,7 @@ public class FlagAutoReturnTimer(
     IWorldService worldService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
-    ServerSettings serverSettings)
+    FlagAutoReturnSettings flagAutoReturnSettings)
 {
     private TimerReference _alphaTeamTimer;
     private TimerReference _betaTeamTimer;
@@ -23,7 +23,7 @@ public class FlagAutoReturnTimer(
             team.IsFlagAtBasePosition = true;
             var message = Smart.Format(Messages.FlagAutoReturn, new
             {
-                Seconds = serverSettings.FlagAutoReturnTime,
+                Seconds = flagAutoReturnSettings.Delay,
                 team.ColorName
             });
             worldService.SendClientMessage(team.ColorHex, message);
@@ -33,12 +33,12 @@ public class FlagAutoReturnTimer(
 
         if (team.Id == TeamId.Alpha)
         {
-            TimeSpan interval = TimeSpan.FromSeconds(serverSettings.FlagAutoReturnTime);
+            TimeSpan interval = TimeSpan.FromSeconds(flagAutoReturnSettings.Delay);
             _alphaTeamTimer ??= timerService.Start(OnComplete, interval);
         }
         else if (team.Id == TeamId.Beta)
         {
-            TimeSpan interval = TimeSpan.FromSeconds(serverSettings.FlagAutoReturnTime);
+            TimeSpan interval = TimeSpan.FromSeconds(flagAutoReturnSettings.Delay);
             _betaTeamTimer ??= timerService.Start(OnComplete, interval);
         }
     }

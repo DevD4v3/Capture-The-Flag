@@ -26,9 +26,21 @@ public static class AppSettingsExtensions
             .GetRequiredSection("FlagCarrier")
             .Get<FlagCarrierSettings>();
 
+        var flagAutoReturnSettings = configuration
+            .GetRequiredSection("FlagAutoReturn")
+            .Get<FlagAutoReturnSettings>();
+
         var antiCBugSettings = configuration
             .GetRequiredSection("AntiCBug")
             .Get<AntiCBugSettings>();
+
+        var headshotSettings = configuration
+            .GetRequiredSection("Headshot")
+            .Get<HeadshotSettings>();
+
+        var classSelectionSettings = configuration
+            .GetRequiredSection("ClassSelection")
+            .Get<ClassSelectionSettings>();
 
         services
             .AddSingleton(serverSettings)
@@ -36,7 +48,10 @@ public static class AppSettingsExtensions
             .AddSingleton(topPlayersSettings)
             .AddSingleton(serverOwnerSettings)
             .AddSingleton(flagCarrierSettings)
-            .AddSingleton(antiCBugSettings);
+            .AddSingleton(flagAutoReturnSettings)
+            .AddSingleton(antiCBugSettings)
+            .AddSingleton(headshotSettings)
+            .AddSingleton(classSelectionSettings);
 
         return services;
     }
