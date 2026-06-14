@@ -1,9 +1,9 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.Headshots;
 
-public class HeadShotSystem(
+public class HeadshotSystem(
     IPlayerRepository playerRepository,
     IWorldService worldService,
-    ServerSettings serverSettings) : ISystem
+    HeadshotSettings headshotSettings) : ISystem
 {
     /// <summary>
     /// This callback is called when a player takes damage.
@@ -44,8 +44,8 @@ public class HeadShotSystem(
             receiver.Health = 0;
             if (!receiverInfo.HasCapturedFlag())
             {
-                issuer.PlayAudioStream(serverSettings.HeadshotAudioUrl);
-                receiver.PlayAudioStream(serverSettings.HeadshotAudioUrl);
+                issuer.PlayAudioStream(headshotSettings.AudioUrl);
+                receiver.PlayAudioStream(headshotSettings.AudioUrl);
             }
             var message = Smart.Format(Messages.HeadshotToPlayer, new
             {

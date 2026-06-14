@@ -4,7 +4,7 @@ public class ClassSelectionSystem(
     IWorldService worldService,
     ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
     TeamTextDrawRenderer teamTextDrawRenderer,
-    ServerSettings serverSettings) : ISystem
+    ClassSelectionSettings classSelectionSettings) : ISystem
 {
     [Event]
     public void OnGameModeInit(IServerService serverService)
@@ -19,7 +19,7 @@ public class ClassSelectionSystem(
         player.Color = Team.None.ColorHex;
         player.AddComponent<ClassSelectionComponent>();
         player.RemoveAttachedObject(0);
-        player.PlayAudioStream(serverSettings.IntroAudioUrl);
+        player.PlayAudioStream(classSelectionSettings.IntroAudioUrl);
         classSelectionTextDrawRenderer.Show(player);
     }
 
