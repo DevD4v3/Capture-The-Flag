@@ -81,8 +81,8 @@ public class MapRotationService(
         string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { nextMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
         mapInfoService.Load(nextMap);
-        Team.Alpha.Flag.RemoveCarrier();
-        Team.Beta.Flag.RemoveCarrier();
+        Team.Alpha.Flag.Reset();
+        Team.Beta.Flag.Reset();
         teamPickupService.DestroyAllPickups();
         teamPickupService.CreateFlagFromBasePosition(Team.Alpha);
         teamPickupService.CreateFlagFromBasePosition(Team.Beta);

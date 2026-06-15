@@ -77,8 +77,6 @@ public class Team
     public Team RivalTeam { get; private set; }
     public TeamMembers Members { get; } = [];
     public TeamStatsPerRound StatsPerRound { get; } = new();
-    public bool IsFlagAtBasePosition { get; set; } = true;
-
     public virtual string GetMembersAsText() => $"{Members.Count}";
     public virtual string GetScoreAsText() => $"{Name}: {StatsPerRound.Score}";
     public virtual bool IsFull() => Members.Count > RivalTeam.Members.Count;
@@ -87,8 +85,7 @@ public class Team
     {
         StatsPerRound.Reset();
         Members.Clear();
-        Flag.RemoveCarrier();
-        IsFlagAtBasePosition = true;
+        Flag.Reset();
     }
 
     public virtual string GetAvailabilityMessage(bool entireMessage = true)
@@ -111,19 +108,17 @@ public class Team
     public virtual FlagStatus HandleFlagInteraction(Player flagPicker)
     {
         ArgumentNullException.ThrowIfNull(flagPicker);
-        if (IsFlagAtBasePosition)
+        if (Flag.Status == FlagStatus.BasePosition)
         {
             if (flagPicker.Team == (int)RivalTeam.Id)
             {
-                IsFlagAtBasePosition = false;
-                Flag.SetCarrier(flagPicker);
+                Flag.Capture(flagPicker);
                 return FlagStatus.Captured;
             }
 
             if (flagPicker == RivalTeam.Flag.Carrier)
             {
-                RivalTeam.IsFlagAtBasePosition = true;
-                RivalTeam.Flag.RemoveCarrier();
+                RivalTeam.Flag.ReturnToBase();
                 StatsPerRound.AddScore();
                 return FlagStatus.Brought;
             }
@@ -133,12 +128,11 @@ public class Team
 
         if (flagPicker.Team == (int)Id)
         {
-            IsFlagAtBasePosition = true;
+            Flag.ReturnToBase();
             return FlagStatus.Returned;
         }
 
-        IsFlagAtBasePosition = false;
-        Flag.SetCarrier(flagPicker);
+        Flag.Take(flagPicker);
         return FlagStatus.Taken;
     }
 
@@ -155,8 +149,7 @@ public class Team
         {
             StatsPerRound.Reset();
             Members.Clear();
-            Flag.RemoveCarrier();
-            IsFlagAtBasePosition = true;
+            Flag.Reset();
         }
     }
 }

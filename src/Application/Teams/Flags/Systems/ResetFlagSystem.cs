@@ -37,9 +37,8 @@ public class ResetFlagSystem(
             PlayerName = player.Name,
             team.ColorName
         });
-        team.IsFlagAtBasePosition = true;
         team.Flag.Carrier?.HideOnRadarMap();
-        team.Flag.RemoveCarrier();
+        team.Flag.ReturnToBase();
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyExteriorMarker(team);
         teamSoundsService.PlayFlagReturnedSound(team);
