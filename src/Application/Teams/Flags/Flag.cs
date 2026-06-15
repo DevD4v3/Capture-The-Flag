@@ -2,18 +2,36 @@
 
 public class Flag
 {
+    /// <summary>
+    /// Gets the 3D model associated with the flag.
+    /// </summary>
     public required FlagModel Model { get; init; }
+
+    /// <summary>
+    /// Gets the map icon associated with the flag.
+    /// </summary>
     public required FlagIcon Icon { get; init; }
+
+    /// <summary>
+    /// Gets the display name of the flag.
+    /// </summary>
     public required string Name { get; init; } = string.Empty;
+
+    /// <summary>
+    /// Gets the primary color associated with the flag.
+    /// </summary>
     public required Color ColorHex { get; init; }
 
+    /// <summary>
+    /// Gets the current status of the flag.
+    /// </summary>
     public FlagStatus Status { get; private set; } = FlagStatus.BasePosition;
 
     /// <summary>
-    /// Represents the player that holds the flag.
+    /// Gets the player currently carrying the flag.
     /// </summary>
     /// <remarks>
-    /// It is <c>null</c> when no player holds the flag.
+    /// Returns <c>null</c> when the flag has no carrier.
     /// </remarks>
     public Player Carrier { get; private set; }
 
