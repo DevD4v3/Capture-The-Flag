@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTF.Application.Common.Resources {
+namespace CTF.Application {
     using System;
     
     

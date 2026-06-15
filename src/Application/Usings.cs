@@ -18,7 +18,6 @@ global using CTF.Application.Common;
 global using CTF.Application.Common.Results;
 global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;
-global using CTF.Application.Common.Resources;
 global using CTF.Application.Common.Extensions;
 global using CTF.Application.Common.Paths;
 global using CTF.Application.Players;

@@ -7,7 +7,6 @@ global using SampSharp.Entities.SAMP;
 
 global using CTF.Application.Common.Results;
 global using CTF.Application.Common.Extensions;
-global using CTF.Application.Common.Resources;
 global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Weapons;
 global using CTF.Application.Players.Accounts;
