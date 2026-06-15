@@ -177,7 +177,7 @@ public partial class PlayerInfo
     /// <summary>
     /// Checks if the player has captured the opposing team's flag.
     /// </summary>
-    public bool HasCapturedFlag()
+    public bool IsCarryingEnemyFlag()
     {
         if (Team == Team.None) 
             return false;

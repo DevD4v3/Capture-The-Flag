@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.Players.Accounts;
 
-public class HasCapturedFlagTests
+public class IsCarryingEnemyFlagTests
 {
     [SetUp]
     public void Init()
@@ -10,7 +10,7 @@ public class HasCapturedFlagTests
     }
 
     [Test]
-    public void HasCapturedFlag_WhenPlayerIsNotAssignedToAnyTeam_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenPlayerIsNotAssignedToAnyTeam_ShouldReturnsFalse()
     {
         // Arrange
         var fakePlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.NoTeam);
@@ -19,7 +19,7 @@ public class HasCapturedFlagTests
         player.SetName(fakePlayer.Name);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeFalse();
@@ -28,7 +28,7 @@ public class HasCapturedFlagTests
     [TestCase("Bob")]
     [TestCase("BOB")]
     [TestCase("bob")]
-    public void HasCapturedFlag_WhenPlayerFromTheAlphaTeamHasCapturedTheFlagOfTheBetaTeam_ShouldReturnsTrue(string playerName)
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamHasCapturedTheFlagOfTheBetaTeam_ShouldReturnsTrue(string playerName)
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -39,7 +39,7 @@ public class HasCapturedFlagTests
         betaTeam.Flag.Capture(alphaTeamPlayer);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeTrue();
@@ -48,7 +48,7 @@ public class HasCapturedFlagTests
     [TestCase("Bob")]
     [TestCase("BOB")]
     [TestCase("bob")]
-    public void HasCapturedFlag_WhenPlayerFromTheBetaTeamHasCapturedTheFlagOfTheAlphaTeam_ShouldReturnsTrue(string playerName)
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamHasCapturedTheFlagOfTheAlphaTeam_ShouldReturnsTrue(string playerName)
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -59,14 +59,14 @@ public class HasCapturedFlagTests
         alphaTeam.Flag.Capture(betaTeamPlayer);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeTrue();
     }
 
     [Test]
-    public void HasCapturedFlag_WhenPlayerFromTheAlphaTeamHasNotCapturedTheFlagOfTheBetaTeam_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamHasNotCapturedTheFlagOfTheBetaTeam_ShouldReturnsFalse()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -78,14 +78,14 @@ public class HasCapturedFlagTests
         betaTeam.Flag.Capture(alphaTeamPlayer2);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeFalse();
     }
 
     [Test]
-    public void HasCapturedFlag_WhenPlayerFromTheBetaTeamHasNotCapturedTheFlagOfTheAlphaTeam_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamHasNotCapturedTheFlagOfTheAlphaTeam_ShouldReturnsFalse()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -97,14 +97,14 @@ public class HasCapturedFlagTests
         alphaTeam.Flag.Capture(betaTeamPlayer2);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeFalse();
     }
 
     [Test]
-    public void HasCapturedFlag_WhenAlphaTeamFlagIsNotCaptured_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenAlphaTeamFlagIsNotCaptured_ShouldReturnsFalse()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -114,14 +114,14 @@ public class HasCapturedFlagTests
         player.SetName(betaTeamPlayer.Name);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeFalse();
     }
 
     [Test]
-    public void HasCapturedFlag_WhenBetaTeamFlagIsNotCaptured_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenBetaTeamFlagIsNotCaptured_ShouldReturnsFalse()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -131,7 +131,7 @@ public class HasCapturedFlagTests
         player.SetName(alphaTeamPlayer.Name);
 
         // Act
-        bool actual = player.HasCapturedFlag();
+        bool actual = player.IsCarryingEnemyFlag();
 
         // Assert
         actual.Should().BeFalse();

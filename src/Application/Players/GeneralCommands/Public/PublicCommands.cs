@@ -139,7 +139,7 @@ public class PublicCommands(
             return;
         }
 
-        if (currentPlayer.GetInfo().HasCapturedFlag())
+        if (currentPlayer.GetInfo().IsCarryingEnemyFlag())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.HasCapturedFlag);
             return;

@@ -91,7 +91,7 @@ public class ClassSelectionSystem(
     public void RedirectToClassSelection(Player player)
     {
         PlayerInfo playerInfo = player.GetInfo();
-        if (playerInfo.HasCapturedFlag())
+        if (playerInfo.IsCarryingEnemyFlag())
         {
             player.SendClientMessage(Color.Red, Messages.HasCapturedFlag);
             return;

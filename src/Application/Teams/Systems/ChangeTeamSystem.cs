@@ -72,7 +72,7 @@ public class ChangeTeamSystem(
             return;
         }
 
-        if (playerInfo.HasCapturedFlag())
+        if (playerInfo.IsCarryingEnemyFlag())
         {
             onFlagDropped.Handle(selectedTeam, player);
         }
