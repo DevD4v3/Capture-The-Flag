@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.Teams;
 
-public class GetFlagStatusTests
+public class HandleFlagInteractionTests
 {
     [SetUp]
     public void Init()
@@ -10,21 +10,21 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+    public void HandleFlagInteraction_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
         Player flagPicker = default;
 
         // Act
-        Action act = () => alphaTeam.GetFlagStatus(flagPicker);
+        Action act = () => alphaTeam.HandleFlagInteraction(flagPicker);
 
         // Assert
         act.Should().Throw<ArgumentNullException>();
     }
 
     [Test]
-    public void GetFlagStatus_WhenAlphaTeamCapturesTheFlagOfTheBetaTeam_ShouldReturnsCapturedStatus()
+    public void HandleFlagInteraction_WhenAlphaTeamCapturesTheFlagOfTheBetaTeam_ShouldReturnsCapturedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -33,7 +33,7 @@ public class GetFlagStatusTests
         var expectedStatus = FlagStatus.Captured;
 
         // Act
-        FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
+        FlagStatus actual = betaTeam.HandleFlagInteraction(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -42,7 +42,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenBetaTeamCapturesTheFlagOfTheAlphaTeam_ShouldReturnsCapturedStatus()
+    public void HandleFlagInteraction_WhenBetaTeamCapturesTheFlagOfTheAlphaTeam_ShouldReturnsCapturedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -51,7 +51,7 @@ public class GetFlagStatusTests
         var expectedStatus = FlagStatus.Captured;
 
         // Act
-        FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
+        FlagStatus actual = alphaTeam.HandleFlagInteraction(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -60,7 +60,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromAlphaTeamBroughtTheFlagOfTheBetaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamBroughtTheFlagOfTheBetaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -71,7 +71,7 @@ public class GetFlagStatusTests
         betaTeam.Flag.SetCarrier(alphaTeamPlayer);
 
         // Act
-        FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
+        FlagStatus actual = alphaTeam.HandleFlagInteraction(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -81,7 +81,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromBetaTeamBroughtTheFlagOfTheAlphaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamBroughtTheFlagOfTheAlphaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -92,7 +92,7 @@ public class GetFlagStatusTests
         alphaTeam.Flag.SetCarrier(betaTeamPlayer);
 
         // Act
-        FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
+        FlagStatus actual = betaTeam.HandleFlagInteraction(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -102,7 +102,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -110,7 +110,7 @@ public class GetFlagStatusTests
         var expectedStatus = FlagStatus.BasePosition;
 
         // Act
-        FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
+        FlagStatus actual = alphaTeam.HandleFlagInteraction(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -119,7 +119,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -127,7 +127,7 @@ public class GetFlagStatusTests
         var expectedStatus = FlagStatus.BasePosition;
 
         // Act
-        FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
+        FlagStatus actual = betaTeam.HandleFlagInteraction(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -136,7 +136,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromAlphaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -145,7 +145,7 @@ public class GetFlagStatusTests
         alphaTeam.IsFlagAtBasePosition = false;
 
         // Act
-        FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
+        FlagStatus actual = alphaTeam.HandleFlagInteraction(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -154,7 +154,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromBetaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -163,7 +163,7 @@ public class GetFlagStatusTests
         betaTeam.IsFlagAtBasePosition = false;
 
         // Act
-        FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
+        FlagStatus actual = betaTeam.HandleFlagInteraction(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -172,7 +172,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromBetaTeamTakesTheFlagOfTheAlphaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamTakesTheFlagOfTheAlphaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -182,7 +182,7 @@ public class GetFlagStatusTests
         alphaTeam.IsFlagAtBasePosition = false;
 
         // Act
-        FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
+        FlagStatus actual = alphaTeam.HandleFlagInteraction(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
@@ -191,7 +191,7 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromAlphaTeamTakesTheFlagOfTheBetaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamTakesTheFlagOfTheBetaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -201,7 +201,7 @@ public class GetFlagStatusTests
         betaTeam.IsFlagAtBasePosition = false;
 
         // Act
-        FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
+        FlagStatus actual = betaTeam.HandleFlagInteraction(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);

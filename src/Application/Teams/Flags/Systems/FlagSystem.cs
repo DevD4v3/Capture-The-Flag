@@ -40,13 +40,13 @@ public class FlagSystem(
     {
         if (pickup.Model == (int)FlagModel.Red)
         {
-            FlagStatus flagStatus = Team.Alpha.GetFlagStatus(flagPicker: player);
+            FlagStatus flagStatus = Team.Alpha.HandleFlagInteraction(flagPicker: player);
             IFlagEvent flagEvent = flagEvents[flagStatus];
             flagEvent.Handle(Team.Alpha, player);
         }
         else if (pickup.Model == (int)FlagModel.Blue)
         {
-            FlagStatus flagStatus = Team.Beta.GetFlagStatus(flagPicker: player);
+            FlagStatus flagStatus = Team.Beta.HandleFlagInteraction(flagPicker: player);
             IFlagEvent flagEvent = flagEvents[flagStatus];
             flagEvent.Handle(Team.Beta, player);
         }

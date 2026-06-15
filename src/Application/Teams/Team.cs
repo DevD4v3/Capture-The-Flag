@@ -100,12 +100,15 @@ public class Team
     }
 
     /// <summary>
-    /// Gets the flag status of the current team.
+    /// Handles a player's interaction with the team's flag.
     /// </summary>
     /// <param name="flagPicker">
-    /// The player who picks up the flag of the current team.
+    /// The player interacting with the team's flag.
     /// </param>
-    public virtual FlagStatus GetFlagStatus(Player flagPicker)
+    /// <returns>
+    /// The status resulting from the interaction.
+    /// </returns>
+    public virtual FlagStatus HandleFlagInteraction(Player flagPicker)
     {
         ArgumentNullException.ThrowIfNull(flagPicker);
         if (IsFlagAtBasePosition)
@@ -143,7 +146,7 @@ public class Team
     {
         public NoTeam() { }
         public override string GetAvailabilityMessage(bool entireMessage = true) => string.Empty;
-        public override FlagStatus GetFlagStatus(Player flagPicker) => FlagStatus.BasePosition;
+        public override FlagStatus HandleFlagInteraction(Player flagPicker) => FlagStatus.BasePosition;
         public override string GetMembersAsText() => string.Empty;
         public override string GetScoreAsText() => string.Empty;
         public override bool IsFull() => false;
