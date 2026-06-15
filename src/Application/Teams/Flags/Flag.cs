@@ -7,6 +7,8 @@ public class Flag
     public required string Name { get; init; } = string.Empty;
     public required Color ColorHex { get; init; }
 
+    public FlagStatus Status { get; private set; } = FlagStatus.BasePosition;
+
     /// <summary>
     /// Represents the player that holds the flag.
     /// </summary>
@@ -18,7 +20,7 @@ public class Flag
     /// <summary>
     /// Checks if the flag has been captured by a player.
     /// </summary>
-    public bool IsCaptured() => Carrier is not null;
+    public bool HasCarrier => Carrier is not null;
 
     /// <summary>
     /// Gets the name of the player who captured the flag.
@@ -26,14 +28,68 @@ public class Flag
     /// <remarks>
     /// If the flag is not captured, returns <c>None</c>.
     /// </remarks>
-    public string CarrierName => IsCaptured() ? Carrier.Name : "None";
+    public string CarrierName => HasCarrier ? Carrier.Name : "None";
+
+    /// <summary>
+    /// Marks the flag as captured by the specified player.
+    /// </summary>
+    /// <param name="player">
+    /// The player who captured the flag.
+    /// </param>
+    public void Capture(Player player)
+    {
+        ArgumentNullException.ThrowIfNull(player);
+        RemoveCarrier();
+        SetCarrier(player);
+        Status = FlagStatus.Captured;
+    }
+
+    /// <summary>
+    /// Marks the flag as taken from a dropped state by the specified player.
+    /// </summary>
+    /// <param name="player">
+    /// The player who picked up the flag.
+    /// </param>
+    public void Take(Player player)
+    {
+        ArgumentNullException.ThrowIfNull(player);
+        RemoveCarrier();
+        SetCarrier(player);
+        Status = FlagStatus.Taken;
+    }
+
+    /// <summary>
+    /// Drops the flag and removes its current carrier.
+    /// </summary>
+    public void Drop()
+    {
+        RemoveCarrier();
+        Status = FlagStatus.Dropped;
+    }
+
+    /// <summary>
+    /// Returns the flag to its base state and removes its current carrier.
+    /// </summary>
+    public void ReturnToBase()
+    {
+        RemoveCarrier();
+        Status = FlagStatus.BasePosition;
+    }
+
+    /// <summary>
+    /// Resets the flag to its initial state.
+    /// </summary>
+    public void Reset()
+    {
+        RemoveCarrier();
+        Status = FlagStatus.BasePosition;
+    }
 
     /// <summary>
     /// Sets the player who holds the flag.
     /// </summary>
-    public void SetCarrier(Player player)
+    private void SetCarrier(Player player)
     {
-        ArgumentNullException.ThrowIfNull(player);
         Carrier = player;
         player.SetAttachedObject(
             index: 0, 
@@ -43,13 +99,14 @@ public class Flag
             rotation: new Vector3(171.500030f, 66.200012f, -4.100002f), 
             scale: new Vector3(1.0f, 1.0f, 1.0f), 
             materialColor1: ColorHex,
-            materialColor2: ColorHex);
+            materialColor2: ColorHex
+        );
     }
 
     /// <summary>
     /// Removes the flag that the player is holding.
     /// </summary>
-    public void RemoveCarrier()
+    private void RemoveCarrier()
     {
         if (Carrier is not null)
         {

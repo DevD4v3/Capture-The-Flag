@@ -183,7 +183,7 @@ public partial class PlayerInfo
             return false;
 
         Flag rivalTeamFlag = Team.RivalTeam.Flag;
-        if(rivalTeamFlag.IsCaptured())
+        if (rivalTeamFlag.HasCarrier)
         {
             Player carrier = rivalTeamFlag.Carrier;
             return carrier.Name.Equals(Name, StringComparison.OrdinalIgnoreCase);

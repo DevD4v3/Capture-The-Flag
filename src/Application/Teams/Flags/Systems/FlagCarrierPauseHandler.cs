@@ -56,8 +56,7 @@ public class FlagCarrierPauseHandler(
                 return;
 
             Team rivalTeam = playerInfo.Team.RivalTeam;
-            rivalTeam.IsFlagAtBasePosition = true;
-            rivalTeam.Flag.RemoveCarrier();
+            rivalTeam.Flag.ReturnToBase();
             player.HideOnRadarMap();
             teamPickupService.CreateFlagFromBasePosition(rivalTeam);
             teamPickupService.DestroyExteriorMarker(rivalTeam);

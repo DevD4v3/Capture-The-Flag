@@ -20,7 +20,7 @@ public class FlagAutoReturnTimer(
             teamPickupService.CreateFlagFromBasePosition(team);
             teamPickupService.DestroyExteriorMarker(team);
             teamSoundsService.PlayFlagReturnedSound(team);
-            team.IsFlagAtBasePosition = true;
+            team.Flag.ReturnToBase();
             var message = Smart.Format(Messages.FlagAutoReturn, new
             {
                 Seconds = flagAutoReturnSettings.Delay,

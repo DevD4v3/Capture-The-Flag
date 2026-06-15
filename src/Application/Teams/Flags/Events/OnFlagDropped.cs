@@ -17,7 +17,7 @@ public class OnFlagDropped(
         teamPickupService.CreateFlagFromVector3(team, player.Position);
         teamSoundsService.PlayFlagDroppedSound(team);
         flagAutoReturnTimer.Start(team);
-        team.Flag.RemoveCarrier();
+        team.Flag.Drop();
         var message = Smart.Format(Messages.OnFlagDropped, new
         {
             PlayerName = player.Name,
