@@ -36,7 +36,7 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
         player.SetName("Bob");
-        betaTeam.Flag.SetCarrier(alphaTeamPlayer);
+        betaTeam.Flag.Capture(alphaTeamPlayer);
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -56,7 +56,7 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
         player.SetName("Bob");
-        alphaTeam.Flag.SetCarrier(betaTeamPlayer);
+        alphaTeam.Flag.Capture(betaTeamPlayer);
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -75,7 +75,7 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
         player.SetName(alphaTeamPlayer1.Name);
-        betaTeam.Flag.SetCarrier(alphaTeamPlayer2);
+        betaTeam.Flag.Capture(alphaTeamPlayer2);
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -94,7 +94,7 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
         player.SetName(betaTeamPlayer1.Name);
-        alphaTeam.Flag.SetCarrier(betaTeamPlayer2);
+        alphaTeam.Flag.Capture(betaTeamPlayer2);
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -112,7 +112,6 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
         player.SetName(betaTeamPlayer.Name);
-        alphaTeam.Flag.RemoveCarrier();
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -130,7 +129,6 @@ public class HasCapturedFlagTests
         var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
         player.SetName(alphaTeamPlayer.Name);
-        betaTeam.Flag.RemoveCarrier();
 
         // Act
         bool actual = player.HasCapturedFlag();
