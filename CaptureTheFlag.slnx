@@ -1,0 +1,40 @@
+<Solution>
+  <Project Path="src/Application/CTF.Application.csproj" />
+  <Project Path="src/Host/CTF.Host.csproj" />
+  <Folder Name="/Persistence/">
+    <File Path="src/Persistence/Directory.Build.props" />
+    <Project Path="src/Persistence/Persistence.InMemory/Persistence.InMemory.csproj" />
+    <Project Path="src/Persistence/Persistence.MariaDB/Persistence.MariaDB.csproj" />
+    <Project Path="src/Persistence/Persistence.SQLite/Persistence.SQLite.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".env" />
+    <File Path=".env.example" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+    <File Path="tests/Persistence.Tests/.env.test" />
+    <File Path="tests/Persistence.Tests/.env.test.example" />
+  </Folder>
+  <Folder Name="/Solution Items/scripts/" />
+  <Folder Name="/Solution Items/scripts/mariadb/">
+    <File Path="scripts/mariadb/gamemode.sql" />
+  </Folder>
+  <Folder Name="/Solution Items/scripts/sqlite/">
+    <File Path="scripts/sqlite/gamemode.sql" />
+  </Folder>
+  <Folder Name="/Solution Items/workflows/">
+    <File Path=".github/workflows/ci.yml" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Application.Tests/CTF.Application.Tests.csproj" />
+    <Project Path="tests/Persistence.Tests/Persistence.Tests.csproj" />
+  </Folder>
+  <Project Path="external/SampSharp/src/SampSharp.Analyzer/SampSharp.Analyzer.csproj" />
+  <Project Path="external/SampSharp/src/SampSharp.CodeFixes/SampSharp.CodeFixes.csproj" />
+  <Project Path="external/SampSharp/src/SampSharp.OpenMp.Core/SampSharp.OpenMp.Core.csproj" />
+  <Project Path="external/SampSharp/src/SampSharp.OpenMp.Entities.Commands/SampSharp.OpenMp.Entities.Commands.csproj" />
+  <Project Path="external/SampSharp/src/SampSharp.OpenMp.Entities/SampSharp.OpenMp.Entities.csproj" />
+  <Project Path="external/SampSharp/src/SampSharp.SourceGenerator/SampSharp.SourceGenerator.csproj" />
+</Solution>
