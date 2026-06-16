@@ -14,11 +14,7 @@ global using SeztionParser;
 global using DotEnv.Core;
 global using Microsoft.Extensions.DependencyInjection;
 
-global using CTF.Application.Common;
-global using CTF.Application.Common.Results;
-global using CTF.Application.Common.Settings;
-global using CTF.Application.Common.Services;
-global using CTF.Application.Common.Extensions;
+global using GameMode.Common;
 global using CTF.Application.Players;
 global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Accounts;

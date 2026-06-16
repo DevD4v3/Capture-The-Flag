@@ -9,6 +9,7 @@
     <PackageReference Include="SampSharp.OpenMp.Streamer" />
     <PackageReference Include="seztion-parser" />
     <PackageReference Include="DotEnv.Core" />
+    <PackageReference Include="GameMode.Common" />
     <PackageReference Include="SmartFormat" />
   </ItemGroup>
 
