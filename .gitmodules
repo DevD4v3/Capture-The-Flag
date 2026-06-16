@@ -1,3 +1,4 @@
 [submodule "external/SampSharp"]
 	path = external/SampSharp
 	url = https://github.com/DevD4v3/SampSharp.git
+	branch = master
