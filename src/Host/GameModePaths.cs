@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Common.Paths;
+﻿namespace CTF.Host;
 
 public static class GameModePaths
 {

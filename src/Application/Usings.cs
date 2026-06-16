@@ -19,7 +19,6 @@ global using CTF.Application.Common.Results;
 global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Extensions;
-global using CTF.Application.Common.Paths;
 global using CTF.Application.Players;
 global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Accounts;

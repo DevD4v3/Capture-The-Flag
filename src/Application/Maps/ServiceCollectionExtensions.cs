@@ -2,10 +2,10 @@
 
 public static class MapServicesExtensions
 {
-    public static IServiceCollection AddMapServices(this IServiceCollection services)
+    public static IServiceCollection AddMapServices(
+        this IServiceCollection services,
+        string mapsPath)
     {
-        string mapsPath = GameModePaths.Maps;
-
         services
             .AddSingleton<MapInfoService>()
             .AddSingleton<MapRotationService>()

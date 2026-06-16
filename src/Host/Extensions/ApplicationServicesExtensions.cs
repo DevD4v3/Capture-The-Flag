@@ -8,7 +8,7 @@ public static class ApplicationServicesExtensions
             .AddSingleton(TimeProvider.System)
             .AddSingleton<UnixTimeSeconds>()
             .AddPlayerServices()
-            .AddMapServices()
+            .AddMapServices(GameModePaths.Maps)
             .AddTeamServices();
 
         return services;
