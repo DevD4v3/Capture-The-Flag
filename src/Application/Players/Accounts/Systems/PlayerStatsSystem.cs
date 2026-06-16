@@ -98,7 +98,7 @@ public class PlayerStatsSystem(
         PlayerInfo playerInfo = player.GetInfo();
         string createdAt = player.IsUnauthenticated() ? 
             "None" : 
-            playerInfo.CreatedAt.GetDateWithStandardFormat();
+            playerInfo.CreatedAt.ToIsoDateString();
 
         var content =
         $"""
