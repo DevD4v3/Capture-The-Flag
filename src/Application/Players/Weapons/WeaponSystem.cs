@@ -106,8 +106,6 @@ public class WeaponSystem : ISystem
             dialog.Add(weapon.Name);
 
         ListDialogResponse response = await _dialogService.ShowAsync(player, dialog);
-        player = null;
-        Console.WriteLine(player.Name);
         if (response.IsRightButtonOrDisconnected())
             return;
 
