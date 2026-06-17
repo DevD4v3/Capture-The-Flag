@@ -68,7 +68,7 @@ public class MapRotationSystem(
     }
 
     [PlayerCommand("maps")]
-    public async void ShowMaps(Player player, string findBy = default)
+    public async Task ShowMaps(Player player, string findBy = default)
     {
         if (player.HasLowerRoleThan(RoleId.Moderator))
             return;
@@ -99,11 +99,11 @@ public class MapRotationSystem(
         {
             int selectedMapId = (int)listDialogResponse.Item.Tag;
             IMap selectedMap = mapCollection.GetById(selectedMapId).Value;
-            ShowConfirmationDialog(player, selectedMap);
+            await ShowConfirmationDialog(player, selectedMap);
         }
     }
 
-    private async void ShowConfirmationDialog(Player player, IMap selectedMap)
+    private async Task ShowConfirmationDialog(Player player, IMap selectedMap)
     {
         var confirmationDialog = new MessageDialog(
             caption: "Confirmation",

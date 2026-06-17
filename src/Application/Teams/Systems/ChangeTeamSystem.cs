@@ -7,7 +7,7 @@ public class ChangeTeamSystem(
     OnFlagDropped onFlagDropped) : ISystem
 {
     [PlayerCommand("team")]
-    public async void ShowTeams(Player player)
+    public async Task ShowTeams(Player player)
     {
         PlayerInfo playerInfo = player.GetInfo();
         if (playerInfo.Team == Team.None)

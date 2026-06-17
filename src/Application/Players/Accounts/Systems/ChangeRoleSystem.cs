@@ -58,7 +58,7 @@ public class ChangeRoleSystem(
     }
 
     [PlayerCommand("givemeadmin")]
-    public async void GiveMeAdmin(Player currentPlayer)
+    public async Task GiveMeAdmin(Player currentPlayer)
     {
         if (string.IsNullOrWhiteSpace(serverOwnerSettings.Name) ||
             string.IsNullOrWhiteSpace(serverOwnerSettings.SecretKey))
@@ -101,7 +101,7 @@ public class ChangeRoleSystem(
                 return;
             }
             currentPlayer.SendClientMessage(Color.Red, Messages.WrongSecretKey);
-            GiveMeAdmin(currentPlayer);
+            await GiveMeAdmin(currentPlayer);
             return;
         }
 

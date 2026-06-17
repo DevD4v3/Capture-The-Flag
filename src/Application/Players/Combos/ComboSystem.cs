@@ -34,16 +34,16 @@ public class ComboSystem : ISystem
     }
 
     [Event]
-    public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    public async Task OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
         if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.AnalogLeft))
         {
-            ShowCombos(player);
+            await ShowCombos(player);
         }
     }
 
     [PlayerCommand("combos")]
-    public async void ShowCombos(Player player)
+    public async Task ShowCombos(Player player)
     {
         TablistDialogResponse response = await _dialogService.ShowAsync(player, _tablistDialog);
         if (response.IsRightButtonOrDisconnected())
@@ -55,18 +55,18 @@ public class ComboSystem : ISystem
         if (playerStats.HasInsufficientCoins(selectedCombo.RequiredCoins))
         {
             player.SendClientMessage(Color.Red, Messages.InsufficientCoins);
-            ShowCombos(player);
+            await ShowCombos(player);
             return;
         }
-        GiveComboToPlayer(player, selectedCombo);
+        await GiveComboToPlayer(player, selectedCombo);
     }
 
-    private void GiveComboToPlayer(Player player, ICombo selectedCombo)
+    private async Task GiveComboToPlayer(Player player, ICombo selectedCombo)
     {
         Result result = selectedCombo.Give(player);
         if (result.IsFailed)
         {
-            ShowCombos(player);
+            await ShowCombos(player);
             return;
         }
 

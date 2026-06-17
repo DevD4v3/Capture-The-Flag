@@ -14,24 +14,24 @@ public class ChangePasswordSystem(
     };
 
     [PlayerCommand("changepass")]
-    public async void ShowPasswordDialog(Player player)
+    public async Task ShowPasswordDialog(Player player)
     {
         InputDialogResponse response = await dialogService.ShowAsync(player, _passwordDialog);
         if (response.IsRightButtonOrDisconnected())
             return;
 
         var enteredPassword = response.InputText ?? string.Empty;
-        ChangePassword(player, enteredPassword);
+        await ChangePassword(player, enteredPassword);
     }
 
-    private void ChangePassword(Player player, string enteredPassword)
+    private async Task ChangePassword(Player player, string enteredPassword)
     {
         PlayerInfo playerInfo = player.GetInfo();
         Result result = playerInfo.SetPassword(enteredPassword);
         if (result.IsFailed)
         {
             player.SendClientMessage(Color.Red, result.Message);
-            ShowPasswordDialog(player);
+            await ShowPasswordDialog(player);
             return;
         }
 

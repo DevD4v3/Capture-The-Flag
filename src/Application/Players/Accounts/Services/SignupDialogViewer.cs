@@ -12,7 +12,7 @@ public class SignupDialogViewer(
         Button1 = "Accept"
     };
 
-    public async void View(Player connectedPlayer)
+    public async Task View(Player connectedPlayer)
     {
         InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _signupDialog);
         if (response.Response == DialogResponse.Disconnected)
@@ -20,25 +20,25 @@ public class SignupDialogViewer(
 
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            View(connectedPlayer);
+            await View(connectedPlayer);
             return;
         }
 
         var enteredPassword = response.InputText ?? string.Empty;
-        CreatePlayerAccount(connectedPlayer, enteredPassword);
+        await CreatePlayerAccount(connectedPlayer, enteredPassword);
     }
 
-    private void CreatePlayerAccount(Player connectedPlayer, string enteredPassword)
+    private async Task CreatePlayerAccount(Player connectedPlayer, string enteredPassword)
     {
         PlayerInfo playerInfo = connectedPlayer.GetInfo();
         Result passwordResult = playerInfo.SetPassword(enteredPassword);
         if (passwordResult.IsFailed)
         {
             connectedPlayer.SendClientMessage(Color.Red, passwordResult.Message);
-            View(connectedPlayer);
+            await View(connectedPlayer);
             return;
         }
-
+        
         bool isAuthenticated = true;
         connectedPlayer.GetComponent<AccountComponent>().Destroy();
         connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
