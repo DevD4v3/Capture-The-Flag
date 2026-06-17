@@ -357,6 +357,12 @@
   <data name="PlayerAlreadyHasThatRole" xml:space="preserve">
     <value>The player already has that role</value>
   </data>
+  <data name="PlayerConnected" xml:space="preserve">
+    <value>🎮 **{Name}** connected to the server.</value>
+  </data>
+  <data name="PlayerDisconnected" xml:space="preserve">
+    <value>👋 **{Name}** disconnected from the server.</value>
+  </data>
   <data name="PlayerHasChangedTeams" xml:space="preserve">
     <value>Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team</value>
   </data>

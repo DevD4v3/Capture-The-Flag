@@ -6,14 +6,14 @@ public class PlayerActivityNotificationSystem(
     [Event]
     public async Task OnPlayerConnect(Player player)
     {
-        var message = new DiscordMessage($"🎮 **{player.Name}** connected to the server.");
-        await discordWebhookClient.SendAsync(message);
+        var content = Smart.Format(Messages.PlayerConnected, new { player.Name });
+        await discordWebhookClient.SendAsync(new DiscordMessage(content));
     }
 
     [Event]
     public async Task OnPlayerDisconnect(Player player, DisconnectReason _)
     {
-        var message = new DiscordMessage($"👋 **{player.Name}** disconnected from the server.");
-        await discordWebhookClient.SendAsync(message);
+        var content = Smart.Format(Messages.PlayerDisconnected, new { player.Name });
+        await discordWebhookClient.SendAsync(new DiscordMessage(content));
     }
 }
