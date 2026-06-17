@@ -29,6 +29,8 @@ public class Startup : IEcsStartup
             .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
             .AddSingleton(configuration)
+            .AddSingleton(TimeProvider.System)
+            .AddSingleton<UnixTimeSeconds>()
             .AddStreamer();
 
         services.RemoveAll<ICommandTextFormatter>();
