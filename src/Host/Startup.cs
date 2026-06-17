@@ -33,6 +33,10 @@ public class Startup : IEcsStartup
 
         services.RemoveAll<ICommandTextFormatter>();
         services.AddSingleton<ICommandTextFormatter, CommandUsageFormatter>();
+        services.AddHttpClient<IDiscordWebhookClient, DiscordWebhookClient>(httpClient =>
+        {
+            httpClient.Timeout = TimeSpan.FromSeconds(5);
+        });
 
         // Add systems to the services collection
         services
