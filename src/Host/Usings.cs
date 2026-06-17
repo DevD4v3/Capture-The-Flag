@@ -8,6 +8,7 @@ global using Microsoft.Extensions.DependencyInjection.Extensions;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
 global using Serilog;
+global using Serilog.Events;
 global using Serilog.Sinks.SystemConsole.Themes;
 global using DotEnv.Core;
 global using GameMode.Common;
