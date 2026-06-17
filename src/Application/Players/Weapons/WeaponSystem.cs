@@ -22,9 +22,9 @@ public class WeaponSystem : ISystem
     [Event]
     public async Task OnPlayerRequestSpawn(Player player) 
     {
+        await ShowWeapons(player);
         player.SendClientMessage(Color.Orange, Messages.WeaponListUsage);
         player.SendClientMessage(Color.Orange, Messages.WeaponPackUsage);
-        await ShowWeapons(player);
     }
 
     [Event]
