@@ -20,15 +20,15 @@ public class WeaponSystem : ISystem
     }
 
     [Event]
-    public void OnPlayerRequestSpawn(Player player) 
+    public async Task OnPlayerRequestSpawn(Player player) 
     {
-        ShowWeapons(player);
         player.SendClientMessage(Color.Orange, Messages.WeaponListUsage);
         player.SendClientMessage(Color.Orange, Messages.WeaponPackUsage);
+        await ShowWeapons(player);
     }
 
     [Event]
-    public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    public async Task OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
         if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Walk | Keys.CtrlBack))
         {
@@ -36,11 +36,11 @@ public class WeaponSystem : ISystem
         }
         else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
         {
-            ShowWeapons(player);
+            await ShowWeapons(player);
         }
         else if (KeyUtils.HasPressed(newKeys,oldKeys, Keys.CtrlBack))
         {
-            ShowWeaponPackage(player);
+            await ShowWeaponPackage(player);
         }
     }
 
@@ -65,7 +65,7 @@ public class WeaponSystem : ISystem
     }
 
     [PlayerCommand("weapons")]
-    public async void ShowWeapons(Player player)
+    public async Task ShowWeapons(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
@@ -78,7 +78,7 @@ public class WeaponSystem : ISystem
         {
             var message = Smart.Format(Messages.WeaponAlreadyExists, weaponSelectedFromDialog);
             player.SendClientMessage(Color.Red, message);
-            ShowWeapons(player);
+            await ShowWeapons(player);
             return;
         }
 
@@ -88,11 +88,11 @@ public class WeaponSystem : ISystem
             var message = Smart.Format(Messages.WeaponSuccessfullyAdded, weaponSelectedFromDialog);
             player.SendClientMessage(Color.Yellow, message);
         }
-        ShowWeapons(player);
+        await ShowWeapons(player);
     }
 
     [PlayerCommand("pack")]
-    public async void ShowWeaponPackage(Player player)
+    public async Task ShowWeaponPackage(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
@@ -106,6 +106,8 @@ public class WeaponSystem : ISystem
             dialog.Add(weapon.Name);
 
         ListDialogResponse response = await _dialogService.ShowAsync(player, dialog);
+        player = null;
+        Console.WriteLine(player.Name);
         if (response.IsRightButtonOrDisconnected())
             return;
 
@@ -116,6 +118,7 @@ public class WeaponSystem : ISystem
         player.ResetWeapons();
         foreach (IWeapon weapon in selectedWeapons)
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
-        ShowWeaponPackage(player);
+
+        await ShowWeaponPackage(player);
     }
 }

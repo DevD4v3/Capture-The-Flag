@@ -3,7 +3,7 @@
 public class ShowCommands(IDialogService dialogService) : ISystem
 {
     [PlayerCommand("cmds")]
-    public async void ShowFirstDialog(Player player)
+    public async Task ShowFirstDialog(Player player)
     {
         var content = Smart.Format(DetailedCommandInfo.Public1, new
         {
@@ -18,10 +18,10 @@ public class ShowCommands(IDialogService dialogService) : ISystem
         );
         var response = await dialogService.ShowAsync(player, firstDialog);
         if (response.Response == DialogResponse.LeftButton)
-            ShowNextDialog(player);
+            await ShowNextDialog(player);
     }
 
-    private async void ShowNextDialog(Player player)
+    private async Task ShowNextDialog(Player player)
     {
         var content = Smart.Format(DetailedCommandInfo.Public2, new
         {
@@ -36,6 +36,6 @@ public class ShowCommands(IDialogService dialogService) : ISystem
         );
         var response = await dialogService.ShowAsync(player, nextDialog);
         if (response.Response == DialogResponse.LeftButton)
-            ShowFirstDialog(player);
+            await ShowFirstDialog(player);
     }
 }

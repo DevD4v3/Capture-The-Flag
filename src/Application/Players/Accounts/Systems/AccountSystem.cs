@@ -6,16 +6,16 @@ public class AccountSystem(
     SignupDialogViewer signupDialogViewer) : ISystem
 {
     [Event]
-    public void OnPlayerConnect(Player connectedPlayer)
+    public async Task OnPlayerConnect(Player connectedPlayer)
     {
         AddDefaultAccount(connectedPlayer);
         PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
-            signupDialogViewer.View(connectedPlayer);
+            await signupDialogViewer.View(connectedPlayer);
             return;
         }
-        loginDialogViewer.View(connectedPlayer, playerInfo);
+        await loginDialogViewer.View(connectedPlayer, playerInfo);
     }
 
     private static void AddDefaultAccount(Player connectedPlayer)

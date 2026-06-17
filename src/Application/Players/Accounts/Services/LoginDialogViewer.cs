@@ -12,7 +12,7 @@ public class LoginDialogViewer(
         Button1 = "Accept"
     };
 
-    public async void View(Player connectedPlayer, PlayerInfo connectedPlayerInfo)
+    public async Task View(Player connectedPlayer, PlayerInfo connectedPlayerInfo)
     {
         InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _loginDialog);
         if (response.Response == DialogResponse.Disconnected)
@@ -20,7 +20,7 @@ public class LoginDialogViewer(
 
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            View(connectedPlayer, connectedPlayerInfo);
+            await View(connectedPlayer, connectedPlayerInfo);
             return;
         }
 
@@ -38,7 +38,7 @@ public class LoginDialogViewer(
                 return;
             }
             connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
-            View(connectedPlayer, connectedPlayerInfo);
+            await View(connectedPlayer, connectedPlayerInfo);
             return;
         }
 
