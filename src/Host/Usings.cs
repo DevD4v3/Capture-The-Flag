@@ -27,7 +27,6 @@ global using CTF.Application.Maps;
 global using CTF.Application.Maps.Services;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;
-global using CTF.Host.Middlewares;
 global using Persistence.SQLite;
 global using Persistence.MariaDB;
 global using Persistence.InMemory;
