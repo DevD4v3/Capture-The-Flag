@@ -1,5 +1,12 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
+/// <summary>
+/// Represents the weapons currently owned by a player.
+/// </summary>
+/// <remarks>
+/// GTA San Andreas allows only one weapon per slot. Adding a weapon
+/// replaces any existing weapon occupying the same slot.
+/// </remarks>
 public class WeaponPack : IEnumerable<IWeapon>
 {
     private readonly List<IWeapon> _weapons = [];
