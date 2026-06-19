@@ -2,11 +2,7 @@
 
 public class WeaponPack : IEnumerable<IWeapon>
 {
-    private readonly List<IWeapon> _weapons =
-    [
-        GtaWeapons.GetById(Weapon.Knife).Value,
-        GtaWeapons.GetById(Weapon.Deagle).Value
-    ];
+    private readonly List<IWeapon> _weapons = [];
 
     public int TotalItems => _weapons.Count;
     public IWeapon this[int index] => _weapons[index];

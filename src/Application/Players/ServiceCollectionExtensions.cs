@@ -11,7 +11,8 @@ public static class PlayerServicesExtensions
             .AddSingleton<LoginDialogViewer>()
             .AddSingleton<SignupDialogViewer>()
             .AddComboServices()
-            .AddChatServices();
+            .AddChatServices()
+            .AddWeaponServices();
 
         return services;
     }

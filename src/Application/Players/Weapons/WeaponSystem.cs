@@ -4,11 +4,17 @@ public class WeaponSystem : ISystem
 {
     private readonly IDialogService _dialogService;
     private readonly ListDialog _weaponsDialog;
-    public WeaponSystem(IDialogService dialogService)
+    private readonly WeaponCatalog _weaponCatalog;
+
+    public WeaponSystem(
+        IDialogService dialogService, 
+        WeaponCatalog weaponCatalog)
     {
         _dialogService = dialogService;
+        _weaponCatalog = weaponCatalog;
         _weaponsDialog = new ListDialog("Weapons", "Select", "Close");
-        var weapons = GtaWeapons.GetAll();
+
+        var weapons = weaponCatalog.GetAll();
         foreach (IWeapon weapon in weapons)
             _weaponsDialog.Add(weapon.Name);
     }
@@ -73,7 +79,7 @@ public class WeaponSystem : ISystem
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        IWeapon weaponSelectedFromDialog = GtaWeapons.GetByIndex(response.ItemIndex).Value;
+        IWeapon weaponSelectedFromDialog = _weaponCatalog.GetByIndex(response.ItemIndex).Value;
         if (selectedWeapons.Exists(weaponSelectedFromDialog))
         {
             var message = Smart.Format(Messages.WeaponAlreadyExists, weaponSelectedFromDialog);
@@ -109,7 +115,7 @@ public class WeaponSystem : ISystem
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        IWeapon weaponSelectedFromDialog = GtaWeapons.GetByName(response.Item.Text).Value;
+        IWeapon weaponSelectedFromDialog = _weaponCatalog.GetByName(response.Item.Text).Value;
         var message = Smart.Format(Messages.WeaponSuccessfullyRemoved, weaponSelectedFromDialog);
         player.SendClientMessage(Color.Red, message);
         selectedWeapons.Remove(weaponSelectedFromDialog);
