@@ -3,11 +3,10 @@
 public class WeaponPackTests
 {
     [Test]
-    public void IsEmpty_WhenThereAreNoDefaultWeapons_ShouldReturnsTrue()
+    public void IsEmpty_WhenThereAreNoWeapons_ShouldReturnsTrue()
     {
         // Arrange
         var weapons = new WeaponPack();
-        weapons.Clear();
 
         // Act
         bool actual = weapons.IsEmpty();
@@ -17,10 +16,10 @@ public class WeaponPackTests
     }
 
     [Test]
-    public void IsEmpty_WhenThereAreDefaultWeapons_ShouldReturnsFalse()
+    public void IsEmpty_WhenThereAreWeapons_ShouldReturnsFalse()
     {
         // Arrange
-        var weapons = new WeaponPack();
+        WeaponPack weapons = [WeaponDefinitions.Deagle, WeaponDefinitions.AK47];
 
         // Act
         bool actual = weapons.IsEmpty();
@@ -51,9 +50,9 @@ public class WeaponPackTests
         // Arrange
         var weapons = new WeaponPack();
         // These two weapons are of the same category/slot.
-        IWeapon existingWeapon = GtaWeapons.GetById(Weapon.Shotgun).Value;
+        IWeapon existingWeapon = WeaponDefinitions.Shotgun;
         weapons.Add(existingWeapon);
-        IWeapon newWeapon = GtaWeapons.GetById(Weapon.CombatShotgun).Value;
+        IWeapon newWeapon = WeaponDefinitions.CombatShotgun;
 
         // Act
         weapons.Add(newWeapon);
@@ -69,9 +68,9 @@ public class WeaponPackTests
         // Arrange
         var weapons = new WeaponPack();
         // These two weapons are not of the same category/slot.
-        IWeapon existingWeapon = GtaWeapons.GetById(Weapon.Shotgun).Value;
+        IWeapon existingWeapon = WeaponDefinitions.Shotgun;
         weapons.Add(existingWeapon);
-        IWeapon newWeapon = GtaWeapons.GetById(Weapon.AK47).Value;
+        IWeapon newWeapon = WeaponDefinitions.AK47;
 
         // Act
         weapons.Add(newWeapon);
@@ -85,8 +84,8 @@ public class WeaponPackTests
     public void Exists_WhenWeaponIsFound_ShouldReturnsTrue()
     {
         // Arrange
-        var weapons = new WeaponPack();
-        IWeapon deagle = GtaWeapons.GetById(Weapon.Deagle).Value;
+        IWeapon deagle = WeaponDefinitions.Deagle;
+        WeaponPack weapons = [deagle];
 
         // Act
         bool actual = weapons.Exists(deagle);
@@ -100,7 +99,7 @@ public class WeaponPackTests
     {
         // Arrange
         var weapons = new WeaponPack();
-        IWeapon ak47 = GtaWeapons.GetById(Weapon.AK47).Value;
+        IWeapon ak47 = WeaponDefinitions.AK47;
 
         // Act
         bool actual = weapons.Exists(ak47);

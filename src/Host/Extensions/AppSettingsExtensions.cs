@@ -42,6 +42,10 @@ public static class AppSettingsExtensions
             .GetRequiredSection("ClassSelection")
             .Get<ClassSelectionSettings>();
 
+        var weaponCatalogSettings = configuration
+            .GetRequiredSection("WeaponCatalog")
+            .Get<WeaponCatalogSettings>();
+
         services
             .AddSingleton(serverSettings)
             .AddSingleton(commandCooldowns)
@@ -51,7 +55,8 @@ public static class AppSettingsExtensions
             .AddSingleton(flagAutoReturnSettings)
             .AddSingleton(antiCBugSettings)
             .AddSingleton(headshotSettings)
-            .AddSingleton(classSelectionSettings);
+            .AddSingleton(classSelectionSettings)
+            .AddSingleton(weaponCatalogSettings);
 
         return services;
     }

@@ -2,5 +2,5 @@
 
 public class WeaponSelectionComponent : Component
 {
-    public WeaponPack SelectedWeapons { get; } = new();
+    public WeaponPack SelectedWeapons { get; } = [];
 }
