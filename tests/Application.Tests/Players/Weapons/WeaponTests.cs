@@ -6,8 +6,7 @@ public class WeaponTests
     public void Is_WhenWeaponIsEqualToKnife_ShouldReturnsTrue()
     {
         // Arrange
-        Result<IWeapon> result = GtaWeapons.GetById(Weapon.Knife);
-        IWeapon weapon = result.Value;
+        IWeapon weapon = WeaponDefinitions.Knife;
 
         // Act
         bool actual = weapon.Is(Weapon.Knife);
@@ -20,8 +19,7 @@ public class WeaponTests
     public void Is_WhenWeaponIsNotEqualToKnife_ShouldReturnsFalse()
     {
         // Arrange
-        Result<IWeapon> result = GtaWeapons.GetById(Weapon.Knife);
-        IWeapon weapon = result.Value;
+        IWeapon weapon = WeaponDefinitions.Knife;
 
         // Act
         bool actual = weapon.Is(Weapon.Deagle);
@@ -34,8 +32,7 @@ public class WeaponTests
     public void IsNot_WhenWeaponIsNotEqualToKnife_ShouldReturnsTrue()
     {
         // Arrange
-        Result<IWeapon> result = GtaWeapons.GetById(Weapon.Knife);
-        IWeapon weapon = result.Value;
+        IWeapon weapon = WeaponDefinitions.Knife;
 
         // Act
         bool actual = weapon.IsNot(Weapon.Deagle);
@@ -48,8 +45,7 @@ public class WeaponTests
     public void IsNot_WhenWeaponIsEqualToKnife_ShouldReturnsFalse()
     {
         // Arrange
-        Result<IWeapon> result = GtaWeapons.GetById(Weapon.Knife);
-        IWeapon weapon = result.Value;
+        IWeapon weapon = WeaponDefinitions.Knife;
 
         // Act
         bool actual = weapon.IsNot(Weapon.Knife);

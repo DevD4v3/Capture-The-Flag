@@ -1,20 +1,19 @@
 ﻿namespace CTF.Application.Tests.Players.Weapons;
 
-public class GtaWeaponsTests
+public class WeaponCatalogBaseTests
 {
-    static readonly int[] InvalidWeaponIndexCases = [-1, 1000, GtaWeapons.Count];
-
     [Test]
     public void GetById_WhenWeaponIdIsNotFound_ShouldReturnsFailureResult()
     {
         // Arrange
+        var catalog = new TestWeaponCatalog();
         Weapon weaponId = Weapon.Connect;
         string expectedMessage = Messages.WeaponNotFound;
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetById(weaponId);
+        Result<IWeapon> result = catalog.GetById(weaponId);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeFalse();
         result.Message.Should().Be(expectedMessage);
     }
@@ -23,14 +22,15 @@ public class GtaWeaponsTests
     public void GetById_WhenWeaponIdIsFound_ShouldReturnsSuccessResult()
     {
         // Arrange
-        Weapon weaponId = Weapon.Knife;
+        var catalog = new TestWeaponCatalog();
+        Weapon expectedWeaponId = Weapon.Deagle;
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetById(weaponId);
+        Result<IWeapon> result = catalog.GetById(expectedWeaponId);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeTrue();
-        result.Value.Id.Should().Be(weaponId);
+        result.Value.Id.Should().Be(expectedWeaponId);
     }
 
     [TestCase("")]
@@ -39,12 +39,13 @@ public class GtaWeaponsTests
     public void GetByName_WhenWeaponNameIsNotFound_ShouldReturnsFailureResult(string weaponName)
     {
         // Arrange
+        var catalog = new TestWeaponCatalog();
         string expectedMessage = Messages.WeaponNotFound;
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetByName(weaponName);
+        Result<IWeapon> result = catalog.GetByName(weaponName);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeFalse();
         result.Message.Should().Be(expectedMessage);
     }
@@ -53,10 +54,11 @@ public class GtaWeaponsTests
     public void GetByName_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
+        var catalog = new TestWeaponCatalog();
         string weaponName = default;
 
         // Act
-        Action act = () => GtaWeapons.GetByName(weaponName);
+        Action act = () => catalog.GetByName(weaponName);
 
         // Assert
         act.Should()
@@ -64,48 +66,65 @@ public class GtaWeaponsTests
            .WithParameterName(nameof(weaponName));
     }
 
-    [TestCase("Knife")]
-    [TestCase("KNIFE")]
-    [TestCase("knife")]
+    [TestCase("Deagle")]
+    [TestCase("DEAGLE")]
+    [TestCase("deagle")]
+    [TestCase("DeAgLe")]
     public void GetByName_WhenWeaponNameIsFound_ShouldReturnsSuccessResult(string weaponName)
     {
         // Arrange
-        Weapon expectedWeaponId = Weapon.Knife;
+        var catalog = new TestWeaponCatalog();
+        Weapon expectedWeaponId = Weapon.Deagle;
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetByName(weaponName);
+        Result<IWeapon> result = catalog.GetByName(weaponName);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeTrue();
         result.Value.Id.Should().Be(expectedWeaponId);
     }
 
-    [TestCaseSource(nameof(InvalidWeaponIndexCases))]
+    [TestCase(-1)]
+    [TestCase(-2)]
+    [TestCase(100000)]
     public void GetByIndex_WhenIndexIsInvalid_ShouldReturnsFailureResult(int index)
     {
         // Arrange
+        var catalog = new TestWeaponCatalog();
         string expectedMessage = Messages.InvalidWeapon;
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetByIndex(index);
+        Result<IWeapon> result = catalog.GetByIndex(index);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeFalse();
         result.Message.Should().Be(expectedMessage);
+    }
+
+    [Test]
+    public void GetByIndex_WhenIndexIsEqualToCount_ShouldReturnsFailureResult()
+    {
+        // Arrange
+        var catalog = new TestWeaponCatalog();
+
+        // Act
+        Result<IWeapon> result = catalog.GetByIndex(catalog.Count);
+
+        // Assert
+        result.IsSuccess.Should().BeFalse();
+        result.Message.Should().Be(Messages.InvalidWeapon);
     }
 
     [Test]
     public void GetByIndex_WhenIndexIsValid_ShouldReturnsSuccessResult()
     {
         // Arrange
-        int index = 0;
-        Weapon expectedWeaponId = Weapon.Knife;
+        var catalog = new TestWeaponCatalog();
 
         // Act
-        Result<IWeapon> result = GtaWeapons.GetByIndex(index);
+        Result<IWeapon> result = catalog.GetByIndex(0);
 
-        // Asserts
+        // Assert
         result.IsSuccess.Should().BeTrue();
-        result.Value.Id.Should().Be(expectedWeaponId);
     }
 }
