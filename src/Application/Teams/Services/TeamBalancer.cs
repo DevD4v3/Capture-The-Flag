@@ -1,22 +1,20 @@
 ﻿namespace CTF.Application.Teams.Services;
 
 /// <summary>
-/// Class responsible for balancing teams during map rotation.
+/// Balances players between the Alpha and Beta teams based on their score.
 /// </summary>
-/// <remarks>
-/// This class was designed to be used only in <see cref="MapRotationService"/>.
-/// </remarks>
 public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
 {
     /// <summary>
-    /// Balances the teams based on the players' scores.
+    /// Reassigns players to teams and executes the specified action
+    /// after each player has been assigned.
     /// </summary>
     /// <param name="action">
     /// The action to perform for each player after being assigned to a team.
     /// </param>
     /// <remarks>
-    /// This method sorts the players by score in descending order,
-    /// alternately assigns them to the Alpha and Beta teams.
+    /// Players are sorted by score in descending order and then
+    /// alternately assigned to the Alpha and Beta teams.
     /// </remarks>
     public void Balance(Action<Player, PlayerInfo> action)
     {
