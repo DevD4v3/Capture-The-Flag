@@ -46,6 +46,11 @@ public abstract class WeaponCatalogBase
     public IReadOnlyList<IWeapon> GetAll() => _weapons;
 
     /// <summary>
+    /// Determines whether the specified weapon belongs to this catalog.
+    /// </summary>
+    public bool Contains(IWeapon weapon) => _weapons.Exists(w => w.Id == weapon.Id);
+
+    /// <summary>
     /// Gets a weapon by its identifier.
     /// </summary>
     public Result<IWeapon> GetById(Weapon id)

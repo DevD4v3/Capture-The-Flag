@@ -3,7 +3,7 @@
 public class WeaponCatalogSettingsTests
 {
     [Test]
-    public void Constructor_WhenTypeIsInvalid_ShouldThrowArgumentOutOfRangeException()
+    public void Constructor_WhenCatalogTypeIsInvalid_ShouldThrowArgumentOutOfRangeException()
     {
         // Arrange
         WeaponCatalogType type = (WeaponCatalogType)(-1);
@@ -18,7 +18,7 @@ public class WeaponCatalogSettingsTests
     }
 
     [Test]
-    public void Constructor_WhenTypeIsValid_ShouldCreateInstance()
+    public void Constructor_WhenCatalogTypeIsValid_ShouldCreateInstance()
     {
         // Arrange
         WeaponCatalogType type = WeaponCatalogType.Run;
@@ -28,5 +28,34 @@ public class WeaponCatalogSettingsTests
 
         // Assert
         settings.Type.Should().Be(type);
+    }
+
+    [Test]
+    public void Change_WhenCatalogTypeIsInvalid_ShouldThrowArgumentOutOfRangeException()
+    {
+        // Arrange
+        var settings = new WeaponCatalogSettings();
+        WeaponCatalogType type = (WeaponCatalogType)(-1);
+
+        // Act
+        Action act = () => settings.Change(type);
+
+        // Assert
+        act.Should()
+           .Throw<ArgumentOutOfRangeException>()
+           .WithParameterName(nameof(type));
+    }
+
+    [Test]
+    public void Change_WhenCatalogTypeIsValid_ShouldUpdateCatalog()
+    {
+        // Arrange
+        var settings = new WeaponCatalogSettings(WeaponCatalogType.Walking);
+
+        // Act
+        settings.Change(WeaponCatalogType.Run);
+
+        // Assert
+        settings.Type.Should().Be(WeaponCatalogType.Run);
     }
 }

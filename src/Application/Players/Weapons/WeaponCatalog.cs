@@ -33,6 +33,11 @@ public class WeaponCatalog
     public IReadOnlyList<IWeapon> GetAll() => Current.GetAll();
 
     /// <summary>
+    /// Determines whether the specified weapon belongs to this active catalog.
+    /// </summary>
+    public bool Contains(IWeapon weapon) => Current.Contains(weapon);
+
+    /// <summary>
     /// Gets a weapon from the active catalog by its identifier.
     /// </summary>
     public Result<IWeapon> GetById(Weapon id) => Current.GetById(id);
