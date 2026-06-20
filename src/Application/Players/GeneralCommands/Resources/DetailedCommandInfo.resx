@@ -122,6 +122,7 @@
 {Color1}/settotalkills: {Color2}Sets the total kills to a specific player.
 {Color1}/setscore: {Color2}Sets the score of a player to a specified value.
 {Color1}/addscore: {Color2}Increases the player's score by a designated amount.
+{Color1}/weaponcatalog: {Color2}Allows you to change the current active weapon catalog.
 {Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
 {Color1}/addcoins: {Color2}Increases the player's coins by a designated amount.
 {Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
@@ -140,7 +141,7 @@
     <value>{Color1}Capture The Flag is an open source project. 
 {Color1}Check out its official repository: 
 {Color2}https://github.com/DevD4v3/Capture-The-Flag
-{Color1}Creator and programmer: {Color2}DevD4v3 (Dave Roman)
+{Color1}Creator and programmer: {Color2}DevD4v3 (David Roman)
 {Color1}Mappers:{Color2} 
 DragonZafiro, Elorreli, amirab, JamesT85,
 TheYoungCapone, B4MB1[MC], iMaster, mihaibr,
@@ -197,7 +198,7 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/changename: {Color2}Change your account name.
 {Color1}/skin: {Color2}Change your character's skin.
 {Color1}/weapons: {Color2}Display a list of available weapons
-{Color1}/pack: {Color2}Display your current weapons package.
+{Color1}/weaponpack: {Color2}Display your current weapons package.
 {Color1}/combos: {Color2}Display a list of available combos and their benefits.
 {Color1}/scoreboard: {Color2}Show the current scoreboard with player scores.
 
