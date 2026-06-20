@@ -1222,11 +1222,29 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The weapon catalog has changed. Please open the weapon list again..
+        /// </summary>
+        internal static string WeaponCatalogChanged {
+            get {
+                return ResourceManager.GetString("WeaponCatalogChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press Y to show the available weapons.
         /// </summary>
         internal static string WeaponListUsage {
             get {
                 return ResourceManager.GetString("WeaponListUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This weapon is no longer available..
+        /// </summary>
+        internal static string WeaponNoLongerAvailable {
+            get {
+                return ResourceManager.GetString("WeaponNoLongerAvailable", resourceCulture);
             }
         }
         
