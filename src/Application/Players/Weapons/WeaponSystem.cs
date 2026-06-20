@@ -79,7 +79,14 @@ public class WeaponSystem : ISystem
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        IWeapon weaponSelectedFromDialog = _weaponCatalog.GetByIndex(response.ItemIndex).Value;
+        Result<IWeapon> weaponResult = _weaponCatalog.GetByIndex(response.ItemIndex);
+        if (weaponResult.IsFailed)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponCatalogChanged);
+            return;
+        }
+
+        IWeapon weaponSelectedFromDialog = weaponResult.Value;
         if (selectedWeapons.Exists(weaponSelectedFromDialog))
         {
             var message = Smart.Format(Messages.WeaponAlreadyExists, weaponSelectedFromDialog);
@@ -115,7 +122,14 @@ public class WeaponSystem : ISystem
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        IWeapon weaponSelectedFromDialog = _weaponCatalog.GetByName(response.Item.Text).Value;
+        Result<IWeapon> weaponResult = _weaponCatalog.GetByName(response.Item.Text);
+        if (weaponResult.IsFailed)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponNoLongerAvailable);
+            return;
+        }
+
+        IWeapon weaponSelectedFromDialog = weaponResult.Value;
         var message = Smart.Format(Messages.WeaponSuccessfullyRemoved, weaponSelectedFromDialog);
         player.SendClientMessage(Color.Red, message);
         selectedWeapons.Remove(weaponSelectedFromDialog);

@@ -504,8 +504,14 @@
   <data name="WeaponAlreadyExists" xml:space="preserve">
     <value>{Name} is already in the weapon package</value>
   </data>
+  <data name="WeaponCatalogChanged" xml:space="preserve">
+    <value>The weapon catalog has changed. Please open the weapon list again.</value>
+  </data>
   <data name="WeaponListUsage" xml:space="preserve">
     <value>Press Y to show the available weapons</value>
+  </data>
+  <data name="WeaponNoLongerAvailable" xml:space="preserve">
+    <value>This weapon is no longer available.</value>
   </data>
   <data name="WeaponNotFound" xml:space="preserve">
     <value>Weapon has not been found</value>
