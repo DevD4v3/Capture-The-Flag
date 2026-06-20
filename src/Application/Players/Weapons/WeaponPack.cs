@@ -29,6 +29,7 @@ public class WeaponPack : IEnumerable<IWeapon>
     }
 
     public void Remove(IWeapon weapon) => _weapons.Remove(weapon);
+    public int RemoveAll(Predicate<IWeapon> predicate) => _weapons.RemoveAll(predicate);
     public bool Exists(IWeapon weapon) => _weapons.Find(w => w == weapon) is not null;
     public void Clear() => _weapons.Clear();
     public IEnumerator<IWeapon> GetEnumerator() => _weapons.GetEnumerator();

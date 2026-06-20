@@ -1222,11 +1222,29 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This weapon catalog is now active..
+        /// </summary>
+        internal static string WeaponCatalogAlreadyActive {
+            get {
+                return ResourceManager.GetString("WeaponCatalogAlreadyActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The weapon catalog has changed. Please open the weapon list again..
         /// </summary>
         internal static string WeaponCatalogChanged {
             get {
                 return ResourceManager.GetString("WeaponCatalogChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The weapon catalog has been changed to &apos;{Type} Weapons&apos;..
+        /// </summary>
+        internal static string WeaponCatalogChangedTo {
+            get {
+                return ResourceManager.GetString("WeaponCatalogChangedTo", resourceCulture);
             }
         }
         

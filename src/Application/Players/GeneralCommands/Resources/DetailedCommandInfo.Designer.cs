@@ -19,7 +19,7 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class DetailedCommandInfo {
@@ -65,9 +65,9 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/settotalkills: {Color2}Sets the total kills to a specific player.
         ///{Color1}/setscore: {Color2}Sets the score of a player to a specified value.
         ///{Color1}/addscore: {Color2}Increases the player&apos;s score by a designated amount.
+        ///{Color1}/weaponcatalog: {Color2}Allows you to change the current active weapon catalog.
         ///{Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
-        ///{Color1}/addcoins: {Color2}Increases the player&apos;s coins by a designated amount.
-        ///{Color1}/addallcoins: {Color2}Grant a set nu [rest of string was truncated]&quot;;.
+        ///{Color1}/addcoins: {Color2}Increases [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Admin {
             get {
@@ -79,14 +79,14 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///   Looks up a localized string similar to {Color1}Capture The Flag is an open source project. 
         ///{Color1}Check out its official repository: 
         ///{Color2}https://github.com/DevD4v3/Capture-The-Flag
-        ///{Color1}Creator and programmer: {Color2}DevD4v3 (Dave Roman)
+        ///{Color1}Creator and programmer: {Color2}DevD4v3 (David Roman)
         ///{Color1}Mappers:{Color2} 
         ///DragonZafiro, Elorreli, amirab, JamesT85,
         ///TheYoungCapone, B4MB1[MC], iMaster, mihaibr,
         ///UnuAlex, SpikY_, Niktia_Ruchkov, Amads, denis_32,
         ///Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
         ///SENiOR, saawan, Risq, Famous, Leo and Pyraeus.
-        ///{Color1}Acknowledgments to:{Color2 [rest of string was truncated]&quot;;.
+        ///{Color1}Acknowledgments to:{Color [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Credits {
             get {
