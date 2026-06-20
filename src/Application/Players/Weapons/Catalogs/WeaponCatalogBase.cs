@@ -77,19 +77,4 @@ public abstract class WeaponCatalogBase
             Result<IWeapon>.Failure(Messages.WeaponNotFound) :
             Result<IWeapon>.Success(weapon);
     }
-
-    /// <summary>
-    /// Gets a weapon by its index in the catalog.
-    /// </summary>
-    /// <remarks>
-    /// This method is primarily used by dialog selections,
-    /// where the selected item is represented by an index.
-    /// </remarks>
-    public Result<IWeapon> GetByIndex(int index)
-    {
-        if (index < 0 || index >= Count)
-            return Result<IWeapon>.Failure(Messages.InvalidWeapon);
-
-        return Result<IWeapon>.Success(_weapons[index]);
-    }
 }
