@@ -1,7 +1,8 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
 /// <summary>
-/// Represents the weapons currently owned by a player.
+/// Represents a collection of weapons where only one weapon
+/// can occupy a slot at a time.
 /// </summary>
 /// <remarks>
 /// GTA San Andreas allows only one weapon per slot. Adding a weapon
