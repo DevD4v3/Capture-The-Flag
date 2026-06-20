@@ -126,10 +126,7 @@ public class WeaponSystem(
         var message = Smart.Format(Messages.WeaponSuccessfullyRemoved, weaponSelectedFromDialog);
         player.SendClientMessage(Color.Red, message);
         selectedWeapons.Remove(weaponSelectedFromDialog);
-        player.ResetWeapons();
-        foreach (IWeapon weapon in selectedWeapons)
-            player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
-
+        player.RemoveWeapon(weaponSelectedFromDialog.Id);
         await ShowWeaponPackage(player);
     }
 
@@ -155,7 +152,7 @@ public class WeaponSystem(
         }
 
         weaponCatalogSettings.Change(selectedCatalog);
-
+        
         foreach (Player currentPlayer in entityManager.GetComponents<Player>())
         {
             var weaponSelection = currentPlayer.GetComponent<WeaponSelectionComponent>();
@@ -163,14 +160,18 @@ public class WeaponSystem(
 
             // Ensure the player's weapon pack only contains weapons
             // available in the newly selected catalog.
-            selectedWeapons.RemoveAll(weapon => !weaponCatalog.Contains(weapon));
+            selectedWeapons.RemoveAll(weapon =>
+            {
+                bool shouldRemove = !weaponCatalog.Contains(weapon);
+
+                if (shouldRemove)
+                    currentPlayer.RemoveWeapon(weapon.Id);
+
+                return shouldRemove;
+            });
 
             var message = Smart.Format(Messages.WeaponCatalogChangedTo, new { weaponCatalogSettings.Type });
             currentPlayer.SendClientMessage(Color.Yellow, message);
-
-            currentPlayer.ResetWeapons();
-            foreach (IWeapon weapon in selectedWeapons)
-                currentPlayer.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
         }
     }
 }
