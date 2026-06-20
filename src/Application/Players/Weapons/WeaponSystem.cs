@@ -1,24 +1,11 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-public class WeaponSystem : ISystem
+public class WeaponSystem(
+    IEntityManager entityManager,
+    IDialogService dialogService,
+    WeaponCatalog weaponCatalog,
+    WeaponCatalogSettings weaponCatalogSettings) : ISystem
 {
-    private readonly IDialogService _dialogService;
-    private readonly ListDialog _weaponsDialog;
-    private readonly WeaponCatalog _weaponCatalog;
-
-    public WeaponSystem(
-        IDialogService dialogService, 
-        WeaponCatalog weaponCatalog)
-    {
-        _dialogService = dialogService;
-        _weaponCatalog = weaponCatalog;
-        _weaponsDialog = new ListDialog("Weapons", "Select", "Close");
-
-        var weapons = weaponCatalog.GetAll();
-        foreach (IWeapon weapon in weapons)
-            _weaponsDialog.Add(weapon.Name);
-    }
-
     [Event]
     public void OnPlayerConnect(Player player)
     {
@@ -73,19 +60,24 @@ public class WeaponSystem : ISystem
     [PlayerCommand("weapons")]
     public async Task ShowWeapons(Player player)
     {
-        var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
-        WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
-        ListDialogResponse response = await _dialogService.ShowAsync(player, _weaponsDialog);
+        var dialog = new ListDialog("Select Weapons", "Select", "Close");
+        var weapons = weaponCatalog.GetAll();
+        foreach (IWeapon weapon in weapons)
+            dialog.Add(weapon.Name);
+
+        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        Result<IWeapon> weaponResult = _weaponCatalog.GetByIndex(response.ItemIndex);
+        Result<IWeapon> weaponResult = weaponCatalog.GetByName(response.Item.Text);
         if (weaponResult.IsFailed)
         {
             player.SendClientMessage(Color.Red, Messages.WeaponCatalogChanged);
             return;
         }
 
+        var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
+        WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
         IWeapon weaponSelectedFromDialog = weaponResult.Value;
         if (selectedWeapons.Exists(weaponSelectedFromDialog))
         {
@@ -104,7 +96,7 @@ public class WeaponSystem : ISystem
         await ShowWeapons(player);
     }
 
-    [PlayerCommand("pack")]
+    [PlayerCommand("weaponpack")]
     public async Task ShowWeaponPackage(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
@@ -114,15 +106,16 @@ public class WeaponSystem : ISystem
             player.SendClientMessage(Color.Red, Messages.EmptyWeaponPackage);
             return;
         }
+
         var dialog = new ListDialog("Your Weapon Pack", "Remove", "Close");
         foreach (IWeapon weapon in selectedWeapons)
             dialog.Add(weapon.Name);
 
-        ListDialogResponse response = await _dialogService.ShowAsync(player, dialog);
+        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        Result<IWeapon> weaponResult = _weaponCatalog.GetByName(response.Item.Text);
+        Result<IWeapon> weaponResult = weaponCatalog.GetByName(response.Item.Text);
         if (weaponResult.IsFailed)
         {
             player.SendClientMessage(Color.Red, Messages.WeaponNoLongerAvailable);
@@ -138,5 +131,46 @@ public class WeaponSystem : ISystem
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
 
         await ShowWeaponPackage(player);
+    }
+
+    [PlayerCommand("weaponcatalog")]
+    public async Task ShowCatalogs(Player player)
+    {
+        if (player.HasLowerRoleThan(RoleId.Admin))
+            return;
+
+        var dialog = new ListDialog("Weapon Catalogs", "Select", "Close");
+        foreach (WeaponCatalogType type in Enum.GetValues<WeaponCatalogType>())
+            dialog.Add(type.ToString());
+
+        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
+        if (response.IsRightButtonOrDisconnected())
+            return;
+
+        WeaponCatalogType selectedCatalog = (WeaponCatalogType)response.ItemIndex;
+        if (weaponCatalogSettings.Type == selectedCatalog)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponCatalogAlreadyActive);
+            return;
+        }
+
+        weaponCatalogSettings.Change(selectedCatalog);
+
+        foreach (Player currentPlayer in entityManager.GetComponents<Player>())
+        {
+            var weaponSelection = currentPlayer.GetComponent<WeaponSelectionComponent>();
+            WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
+
+            // Ensure the player's weapon pack only contains weapons
+            // available in the newly selected catalog.
+            selectedWeapons.RemoveAll(weapon => !weaponCatalog.Contains(weapon));
+
+            var message = Smart.Format(Messages.WeaponCatalogChangedTo, new { weaponCatalogSettings.Type });
+            currentPlayer.SendClientMessage(Color.Yellow, message);
+
+            currentPlayer.ResetWeapons();
+            foreach (IWeapon weapon in selectedWeapons)
+                currentPlayer.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
+        }
     }
 }
