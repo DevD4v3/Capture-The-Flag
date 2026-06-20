@@ -83,48 +83,4 @@ public class WeaponCatalogBaseTests
         result.IsSuccess.Should().BeTrue();
         result.Value.Id.Should().Be(expectedWeaponId);
     }
-
-    [TestCase(-1)]
-    [TestCase(-2)]
-    [TestCase(100000)]
-    public void GetByIndex_WhenIndexIsInvalid_ShouldReturnsFailureResult(int index)
-    {
-        // Arrange
-        var catalog = new TestWeaponCatalog();
-        string expectedMessage = Messages.InvalidWeapon;
-
-        // Act
-        Result<IWeapon> result = catalog.GetByIndex(index);
-
-        // Assert
-        result.IsSuccess.Should().BeFalse();
-        result.Message.Should().Be(expectedMessage);
-    }
-
-    [Test]
-    public void GetByIndex_WhenIndexIsEqualToCount_ShouldReturnsFailureResult()
-    {
-        // Arrange
-        var catalog = new TestWeaponCatalog();
-
-        // Act
-        Result<IWeapon> result = catalog.GetByIndex(catalog.Count);
-
-        // Assert
-        result.IsSuccess.Should().BeFalse();
-        result.Message.Should().Be(Messages.InvalidWeapon);
-    }
-
-    [Test]
-    public void GetByIndex_WhenIndexIsValid_ShouldReturnsSuccessResult()
-    {
-        // Arrange
-        var catalog = new TestWeaponCatalog();
-
-        // Act
-        Result<IWeapon> result = catalog.GetByIndex(0);
-
-        // Assert
-        result.IsSuccess.Should().BeTrue();
-    }
 }

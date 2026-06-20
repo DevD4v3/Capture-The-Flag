@@ -46,9 +46,4 @@ public class WeaponCatalog
     /// Gets a weapon from the active catalog by its display name.
     /// </summary>
     public Result<IWeapon> GetByName(string weaponName) => Current.GetByName(weaponName);
-
-    /// <summary>
-    /// Gets a weapon from the active catalog by its index.
-    /// </summary>
-    public Result<IWeapon> GetByIndex(int index) => Current.GetByIndex(index);
 }
