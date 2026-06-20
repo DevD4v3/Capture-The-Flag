@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Combos.Services;
+﻿namespace CTF.Application.Players.Combos.Definitions;
 
 public class GrenadesVitality : ICombo
 {

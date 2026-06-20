@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Chats.Services;
+﻿namespace CTF.Application.Players.Chats.Types;
 
 public class PrivateAdminChat(IEntityManager entityManager) : IChatMessage
 {
