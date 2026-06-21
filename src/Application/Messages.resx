@@ -435,8 +435,8 @@
   <data name="ReportToAnotherPlayer" xml:space="preserve">
     <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
   </data>
-  <data name="ResetFlagPosition" xml:space="preserve">
-    <value>{PlayerName} has reset the {ColorName} flag to its base position</value>
+  <data name="ReturnFlagToBasePosition" xml:space="preserve">
+    <value>{PlayerName} has return the {ColorName} flag to its base position</value>
   </data>
   <data name="ResetPlayerStats" xml:space="preserve">
     <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>

@@ -1015,15 +1015,6 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has reset the {ColorName} flag to its base position.
-        /// </summary>
-        internal static string ResetFlagPosition {
-            get {
-                return ResourceManager.GetString("ResetFlagPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has reset their stats, such as score, kills and deaths.
         /// </summary>
         internal static string ResetPlayerStats {
@@ -1038,6 +1029,15 @@ namespace CTF.Application {
         internal static string ResetTeamStats {
             get {
                 return ResourceManager.GetString("ResetTeamStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has return the {ColorName} flag to its base position.
+        /// </summary>
+        internal static string ReturnFlagToBasePosition {
+            get {
+                return ResourceManager.GetString("ReturnFlagToBasePosition", resourceCulture);
             }
         }
         
