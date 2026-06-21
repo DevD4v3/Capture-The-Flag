@@ -27,7 +27,7 @@ public class ReturnFlagSystem(
             return;
         }
 
-        var message = Smart.Format(Messages.ReturnToBasePosition, new
+        var message = Smart.Format(Messages.ReturnFlagToBasePosition, new
         {
             PlayerName = player.Name,
             team.ColorName

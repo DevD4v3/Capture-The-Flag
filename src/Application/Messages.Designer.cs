@@ -1035,9 +1035,9 @@ namespace CTF.Application {
         /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has return the {ColorName} flag to its base position.
         /// </summary>
-        internal static string ReturnToBasePosition {
+        internal static string ReturnFlagToBasePosition {
             get {
-                return ResourceManager.GetString("ReturnToBasePosition", resourceCulture);
+                return ResourceManager.GetString("ReturnFlagToBasePosition", resourceCulture);
             }
         }
         
