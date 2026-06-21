@@ -114,11 +114,11 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {Color1}/maps: {Color2}Displays a list of available maps in the game.
         ///{Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
-        ///{Color1}/resetflag: {Color2}Resets the flag of a specific team to its base position.
+        ///{Color1}/returnflag: {Color2}Returns the flag of a specific team to its base position.
         ///{Color1}/startrt: {Color2}Starts the rotation timer for the current map.
         ///{Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
         ///{Color1}/showrm: {Color2}Allows to show flag carriers on the radar map.
-        ///{Color1}/hiderm: {Color2}Allows to hide flag carrie [rest of string was truncated]&quot;;.
+        ///{Color1}/hiderm: {Color2}Allows to hide flag carr [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Moderator {
             get {

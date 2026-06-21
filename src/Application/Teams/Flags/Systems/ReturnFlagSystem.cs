@@ -1,13 +1,13 @@
 ﻿namespace CTF.Application.Teams.Flags.Systems;
 
-public class ResetFlagSystem(
+public class ReturnFlagSystem(
     IWorldService worldService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
     FlagAutoReturnTimer flagAutoReturnTimer) : ISystem
 {
-    [PlayerCommand("resetflag")]
-    public void ResetToBasePosition(
+    [PlayerCommand("returnflag")]
+    public void ReturnToBasePosition(
         Player player, 
         [CommandParameter(Name = "red/blue")]string color)
     {
@@ -27,16 +27,12 @@ public class ResetFlagSystem(
             return;
         }
 
-        ResetFlagPosition(player, team);
-    }
-
-    private void ResetFlagPosition(Player player, Team team)
-    {
-        var message = Smart.Format(Messages.ResetFlagPosition, new
+        var message = Smart.Format(Messages.ReturnToBasePosition, new
         {
             PlayerName = player.Name,
             team.ColorName
         });
+
         team.Flag.Carrier?.HideOnRadarMap();
         team.Flag.ReturnToBase();
         teamPickupService.CreateFlagFromBasePosition(team);
