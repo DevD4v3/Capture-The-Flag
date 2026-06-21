@@ -64,13 +64,8 @@ public class MapRotationService(
     {
         _isMapLoading = true;
         LoadingMapEvent?.Invoke();
-        if (Team.Alpha.IsWinner())
-            worldService.SendClientMessage(Color.Yellow, Messages.AlphaIsWinner);
-        else if(Team.Beta.IsWinner())
-            worldService.SendClientMessage(Color.Yellow, Messages.BetaIsWinner);
-        else
-            worldService.SendClientMessage(Color.Yellow, Messages.TiedTeams);
-
+        var matchResult = MatchResult.Create();
+        worldService.SendClientMessage(Color.Yellow, matchResult.Announcement);
         serverService.SendRconCommand($"unloadfs {mapInfoService.CurrentMap.Name}");
 
         IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
