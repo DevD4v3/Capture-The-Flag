@@ -62,7 +62,7 @@ public class MapRotationService(
     {
         _isMapLoading = true;
         LoadingMapEvent?.Invoke();
-        var matchResult = MatchResult.Create();
+        var matchResult = MatchResult.Create(Team.Alpha, Team.Beta);
         worldService.SendClientMessage(Color.Yellow, matchResult.Announcement);
         serverService.SendRconCommand($"unloadfs {mapInfoService.CurrentMap.Name}");
 

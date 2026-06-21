@@ -12,13 +12,19 @@ public class MatchResult
         Announcement = announcement;
     }
 
-    public static MatchResult Create()
+    public static MatchResult Create(Team firstTeam, Team secondTeam)
     {
-        if (Team.Alpha.IsWinner())
-            return new MatchResult(Team.Alpha, Messages.AlphaIsWinner);
+        if (firstTeam.IsWinner())
+            return new MatchResult(
+                firstTeam, 
+                Smart.Format(Messages.TeamIsWinner, new { firstTeam.Name })
+            );
 
-        if (Team.Beta.IsWinner())
-            return new MatchResult(Team.Beta, Messages.BetaIsWinner);
+        if (secondTeam.IsWinner())
+            return new MatchResult(
+                secondTeam, 
+                Smart.Format(Messages.TeamIsWinner, new { secondTeam.Name })
+            );
 
         return new MatchResult(Team.None, Messages.TiedTeams);
     }

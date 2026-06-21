@@ -16,7 +16,7 @@ public class MatchResultTests
         Team.Alpha.StatsPerRound.AddScore();
 
         // Act
-        MatchResult result = MatchResult.Create();
+        MatchResult result = MatchResult.Create(Team.Alpha, Team.Beta);
 
         // Assert
         result.Winner.Should().Be(Team.Alpha);
@@ -31,7 +31,7 @@ public class MatchResultTests
         Team.Beta.StatsPerRound.AddScore();
 
         // Act
-        MatchResult result = MatchResult.Create();
+        MatchResult result = MatchResult.Create(Team.Alpha, Team.Beta);
 
         // Assert
         result.Winner.Should().Be(Team.Beta);
@@ -47,7 +47,7 @@ public class MatchResultTests
         Team.Beta.StatsPerRound.AddScore();
 
         // Act
-        MatchResult result = MatchResult.Create();
+        MatchResult result = MatchResult.Create(Team.Alpha, Team.Beta);
 
         // Assert
         result.Winner.Should().Be(Team.None);
