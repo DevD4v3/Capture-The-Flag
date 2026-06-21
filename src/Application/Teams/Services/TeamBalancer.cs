@@ -18,7 +18,7 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
     /// </remarks>
     public void Balance(Action<Player, PlayerInfo> action)
     {
-        Player[] players = AlphaBetaTeamPlayers.GetAll()
+        Player[] players = MatchPlayers.GetAll()
             .OrderByDescending(player => player.Score)
             .ToArray();
 

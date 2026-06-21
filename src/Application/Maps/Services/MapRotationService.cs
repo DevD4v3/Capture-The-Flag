@@ -66,7 +66,7 @@ public class MapRotationService(
         worldService.SendClientMessage(Color.Yellow, matchResult.Announcement);
         serverService.SendRconCommand($"unloadfs {mapInfoService.CurrentMap.Name}");
 
-        IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
+        IEnumerable<Player> players = MatchPlayers.GetAll();
         foreach (Player player in players)
             player.ToggleSpectating(true);
 

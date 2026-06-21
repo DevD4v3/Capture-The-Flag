@@ -28,7 +28,7 @@ public class TeamSoundsService
 
     private void PlayAudioStreamToAll(string url)
     {
-        IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
+        IEnumerable<Player> players = MatchPlayers.GetAll();
         foreach (Player player in players)
             player.PlayAudioStream(url);
     }
