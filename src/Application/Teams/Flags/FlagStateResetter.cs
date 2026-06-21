@@ -5,20 +5,20 @@ public class FlagStateResetter(
     TeamIconService teamIconService,
     FlagAutoReturnTimer flagAutoReturnTimer)
 {
-    public void Reset(Team alpha, Team beta)
+    public void Reset(Team firstTeam, Team secondTeam)
     {
-        alpha.Flag.Reset();
-        beta.Flag.Reset();
+        firstTeam.Flag.Reset();
+        secondTeam.Flag.Reset();
 
         teamPickupService.DestroyAllPickups();
-        teamPickupService.CreateFlagFromBasePosition(alpha);
-        teamPickupService.CreateFlagFromBasePosition(beta);
+        teamPickupService.CreateFlagFromBasePosition(firstTeam);
+        teamPickupService.CreateFlagFromBasePosition(secondTeam);
 
         teamIconService.DestroyAll();
-        teamIconService.CreateFromBasePosition(alpha);
-        teamIconService.CreateFromBasePosition(beta);
+        teamIconService.CreateFromBasePosition(firstTeam);
+        teamIconService.CreateFromBasePosition(secondTeam);
 
-        flagAutoReturnTimer.Stop(alpha);
-        flagAutoReturnTimer.Stop(beta);
+        flagAutoReturnTimer.Stop(firstTeam);
+        flagAutoReturnTimer.Stop(secondTeam);
     }
 }
