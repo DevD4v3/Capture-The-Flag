@@ -7,10 +7,8 @@ public class MapRotationService(
     MapInfoService mapInfoService,
     MapCollection mapCollection,
     MapTextDrawRenderer mapTextDrawRenderer,
-    TeamIconService teamIconService,
-    TeamPickupService teamPickupService,
-    TeamBalancer teamBalancer,
-    FlagAutoReturnTimer flagAutoReturnTimer)
+    FlagStateResetter flagStateResetter,
+    TeamBalancer teamBalancer)
 {
     private LoadTime _loadTime;
     private TimerReference _timerReference;
@@ -76,16 +74,7 @@ public class MapRotationService(
         string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { nextMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
         mapInfoService.Load(nextMap);
-        Team.Alpha.Flag.Reset();
-        Team.Beta.Flag.Reset();
-        teamPickupService.DestroyAllPickups();
-        teamPickupService.CreateFlagFromBasePosition(Team.Alpha);
-        teamPickupService.CreateFlagFromBasePosition(Team.Beta);
-        teamIconService.DestroyAll();
-        teamIconService.CreateFromBasePosition(Team.Alpha);
-        teamIconService.CreateFromBasePosition(Team.Beta);
-        flagAutoReturnTimer.Stop(Team.Alpha);
-        flagAutoReturnTimer.Stop(Team.Beta);
+        flagStateResetter.Reset(Team.Alpha, Team.Beta);
         serverService.SendRconCommand($"loadfs {nextMap.Name}");
         serverService.SetMapName(nextMap.Name);
     }
