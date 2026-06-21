@@ -549,4 +549,7 @@
   <data name="TeamIsWinner" xml:space="preserve">
     <value>This round was won by the {Name} team</value>
   </data>
+  <data name="AssignedToTeam" xml:space="preserve">
+    <value>You have been assigned to {Name} team</value>
+  </data>
 </root>

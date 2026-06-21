@@ -1,31 +1,38 @@
 ﻿namespace CTF.Application.Teams.Services;
 
 /// <summary>
-/// Balances players between the Alpha and Beta teams based on their score.
+/// Balances players between two teams based on their score.
 /// </summary>
 public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
 {
     /// <summary>
-    /// Reassigns players to teams and executes the specified action
-    /// after each player has been assigned.
+    /// Reassigns players between the specified teams and invokes
+    /// the callback after each player has been assigned.
     /// </summary>
-    /// <param name="action">
-    /// The action to perform for each player after being assigned to a team.
+    /// <param name="firstTeam">
+    /// The first team participating in the balance operation.
+    /// </param>
+    /// <param name="secondTeam">
+    /// The second team participating in the balance operation.
+    /// </param>
+    /// <param name="onPlayerAssigned">
+    /// Invoked after a player has been assigned to a team.
     /// </param>
     /// <remarks>
     /// Players are sorted by score in descending order and then
-    /// alternately assigned to the Alpha and Beta teams.
+    /// alternately assigned to the specified teams.
     /// </remarks>
-    public void Balance(Action<Player, PlayerInfo> action)
+    public void Balance(
+        Team firstTeam,
+        Team secondTeam, 
+        Action<Player, PlayerInfo> onPlayerAssigned)
     {
         Player[] players = MatchPlayers.GetAll()
             .OrderByDescending(player => player.Score)
             .ToArray();
 
-        Team alphaTeam = Team.Alpha;
-        Team betaTeam = Team.Beta;
-        alphaTeam.Reset();
-        betaTeam.Reset();
+        firstTeam.Reset();
+        secondTeam.Reset();
 
         for (int index = 0; index < players.Length; index++)
         {
@@ -44,22 +51,25 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
 
             if (int.IsEvenInteger(index))
             {
-                alphaTeam.Members.Add(player);
-                playerInfo.SetTeam(alphaTeam.Id);
-                player.SendClientMessage(alphaTeam.ColorHex, Messages.AssignedToAlphaTeam);
+                firstTeam.Members.Add(player);
+                playerInfo.SetTeam(firstTeam.Id);
+                var message = Smart.Format(Messages.AssignedToTeam, new { firstTeam.Name });
+                player.SendClientMessage(firstTeam.ColorHex, message);
             }
             else
             {
-                betaTeam.Members.Add(player);
-                playerInfo.SetTeam(betaTeam.Id);
-                player.SendClientMessage(betaTeam.ColorHex, Messages.AssignedToBetaTeam);
+                secondTeam.Members.Add(player);
+                playerInfo.SetTeam(secondTeam.Id);
+                var message = Smart.Format(Messages.AssignedToTeam, new { secondTeam.Name });
+                player.SendClientMessage(secondTeam.ColorHex, message);
             }
-            action.Invoke(player, playerInfo);
+
+            onPlayerAssigned.Invoke(player, playerInfo);
         }
 
-        teamTextDrawRenderer.UpdateTeamScore(alphaTeam);
-        teamTextDrawRenderer.UpdateTeamScore(betaTeam);
-        teamTextDrawRenderer.UpdateTeamMembers(alphaTeam);
-        teamTextDrawRenderer.UpdateTeamMembers(betaTeam);
+        teamTextDrawRenderer.UpdateTeamScore(firstTeam);
+        teamTextDrawRenderer.UpdateTeamScore(secondTeam);
+        teamTextDrawRenderer.UpdateTeamMembers(firstTeam);
+        teamTextDrawRenderer.UpdateTeamMembers(secondTeam);
     }
 }
