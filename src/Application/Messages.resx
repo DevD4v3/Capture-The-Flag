@@ -546,4 +546,7 @@
   <data name="WrongSecretKey" xml:space="preserve">
     <value>The secret key you entered is incorrect. Please try again</value>
   </data>
+  <data name="TeamIsWinner" xml:space="preserve">
+    <value>This round was won by the {Name} team</value>
+  </data>
 </root>

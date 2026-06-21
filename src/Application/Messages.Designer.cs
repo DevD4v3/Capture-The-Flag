@@ -1159,6 +1159,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This round was won by the {Name} team.
+        /// </summary>
+        internal static string TeamIsWinner {
+            get {
+                return ResourceManager.GetString("TeamIsWinner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Both teams have the same number of members.
         /// </summary>
         internal static string TeamsAreEqualInMembers {
