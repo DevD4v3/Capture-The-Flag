@@ -88,7 +88,7 @@ public class MapRotationService(
         CurrentMap currentMap = mapInfoService.CurrentMap;
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
-        static void HandlePlayerAction(Player player, PlayerInfo playerInfo)
+        static void PreparePlayerForRound(Player player, PlayerInfo playerInfo)
         {
             playerInfo.StatsPerRound.ResetStats();
             player.ToggleControllable(true);
@@ -97,7 +97,7 @@ public class MapRotationService(
             player.SetScore(0);
             player.ToggleSpectating(false);
         }
-        teamBalancer.Balance(action: HandlePlayerAction);
+        teamBalancer.Balance(Team.Alpha, Team.Beta, onPlayerAssigned: PreparePlayerForRound);
         worldService.SetWeather(currentMap.Weather);
         serverService.SetWorldTime(currentMap.WorldTime);
         mapTextDrawRenderer.UpdateMapName(currentMap);

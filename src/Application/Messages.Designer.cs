@@ -160,6 +160,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have been assigned to {Name} team.
+        /// </summary>
+        internal static string AssignedToTeam {
+            get {
+                return ResourceManager.GetString("AssignedToTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ban reason must be {Length} characters or less.
         /// </summary>
         internal static string BanReason {
