@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - build-test
+      - dev
+      - main
+    tags:
+      - 'v*'
 
 env:
   DOTNET_VERSION: '10.x'
@@ -136,3 +140,32 @@ jobs:
           name: capture-the-flag-win-x64
           path: capture-the-flag-win-x64.zip
           if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs:
+      - build-linux
+      - build-windows
+
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: capture-the-flag-linux-x86_64
+
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: capture-the-flag-win-x64
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            capture-the-flag-linux-x86_64.tar.xz
+            capture-the-flag-win-x64.zip
