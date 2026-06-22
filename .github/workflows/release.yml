@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - build-test
+
+env:
+  DOTNET_VERSION: '10.x'
+  OPENMP_VERSION: '1.5.8.3079'
+  COMPONENT_BUNDLE_VERSION: '2026.1'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Download open.mp
+        run: |
+          wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
+          tar -xJf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
+
+      - name: Download components
+        run: |
+          wget https://github.com/DevD4v3/SampSharp/releases/download/v${COMPONENT_BUNDLE_VERSION}/components-linux.tar.xz
+          tar -xJf components-linux.tar.xz -C Server/components
+
+      - name: Publish gamemode
+        run: dotnet publish src/Host/CTF.Host.csproj -c Release
+
+      - name: Debug
+        run: find .
+
+      - name: Upload debug
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-linux
+          path: .
