@@ -38,10 +38,17 @@ RUN dotnet publish -c Release -o /app/out --no-restore
 FROM ubuntu:22.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget xz-utils
 WORKDIR /open-mp
+
 ENV OPENMP_VERSION="1.5.8.3079"
+ENV SAMPSHARP_VERSION="2026.1"
+
 RUN wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz --no-check-certificate \
     && tar -xf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz \
     && rm -f open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
+
+RUN wget https://github.com/DevD4v3/SampSharp/releases/download/v${SAMPSHARP_VERSION}/components-linux.tar.xz --no-check-certificate \
+    && tar -xJf components-linux.tar.xz -C Server/components \
+    && rm -f components-linux.tar.xz
 
 #
 # Final stage/image
@@ -61,7 +68,6 @@ COPY --from=build /app/out gamemode
 COPY ["gamemodes/*.amx", "gamemodes/"]
 COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["codepages/*.txt", "codepages/"]
-COPY ["components-linux/*.so", "components/"]
 COPY ["config.json", "config.json"]
 COPY ["entrypoint.sh", "entrypoint.sh"]
 RUN chmod +x entrypoint.sh
