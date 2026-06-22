@@ -43,9 +43,10 @@ jobs:
       - name: Assemble Server
         run: |
           mkdir -p Server/gamemode
+          mkdir -p Server/filterscripts
           cp -r out/* Server/gamemode/
           cp -r gamemodes Server/
-          cp -r filterscripts Server/
+          cp filterscripts/*.amx Server/filterscripts/
           cp -r codepages Server/
           cp config.json Server/
           cp .env.example Server/.env
@@ -63,4 +64,75 @@ jobs:
         with:
           name: capture-the-flag-linux-x86_64
           path: capture-the-flag-linux-x86_64.tar.xz
+          if-no-files-found: error
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Download open.mp server
+        shell: pwsh
+        run: |
+          Invoke-WebRequest `
+            -Uri "https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${env:OPENMP_VERSION}/open.mp-win-x64-v${env:OPENMP_VERSION}.zip" `
+            -OutFile open.mp.zip
+
+          Expand-Archive open.mp.zip -DestinationPath .
+
+      - name: Download component bundle
+        shell: pwsh
+        run: |
+          Invoke-WebRequest `
+            -Uri "https://github.com/DevD4v3/SampSharp/releases/download/v${env:COMPONENT_BUNDLE_VERSION}/components-windows.zip" `
+            -OutFile components-windows.zip
+
+          Expand-Archive components-windows.zip -DestinationPath Server/components
+
+      - name: Publish gamemode
+        run: |
+          dotnet publish src/Host/CTF.Host.csproj `
+            -c Release `
+            -o out
+
+      - name: Assemble Server
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force Server/gamemode
+          New-Item -ItemType Directory -Force Server/filterscripts
+
+          Copy-Item out/* Server/gamemode -Recurse
+          Copy-Item gamemodes Server -Recurse
+          Copy-Item codepages Server -Recurse
+          Get-ChildItem filterscripts -Filter *.amx |
+            Copy-Item -Destination Server/filterscripts
+
+          Copy-Item config.json Server
+          Copy-Item .env.example Server/.env
+
+      - name: Debug Server
+        shell: pwsh
+        run: |
+          Get-ChildItem Server -Recurse
+
+      - name: Create package
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path Server `
+            -DestinationPath capture-the-flag-win-x64.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: capture-the-flag-win-x64
+          path: capture-the-flag-win-x64.zip
           if-no-files-found: error
