@@ -138,7 +138,7 @@ jobs:
           path: capture-the-flag-win-x64.zip
           if-no-files-found: error
 
-  release:
+  publish:
     if: startsWith(github.ref, 'refs/tags/')
     needs:
       - build-linux
