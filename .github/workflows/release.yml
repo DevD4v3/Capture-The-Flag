@@ -19,28 +19,48 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: actions/setup-dotnet@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Download open.mp
+      - name: Download open.mp server
         run: |
           wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
           tar -xJf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
 
-      - name: Download components
+      - name: Download component bundle
         run: |
           wget https://github.com/DevD4v3/SampSharp/releases/download/v${COMPONENT_BUNDLE_VERSION}/components-linux.tar.xz
           tar -xJf components-linux.tar.xz -C Server/components
 
       - name: Publish gamemode
-        run: dotnet publish src/Host/CTF.Host.csproj -c Release
+        run: |
+          dotnet publish src/Host/CTF.Host.csproj \
+            -c Release \
+            -o out
 
-      - name: Debug
-        run: find .
+      - name: Assemble Server
+        run: |
+          mkdir -p Server/gamemode
+          cp -r out/* Server/gamemode/
+          cp -r gamemodes Server/
+          cp -r filterscripts Server/
+          cp -r codepages Server/
+          cp config.json Server/
+          cp .env.example Server/.env
 
-      - name: Upload debug
+      - name: Debug Server
+        run: |
+          find Server
+
+      - name: Create package
+        run: |
+          tar -cJf capture-the-flag-linux-x86_64.tar.xz Server
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: debug-linux
-          path: .
+          name: capture-the-flag-linux-x86_64
+          path: capture-the-flag-linux-x86_64.tar.xz
+          if-no-files-found: error
