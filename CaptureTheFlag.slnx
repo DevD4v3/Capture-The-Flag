@@ -25,7 +25,11 @@
     <File Path="scripts/sqlite/gamemode.sql" />
   </Folder>
   <Folder Name="/Solution Items/workflows/">
+    <File Path=".github/workflows/build-and-publish.yml" />
     <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/codeql-analysis.yml" />
+    <File Path=".github/workflows/deploy-prod.yml" />
+    <File Path=".github/workflows/deploy-test.yml" />
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Application.Tests/CTF.Application.Tests.csproj" />
