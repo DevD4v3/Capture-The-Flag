@@ -1,25 +1,27 @@
 name: CTF Deploy Test
 
 on:
-  push:
-    branches: 
-      - test
+  release:
+    types: [published]
 
 jobs:
-  build:
+  deploy:
+    if: github.event.release.prerelease == true
+
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy using ssh
-      uses: appleboy/ssh-action@v1.1.0
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd ctf-test
-          git pull origin dev
-          git status
-          sudo docker compose up --build -d
-          sudo docker builder prune -f -a
-          sudo docker image prune -f -a
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ctf-test
+            git fetch --all --tags
+            git checkout ${{ github.event.release.tag_name }}
+            git status
+            sudo docker compose up --build -d
+            sudo docker builder prune -f
+            sudo docker image prune -f
