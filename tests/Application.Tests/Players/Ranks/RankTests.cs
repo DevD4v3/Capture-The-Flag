@@ -3,7 +3,7 @@
 public class RankTests
 {
     [Test]
-    public void IsMax_WhenRankIsMaximum_ShouldReturnsTrue()
+    public void IsMax_WhenRankIsMaximum_ShouldReturnTrue()
     {
         // Arrange
         RankId rankId = RankId.Legendary;
@@ -18,7 +18,7 @@ public class RankTests
     }
 
     [Test]
-    public void IsMax_WhenRankIsNotMaximum_ShouldReturnsFalse()
+    public void IsMax_WhenRankIsNotMaximum_ShouldReturnFalse()
     {
         // Arrange
         RankId rankId = RankId.Junior;
@@ -33,7 +33,7 @@ public class RankTests
     }
 
     [Test]
-    public void IsNotMax_WhenRankIsNotMaximum_ShouldReturnsTrue() 
+    public void IsNotMax_WhenRankIsNotMaximum_ShouldReturnTrue() 
     {
         // Arrange
         RankId rankId = RankId.Junior;
@@ -48,7 +48,7 @@ public class RankTests
     }
 
     [Test]
-    public void IsNotMax_WhenRankIsMaximum_ShouldReturnsFalse()
+    public void IsNotMax_WhenRankIsMaximum_ShouldReturnFalse()
     {
         // Arrange
         RankId rankId = RankId.Legendary;

@@ -9,7 +9,7 @@ public class SelectedTeamTests
     [TestCase(4)]
     [TestCase(254)]
     [TestCase(256)]
-    public void SetTeam_WhenTeamIsInvalid_ShouldReturnsFailureResult(int id)
+    public void SetTeam_WhenTeamIsInvalid_ShouldReturnFailureResult(int id)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -28,7 +28,7 @@ public class SelectedTeamTests
     [TestCase(TeamId.Alpha)]
     [TestCase(TeamId.Beta)]
     [TestCase(TeamId.NoTeam)]
-    public void SetTeam_WhenTeamIsValid_ShouldReturnsSuccessResult(TeamId teamId)
+    public void SetTeam_WhenTeamIsValid_ShouldReturnSuccessResult(TeamId teamId)
     {
         // Arrange
         var player = new PlayerInfo();

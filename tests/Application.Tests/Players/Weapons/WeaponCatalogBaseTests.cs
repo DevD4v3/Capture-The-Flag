@@ -3,7 +3,7 @@
 public class WeaponCatalogBaseTests
 {
     [Test]
-    public void GetById_WhenWeaponIdIsNotFound_ShouldReturnsFailureResult()
+    public void GetById_WhenWeaponIdIsNotFound_ShouldReturnFailureResult()
     {
         // Arrange
         var catalog = new TestWeaponCatalog();
@@ -19,7 +19,7 @@ public class WeaponCatalogBaseTests
     }
 
     [Test]
-    public void GetById_WhenWeaponIdIsFound_ShouldReturnsSuccessResult()
+    public void GetById_WhenWeaponIdIsFound_ShouldReturnSuccessResult()
     {
         // Arrange
         var catalog = new TestWeaponCatalog();
@@ -36,7 +36,7 @@ public class WeaponCatalogBaseTests
     [TestCase("")]
     [TestCase("  ")]
     [TestCase("Connect")]
-    public void GetByName_WhenWeaponNameIsNotFound_ShouldReturnsFailureResult(string weaponName)
+    public void GetByName_WhenWeaponNameIsNotFound_ShouldReturnFailureResult(string weaponName)
     {
         // Arrange
         var catalog = new TestWeaponCatalog();
@@ -70,7 +70,7 @@ public class WeaponCatalogBaseTests
     [TestCase("DEAGLE")]
     [TestCase("deagle")]
     [TestCase("DeAgLe")]
-    public void GetByName_WhenWeaponNameIsFound_ShouldReturnsSuccessResult(string weaponName)
+    public void GetByName_WhenWeaponNameIsFound_ShouldReturnSuccessResult(string weaponName)
     {
         // Arrange
         var catalog = new TestWeaponCatalog();

@@ -3,7 +3,7 @@
 public class WeaponPackTests
 {
     [Test]
-    public void IsEmpty_WhenThereAreNoWeapons_ShouldReturnsTrue()
+    public void IsEmpty_WhenThereAreNoWeapons_ShouldReturnTrue()
     {
         // Arrange
         var weapons = new WeaponPack();
@@ -16,7 +16,7 @@ public class WeaponPackTests
     }
 
     [Test]
-    public void IsEmpty_WhenThereAreWeapons_ShouldReturnsFalse()
+    public void IsEmpty_WhenThereAreWeapons_ShouldReturnFalse()
     {
         // Arrange
         WeaponPack weapons = [WeaponDefinitions.Deagle, WeaponDefinitions.AK47];
@@ -81,7 +81,7 @@ public class WeaponPackTests
     }
 
     [Test]
-    public void Exists_WhenWeaponIsFound_ShouldReturnsTrue()
+    public void Exists_WhenWeaponIsFound_ShouldReturnTrue()
     {
         // Arrange
         IWeapon deagle = WeaponDefinitions.Deagle;
@@ -95,7 +95,7 @@ public class WeaponPackTests
     }
 
     [Test]
-    public void Exists_WhenWeaponIsNotFound_ShouldReturnsFalse()
+    public void Exists_WhenWeaponIsNotFound_ShouldReturnFalse()
     {
         // Arrange
         var weapons = new WeaponPack();

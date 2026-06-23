@@ -5,7 +5,7 @@ public class RoleTests
     static readonly int[] InvalidRoleCases = [-1, -2, RoleCollection.Count];
 
     [TestCaseSource(nameof(InvalidRoleCases))]
-    public void SetRole_WhenRoleIdIsInvalid_ShouldReturnsFailureResult(int value)
+    public void SetRole_WhenRoleIdIsInvalid_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -22,7 +22,7 @@ public class RoleTests
     }
 
     [Test]
-    public void SetRole_WhenRoleIdIsValid_ShouldReturnsSuccessResult()
+    public void SetRole_WhenRoleIdIsValid_ShouldReturnSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -37,7 +37,7 @@ public class RoleTests
     }
 
     [Test]
-    public void HasRole_WhenRoleIsAdmin_ShouldReturnsTrue()
+    public void HasRole_WhenRoleIsAdmin_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -52,7 +52,7 @@ public class RoleTests
     }
 
     [Test]
-    public void HasRole_WhenRoleIsNotAdmin_ShouldReturnsFalse()
+    public void HasRole_WhenRoleIsNotAdmin_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -68,7 +68,7 @@ public class RoleTests
     [TestCase(RoleId.Basic)]
     [TestCase(RoleId.VIP)]
     [TestCase(RoleId.Moderator)]
-    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanAdmin_ShouldReturnsTrue(RoleId roleId)
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanAdmin_ShouldReturnTrue(RoleId roleId)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -82,7 +82,7 @@ public class RoleTests
     }
 
     [Test]
-    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanAdmin_ShouldReturnsFalse()
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanAdmin_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -97,7 +97,7 @@ public class RoleTests
 
     [TestCase(RoleId.Basic)]
     [TestCase(RoleId.VIP)]
-    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanModerator_ShouldReturnsTrue(RoleId roleId)
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanModerator_ShouldReturnTrue(RoleId roleId)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -112,7 +112,7 @@ public class RoleTests
 
     [TestCase(RoleId.Moderator)]
     [TestCase(RoleId.Admin)]
-    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanModerator_ShouldReturnsFalse(RoleId roleId)
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanModerator_ShouldReturnFalse(RoleId roleId)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -126,7 +126,7 @@ public class RoleTests
     }
 
     [Test]
-    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanVIP_ShouldReturnsTrue()
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanVIP_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -142,7 +142,7 @@ public class RoleTests
     [TestCase(RoleId.VIP)]
     [TestCase(RoleId.Moderator)]
     [TestCase(RoleId.Admin)]
-    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanVIP_ShouldReturnsFalse(RoleId roleId)
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanVIP_ShouldReturnFalse(RoleId roleId)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -156,7 +156,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsVIP_WhenPlayerIsVIP_ShouldReturnsTrue()
+    public void IsVIP_WhenPlayerIsVIP_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -170,7 +170,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsVIP_WhenPlayerIsNotVIP_ShouldReturnsFalse()
+    public void IsVIP_WhenPlayerIsNotVIP_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -184,7 +184,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsModerator_WhenPlayerIsModerator_ShouldReturnsTrue()
+    public void IsModerator_WhenPlayerIsModerator_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -198,7 +198,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsModerator_WhenPlayerIsNotModerator_ShouldReturnsFalse()
+    public void IsModerator_WhenPlayerIsNotModerator_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -212,7 +212,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsAdmin_WhenPlayerIsAdmin_ShouldReturnsTrue()
+    public void IsAdmin_WhenPlayerIsAdmin_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -226,7 +226,7 @@ public class RoleTests
     }
 
     [Test]
-    public void IsAdmin_WhenPlayerIsNotAdmin_ShouldReturnsFalse()
+    public void IsAdmin_WhenPlayerIsNotAdmin_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();

@@ -9,7 +9,7 @@ public class VitalityTests
     [TestCase(35)]
     [TestCase(50)]
     [TestCase(100)]
-    public void Create_WhenCalledWithValidAmount_ShouldReturnsSuccessResult(float amount)
+    public void Create_WhenCalledWithValidAmount_ShouldReturnSuccessResult(float amount)
     {
         // Arrange
 
@@ -25,7 +25,7 @@ public class VitalityTests
     [TestCase(-2)]
     [TestCase(101)]
     [TestCase(102)]
-    public void Create_WhenCalledWithInvalidAmount_ShouldReturnsFailureResult(float amount)
+    public void Create_WhenCalledWithInvalidAmount_ShouldReturnFailureResult(float amount)
     {
         // Arrange
         var expectedMessage = Messages.InvalidVitality;

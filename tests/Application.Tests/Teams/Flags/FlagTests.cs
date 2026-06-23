@@ -3,7 +3,7 @@
 public class FlagTests
 {
     [Test]
-    public void HasCarrier_WhenFlagHasCarrier_ShouldReturnsTrue()
+    public void HasCarrier_WhenFlagHasCarrier_ShouldReturnTrue()
     {
         // Arrange
         var flag = CreateFlag();
@@ -19,7 +19,7 @@ public class FlagTests
     }
 
     [Test]
-    public void HasCarrier_WhenFlagHasNoCarrier_ShouldReturnsFalse()
+    public void HasCarrier_WhenFlagHasNoCarrier_ShouldReturnFalse()
     {
         // Arrange
         var flag = CreateFlag();
@@ -32,7 +32,7 @@ public class FlagTests
     }
 
     [Test]
-    public void CarrierName_WhenFlagHasCarrier_ShouldReturnsCarrierName()
+    public void CarrierName_WhenFlagHasCarrier_ShouldReturnCarrierName()
     {
         // Arrange
         var flag = CreateFlag();
@@ -49,7 +49,7 @@ public class FlagTests
     }
 
     [Test]
-    public void CarrierName_WhenFlagHasNoCarrier_ShouldReturnsNone()
+    public void CarrierName_WhenFlagHasNoCarrier_ShouldReturnNone()
     {
         // Arrange
         var flag = CreateFlag();

@@ -15,7 +15,7 @@ public class MapCollectionTests
     [TestCase("DE")]
     [TestCase("dE")]
     [TestCase("De")]
-    public void GetAll_WhenAllMapsAreObtainedWithFindBy_ShouldReturnsEnumerable(string findBy)
+    public void GetAll_WhenAllMapsAreObtainedWithFindBy_ShouldReturnEnumerable(string findBy)
     {
         // Arrange
         string[] expectedMaps =
@@ -41,7 +41,7 @@ public class MapCollectionTests
     }
 
     [TestCaseSource(nameof(InvalidMapCases))]
-    public void GetById_WhenMapIdIsInvalid_ShouldReturnsFailureResult(int mapId)
+    public void GetById_WhenMapIdIsInvalid_ShouldReturnFailureResult(int mapId)
     {
         // Arrange
         string expectedMessage = Messages.InvalidMap;
@@ -55,7 +55,7 @@ public class MapCollectionTests
     }
 
     [Test]
-    public void GetById_WhenMapIdEqualsCount_ShouldReturnsFailureResult()
+    public void GetById_WhenMapIdEqualsCount_ShouldReturnFailureResult()
     {
         // Arrange
         string expectedMessage = Messages.InvalidMap;
@@ -73,7 +73,7 @@ public class MapCollectionTests
     [TestCase(2)]
     [TestCase(3)]
     [TestCase(4)]
-    public void GetById_WhenMapIdIsValid_ShouldReturnsSuccessResult(int mapId)
+    public void GetById_WhenMapIdIsValid_ShouldReturnSuccessResult(int mapId)
     {
         // Act
         Result<IMap> result = _maps.GetById(mapId);
@@ -85,7 +85,7 @@ public class MapCollectionTests
     }
 
     [Test]
-    public void GetByName_WhenMapNameIsNotFound_ShouldReturnsFailureResult()
+    public void GetByName_WhenMapNameIsNotFound_ShouldReturnFailureResult()
     {
         // Arrange
         string mapName = "NotFound";
@@ -102,7 +102,7 @@ public class MapCollectionTests
     [TestCase("de_aztec")]
     [TestCase("DE_AZTEC")]
     [TestCase("De_Aztec")]
-    public void GetByName_WhenMapNameIsFound_ShouldReturnsSuccessResult(string mapName)
+    public void GetByName_WhenMapNameIsFound_ShouldReturnSuccessResult(string mapName)
     {
         // Arrange
         string expectedMapName = "de_aztec";
@@ -124,7 +124,7 @@ public class MapCollectionTests
     [TestCase(6, 7)]
     [TestCase(7, 8)]
     [TestCase(31, 32)]
-    public void GetNext_WhenMapExists_ShouldReturnsNextMap(int currentId, int expectedId)
+    public void GetNext_WhenMapExists_ShouldReturnNextMap(int currentId, int expectedId)
     {
         // Arrange
         IMap current = _maps.GetById(currentId).Value;

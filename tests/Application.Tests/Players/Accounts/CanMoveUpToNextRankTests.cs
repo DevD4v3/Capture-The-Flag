@@ -3,7 +3,7 @@
 public class CanMoveUpToNextRankTests
 {
     [Test]
-    public void CanMoveUpToNextRank_WhenPlayerHasMaximumRank_ShouldReturnsFalse()
+    public void CanMoveUpToNextRank_WhenPlayerHasMaximumRank_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -46,7 +46,7 @@ public class CanMoveUpToNextRankTests
     [TestCase(RankId.Professional, 651)]
     [TestCase(RankId.SuperPro,     700)]
     [TestCase(RankId.SuperPro,     701)]
-    public void CanMoveUpToNextRank_WhenPlayerDoesHaveRequiredKills_ShouldReturnsTrue(RankId currentRank, int kills)
+    public void CanMoveUpToNextRank_WhenPlayerDoesHaveRequiredKills_ShouldReturnTrue(RankId currentRank, int kills)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -88,7 +88,7 @@ public class CanMoveUpToNextRankTests
     [TestCase(RankId.Professional, 601)]
     [TestCase(RankId.SuperPro,     650)]
     [TestCase(RankId.SuperPro,     651)]
-    public void CanMoveUpToNextRank_WhenPlayerDoesNotHaveRequiredKills_ShouldReturnsFalse(RankId currentRank, int kills)
+    public void CanMoveUpToNextRank_WhenPlayerDoesNotHaveRequiredKills_ShouldReturnFalse(RankId currentRank, int kills)
     {
         // Arrange
         var player = new PlayerInfo();

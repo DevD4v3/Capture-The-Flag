@@ -128,7 +128,7 @@ public class CurrentMapTests
     }
 
     [Test]
-    public void GetMapNameAsText_WhenNameIsObtained_ShouldReturnsValidStringFormat()
+    public void GetMapNameAsText_WhenNameIsObtained_ShouldReturnValidStringFormat()
     {
         // Arrange
         IMap map = new FakeMap(id: 0, name: "RC_Battlefield");
@@ -146,7 +146,7 @@ public class CurrentMapTests
 
     [TestCase(TeamId.Alpha)]
     [TestCase(TeamId.Beta)]
-    public void GetRandomSpawnLocation_WhenTeamIsAlphaOrBeta_ShouldReturnsSpawnLocation(TeamId team)
+    public void GetRandomSpawnLocation_WhenTeamIsAlphaOrBeta_ShouldReturnSpawnLocation(TeamId team)
     {
         // Arrange
         IMap map = new FakeMap();

@@ -10,7 +10,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenPlayerIsNotAssignedToAnyTeam_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenPlayerIsNotAssignedToAnyTeam_ShouldReturnFalse()
     {
         // Arrange
         var fakePlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.NoTeam);
@@ -28,7 +28,7 @@ public class IsCarryingEnemyFlagTests
     [TestCase("Bob")]
     [TestCase("BOB")]
     [TestCase("bob")]
-    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamIsCarryingTheBetaFlag_ShouldReturnsTrue(string playerName)
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamIsCarryingTheBetaFlag_ShouldReturnTrue(string playerName)
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -48,7 +48,7 @@ public class IsCarryingEnemyFlagTests
     [TestCase("Bob")]
     [TestCase("BOB")]
     [TestCase("bob")]
-    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamIsCarryingTheAlphaFlag_ShouldReturnsTrue(string playerName)
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamIsCarryingTheAlphaFlag_ShouldReturnTrue(string playerName)
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -66,7 +66,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenAnotherPlayerFromTheAlphaTeamIsCarryingTheBetaFlag_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenAnotherPlayerFromTheAlphaTeamIsCarryingTheBetaFlag_ShouldReturnFalse()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -85,7 +85,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenAnotherPlayerFromTheBetaTeamIsCarryingTheAlphaFlag_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenAnotherPlayerFromTheBetaTeamIsCarryingTheAlphaFlag_ShouldReturnFalse()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -104,7 +104,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamTakesADroppedBetaFlag_ShouldReturnsTrue()
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheAlphaTeamTakesADroppedBetaFlag_ShouldReturnTrue()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -127,7 +127,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamTakesADroppedAlphaFlag_ShouldReturnsTrue()
+    public void IsCarryingEnemyFlag_WhenPlayerFromTheBetaTeamTakesADroppedAlphaFlag_ShouldReturnTrue()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -150,7 +150,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenTheAlphaFlagHasNoCarrier_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenTheAlphaFlagHasNoCarrier_ShouldReturnFalse()
     {
         // Arrange
         var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Beta);
@@ -166,7 +166,7 @@ public class IsCarryingEnemyFlagTests
     }
 
     [Test]
-    public void IsCarryingEnemyFlag_WhenTheBetaFlagHasNoCarrier_ShouldReturnsFalse()
+    public void IsCarryingEnemyFlag_WhenTheBetaFlagHasNoCarrier_ShouldReturnFalse()
     {
         // Arrange
         var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Alpha);

@@ -3,7 +3,7 @@
 public class InvalidPlayerExtensionsTests
 {
     [Test]
-    public void IsInvalidPlayer_WhenPlayerIsInvalid_ShouldReturnsTrue()
+    public void IsInvalidPlayer_WhenPlayerIsInvalid_ShouldReturnTrue()
     {
         // Arrange
         Player player = default;
@@ -16,7 +16,7 @@ public class InvalidPlayerExtensionsTests
     }
 
     [Test]
-    public void IsInvalidPlayer_WhenPlayerIsValid_ShouldReturnsFalse()
+    public void IsInvalidPlayer_WhenPlayerIsValid_ShouldReturnFalse()
     {
         // Arrange
         Player player = new FakePlayer(id: 1, name: "Bob");
@@ -29,7 +29,7 @@ public class InvalidPlayerExtensionsTests
     }
 
     [Test]
-    public void IsValidPlayer_WhenPlayerIsInvalid_ShouldReturnsFalse()
+    public void IsValidPlayer_WhenPlayerIsInvalid_ShouldReturnFalse()
     {
         // Arrange
         Player player = default;
@@ -42,7 +42,7 @@ public class InvalidPlayerExtensionsTests
     }
 
     [Test]
-    public void IsValidPlayer_WhenPlayerIsValid_ShouldReturnsTrue()
+    public void IsValidPlayer_WhenPlayerIsValid_ShouldReturnTrue()
     {
         // Arrange
         Player player = new FakePlayer(id: 1, name: "Bob");

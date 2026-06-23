@@ -6,7 +6,7 @@ public class PlayerInfoTests
     static readonly int[] InvalidSkinCases = [-1, -2, 312];
 
     [TestCaseSource(nameof(InvalidRankCases))]
-    public void SetRank_WhenRankIdIsInvalid_ShouldReturnsFailureResult(int value)
+    public void SetRank_WhenRankIdIsInvalid_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -23,7 +23,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetRank_WhenRankIdIsValid_ShouldReturnsSuccessResult()
+    public void SetRank_WhenRankIdIsValid_ShouldReturnSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -38,7 +38,7 @@ public class PlayerInfoTests
     }
 
     [TestCaseSource(nameof(InvalidSkinCases))]
-    public void SetSkin_WhenSkinIdIsInvalid_ShouldReturnsFailureResult(int skinId)
+    public void SetSkin_WhenSkinIdIsInvalid_ShouldReturnFailureResult(int skinId)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -53,7 +53,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetSkin_WhenSkinIdIsValid_ShouldReturnsSuccessResult()
+    public void SetSkin_WhenSkinIdIsValid_ShouldReturnSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -70,7 +70,7 @@ public class PlayerInfoTests
     }
 
     [Test] 
-    public void HasSkin_WhenPlayerHasAssignedSkin_ShouldReturnsTrue()
+    public void HasSkin_WhenPlayerHasAssignedSkin_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -84,7 +84,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void HasSkin_WhenPlayerHasNoAssignedSkin_ShouldReturnsFalse()
+    public void HasSkin_WhenPlayerHasNoAssignedSkin_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -98,7 +98,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalKills_WhenArgumentIsNegative_ShouldReturnsFailureResult()
+    public void SetTotalKills_WhenArgumentIsNegative_ShouldReturnFailureResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -115,7 +115,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalKills_WhenArgumentIsPositive_ShouldReturnsSuccessResult()
+    public void SetTotalKills_WhenArgumentIsPositive_ShouldReturnSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -145,7 +145,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalDeaths_WhenArgumentIsNegative_ShouldReturnsFailureResult()
+    public void SetTotalDeaths_WhenArgumentIsNegative_ShouldReturnFailureResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -162,7 +162,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalDeaths_WhenArgumentIsPositive_ShouldReturnsSuccessResult()
+    public void SetTotalDeaths_WhenArgumentIsPositive_ShouldReturnSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -207,7 +207,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void HasSurpassedMaxKillingSpree_WhenNewRecordIsAchieved_ShouldReturnsTrue()
+    public void HasSurpassedMaxKillingSpree_WhenNewRecordIsAchieved_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -224,7 +224,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void HasSurpassedMaxKillingSpree_WhenNewRecordIsNotAchieved_ShouldReturnsFalse()
+    public void HasSurpassedMaxKillingSpree_WhenNewRecordIsNotAchieved_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -240,7 +240,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void HasRank_WhenRankIsNoob_ShouldReturnsTrue()
+    public void HasRank_WhenRankIsNoob_ShouldReturnTrue()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -255,7 +255,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void HasRank_WhenRankIsNotNoob_ShouldReturnsFalse()
+    public void HasRank_WhenRankIsNotNoob_ShouldReturnFalse()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -269,7 +269,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void GetStatsAsText_WhenStatsAreObtained_ShouldReturnsValidStringFormat()
+    public void GetStatsAsText_WhenStatsAreObtained_ShouldReturnValidStringFormat()
     {
         // Arrange
         var player = new PlayerInfo();

@@ -10,7 +10,7 @@ public class TeamTests
     }
 
     [Test]
-    public void GetMembersAsText_WhenMembersAreObtained_ShouldReturnsValidStringFormat()
+    public void GetMembersAsText_WhenMembersAreObtained_ShouldReturnValidStringFormat()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -25,7 +25,7 @@ public class TeamTests
     }
 
     [Test]
-    public void GetScoreAsText_WhenScoreIsObtained_ShouldReturnsValidStringFormat()
+    public void GetScoreAsText_WhenScoreIsObtained_ShouldReturnValidStringFormat()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -40,7 +40,7 @@ public class TeamTests
     }
 
     [Test]
-    public void IsFull_WhenTeamIsFull_ShouldReturnsTrue()
+    public void IsFull_WhenTeamIsFull_ShouldReturnTrue()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -57,7 +57,7 @@ public class TeamTests
     }
 
     [Test]
-    public void IsFull_WhenTeamIsNotFull_ShouldReturnsFalse()
+    public void IsFull_WhenTeamIsNotFull_ShouldReturnFalse()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -73,7 +73,7 @@ public class TeamTests
     }
 
     [Test]
-    public void IsWinner_WhenTeamIsWinner_ShouldReturnsTrue()
+    public void IsWinner_WhenTeamIsWinner_ShouldReturnTrue()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -90,7 +90,7 @@ public class TeamTests
     }
 
     [Test]
-    public void IsWinner_WhenTeamIsNotWinner_ShouldReturnsFalse()
+    public void IsWinner_WhenTeamIsNotWinner_ShouldReturnFalse()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -108,7 +108,7 @@ public class TeamTests
 
     [TestCase("~y~Alpha~n~~r~ not available", true)]
     [TestCase("not available", false)]
-    public void GetAvailabilityMessage_WhenTeamIsFull_ShouldReturnsUnavailableMessage(
+    public void GetAvailabilityMessage_WhenTeamIsFull_ShouldReturnUnavailableMessage(
         string expectedMessage, bool entireMessage)
     {
         // Arrange
@@ -127,7 +127,7 @@ public class TeamTests
 
     [TestCase("~y~Alpha~n~~r~ available", true)]
     [TestCase("available", false)]
-    public void GetAvailabilityMessage_WhenTeamIsNotFull_ShouldReturnsAvailableMessage(
+    public void GetAvailabilityMessage_WhenTeamIsNotFull_ShouldReturnAvailableMessage(
         string expectedMessage, bool entireMessage)
     {
         // Arrange

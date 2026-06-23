@@ -3,7 +3,7 @@
 public class TeamMembersTests
 {
     [Test]
-    public void IsEmpty_WhenThereAreNoTeamMembers_ShouldReturnsTrue()
+    public void IsEmpty_WhenThereAreNoTeamMembers_ShouldReturnTrue()
     {
         // Arrange
         var members = new TeamMembers();
@@ -16,7 +16,7 @@ public class TeamMembersTests
     }
 
     [Test]
-    public void IsEmpty_WhenThereAreTeamMembers_ShouldReturnsFalse()
+    public void IsEmpty_WhenThereAreTeamMembers_ShouldReturnFalse()
     {
         // Arrange
         var members = new TeamMembers

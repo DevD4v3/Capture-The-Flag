@@ -5,7 +5,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(10)]
     [TestCase(9)]
     [TestCase(8)]
-    public void HasSufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnsTrue(int amount)
+    public void HasSufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnTrue(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -20,7 +20,7 @@ public class PlayerStatsPerRoundTests
 
     [TestCase(11)]
     [TestCase(12)]
-    public void HasSufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnsFalse(int amount)
+    public void HasSufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnFalse(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -36,7 +36,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(10)]
     [TestCase(9)]
     [TestCase(8)]
-    public void HasInsufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnsFalse(int amount)
+    public void HasInsufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnFalse(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -51,7 +51,7 @@ public class PlayerStatsPerRoundTests
 
     [TestCase(11)]
     [TestCase(12)]
-    public void HasInsufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnsTrue(int amount)
+    public void HasInsufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnTrue(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -67,7 +67,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(0)]
     [TestCase(-1)]
     [TestCase(101)]
-    public void AddCoins_WhenCoinsAreNotBetween1To100_ShouldReturnsFailureResult(int value)
+    public void AddCoins_WhenCoinsAreNotBetween1To100_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -85,7 +85,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(2)]
     [TestCase(99)]
     [TestCase(100)]
-    public void AddCoins_WhenCoinsAreBetween1To100_ShouldReturnsSuccessResult(int value)
+    public void AddCoins_WhenCoinsAreBetween1To100_ShouldReturnSuccessResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -120,7 +120,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(0)]
     [TestCase(1)]
     [TestCase(-101)]
-    public void SubtractCoins_WhenCoinsAreNotInSpecifiedRange_ShouldReturnsFailureResult(int value)
+    public void SubtractCoins_WhenCoinsAreNotInSpecifiedRange_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -139,7 +139,7 @@ public class PlayerStatsPerRoundTests
     [TestCase(-2)]
     [TestCase(-99)]
     [TestCase(-100)]
-    public void SubtractCoins_WhenCoinsAreInSpecifiedRange_ShouldReturnsSuccessResult(int value)
+    public void SubtractCoins_WhenCoinsAreInSpecifiedRange_ShouldReturnSuccessResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();

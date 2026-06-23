@@ -3,7 +3,7 @@
 public class WeaponTests
 {
     [Test]
-    public void Is_WhenWeaponIsEqualToKnife_ShouldReturnsTrue()
+    public void Is_WhenWeaponIsEqualToKnife_ShouldReturnTrue()
     {
         // Arrange
         IWeapon weapon = WeaponDefinitions.Knife;
@@ -16,7 +16,7 @@ public class WeaponTests
     }
 
     [Test]
-    public void Is_WhenWeaponIsNotEqualToKnife_ShouldReturnsFalse()
+    public void Is_WhenWeaponIsNotEqualToKnife_ShouldReturnFalse()
     {
         // Arrange
         IWeapon weapon = WeaponDefinitions.Knife;
@@ -29,7 +29,7 @@ public class WeaponTests
     }
 
     [Test]
-    public void IsNot_WhenWeaponIsNotEqualToKnife_ShouldReturnsTrue()
+    public void IsNot_WhenWeaponIsNotEqualToKnife_ShouldReturnTrue()
     {
         // Arrange
         IWeapon weapon = WeaponDefinitions.Knife;
@@ -42,7 +42,7 @@ public class WeaponTests
     }
 
     [Test]
-    public void IsNot_WhenWeaponIsEqualToKnife_ShouldReturnsFalse()
+    public void IsNot_WhenWeaponIsEqualToKnife_ShouldReturnFalse()
     {
         // Arrange
         IWeapon weapon = WeaponDefinitions.Knife;

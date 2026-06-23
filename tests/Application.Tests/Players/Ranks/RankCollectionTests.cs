@@ -5,7 +5,7 @@ public class RankCollectionTests
     static readonly int[] InvalidRankCases = [-1, 1000, RankCollection.Count];
 
     [TestCaseSource(nameof(InvalidRankCases))]
-    public void GetById_WhenRankIsInvalid_ShouldReturnsFailureResult(int value)
+    public void GetById_WhenRankIsInvalid_ShouldReturnFailureResult(int value)
     {
         // Arrange
         RankId rankId = (RankId)value;
@@ -20,7 +20,7 @@ public class RankCollectionTests
     }
 
     [Test]
-    public void GetById_WhenRankIsValid_ShouldReturnsSuccessResult()
+    public void GetById_WhenRankIsValid_ShouldReturnSuccessResult()
     {
         // Arrange
         RankId rankId = RankId.Noob;
@@ -36,7 +36,7 @@ public class RankCollectionTests
     }
 
     [TestCaseSource(nameof(InvalidRankCases))]
-    public void GetNextRank_WhenRankIsInvalid_ShouldReturnsFailureResult(int value)
+    public void GetNextRank_WhenRankIsInvalid_ShouldReturnFailureResult(int value)
     {
         // Arrange
         RankId rankId = (RankId)value;
@@ -51,7 +51,7 @@ public class RankCollectionTests
     }
 
     [Test]
-    public void GetNextRank_WhenRankIsValid_ShouldReturnsSuccessResult()
+    public void GetNextRank_WhenRankIsValid_ShouldReturnSuccessResult()
     {
         // Arrange
         RankId previousRank = RankId.Noob;
@@ -81,7 +81,7 @@ public class RankCollectionTests
     }
 
     [Test]
-    public void GetByRequiredKills_WhenKillsIsNegative_ShouldReturnsFailureResult()
+    public void GetByRequiredKills_WhenKillsIsNegative_ShouldReturnFailureResult()
     {
         // Arrange
         var expectedMessage = Messages.ValueCannotBeNegative;
@@ -96,7 +96,7 @@ public class RankCollectionTests
     }
 
     [TestCaseSource(typeof(GetRankByRequiredKillsTestCases))]
-    public void GetByRequiredKills_WhenRankIsObtainedByKills_ShouldReturnsSuccessResult((RankId ExpectedRankId, int Kills) rank)
+    public void GetByRequiredKills_WhenRankIsObtainedByKills_ShouldReturnSuccessResult((RankId ExpectedRankId, int Kills) rank)
     {
         // Arrange
 

@@ -29,7 +29,7 @@ public class PlayerExtensionsTests
     }
 
     [Test]
-    public void IsUnauthenticated_WhenPlayerIsUnauthenticated_ShouldReturnsTrue()
+    public void IsUnauthenticated_WhenPlayerIsUnauthenticated_ShouldReturnTrue()
     {
         // Arrange
         var fakePlayer = new FakePlayer3()
@@ -45,7 +45,7 @@ public class PlayerExtensionsTests
     }
 
     [Test]
-    public void IsUnauthenticated_WhenPlayerIsAuthenticated_ShouldReturnsFalse()
+    public void IsUnauthenticated_WhenPlayerIsAuthenticated_ShouldReturnFalse()
     {
         // Arrange
         var fakePlayer = new FakePlayer3()

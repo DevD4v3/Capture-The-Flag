@@ -56,7 +56,7 @@ public class PlayerScoreExtensionsTests
     }
 
     [Test]
-    public void AddScore_WhenValueIsNegative_ShouldReturnsFailureResult()
+    public void AddScore_WhenValueIsNegative_ShouldReturnFailureResult()
     {
         // Arrange
         int expectedScore = 10;
@@ -110,7 +110,7 @@ public class PlayerScoreExtensionsTests
     }
 
     [Test]
-    public void SetScore_WhenValueIsNegative_ShouldReturnsFailureResult()
+    public void SetScore_WhenValueIsNegative_ShouldReturnFailureResult()
     {
         // Arrange
         int expectedScore = 10;

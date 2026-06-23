@@ -24,7 +24,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenAlphaTeamCapturesTheFlagOfTheBetaTeam_ShouldReturnsCapturedStatus()
+    public void HandleFlagInteraction_WhenAlphaTeamCapturesTheFlagOfTheBetaTeam_ShouldReturnCapturedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -42,7 +42,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenBetaTeamCapturesTheFlagOfTheAlphaTeam_ShouldReturnsCapturedStatus()
+    public void HandleFlagInteraction_WhenBetaTeamCapturesTheFlagOfTheAlphaTeam_ShouldReturnCapturedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -60,7 +60,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamBroughtTheFlagOfTheBetaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamBroughtTheFlagOfTheBetaTeamToTheirOwnBase_ShouldReturnBroughtStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -81,7 +81,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromBetaTeamBroughtTheFlagOfTheAlphaTeamToTheirOwnBase_ShouldReturnsBroughtStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamBroughtTheFlagOfTheAlphaTeamToTheirOwnBase_ShouldReturnBroughtStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -102,7 +102,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnBasePositionStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -119,7 +119,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnBasePositionStatus()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -136,7 +136,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnReturnedStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -154,7 +154,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromBetaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnsReturnedStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamReturnsTheFlagOfTheirOwnTeam_ShouldReturnReturnedStatus()
     {
         // Arrange
         Team betaTeam = Team.Beta;
@@ -172,7 +172,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromBetaTeamTakesTheFlagOfTheAlphaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
+    public void HandleFlagInteraction_WhenPlayerFromBetaTeamTakesTheFlagOfTheAlphaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnTakenStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
@@ -191,7 +191,7 @@ public class HandleFlagInteractionTests
     }
 
     [Test]
-    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamTakesTheFlagOfTheBetaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnsTakenStatus()
+    public void HandleFlagInteraction_WhenPlayerFromAlphaTeamTakesTheFlagOfTheBetaTeamFrom_A_PositionOtherThanTheBase_ShouldReturnTakenStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;

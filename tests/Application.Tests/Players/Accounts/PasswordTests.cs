@@ -19,7 +19,7 @@ public class PasswordTests
     [TestCase("")]
     [TestCase(" ")]
     [TestCase("   ")]
-    public void SetPassword_WhenPasswordIsEmpty_ShouldReturnsFailureResult(string password)
+    public void SetPassword_WhenPasswordIsEmpty_ShouldReturnFailureResult(string password)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -36,7 +36,7 @@ public class PasswordTests
 
     [TestCase("aaaa")]
     [TestCase("aaaaaaaaaaaaaaaaaaaaa")]
-    public void SetPassword_WhenPasswordLengthIsInvalid_ShouldReturnsFailureResult(string password)
+    public void SetPassword_WhenPasswordLengthIsInvalid_ShouldReturnFailureResult(string password)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -53,7 +53,7 @@ public class PasswordTests
 
     [TestCase("12345")]
     [TestCase("bbbbbbbbbbbbbbbbbbbb")]
-    public void SetPassword_WhenPasswordIsValid_ShouldReturnsSuccessResult(string password)
+    public void SetPassword_WhenPasswordIsValid_ShouldReturnSuccessResult(string password)
     {
         // Arrange
         var player = new PlayerInfo();

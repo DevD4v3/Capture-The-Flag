@@ -19,7 +19,7 @@ public class PlayerNameTests
     [TestCase("")]
     [TestCase(" ")]
     [TestCase("   ")]
-    public void SetName_WhenNameIsEmpty_ShouldReturnsFailureResult(string name)
+    public void SetName_WhenNameIsEmpty_ShouldReturnFailureResult(string name)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -37,7 +37,7 @@ public class PlayerNameTests
     [TestCase("a")]
     [TestCase("ab")]
     [TestCase("aaaaaaaaaaaaaaaaaaaaa")]
-    public void SetName_WhenNameLengthIsInvalid_ShouldReturnsFailureResult(string name)
+    public void SetName_WhenNameLengthIsInvalid_ShouldReturnFailureResult(string name)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -57,7 +57,7 @@ public class PlayerNameTests
     [TestCase("ññÑÑáéíóú")]
     [TestCase("ÁÉÍÚÓ")]
     [TestCase("><`°°¬")]
-    public void SetName_WhenNickNameHasInvalidCharacters_ShouldReturnsFailureResult(string name)
+    public void SetName_WhenNickNameHasInvalidCharacters_ShouldReturnFailureResult(string name)
     {
         // Arrange
         var player = new PlayerInfo();
@@ -78,7 +78,7 @@ public class PlayerNameTests
     [TestCase("ZXCVBNM")]
     [TestCase("qwertyuiopasdfghjkl")]
     [TestCase("zxcvbnm")]
-    public void SetName_WhenNickNameHasValidCharacters_ShouldReturnsSuccessResult(string name)
+    public void SetName_WhenNickNameHasValidCharacters_ShouldReturnSuccessResult(string name)
     {
         // Arrange
         var player = new PlayerInfo();

@@ -11,7 +11,7 @@ public class TimeLeftTests
     }
 
     [Test]
-    public void IsCompleted_WhenTimeLeftIsCompleted_ShouldReturnsTrue()
+    public void IsCompleted_WhenTimeLeftIsCompleted_ShouldReturnTrue()
     {
         // Arrange
         var timeLeft = new TimeLeft();
@@ -28,7 +28,7 @@ public class TimeLeftTests
     }
 
     [Test]
-    public void IsCompleted_WhenTimeLeftIsNotCompleted_ShouldReturnsFalse()
+    public void IsCompleted_WhenTimeLeftIsNotCompleted_ShouldReturnFalse()
     {
         // Arrange
         var timeLeft = new TimeLeft();
@@ -48,7 +48,7 @@ public class TimeLeftTests
     [TestCase(-2)]
     [TestCase(61)]
     [TestCase(62)]
-    public void SetInterval_WhenMinutesIntervalIsOutOfRange_ShouldReturnsFailureResult(int value)
+    public void SetInterval_WhenMinutesIntervalIsOutOfRange_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var timeLeft = new TimeLeft();
@@ -76,7 +76,7 @@ public class TimeLeftTests
     [TestCase(30, "30:00")]
     [TestCase(45, "45:00")]
     [TestCase(60, "60:00")]
-    public void SetInterval_WhenMinutesIntervalIsNotOutOfRange_ShouldReturnsSuccessResult(int value, string expectedText)
+    public void SetInterval_WhenMinutesIntervalIsNotOutOfRange_ShouldReturnSuccessResult(int value, string expectedText)
     {
         // Arrange
         var timeLeft = new TimeLeft();
@@ -94,7 +94,7 @@ public class TimeLeftTests
     [TestCase(-2)]
     [TestCase(3601)]
     [TestCase(3602)]
-    public void SetInterval_WhenSecondsIntervalIsOutOfRange_ShouldReturnsFailureResult(int value)
+    public void SetInterval_WhenSecondsIntervalIsOutOfRange_ShouldReturnFailureResult(int value)
     {
         // Arrange
         var timeLeft = new TimeLeft();
@@ -122,7 +122,7 @@ public class TimeLeftTests
     [TestCase(1800, "30:00")]
     [TestCase(2700, "45:00")]
     [TestCase(3600, "60:00")]
-    public void SetInterval_WhenSecondsIntervalIsNotOutOfRange_ShouldReturnsSuccessResult(int value, string expectedText)
+    public void SetInterval_WhenSecondsIntervalIsNotOutOfRange_ShouldReturnSuccessResult(int value, string expectedText)
     {
         // Arrange
         var timeLeft = new TimeLeft();
