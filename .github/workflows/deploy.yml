@@ -25,10 +25,14 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: SERVER_DIRECTORY
           script: |
+            set -e
             cd $SERVER_DIRECTORY
             git checkout main
             git pull --ff-only origin main
             git status
             sudo docker compose up --build -d
+            sleep 5
+            sudo docker compose ps -a
+            sudo docker compose exec app tail -n 100 /app/log.txt
             sudo docker builder prune -f
             sudo docker image prune -f
