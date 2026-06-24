@@ -8,6 +8,7 @@ public static class WeaponServicesExtensions
             .AddSingleton<WeaponCatalogBase, RunWeaponCatalog>()
             .AddSingleton<WeaponCatalogBase, WalkingWeaponCatalog>()
             .AddSingleton<WeaponCatalogBase, MixedWeaponCatalog>()
+            .AddSingleton<WeaponCatalogBase, RifleOnlyWeaponCatalog>()
             .AddSingleton<WeaponCatalog>();
 
         return services;

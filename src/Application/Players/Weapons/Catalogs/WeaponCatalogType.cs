@@ -13,4 +13,7 @@ public enum WeaponCatalogType
 
     [DisplayName("Mixed Weapons")]
     Mixed,
+
+    [DisplayName("Rifles Only")]
+    RifleOnly
 }
