@@ -11,9 +11,15 @@ public enum WeaponCatalogType
     [DisplayName("Run Weapons")]
     Run,
 
-    [DisplayName("Mixed Weapons")]
+    [DisplayName("Run & Walk Weapons")]
     Mixed,
 
     [DisplayName("Rifles Only")]
-    RifleOnly
+    RifleOnly,
+
+    [DisplayName("War Weapons")]
+    War,
+
+    [DisplayName("Heavy Weapons")]
+    Heavy
 }

@@ -30,6 +30,16 @@ public class WeaponDefinitions
     public static readonly IWeapon Sniper = new GtaWeapon(Weapon.Sniper, "Sniper Rifle", 6);
     public static readonly IWeapon Rifle = new GtaWeapon(Weapon.Rifle, "Country Rifle", 6);
 
+    public static readonly IWeapon RocketLauncher = new GtaWeapon(Weapon.RocketLauncher, "Rocket Launcher", 7);
+    public static readonly IWeapon Heatseeker = new GtaWeapon(Weapon.HeatSeeker, "Heatseeker Rocket", 7);
+    public static readonly IWeapon Flamethrower = new GtaWeapon(Weapon.FlameThrower, "Flamethrower", 7);
+    public static readonly IWeapon Minigun = new GtaWeapon(Weapon.Minigun, 7);
+
+    public static readonly IWeapon Grenade = new GtaWeapon(Weapon.Grenade, 8);
+    public static readonly IWeapon TearGas = new GtaWeapon(Weapon.Teargas, "Tear Gas", 8);
+    public static readonly IWeapon Molotov = new GtaWeapon(Weapon.Moltov, "Molotov Cocktail", 8);
+    public static readonly IWeapon SatchelCharge = new GtaWeapon(Weapon.SatchelCharge, "Satchel Charge", 8);
+
     private class GtaWeapon : IWeapon
     {
         public Weapon Id { get; }
