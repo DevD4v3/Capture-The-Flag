@@ -13,7 +13,7 @@ public class WeaponSystem(
     }
 
     [Event]
-    public async Task OnPlayerRequestSpawn(Player player) 
+    public async Task OnPlayerRequestSpawn(Player player)
     {
         await ShowWeapons(player);
         player.SendClientMessage(Color.Orange, Messages.WeaponListUsage);
@@ -31,7 +31,7 @@ public class WeaponSystem(
         {
             await ShowWeapons(player);
         }
-        else if (KeyUtils.HasPressed(newKeys,oldKeys, Keys.CtrlBack))
+        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.CtrlBack))
         {
             await ShowWeaponPackage(player);
         }
@@ -138,7 +138,7 @@ public class WeaponSystem(
 
         var dialog = new ListDialog("Weapon Catalogs", "Select", "Close");
         foreach (WeaponCatalogType type in Enum.GetValues<WeaponCatalogType>())
-            dialog.Add(type.ToString());
+            dialog.Add(type.GetDisplayName());
 
         ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
@@ -152,7 +152,9 @@ public class WeaponSystem(
         }
 
         weaponCatalogSettings.Change(selectedCatalog);
-        
+        var catalogName = selectedCatalog.GetDisplayName();
+        var message = Smart.Format(Messages.WeaponCatalogChangedTo, new { Name = catalogName });
+
         foreach (Player currentPlayer in entityManager.GetComponents<Player>())
         {
             var weaponSelection = currentPlayer.GetComponent<WeaponSelectionComponent>();
@@ -170,7 +172,6 @@ public class WeaponSystem(
                 return shouldRemove;
             });
 
-            var message = Smart.Format(Messages.WeaponCatalogChangedTo, new { weaponCatalogSettings.Type });
             currentPlayer.SendClientMessage(Color.Yellow, message);
         }
     }

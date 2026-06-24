@@ -511,7 +511,7 @@
     <value>The weapon catalog has changed. Please open the weapon list again.</value>
   </data>
   <data name="WeaponCatalogChangedTo" xml:space="preserve">
-    <value>The weapon catalog has been changed to '{Type} Weapons'.</value>
+    <value>The weapon catalog has been changed to '{Name}'.</value>
   </data>
   <data name="WeaponListUsage" xml:space="preserve">
     <value>Press Y to show the available weapons</value>
