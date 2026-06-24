@@ -5,7 +5,12 @@
 /// </summary>
 public enum WeaponCatalogType
 {
+    [DisplayName("Walking Weapons")]
     Walking,
+
+    [DisplayName("Run Weapons")]
     Run,
-    Mixed
+
+    [DisplayName("Mixed Weapons")]
+    Mixed,
 }

@@ -1258,7 +1258,7 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The weapon catalog has been changed to &apos;{Type} Weapons&apos;..
+        ///   Looks up a localized string similar to The weapon catalog has been changed to &apos;{Name}&apos;..
         /// </summary>
         internal static string WeaponCatalogChangedTo {
             get {
