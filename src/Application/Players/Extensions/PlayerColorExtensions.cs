@@ -11,7 +11,7 @@ public static class PlayerColorExtensions
     /// </remarks>
     public static void ShowOnRadarMap(this Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         Color teamColor = playerInfo.Team.ColorHex;
         player.Color = new Color(teamColor.R, teamColor.G, teamColor.B, 255f);
     }
@@ -25,7 +25,7 @@ public static class PlayerColorExtensions
     /// </remarks>
     public static void HideOnRadarMap(this Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         Color teamColor = playerInfo.Team.ColorHex;
         player.Color = new Color(teamColor.R, teamColor.G, teamColor.B, 00f);
     }

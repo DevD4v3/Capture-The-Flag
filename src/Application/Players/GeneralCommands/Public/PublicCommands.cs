@@ -31,7 +31,7 @@ public class PublicCommands(
     [PlayerCommand("kill")]
     public void Kill(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.Team == Team.None)
         {
             player.SendClientMessage(Color.Red, Messages.NoTeam);
@@ -45,7 +45,7 @@ public class PublicCommands(
     {
         IEnumerable<PlayerInfo> admins = entityManager
             .GetComponents<Player>()
-            .Select(player => player.GetInfo())
+            .Select(player => player.GetRequiredInfo())
             .Where(playerInfo => playerInfo.RoleId >= RoleId.Moderator)
             .OrderByDescending(playerInfo => playerInfo.RoleId);
 
@@ -68,7 +68,7 @@ public class PublicCommands(
     {
         IEnumerable<PlayerInfo> vips = entityManager
             .GetComponents<Player>()
-            .Select(player => player.GetInfo())
+            .Select(player => player.GetRequiredInfo())
             .Where(playerInfo => playerInfo.RoleId >= RoleId.VIP);
 
         int count = vips.Count();
@@ -99,7 +99,7 @@ public class PublicCommands(
 
         IEnumerable<Player> admins = entityManager
             .GetComponents<Player>()
-            .Where(player => player.GetInfo().RoleId >= RoleId.Moderator);
+            .Where(player => player.GetRequiredInfo().RoleId >= RoleId.Moderator);
 
         if (!admins.Any())
         {
@@ -139,7 +139,7 @@ public class PublicCommands(
             return;
         }
 
-        if (currentPlayer.GetInfo().IsCarryingEnemyFlag())
+        if (currentPlayer.GetRequiredInfo().IsCarryingEnemyFlag())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.HasCapturedFlag);
             return;

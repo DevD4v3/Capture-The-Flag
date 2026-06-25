@@ -7,7 +7,7 @@ public class TearGasVitality : ICombo
 
     public Result Give(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         player.Health = 100;
         player.Armour = 100;
         player.GiveWeapon(Weapon.Teargas, ammo: 30);

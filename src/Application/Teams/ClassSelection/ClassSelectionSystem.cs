@@ -59,7 +59,7 @@ public class ClassSelectionSystem(
         Team selectedTeam = player.Team == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
         player.DisableClassSelection();
         player.HideGameText(style: 3);
-        player.GetInfo().SetTeam(selectedTeam.Id);
+        player.GetRequiredInfo().SetTeam(selectedTeam.Id);
         player.StopAudioStream();
         selectedTeam.Members.Add(player);
         classSelectionTextDrawRenderer.Hide(player);
@@ -79,7 +79,7 @@ public class ClassSelectionSystem(
         if (player.IsUnauthenticated())
             return;
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.Team == Team.None)
             return;
 
@@ -90,7 +90,7 @@ public class ClassSelectionSystem(
     [PlayerCommand("class")]
     public void RedirectToClassSelection(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.IsCarryingEnemyFlag())
         {
             player.SendClientMessage(Color.Red, Messages.HasCapturedFlag);

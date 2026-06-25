@@ -37,7 +37,7 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
             .OrderByDescending(player => player.Score);
         foreach (Player teamMember in alphaTeamMembers) 
         {
-            PlayerInfo teamMemberInfo = teamMember.GetInfo();
+            PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
             string[] columns = [
                 $"{alphaTeam.ColorHex}{teamMember.Name}",
                 $"{alphaTeam.ColorHex}{teamMember.Score}",
@@ -52,7 +52,7 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
             .OrderByDescending(player => player.Score);
         foreach (Player teamMember in betaTeamMembers)
         {
-            PlayerInfo teamMemberInfo = teamMember.GetInfo();
+            PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
             string[] columns = [
                 $"{betaTeam.ColorHex}{teamMember.Name}",
                 $"{betaTeam.ColorHex}{teamMember.Score}",

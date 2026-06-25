@@ -16,7 +16,7 @@ public static class PlayerTeamExtensions
         if (player.Team == (int)TeamId.NoTeam)
             return Team.None;
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         Team currentTeam = playerInfo.Team;
         currentTeam.Members.Remove(player);
         playerInfo.SetTeam(TeamId.NoTeam);

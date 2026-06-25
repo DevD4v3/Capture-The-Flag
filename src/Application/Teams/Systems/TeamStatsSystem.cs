@@ -14,13 +14,13 @@ public class TeamStatsSystem(
     [Event]
     public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
         deadPlayerInfo.Team.StatsPerRound.AddDeaths();
 
         if (killer.IsInvalidPlayer())
             return;
 
-        PlayerInfo killerInfo = killer.GetInfo();
+        PlayerInfo killerInfo = killer.GetRequiredInfo();
         killerInfo.Team.StatsPerRound.AddKills();
     }
 

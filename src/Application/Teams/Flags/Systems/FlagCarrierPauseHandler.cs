@@ -26,7 +26,7 @@ public class FlagCarrierPauseHandler(
     [Event]
     public void OnPlayerPauseStateChange(Player player, bool pauseState)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (pauseState && playerInfo.IsCarryingEnemyFlag())
         {
             var interval = TimeSpan.FromSeconds(flagCarrierSettings.PauseTime);

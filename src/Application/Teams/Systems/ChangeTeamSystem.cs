@@ -9,7 +9,7 @@ public class ChangeTeamSystem(
     [PlayerCommand("team")]
     public async Task ShowTeams(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.Team == Team.None)
         {
             player.SendClientMessage(Color.Red, Messages.NoTeam);
@@ -53,7 +53,7 @@ public class ChangeTeamSystem(
     {
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.Team == selectedTeam)
         {
             player.SendClientMessage(Color.Red, Messages.PlayerIsAlreadyInTeam);

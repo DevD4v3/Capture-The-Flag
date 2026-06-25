@@ -16,7 +16,7 @@ public class PlayerCoinsSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
+        PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
         Result result = targetPlayerInfo.StatsPerRound.AddCoins(coins);
         if (result.IsFailed)
         {
@@ -52,7 +52,7 @@ public class PlayerCoinsSystem(
         IEnumerable<Player> players = entityManager.GetComponents<Player>();
         foreach (Player targetPlayer in players)
         {
-            PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
+            PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
             Result result = targetPlayerInfo.StatsPerRound.AddCoins(coins);
             if (result.IsFailed)
             {
@@ -90,7 +90,7 @@ public class PlayerCoinsSystem(
         static int ConvertMinutesToSeconds(int value) => value * 60;
         int seconds = ConvertMinutesToSeconds(commandCooldowns.Coins);
         waitTimeComponent.Value = unixTimeSeconds.Value + seconds;
-        PlayerInfo currentPlayerInfo = currentPlayer.GetInfo();
+        PlayerInfo currentPlayerInfo = currentPlayer.GetRequiredInfo();
         currentPlayerInfo.StatsPerRound.AddCoins(100);
         playerStatsRenderer.UpdateTextDraw(currentPlayer);
         currentPlayer.SendClientMessage(Color.Yellow, Messages.GiveMeCoins);

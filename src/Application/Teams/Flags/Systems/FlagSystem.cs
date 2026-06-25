@@ -8,7 +8,7 @@ public class FlagSystem(
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (playerInfo.IsCarryingEnemyFlag())
         {
             Team currentTeam = playerInfo.Team;
@@ -19,14 +19,14 @@ public class FlagSystem(
     [Event]
     public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
         if (deadPlayerInfo.IsCarryingEnemyFlag())
         {
             Team currentTeam = deadPlayerInfo.Team;
             onFlagDropped.Handle(currentTeam.RivalTeam, deadPlayer);
             if (killer.IsValidPlayer())
             {
-                PlayerInfo killerInfo = killer.GetInfo();
+                PlayerInfo killerInfo = killer.GetRequiredInfo();
                 killerInfo.StatsPerRound.AddCoins(4);
                 killer.AddHealth(10);
                 killer.AddScore(2);

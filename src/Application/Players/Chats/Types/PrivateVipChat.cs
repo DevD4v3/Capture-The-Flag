@@ -14,7 +14,7 @@ public class PrivateVipChat(IEntityManager entityManager) : IChatMessage
             if (player.IsInClassSelection())
                 continue;
 
-            PlayerInfo playerInfo = player.GetInfo();
+            PlayerInfo playerInfo = player.GetRequiredInfo();
             if (playerInfo.HasLowerRoleThan(RoleId.VIP))
                 continue;
 

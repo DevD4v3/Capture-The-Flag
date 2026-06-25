@@ -14,7 +14,7 @@ public class PrivateModeratorChat(IEntityManager entityManager) : IChatMessage
             if (player.IsInClassSelection())
                 continue;
 
-            PlayerInfo playerInfo = player.GetInfo();
+            PlayerInfo playerInfo = player.GetRequiredInfo();
             if (playerInfo.HasLowerRoleThan(RoleId.Moderator))
                 continue;
 

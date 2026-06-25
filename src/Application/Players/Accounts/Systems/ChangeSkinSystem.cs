@@ -5,7 +5,7 @@ public class ChangeSkinSystem(IPlayerRepository playerRepository) : ISystem
     [PlayerCommand("skin")]
     public void SetSkin(Player player, [CommandParameter(Name = "skinId")]int newSkinId)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         int oldSkinId = playerInfo.SkinId;
         Result result = playerInfo.SetSkin(newSkinId);
         if (result.IsFailed)

@@ -3,40 +3,45 @@
 public static class PlayerExtensions
 {
     /// <summary>
-    /// Gets the information from a player.
+    /// Gets the information associated with the specified player.
     /// </summary>
-    /// <param name="player">The current player.</param>
+    /// <param name="player">
+    /// The player whose information should be retrieved.
+    /// </param>
     /// <returns>
-    /// An instance of type <see cref="PlayerInfo"/>.
+    /// The player's information.
     /// </returns>
     /// <exception cref="InvalidOperationException">
-    /// when the <see cref="AccountComponent"/> component is not attached to the player.
+    /// Thrown when the player does not have an attached
+    /// <see cref="AccountComponent"/>.
     /// </exception>
-    public static PlayerInfo GetInfo(this Player player)
+    public static PlayerInfo GetRequiredInfo(this Player player)
     {
         AccountComponent accountComponent = player.GetComponent<AccountComponent>();
-        return accountComponent is null ?
-            throw new InvalidOperationException($"The '{nameof(AccountComponent)}' component is not attached to the player") :
-            accountComponent.PlayerInfo;
+        return accountComponent?.PlayerInfo
+            ?? throw new InvalidOperationException(
+                $"The player is missing the required {nameof(AccountComponent)}.");
     }
 
     /// <summary>
-    /// Checks if the player is unauthenticated.
+    /// Determines whether the specified player is unauthenticated.
     /// </summary>
     /// <param name="player">
-    /// The player to check for authentication status.
+    /// The player whose authentication status should be checked.
     /// </param>
     /// <returns>
-    /// <c>true</c> if the player is unauthenticated; otherwise, <c>false</c>.
+    /// <see langword="true"/> if the player is unauthenticated;
+    /// otherwise, <see langword="false"/>.
     /// </returns>
     /// <exception cref="InvalidOperationException">
-    /// when the <see cref="AccountComponent"/> component is not attached to the player.
+    /// Thrown when the player does not have an attached
+    /// <see cref="AccountComponent"/>.
     /// </exception>
     public static bool IsUnauthenticated(this Player player)
     {
         AccountComponent accountComponent = player.GetComponent<AccountComponent>();
-        return accountComponent is null ?
-            throw new InvalidOperationException($"The '{nameof(AccountComponent)}' component is not attached to the player") :
-            accountComponent.IsUnauthenticated;
+        return accountComponent?.IsUnauthenticated
+            ?? throw new InvalidOperationException(
+                $"The player is missing the required {nameof(AccountComponent)}.");
     }
 }

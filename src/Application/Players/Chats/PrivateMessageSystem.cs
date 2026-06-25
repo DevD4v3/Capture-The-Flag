@@ -32,7 +32,7 @@ public class PrivateMessageSystem(IEntityManager entityManager) : ISystem
         var players = entityManager.GetComponents<Player>();
         foreach (Player player in players)
         {
-            PlayerInfo playerInfo = player.GetInfo();
+            PlayerInfo playerInfo = player.GetRequiredInfo();
             if (playerInfo.HasLowerRoleThan(RoleId.Moderator))
                 continue;
 

@@ -37,7 +37,7 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
         for (int index = 0; index < players.Length; index++)
         {
             Player player = players[index];
-            PlayerInfo playerInfo = player.GetInfo();
+            PlayerInfo playerInfo = player.GetRequiredInfo();
             if (player.IsPaused())
             {
                 playerInfo.StatsPerRound.ResetStats();

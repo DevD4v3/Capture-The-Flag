@@ -26,7 +26,7 @@ public class ChangeRoleSystem(
             return;
         }
 
-        PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
+        PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
         RoleId newRoleId = (RoleId)roleId;
         RoleId oldRoleId = targetPlayerInfo.RoleId;
         Result result = targetPlayerInfo.SetRole(newRoleId);
@@ -106,7 +106,7 @@ public class ChangeRoleSystem(
         }
 
         var gameText = Smart.Format(Messages.PromotedToRole, new { RoleName = RoleId.Admin });
-        PlayerInfo playerInfo = currentPlayer.GetInfo();
+        PlayerInfo playerInfo = currentPlayer.GetRequiredInfo();
         playerInfo.SetRole(RoleId.Admin);
         playerRepository.UpdateRole(playerInfo);
         currentPlayer.GameText(gameText, TimeSpan.FromSeconds(4), GameTextStyle.Style3);

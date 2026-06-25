@@ -3,26 +3,26 @@
 public class PlayerExtensionsTests
 {
     [Test]
-    public void GetInfo_WhenNoAccountComponent_ShouldThrowInvalidOperationException()
+    public void GetRequiredInfo_WhenNoAccountComponent_ShouldThrowInvalidOperationException()
     {
         // Arrange
         var fakePlayer = new FakePlayer2();
 
         // Act
-        Action act = () => fakePlayer.GetInfo();
+        Action act = () => fakePlayer.GetRequiredInfo();
 
         // Assert
         act.Should().Throw<InvalidOperationException>();
     }
 
     [Test]
-    public void GetInfo_WhenAccountComponentIsAssigned_ShouldNotThrowInvalidOperationException()
+    public void GetRequiredInfo_WhenAccountComponentIsAssigned_ShouldNotThrowInvalidOperationException()
     {
         // Arrange
         var fakePlayer = new FakePlayer3();
 
         // Act
-        Action act = () => fakePlayer.GetInfo();
+        Action act = () => fakePlayer.GetRequiredInfo();
 
         // Assert
         act.Should().NotThrow<InvalidOperationException>();

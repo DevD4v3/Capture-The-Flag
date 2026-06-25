@@ -36,8 +36,8 @@ public class HeadshotSystem(
 
         if (issuer.Team != receiver.Team && weapon == Weapon.Sniper && bodyPart == BodyPart.Head)
         {
-            PlayerInfo issuerInfo = issuer.GetInfo();
-            PlayerInfo receiverInfo = receiver.GetInfo();
+            PlayerInfo issuerInfo = issuer.GetRequiredInfo();
+            PlayerInfo receiverInfo = receiver.GetRequiredInfo();
             issuerInfo.AddHeadShots();
             issuerInfo.StatsPerRound.AddCoins(5);
             playerRepository.UpdateHeadShots(issuerInfo);
