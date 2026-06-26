@@ -6,23 +6,26 @@ public class AccountSystem(
     SignupDialogViewer signupDialogViewer) : ISystem
 {
     [Event]
-    public async Task OnPlayerConnect(Player connectedPlayer)
+    public async Task OnPlayerConnect(Player player)
     {
-        AttachAccountComponent(connectedPlayer);
-        PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
-        if(playerInfo is null)
+        PlayerInfo playerInfo = playerRepository.GetOrDefault(player.Name);
+
+        if (playerInfo is null)
         {
-            await signupDialogViewer.View(connectedPlayer);
+            playerInfo = CreatePlayerInfo(player.Name);
+            player.AddComponent<AccountComponent>(playerInfo);
+            await signupDialogViewer.View(player);
             return;
         }
-        await loginDialogViewer.View(connectedPlayer, playerInfo);
+
+        player.AddComponent<AccountComponent>(playerInfo);
+        await loginDialogViewer.View(player);
     }
 
-    private static void AttachAccountComponent(Player player)
+    private static PlayerInfo CreatePlayerInfo(string name)
     {
         var playerInfo = new PlayerInfo();
-        bool isAuthenticated = false;
-        playerInfo.SetName(player.Name);
-        player.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
+        playerInfo.SetName(name);
+        return playerInfo;
     }
 }

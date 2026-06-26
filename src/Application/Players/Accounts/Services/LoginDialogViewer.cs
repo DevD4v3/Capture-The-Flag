@@ -12,41 +12,40 @@ public class LoginDialogViewer(
         Button1 = "Accept"
     };
 
-    public async Task View(Player connectedPlayer, PlayerInfo connectedPlayerInfo)
+    public async Task View(Player player)
     {
-        InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _loginDialog);
+        InputDialogResponse response = await dialogService.ShowAsync(player, _loginDialog);
         if (response.Response == DialogResponse.Disconnected)
             return;
 
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            await View(connectedPlayer, connectedPlayerInfo);
+            await View(player);
             return;
         }
 
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         var enteredPassword = response.InputText ?? string.Empty;
-        bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: connectedPlayerInfo.Password);
+        bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
         if (isWrongPassword)
         {
             const int MaxFailedAttempts = 4;
-            var failedAttemptCount = connectedPlayer.GetComponent<FailedAttemptCountComponent>()
-                ?? connectedPlayer.AddComponent<FailedAttemptCountComponent>();
+            var failedAttemptCount = player.GetComponent<FailedAttemptCountComponent>()
+                ?? player.AddComponent<FailedAttemptCountComponent>();
             failedAttemptCount.Value++;
             if (failedAttemptCount.Value == MaxFailedAttempts)
             {
-                connectedPlayer.Kick();
+                player.Kick();
                 return;
             }
-            connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
-            await View(connectedPlayer, connectedPlayerInfo);
+            player.SendClientMessage(Color.Red, Messages.WrongPassword);
+            await View(player);
             return;
         }
 
-        bool isAuthenticated = true;
-        connectedPlayer.GetComponent<FailedAttemptCountComponent>()?.Destroy();
-        connectedPlayer.GetComponent<AccountComponent>().Destroy();
-        connectedPlayer.AddComponent<AccountComponent>(connectedPlayerInfo, isAuthenticated);
-        connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
+        player.GetComponent<FailedAttemptCountComponent>()?.Destroy();
+        player.GetComponent<AccountComponent>().Authenticate();
+        player.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
     }
 
     private class FailedAttemptCountComponent : Component

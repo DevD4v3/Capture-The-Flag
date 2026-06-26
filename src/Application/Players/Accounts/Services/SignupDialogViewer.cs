@@ -28,23 +28,21 @@ public class SignupDialogViewer(
         await CreatePlayerAccount(connectedPlayer, enteredPassword);
     }
 
-    private async Task CreatePlayerAccount(Player connectedPlayer, string enteredPassword)
+    private async Task CreatePlayerAccount(Player player, string enteredPassword)
     {
-        PlayerInfo playerInfo = connectedPlayer.GetRequiredInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         Result passwordResult = playerInfo.SetPassword(enteredPassword);
         if (passwordResult.IsFailed)
         {
-            connectedPlayer.SendClientMessage(Color.Red, passwordResult.Message);
-            await View(connectedPlayer);
+            player.SendClientMessage(Color.Red, passwordResult.Message);
+            await View(player);
             return;
         }
-        
-        bool isAuthenticated = true;
-        connectedPlayer.GetComponent<AccountComponent>().Destroy();
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
+
+        player.GetComponent<AccountComponent>().Authenticate();
         var message = Smart.Format(Messages.CreatePlayerAccount, new { Password = enteredPassword });
-        connectedPlayer.SendClientMessage(Color.Red, message);
-        playerInfo.SetName(connectedPlayer.Name);
+        player.SendClientMessage(Color.Red, message);
+        playerInfo.SetName(player.Name);
         playerRepository.Create(playerInfo);
     }
 }
