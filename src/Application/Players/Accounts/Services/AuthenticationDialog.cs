@@ -1,14 +1,5 @@
 ﻿namespace CTF.Application.Players.Accounts.Services;
 
-/// <summary>
-/// Represents the authentication workflow shown to players when they connect
-/// to the server.
-/// </summary>
-/// <remarks>
-/// Displays the appropriate dialog to either login to an existing account
-/// or create a new one, then delegates the authentication logic to
-/// <see cref="AccountAuthenticator"/>.
-/// </remarks>
 public class AuthenticationDialog(
     IDialogService dialogService,
     AccountAuthenticator accountAuthenticator)

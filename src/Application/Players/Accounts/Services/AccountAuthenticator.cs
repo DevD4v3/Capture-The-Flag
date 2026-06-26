@@ -1,12 +1,5 @@
 ﻿namespace CTF.Application.Players.Accounts.Services;
 
-/// <summary>
-/// Represents a service responsible for authenticating player accounts.
-/// </summary>
-/// <remarks>
-/// Verifies player credentials during login or signup, authenticates
-/// the associated account, and persists newly created accounts.
-/// </remarks>
 public class AccountAuthenticator(
     IPasswordHasher passwordHasher,
     IPlayerRepository playerRepository)
