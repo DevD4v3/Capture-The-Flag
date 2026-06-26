@@ -13,7 +13,7 @@ public class RocketLauncherVitality(ComboSettings comboSettings) : ICombo
             return Result.Failure();
         }
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         player.Health = 100;
         player.GiveWeapon(Weapon.RocketLauncher, ammo: 2);
         playerInfo.StatsPerRound.ResetCoins();

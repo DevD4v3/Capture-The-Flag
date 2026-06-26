@@ -30,7 +30,7 @@ public class SignupDialogViewer(
 
     private async Task CreatePlayerAccount(Player connectedPlayer, string enteredPassword)
     {
-        PlayerInfo playerInfo = connectedPlayer.GetInfo();
+        PlayerInfo playerInfo = connectedPlayer.GetRequiredInfo();
         Result passwordResult = playerInfo.SetPassword(enteredPassword);
         if (passwordResult.IsFailed)
         {

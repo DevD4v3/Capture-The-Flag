@@ -8,7 +8,7 @@ public class PlayerSpawnSystem(
     public void OnPlayerSpawn(Player player)
     {
         CurrentMap currentMap = mapInfoService.CurrentMap;
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         SpawnLocation spawnLocation = currentMap.GetRandomSpawnLocation(playerInfo.Team.Id);
         player.Position = spawnLocation.Position;
         player.Angle = spawnLocation.Angle;

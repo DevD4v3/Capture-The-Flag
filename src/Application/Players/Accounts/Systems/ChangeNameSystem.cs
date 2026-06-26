@@ -13,7 +13,7 @@ public class ChangeNameSystem(
             return;
         }
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         string oldName = playerInfo.Name;
         Result result = playerInfo.SetName(newName);
         if (result.IsFailed)

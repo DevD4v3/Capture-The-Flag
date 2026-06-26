@@ -26,7 +26,7 @@ public class PlayerStatsSystem(
         if (player.IsUnauthenticated())
             return;
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         playerInfo.SetLastConnection();
         playerRepository.UpdateLastConnection(playerInfo);
     }
@@ -34,7 +34,7 @@ public class PlayerStatsSystem(
     [Event]
     public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
         deadPlayerInfo.StatsPerRound.AddDeaths();
         deadPlayerInfo.StatsPerRound.ResetKillingSpree();
         deadPlayerInfo.AddTotalDeaths();
@@ -43,7 +43,7 @@ public class PlayerStatsSystem(
         if (killer.IsInvalidPlayer())
             return;
 
-        PlayerInfo killerInfo = killer.GetInfo();
+        PlayerInfo killerInfo = killer.GetRequiredInfo();
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         killer.AddScore();
@@ -65,7 +65,7 @@ public class PlayerStatsSystem(
     [PlayerCommand("re")]
     public void ResetPlayerStats(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         playerInfo.StatsPerRound.ResetKills();
         playerInfo.StatsPerRound.ResetDeaths();
         player.SetScore(0);
@@ -95,7 +95,7 @@ public class PlayerStatsSystem(
 
     private static string GetPlayerContent(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         string createdAt = player.IsUnauthenticated() ? 
             "None" : 
             playerInfo.CreatedAt.ToIsoDateString();

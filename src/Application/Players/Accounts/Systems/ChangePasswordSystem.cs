@@ -26,7 +26,7 @@ public class ChangePasswordSystem(
 
     private async Task ChangePassword(Player player, string enteredPassword)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         Result result = playerInfo.SetPassword(enteredPassword);
         if (result.IsFailed)
         {

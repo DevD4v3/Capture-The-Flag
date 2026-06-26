@@ -33,7 +33,7 @@ public class PlayerStatsRenderer(IWorldService worldService)
     {
         ArgumentNullException.ThrowIfNull(player);
         PlayerStatsTextDraw playerStatsTextDraw = GetTextDrawOrThrow(player);
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         playerStatsTextDraw.Value.Text = playerInfo.GetStatsAsText();
         playerStatsTextDraw.Value.Show();
     }

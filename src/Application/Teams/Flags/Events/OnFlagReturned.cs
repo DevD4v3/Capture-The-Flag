@@ -28,7 +28,7 @@ public class OnFlagReturned(
         worldService.SendClientMessage(team.ColorHex, message);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
 
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         playerInfo.StatsPerRound.AddCoins(5);
         playerInfo.AddReturnedFlags();
         player.AddScore(2);

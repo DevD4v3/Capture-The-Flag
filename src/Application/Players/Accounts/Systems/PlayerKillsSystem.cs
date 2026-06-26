@@ -19,7 +19,7 @@ public class PlayerKillsSystem(
             return;
         }
 
-        PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
+        PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
         Result result = targetPlayerInfo.SetTotalKills(kills);
         if (result.IsFailed)
         {

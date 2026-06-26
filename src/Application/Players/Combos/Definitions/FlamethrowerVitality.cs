@@ -7,7 +7,7 @@ public class FlamethrowerVitality : ICombo
 
     public Result Give(Player player)
     {
-        PlayerInfo playerInfo = player.GetInfo();
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         player.Health = 100;
         player.Armour = 100;
         // 1000 (shows in game as 50-50).

@@ -27,7 +27,7 @@ public class ChatSystem(IDictionary<char, IChatMessage> chats) : ISystem
         char identifier = text[0];
         if (chats.TryGetValue(identifier, out IChatMessage chatMessage)) 
         {
-            PlayerInfo sender = player.GetInfo();
+            PlayerInfo sender = player.GetRequiredInfo();
             ReplaceFirstCharacter(text, newCharacter: ' ');
             bool sendMessageByDefault = !chatMessage.SendToAllPlayers(sender, text);
             ReplaceFirstCharacter(text, newCharacter: identifier);
