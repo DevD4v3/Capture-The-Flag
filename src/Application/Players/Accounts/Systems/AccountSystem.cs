@@ -8,7 +8,7 @@ public class AccountSystem(
     [Event]
     public async Task OnPlayerConnect(Player connectedPlayer)
     {
-        AddDefaultAccount(connectedPlayer);
+        AttachAccountComponent(connectedPlayer);
         PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
@@ -18,11 +18,11 @@ public class AccountSystem(
         await loginDialogViewer.View(connectedPlayer, playerInfo);
     }
 
-    private static void AddDefaultAccount(Player connectedPlayer)
+    private static void AttachAccountComponent(Player player)
     {
         var playerInfo = new PlayerInfo();
         bool isAuthenticated = false;
-        playerInfo.SetName(connectedPlayer.Name);
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
+        playerInfo.SetName(player.Name);
+        player.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
     }
 }
