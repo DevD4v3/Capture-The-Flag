@@ -2,8 +2,7 @@
 
 public class AccountSystem(
     IPlayerRepository playerRepository,
-    LoginDialogViewer loginDialogViewer,
-    SignupDialogViewer signupDialogViewer) : ISystem
+    AuthenticationDialog authenticationDialog) : ISystem
 {
     [Event]
     public async Task OnPlayerConnect(Player player)
@@ -14,12 +13,12 @@ public class AccountSystem(
         {
             playerInfo = CreatePlayerInfo(player.Name);
             player.AddComponent<AccountComponent>(playerInfo);
-            await signupDialogViewer.View(player);
+            await authenticationDialog.ShowSignup(player);
             return;
         }
 
         player.AddComponent<AccountComponent>(playerInfo);
-        await loginDialogViewer.View(player);
+        await authenticationDialog.ShowLogin(player);
     }
 
     private static PlayerInfo CreatePlayerInfo(string name)
