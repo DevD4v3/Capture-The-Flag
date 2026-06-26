@@ -1,51 +1,52 @@
 ﻿namespace CTF.Application.Players.Accounts.Services;
 
-public class LoginDialogViewer(
-    IDialogService dialogService,
-    IPasswordHasher passwordHasher)
+public class AccountAuthenticator(
+    IPasswordHasher passwordHasher,
+    IPlayerRepository playerRepository)
 {
-    private readonly InputDialog _loginDialog = new()
+    public Result Signup(Player player, string enteredPassword)
     {
-        IsPassword = true,
-        Caption = "Login",
-        Content = "Enter your password",
-        Button1 = "Accept"
-    };
-
-    public async Task View(Player player)
-    {
-        InputDialogResponse response = await dialogService.ShowAsync(player, _loginDialog);
-        if (response.Response == DialogResponse.Disconnected)
-            return;
-
-        if (response.Response == DialogResponse.RightButtonOrCancel)
+        PlayerInfo playerInfo = player.GetRequiredInfo();
+        Result passwordResult = playerInfo.SetPassword(enteredPassword);
+        if (passwordResult.IsFailed)
         {
-            await View(player);
-            return;
+            player.SendClientMessage(Color.Red, passwordResult.Message);
+            return Result.Failure();
         }
 
+        player.GetComponent<AccountComponent>().Authenticate();
+        var message = Smart.Format(Messages.CreatePlayerAccount, new { Password = enteredPassword });
+        player.SendClientMessage(Color.Red, message);
+        playerInfo.SetName(player.Name);
+        playerRepository.Create(playerInfo);
+        return Result.Success();
+    }
+
+    public Result Login(Player player, string enteredPassword)
+    {
         PlayerInfo playerInfo = player.GetRequiredInfo();
-        var enteredPassword = response.InputText ?? string.Empty;
         bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
         if (isWrongPassword)
         {
             const int MaxFailedAttempts = 4;
             var failedAttemptCount = player.GetComponent<FailedAttemptCountComponent>()
                 ?? player.AddComponent<FailedAttemptCountComponent>();
+
             failedAttemptCount.Value++;
             if (failedAttemptCount.Value == MaxFailedAttempts)
             {
                 player.Kick();
-                return;
+                return Result.Failure();
             }
+
             player.SendClientMessage(Color.Red, Messages.WrongPassword);
-            await View(player);
-            return;
+            return Result.Failure();
         }
 
         player.GetComponent<FailedAttemptCountComponent>()?.Destroy();
         player.GetComponent<AccountComponent>().Authenticate();
         player.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
+        return Result.Success();
     }
 
     private class FailedAttemptCountComponent : Component

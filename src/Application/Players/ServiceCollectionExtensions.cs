@@ -8,8 +8,8 @@ public static class PlayerServicesExtensions
             .AddSingleton<PlayerRankUpdater>()
             .AddSingleton<KillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
-            .AddSingleton<LoginDialogViewer>()
-            .AddSingleton<SignupDialogViewer>()
+            .AddSingleton<AuthenticationDialog>()
+            .AddSingleton<AccountAuthenticator>()
             .AddComboServices()
             .AddChatServices()
             .AddWeaponServices();
