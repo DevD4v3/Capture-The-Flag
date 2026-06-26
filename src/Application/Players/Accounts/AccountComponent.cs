@@ -7,10 +7,15 @@ public class AccountComponent : Component
     public bool IsUnauthenticated => !IsAuthenticated;
     public void Authenticate() => IsAuthenticated = true;
 
-    public AccountComponent(PlayerInfo playerInfo, bool isAuthenticated = false)
+    public AccountComponent(PlayerInfo playerInfo, bool isAuthenticated)
     {
         ArgumentNullException.ThrowIfNull(playerInfo);
         PlayerInfo = playerInfo;
         IsAuthenticated = isAuthenticated;
+    }
+
+    public AccountComponent(PlayerInfo playerInfo) 
+        : this(playerInfo, isAuthenticated: false)
+    {
     }
 }
