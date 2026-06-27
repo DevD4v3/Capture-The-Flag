@@ -179,6 +179,42 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 ![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-004.png)
 </details>
 
+<details>
+<summary>sa-mp-005</summary>
+
+![sa-mp-005](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-005.png)
+</details>
+
+<details>
+<summary>sa-mp-006</summary>
+
+![sa-mp-006](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-006.png)
+</details>
+
+<details>
+<summary>sa-mp-007</summary>
+
+![sa-mp-007](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-007.png)
+</details>
+
+<details>
+<summary>sa-mp-008</summary>
+
+![sa-mp-008](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-008.png)
+</details>
+
+<details>
+<summary>sa-mp-009</summary>
+
+![sa-mp-009](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-009.png)
+</details>
+
+<details>
+<summary>sa-mp-010</summary>
+
+![sa-mp-010](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-010.png)
+</details>
+
 ## Technologies used
 
 ### Programming Languages
