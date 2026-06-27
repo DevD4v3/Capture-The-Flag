@@ -152,31 +152,31 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 <details>
 <summary>sa-mp-000</summary>
 
-![sa-mp-000](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-000.png)
+![sa-mp-000](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-000.png)
 </details>
 
 <details>
 <summary>sa-mp-001</summary>
 
-![sa-mp-001](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-001.png)
+![sa-mp-001](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-001.png)
 </details>
 
 <details>
 <summary>sa-mp-002</summary>
 
-![sa-mp-002](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-002.png)
+![sa-mp-002](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-002.png)
 </details>
 
 <details>
 <summary>sa-mp-003</summary>
 
-![sa-mp-003](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-003.png)
+![sa-mp-003](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-003.png)
 </details>
 
 <details>
 <summary>sa-mp-004</summary>
 
-![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/sa-mp-004.png)
+![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-004.png)
 </details>
 
 ## Technologies used
@@ -333,7 +333,7 @@ SQLite__DataSource=C:\Users\mrdave\OneDrive\Desktop\gamemode.db
 ```sh
 sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
 ```
-See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/dev/scripts) for more information.
+See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/main/scripts) for more information.
 
 ### MariaDB
 
@@ -358,14 +358,14 @@ MariaDB__Password=123456789
 ```sh
 mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
 ```
-See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/dev/scripts) for more information.
+See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/main/scripts) for more information.
 
 ## Architectural overview
 
 <details>
 <summary><b>Show diagram</b></summary>
 
-![overview](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/screenshots/architectural-overview.png)
+![overview](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/architectural-overview.png)
 
 </details>
 
@@ -432,4 +432,4 @@ Follow the steps below:
 
 ## License
 
-This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/DevD4v3/Capture-The-Flag/blob/dev/LICENSE)
+This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/DevD4v3/Capture-The-Flag/blob/main/LICENSE)
