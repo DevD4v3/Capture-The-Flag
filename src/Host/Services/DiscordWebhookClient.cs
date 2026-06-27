@@ -2,7 +2,7 @@
 
 namespace CTF.Host.Services;
 
-public sealed class DiscordWebhookClient : IDiscordWebhookClient
+public class DiscordWebhookClient : IDiscordWebhookClient
 {
     private readonly ILogger<DiscordWebhookClient> _logger;
     private readonly HttpClient _httpClient;
@@ -17,7 +17,8 @@ public sealed class DiscordWebhookClient : IDiscordWebhookClient
         var envReader = new EnvReader();
         if (!envReader.TryGetStringValue("DISCORD_WEBHOOK_URL", out var webhookUrl))
         {
-            logger.LogWarning("'DISCORD_WEBHOOK_URL' has not been set as an environment variable");
+            logger.LogWarning("Environment variable 'DISCORD_WEBHOOK_URL' is not configured. " +
+                "Discord notifications will be disabled.");
         }
 
         _discordWebhookUrl = webhookUrl ?? string.Empty;
@@ -28,10 +29,7 @@ public sealed class DiscordWebhookClient : IDiscordWebhookClient
     public async Task<bool> SendAsync(DiscordMessage message)
     {
         if (string.IsNullOrWhiteSpace(_discordWebhookUrl))
-        {
-            _logger.LogWarning("Discord webhook URL is not configured.");
             return false;
-        }
 
         try
         {
