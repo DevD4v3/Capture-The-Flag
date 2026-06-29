@@ -5,7 +5,7 @@ public static class PersistenceMariaDBServicesExtensions
     public static IServiceCollection AddPersistenceMariaDBServices(
         this IServiceCollection services, 
         IConfiguration configuration,
-        string sqlPath)
+        string sqlBasePath)
     {
         var mariadbSettings = configuration
             .GetRequiredSection("MariaDB")
@@ -25,8 +25,13 @@ public static class PersistenceMariaDBServicesExtensions
                 .AddSingleton<IPlayerRepository, PlayerRepository>()
                 .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
-        var path = Path.Combine(sqlPath, typeof(PersistenceMariaDBServicesExtensions).Namespace);
-        ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
+        var sqlPath = Path.Combine(sqlBasePath, typeof(PersistenceMariaDBServicesExtensions).Namespace, "sql");
+        ISqlCollection sqlCollection = new YeSqlLoader()
+            .Exclude("schema.sql")
+            .LoadFromDirectories(sqlPath);
+
+        var schemaFile = Path.Combine(sqlPath, "schema.sql");
+        MariaDbSchemaExecutor.Execute(connectionString, schemaFile);
         services.AddSingleton(sqlCollection);
         return services;
     }
