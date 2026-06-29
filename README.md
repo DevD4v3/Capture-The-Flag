@@ -152,67 +152,67 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
 <details>
 <summary>sa-mp-000</summary>
 
-![sa-mp-000](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-000.png)
+![sa-mp-000](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-000.png)
 </details>
 
 <details>
 <summary>sa-mp-001</summary>
 
-![sa-mp-001](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-001.png)
+![sa-mp-001](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-001.png)
 </details>
 
 <details>
 <summary>sa-mp-002</summary>
 
-![sa-mp-002](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-002.png)
+![sa-mp-002](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-002.png)
 </details>
 
 <details>
 <summary>sa-mp-003</summary>
 
-![sa-mp-003](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-003.png)
+![sa-mp-003](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-003.png)
 </details>
 
 <details>
 <summary>sa-mp-004</summary>
 
-![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-004.png)
+![sa-mp-004](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-004.png)
 </details>
 
 <details>
 <summary>sa-mp-005</summary>
 
-![sa-mp-005](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-005.png)
+![sa-mp-005](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-005.png)
 </details>
 
 <details>
 <summary>sa-mp-006</summary>
 
-![sa-mp-006](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-006.png)
+![sa-mp-006](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-006.png)
 </details>
 
 <details>
 <summary>sa-mp-007</summary>
 
-![sa-mp-007](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-007.png)
+![sa-mp-007](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-007.png)
 </details>
 
 <details>
 <summary>sa-mp-008</summary>
 
-![sa-mp-008](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-008.png)
+![sa-mp-008](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-008.png)
 </details>
 
 <details>
 <summary>sa-mp-009</summary>
 
-![sa-mp-009](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-009.png)
+![sa-mp-009](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-009.png)
 </details>
 
 <details>
 <summary>sa-mp-010</summary>
 
-![sa-mp-010](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/sa-mp-010.png)
+![sa-mp-010](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/screenshots/sa-mp-010.png)
 </details>
 
 ## Technologies used
@@ -399,7 +399,7 @@ MariaDB__Password=123456789
 <details>
 <summary><b>Show diagram</b></summary>
 
-![overview](https://github.com/DevD4v3/Capture-The-Flag/blob/main/screenshots/architectural-overview.png)
+![overview](https://github.com/DevD4v3/Capture-The-Flag/blob/main/docs/architectural-overview.png)
 
 </details>
 

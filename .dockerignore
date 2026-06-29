@@ -8,7 +8,7 @@ runtime/
 .git/
 logs/
 scripts/
-screenshots/
+docs/
 tests/
 components/
 announce.exe
