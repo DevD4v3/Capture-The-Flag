@@ -50,12 +50,6 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: Check MariaDB version
       run: docker exec mariadb mariadb --version
-    - name: Check SQLite version
-      run: sqlite3 --version
-    - name: Import databases
-      run: |
-       docker exec -i mariadb mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
-       sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
     - name: Create .env.test file
       run: cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
