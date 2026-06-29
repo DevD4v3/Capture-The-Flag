@@ -291,10 +291,15 @@ These concepts have been applied to this project:
 
 ## Deployment without Docker
 
-- You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
-- You need to download the [ctf-win.zip](https://github.com/DevD4v3/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
-- Once downloaded, modify the `.env` file according to your needs.
-- Run the `omp-server.exe`.
+* Download the appropriate release package for your operating system:
+  * **Windows (x64):** `capture-the-flag-win-x64.zip`
+  * **Linux (x86_64):** `capture-the-flag-linux-x86_64.tar.xz`
+* Extract the package to a directory of your choice.
+* Modify the `.env` file according to your needs.
+* Start the Open Multiplayer server:
+  * **Windows:** `omp-server.exe`
+  * **Linux:** `./omp-server`
+
 
 ## Deployment with Docker
 
