@@ -343,8 +343,10 @@ DatabaseProvider=InMemory
 
 You must add your name and secret key from the `.env` file:
 ```sh
-ServerOwner__Name=MrDave # Your nickname in the game
-ServerOwner__SecretKey=1234._%==?! # Specify the secret key to give me admin.
+# Your nickname in the game
+ServerOwner__Name=MrDave
+# Specify the secret key to give me admin.
+ServerOwner__SecretKey=1234._%==?!
 ```
 It is necessary to specify your secret key, which you will use when executing the command "**/givemeadmin**" in the game.
 
@@ -352,7 +354,6 @@ It is necessary to specify your secret key, which you will use when executing th
 
 ### SQLite
 
-- Download sqlite3 CLI from [here](https://www.sqlite.org/download.html) (select the file named **sqlite-tools-win-x86**).
 - Create a file called `.env` in the root directory:
 ```sh
 copy .env.example .env
@@ -365,11 +366,7 @@ DatabaseProvider=SQLite
 ```sh
 SQLite__DataSource=C:\Users\mrdave\OneDrive\Desktop\gamemode.db
 ```
-- Finally, you must import the database:
-```sh
-sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
-```
-See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/main/scripts) for more information.
+- The database and its schema will be created automatically during server startup if they do not already exist.
 
 ### MariaDB
 
@@ -390,11 +387,7 @@ MariaDB__Database=gamemode
 MariaDB__UserName=root
 MariaDB__Password=123456789
 ```
-- Finally, you must import the database:
-```sh
-mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
-```
-See the [scripts](https://github.com/DevD4v3/Capture-The-Flag/tree/main/scripts) for more information.
+- The database and its schema will be created automatically during server startup if they do not already exist.
 
 ## Architectural overview
 
