@@ -300,7 +300,7 @@ These concepts have been applied to this project:
 
 - Clone the repository:
 ```sh
-git clone https://github.com/DevD4v3/Capture-The-Flag.git
+git clone --recursive https://github.com/DevD4v3/Capture-The-Flag.git
 ```
 - Change directory:
 ```sh
@@ -343,7 +343,7 @@ DatabaseProvider=InMemory
 
 You must add your name and secret key from the `.env` file:
 ```sh
-# Your nickname in the game
+# Your nickname in the game.
 ServerOwner__Name=MrDave
 # Specify the secret key to give me admin.
 ServerOwner__SecretKey=1234._%==?!
