@@ -5,7 +5,7 @@ public static class PersistenceSQLiteServicesExtensions
     public static IServiceCollection AddPersistenceSQLiteServices(
         this IServiceCollection services, 
         IConfiguration configuration,
-        string sqlPath)
+        string sqlBasePath)
     {
         var sqliteSettings = configuration
             .GetRequiredSection("SQLite")
@@ -21,8 +21,13 @@ public static class PersistenceSQLiteServicesExtensions
                 .AddSingleton<IPlayerRepository, PlayerRepository>()
                 .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
-        var path = Path.Combine(sqlPath, typeof(PersistenceSQLiteServicesExtensions).Namespace);
-        ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
+        var sqlPath = Path.Combine(sqlBasePath, typeof(PersistenceSQLiteServicesExtensions).Namespace, "sql");
+        ISqlCollection sqlCollection = new YeSqlLoader()
+            .Exclude("schema.sql")
+            .LoadFromDirectories(sqlPath);
+
+        var schemaFile = Path.Combine(sqlPath, "schema.sql");
+        SQLiteSchemaExecutor.Execute(connectionString, schemaFile);
         services.AddSingleton(sqlCollection);
         return services;
     }
