@@ -286,7 +286,7 @@ These concepts have been applied to this project:
 ## Requirements to play
 
 - You must have **DirectX 9** installed on your local machine.
-- You must download [Grand Theft Auto: San Andreas](https://mega.nz/file/mIlnjKQK#ZuqNUB3xqB6_pul917dmwUQaohGuYVcN7YwbXHqn-v4) on your local machine.
+- You must download [Grand Theft Auto: San Andreas](https://www.mediafire.com/file/jhpfq99p28my35m/Gta_San_Andreas.zip/file) on your local machine.
 - You must download [open.mp launcher](https://github.com/openmultiplayer/launcher/releases/latest) to connect to the servers.
 
 ## Deployment without Docker
