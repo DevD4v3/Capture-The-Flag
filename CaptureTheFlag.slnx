@@ -17,13 +17,6 @@
     <File Path="tests/Persistence.Tests/.env.test" />
     <File Path="tests/Persistence.Tests/.env.test.example" />
   </Folder>
-  <Folder Name="/Solution Items/scripts/" />
-  <Folder Name="/Solution Items/scripts/mariadb/">
-    <File Path="scripts/mariadb/gamemode.sql" />
-  </Folder>
-  <Folder Name="/Solution Items/scripts/sqlite/">
-    <File Path="scripts/sqlite/gamemode.sql" />
-  </Folder>
   <Folder Name="/Solution Items/workflows/">
     <File Path=".github/workflows/build-and-publish.yml" />
     <File Path=".github/workflows/ci.yml" />
