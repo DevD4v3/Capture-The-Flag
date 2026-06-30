@@ -404,14 +404,13 @@ MariaDB__Password=123456789
 </details>
 
 ### Main components
-- **Application Core.** Contains all the logic of the game called "Capture The Flag", including the rules and procedures that define how the game is played.
-- **Persistence layer.** Contains all data access logic. The purpose of this layer is to prevent the filtering of data access logic in the application core.
-- **Host Application.** Contains everything needed to run the game mode. It represents the entry point of the application.
-  This layer performs other tasks such as:
+- **Application Core.** Contains all gameplay logic for the Capture the Flag game mode, including the rules and procedures that define how the game is played. It also defines the outbound ports required to interact with external systems.
+- **Persistence Adapters.** Provide concrete implementations of the outbound ports related to persistence. Each adapter encapsulates the data access logic for a specific storage technology, allowing the application core to remain independent of any specific persistence technology.
+- **Host Application.** Acts as the application's entry point and contains everything required to bootstrap the game mode.
   - Load application settings from `.env` file.
   - Select the database provider.
-  - Register services to DI Container.
-  - Add systems to the services collection.
+  - Register services in the DI container.
+  - Register ECS systems.
   - Enable desired ECS system features.
 
 ## Credits
