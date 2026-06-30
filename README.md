@@ -414,13 +414,16 @@ MariaDB__Password=123456789
   - Enable desired ECS system features.
 
 ## Credits
-
-- [DevD4v3](https://github.com/DevD4v3/Capture-The-Flag) for creating the "Capture The Flag" game mode.
-- [Parca_35](https://www.youtube.com/channel/UCQUOz-GEp0jMtmGzUEQWElQ) for helping test the game mode.
-- [ikkentim](https://github.com/ikkentim/SampSharp) for creating the SampSharp framework.
-- [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) for creating NTD (TextDraw Editor).
-- [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) for creating the streamer plugin.
-- [Open Multiplayer](https://github.com/openmultiplayer) for creating a multiplayer mod for Grand Theft Auto: San Andreas fully backward compatible with San Andreas Multiplayer (SA-MP).
+This project would not have been possible without the following people and projects:
+- [DevD4v3](https://github.com/DevD4v3/Capture-The-Flag) — Creator of the original **Capture the Flag** game mode.
+- [Parca_35](https://www.linkedin.com/in/manuel-zurita-057a7a39b) — Helped test the game mode.
+- [ikkentim](https://github.com/ikkentim/SampSharp) — Creator of the **SampSharp** framework.
+- [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) — Creator of **NTD (TextDraw Editor)**.
+- [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) — Creator of the **Streamer Plugin**.
+- [Open Multiplayer](https://github.com/openmultiplayer) — Creator of **open.mp**, a multiplayer modification for Grand Theft Auto: San Andreas that is fully compatible with San Andreas Multiplayer (SA-MP).
+- [OpenSamp](https://github.com/OpenSamp)
+  - Maintainer of **omp-streamer-component**, the x64 port of Incognito's Streamer Plugin for open.mp.
+  - Creator of **SampSharp.OpenMp.Streamer**, providing managed (.NET) bindings for the Streamer Plugin on the SampSharp open.mp x64 host.
 
 ### Mappers
 
