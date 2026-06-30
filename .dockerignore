@@ -1,6 +1,11 @@
 **/bin
 **/obj
 **/dependencies
+*.db
+*.db-shm
+*.db-wal
+*.zip
+*.rar
 ctf-gamemode-windows/
 dotnet/runtime/
 runtime/
@@ -22,5 +27,3 @@ omp-server
 server.cfg
 server_log.txt
 log.txt
-*.zip
-*.rar
