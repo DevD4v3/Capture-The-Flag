@@ -292,8 +292,8 @@ These concepts have been applied to this project:
 ## Deployment without Docker
 
 * Download the appropriate release package for your operating system:
-  * **Windows (x64):** `capture-the-flag-win-x64.zip`
-  * **Linux (x86_64):** `capture-the-flag-linux-x86_64.tar.xz`
+  * **Windows (x64):** [capture-the-flag-win-x64.zip](https://github.com/DevD4v3/Capture-The-Flag/releases)
+  * **Linux (x86_64):** [capture-the-flag-linux-x86_64.tar.xz](https://github.com/DevD4v3/Capture-The-Flag/releases)
 * Extract the package to a directory of your choice.
 * Modify the `.env` file according to your needs.
 * Start the Open Multiplayer server:
