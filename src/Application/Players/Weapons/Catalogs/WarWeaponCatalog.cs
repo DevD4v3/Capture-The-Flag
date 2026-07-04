@@ -11,7 +11,7 @@ public class WarWeaponCatalog : WeaponCatalogBase
             WeaponDefinitions.Deagle,
             WeaponDefinitions.CombatShotgun,
             WeaponDefinitions.M4,
-            WeaponDefinitions.Sniper,
+            WeaponDefinitions.SniperRifle,
             WeaponDefinitions.Grenade,
             WeaponDefinitions.Molotov,
             WeaponDefinitions.TearGas,

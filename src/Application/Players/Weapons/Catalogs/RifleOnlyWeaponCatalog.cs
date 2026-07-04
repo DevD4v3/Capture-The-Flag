@@ -8,8 +8,8 @@ public class RifleOnlyWeaponCatalog : WeaponCatalogBase
     {
         weapons.AddRange(
         [
-            WeaponDefinitions.Sniper,
-            WeaponDefinitions.Rifle
+            WeaponDefinitions.SniperRifle,
+            WeaponDefinitions.CountryRifle
         ]);
     }
 }

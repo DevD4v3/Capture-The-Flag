@@ -25,8 +25,8 @@ public class MixedWeaponCatalog : WeaponCatalogBase
             WeaponDefinitions.Tec9,
             WeaponDefinitions.AK47,
             WeaponDefinitions.M4,
-            WeaponDefinitions.Sniper,
-            WeaponDefinitions.Rifle
+            WeaponDefinitions.SniperRifle,
+            WeaponDefinitions.CountryRifle
         ]);
     }
 }
