@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Chats.Types;
+﻿namespace CTF.Application.Players.Chats.Definitions;
 
 public class PrivateTeamChat : IChatMessage
 {

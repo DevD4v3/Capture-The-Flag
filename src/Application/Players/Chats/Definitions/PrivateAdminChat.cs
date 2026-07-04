@@ -1,11 +1,11 @@
-﻿namespace CTF.Application.Players.Chats.Types;
+﻿namespace CTF.Application.Players.Chats.Definitions;
 
-public class PrivateVipChat(IEntityManager entityManager) : IChatMessage
+public class PrivateAdminChat(IEntityManager entityManager) : IChatMessage
 {
-    public char Id => '$';
+    public char Id => '#';
     public bool SendToAllPlayers(PlayerInfo sender, string message)
     {
-        if (sender.HasLowerRoleThan(RoleId.VIP))
+        if (sender.HasLowerRoleThan(RoleId.Admin))
             return false;
 
         var players = entityManager.GetComponents<Player>();
@@ -15,10 +15,10 @@ public class PrivateVipChat(IEntityManager entityManager) : IChatMessage
                 continue;
 
             PlayerInfo playerInfo = player.GetRequiredInfo();
-            if (playerInfo.HasLowerRoleThan(RoleId.VIP))
+            if (playerInfo.HasLowerRoleThan(RoleId.Admin))
                 continue;
 
-            player.SendClientMessage($"{{8b0000}}[Vip Chat] {sender.Name}: {message}");
+            player.SendClientMessage(new Color(0x33FF33AA), $"[Admin Chat] {sender.Name}: {message}");
         }
         return true;
     }

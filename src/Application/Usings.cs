@@ -24,7 +24,7 @@ global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Combos;
 global using CTF.Application.Players.Combos.Definitions;
 global using CTF.Application.Players.Chats;
-global using CTF.Application.Players.Chats.Types;
+global using CTF.Application.Players.Chats.Definitions;
 global using CTF.Application.Players.Vitalities;
 global using CTF.Application.Players.TopPlayers.Models;
 global using CTF.Application.Players.GeneralCommands.Resources;
