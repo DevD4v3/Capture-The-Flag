@@ -8,19 +8,11 @@
 /// active. The catalog selection is resolved internally based on the
 /// server configuration.
 /// </remarks>
-public class WeaponCatalog
+public class WeaponCatalog(
+    WeaponCatalogSettings settings, 
+    IDictionary<WeaponCatalogType, WeaponCatalogBase> catalogs)
 {
-    private readonly WeaponCatalogSettings _settings;
-    private readonly Dictionary<WeaponCatalogType, WeaponCatalogBase> _catalogs;
-    private WeaponCatalogBase Current => _catalogs[_settings.Type];
-
-    public WeaponCatalog(
-        WeaponCatalogSettings settings,
-        IEnumerable<WeaponCatalogBase> catalogs)
-    {
-        _settings = settings;       
-        _catalogs = catalogs.ToDictionary(catalog => catalog.Type);
-    }
+    private WeaponCatalogBase Current => catalogs[settings.Type];
 
     /// <summary>
     /// Gets the number of weapons available in the active catalog.

@@ -13,6 +13,12 @@ public static class WeaponServicesExtensions
             .AddSingleton<WeaponCatalogBase, HeavyWeaponCatalog>()
             .AddSingleton<WeaponCatalog>();
 
+        services.AddSingleton<IDictionary<WeaponCatalogType, WeaponCatalogBase>>(sp =>
+        {
+            var catalogs = sp.GetRequiredService<IEnumerable<WeaponCatalogBase>>();
+            return catalogs.ToDictionary(w => w.Type);
+        });
+
         return services;
     }
 }
