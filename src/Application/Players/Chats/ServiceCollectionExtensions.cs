@@ -10,10 +10,10 @@ public static class ChatServicesExtensions
             .AddSingleton<IChatMessage, PrivateTeamChat>()
             .AddSingleton<IChatMessage, PrivateVipChat>();
 
-        services.AddSingleton<IDictionary<char, IChatMessage>>(serviceProvider =>
+        services.AddSingleton<IDictionary<char, IChatMessage>>(sp =>
         {
-            var chats = serviceProvider.GetRequiredService<IEnumerable<IChatMessage>>();
-            return chats.ToDictionary(chat => chat.Id, chat => chat);
+            var chats = sp.GetRequiredService<IEnumerable<IChatMessage>>();
+            return chats.ToDictionary(c => c.Id);
         });
 
         return services;

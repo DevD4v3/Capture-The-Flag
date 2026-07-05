@@ -17,10 +17,10 @@ public static class FlagServicesExtensions
             .AddSingleton<FlagStateResetter>()
             .AddSingleton<OnFlagDropped>();
 
-        services.AddSingleton<IDictionary<FlagStatus, IFlagEvent>>(serviceProvider =>
+        services.AddSingleton<IDictionary<FlagStatus, IFlagEvent>>(sp =>
         {
-            var flagEvents = serviceProvider.GetRequiredService<IEnumerable<IFlagEvent>>();
-            return flagEvents.ToDictionary(flagEvent => flagEvent.FlagStatus, flagEvent => flagEvent);
+            var flagEvents = sp.GetRequiredService<IEnumerable<IFlagEvent>>();
+            return flagEvents.ToDictionary(f => f.FlagStatus);
         });
 
         return services;
