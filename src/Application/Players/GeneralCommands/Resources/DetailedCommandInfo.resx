@@ -169,6 +169,8 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
     <value>{Color1}/maps: {Color2}Displays a list of available maps in the game.
 {Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
 {Color1}/returnflag: {Color2}Returns the flag of a specific team to its base position.
+{Color1}/gungameon: {Color2}Enables GunGame mode.
+{Color1}/gungameoff: {Color2}Disables GunGame mode.
 {Color1}/startrt: {Color2}Starts the rotation timer for the current map.
 {Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
 {Color1}/showrm: {Color2}Allows to show flag carriers on the radar map.
