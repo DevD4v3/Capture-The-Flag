@@ -14,7 +14,9 @@ public static class HostEcsBuilderExtensions
     {
         var mapRotationService = builder.Services.GetRequiredService<MapRotationService>();
         var rocketLauncherSystem = builder.Services.GetRequiredService<RocketLauncherSystem>();
+        var gunGameSystem = builder.Services.GetRequiredService<GunGameSystem>();
         mapRotationService.LoadingMapEvent += rocketLauncherSystem.OnLoadingMap;
+        mapRotationService.LoadingMapEvent += gunGameSystem.OnLoadingMap;
         return builder;
     }
 

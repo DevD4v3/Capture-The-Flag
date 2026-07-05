@@ -14,7 +14,6 @@ global using DotEnv.Core;
 global using Microsoft.Extensions.DependencyInjection;
 
 global using GameMode.Common;
-global using CTF.Application.Players;
 global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Accounts.Services;
@@ -36,3 +35,8 @@ global using CTF.Application.Teams.Flags.Events;
 global using CTF.Application.Teams.Services;
 global using CTF.Application.Maps;
 global using CTF.Application.Maps.Services;
+
+global using CTF.Application.GunGames;
+global using CTF.Application.GunGames.Results;
+global using CTF.Application.GunGames.WeaponProgressions;
+global using CTF.Application.GunGames.WeaponProgressions.Definitions;
