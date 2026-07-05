@@ -32,13 +32,13 @@ public class PlayerStatsSystem(
     }
 
     [Event]
-    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    public void OnPlayerDeath(Player victim, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
-        deadPlayerInfo.StatsPerRound.AddDeaths();
-        deadPlayerInfo.StatsPerRound.ResetKillingSpree();
-        deadPlayerInfo.AddTotalDeaths();
-        playerRepository.UpdateTotalDeaths(deadPlayerInfo);
+        PlayerInfo victimInfo = victim.GetRequiredInfo();
+        victimInfo.StatsPerRound.AddDeaths();
+        victimInfo.StatsPerRound.ResetKillingSpree();
+        victimInfo.AddTotalDeaths();
+        playerRepository.UpdateTotalDeaths(victimInfo);
 
         if (killer.IsInvalidPlayer())
             return;

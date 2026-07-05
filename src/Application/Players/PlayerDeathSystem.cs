@@ -15,8 +15,8 @@ public class PlayerDeathSystem(IWorldService worldService) : ISystem
     }
 
     [Event]
-    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    public void OnPlayerDeath(Player victim, Player killer, Weapon reason)
     {
-        worldService.SendDeathMessage(killer, deadPlayer, reason);
+        worldService.SendDeathMessage(killer, victim, reason);
     }
 }

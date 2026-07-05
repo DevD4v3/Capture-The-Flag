@@ -12,10 +12,10 @@ public class TeamStatsSystem(
     }
 
     [Event]
-    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    public void OnPlayerDeath(Player victim, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
-        deadPlayerInfo.Team.StatsPerRound.AddDeaths();
+        PlayerInfo victimInfo = victim.GetRequiredInfo();
+        victimInfo.Team.StatsPerRound.AddDeaths();
 
         if (killer.IsInvalidPlayer())
             return;

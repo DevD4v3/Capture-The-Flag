@@ -17,13 +17,13 @@ public class FlagSystem(
     }
 
     [Event]
-    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    public void OnPlayerDeath(Player victim, Player killer, Weapon reason)
     {
-        PlayerInfo deadPlayerInfo = deadPlayer.GetRequiredInfo();
-        if (deadPlayerInfo.IsCarryingEnemyFlag())
+        PlayerInfo victimInfo = victim.GetRequiredInfo();
+        if (victimInfo.IsCarryingEnemyFlag())
         {
-            Team currentTeam = deadPlayerInfo.Team;
-            onFlagDropped.Handle(currentTeam.RivalTeam, deadPlayer);
+            Team currentTeam = victimInfo.Team;
+            onFlagDropped.Handle(currentTeam.RivalTeam, victim);
             if (killer.IsValidPlayer())
             {
                 PlayerInfo killerInfo = killer.GetRequiredInfo();
