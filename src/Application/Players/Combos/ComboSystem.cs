@@ -7,22 +7,27 @@ public class ComboSystem : ISystem
     private readonly IWorldService _worldService;
     private readonly PlayerStatsRenderer _playerStatsRenderer;
     private readonly IEnumerable<ICombo> _combos;
+    private readonly IGunGameMode _gunGameMode;
 
     public ComboSystem(
         IDialogService dialogService,
         IWorldService worldService,
         PlayerStatsRenderer playerStatsRenderer,
-        IEnumerable<ICombo> combos)
+        IEnumerable<ICombo> combos,
+        IGunGameMode gunGameMode)
     {
         _dialogService = dialogService;
         _worldService = worldService;
         _playerStatsRenderer = playerStatsRenderer;
         _combos = combos;
+        _gunGameMode = gunGameMode;
+
         var columnHeaders = new[]
         {
             "Combo",
             "Required Coins"
         };
+
         _tablistDialog = new TablistDialog(
             caption: "Combos",
             button1: "Select",
@@ -36,6 +41,9 @@ public class ComboSystem : ISystem
     [Event]
     public async Task OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
+        if (_gunGameMode.IsEnabled)
+            return;
+
         if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.AnalogLeft))
         {
             await ShowCombos(player);
@@ -45,6 +53,12 @@ public class ComboSystem : ISystem
     [PlayerCommand("combos")]
     public async Task ShowCombos(Player player)
     {
+        if (_gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.CombosUnavailable);
+            return;
+        }
+
         TablistDialogResponse response = await _dialogService.ShowAsync(player, _tablistDialog);
         if (response.IsRightButtonOrDisconnected())
             return;

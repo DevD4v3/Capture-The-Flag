@@ -26,6 +26,8 @@ global using CTF.Application.Teams.Flags;
 global using CTF.Application.Teams.Flags.Systems;
 global using CTF.Application.Maps;
 global using CTF.Application.Maps.Services;
+global using CTF.Application.GunGames;
+global using CTF.Application.GunGames.WeaponProgressions;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;
 global using Persistence.SQLite;

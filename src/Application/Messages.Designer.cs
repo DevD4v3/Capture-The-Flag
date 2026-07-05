@@ -205,6 +205,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Combos are unavailable while GunGame mode is active..
+        /// </summary>
+        internal static string CombosUnavailable {
+            get {
+                return ResourceManager.GetString("CombosUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use /combos or NUM 4 key.
         /// </summary>
         internal static string ComboUsage {
@@ -1267,6 +1276,24 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Weapon catalogs are unavailable while GunGame mode is active..
+        /// </summary>
+        internal static string WeaponCatalogUnavailable {
+            get {
+                return ResourceManager.GetString("WeaponCatalogUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The weapon list is unavailable while GunGame mode is active..
+        /// </summary>
+        internal static string WeaponListUnavailable {
+            get {
+                return ResourceManager.GetString("WeaponListUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press Y to show the available weapons.
         /// </summary>
         internal static string WeaponListUsage {
@@ -1290,6 +1317,15 @@ namespace CTF.Application {
         internal static string WeaponNotFound {
             get {
                 return ResourceManager.GetString("WeaponNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your weapon pack is unavailable while GunGame mode is active..
+        /// </summary>
+        internal static string WeaponPackUnavailable {
+            get {
+                return ResourceManager.GetString("WeaponPackUnavailable", resourceCulture);
             }
         }
         

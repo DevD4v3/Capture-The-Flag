@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddArmourToAllPlayers" xml:space="preserve">
-    <value>{PlayerName} has added {Armour}% to the armour of all players!</value>
-  </data>
   <data name="AddArmourToPlayer" xml:space="preserve">
     <value>You have added {Armour}% armour to {PlayerName}!</value>
   </data>
@@ -551,5 +548,20 @@
   </data>
   <data name="AssignedToTeam" xml:space="preserve">
     <value>You have been assigned to {Name} team</value>
+  </data>
+  <data name="WeaponPackUnavailable" xml:space="preserve">
+    <value>Your weapon pack is unavailable while GunGame mode is active.</value>
+  </data>
+  <data name="WeaponCatalogUnavailable" xml:space="preserve">
+    <value>Weapon catalogs are unavailable while GunGame mode is active.</value>
+  </data>
+  <data name="WeaponListUnavailable" xml:space="preserve">
+    <value>The weapon list is unavailable while GunGame mode is active.</value>
+  </data>
+  <data name="AddArmourToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Armour}% to the armour of all players!</value>
+  </data>
+  <data name="CombosUnavailable" xml:space="preserve">
+    <value>Combos are unavailable while GunGame mode is active.</value>
   </data>
 </root>
