@@ -2,37 +2,45 @@
 
 public class KillingSpreeUpdater(
     IWorldService worldService,
-    IPlayerRepository playerRepository)
+    IPlayerRepository playerRepository,
+    IGunGameMode gunGameMode)
 {
+    private const int MinimumKillingSpree = 2;
+    private const int EarnedCoins = 20;
+
     public void Update(Player player, PlayerInfo playerInfo)
     {
         playerInfo.StatsPerRound.AddKillingSpree();
         int currentKillingSpree = playerInfo.StatsPerRound.KillingSpree;
-        if (currentKillingSpree >= 2)
+
+        if (currentKillingSpree < MinimumKillingSpree)
+            return;
+
+        if (playerInfo.HasSurpassedMaxKillingSpree())
         {
-            player.GameText($"KILL X{currentKillingSpree}", TimeSpan.FromSeconds(3), GameTextStyle.Style3);
-            const int earnedCoins = 20;
-            playerInfo.StatsPerRound.AddCoins(earnedCoins);
-            player.AddHealth(10);
+            playerInfo.SetMaxKillingSpree(currentKillingSpree);
+            playerRepository.UpdateMaxKillingSpree(playerInfo);
+        }
 
-            if (playerInfo.HasSurpassedMaxKillingSpree())
-            {
-                playerInfo.SetMaxKillingSpree(currentKillingSpree);
-                playerRepository.UpdateMaxKillingSpree(playerInfo);
-            }
+        if (gunGameMode.IsEnabled)
+            return;
 
-            if (currentKillingSpree % 3 == 0)
+        player.GameText($"KILL X{currentKillingSpree}", TimeSpan.FromSeconds(3), GameTextStyle.Style3);
+        playerInfo.StatsPerRound.AddCoins(EarnedCoins);
+        player.AddHealth(10);
+
+        if (currentKillingSpree % 3 == 0)
+        {
+            var message = Smart.Format(Messages.ConsecutiveKills, new
             {
-                var message = Smart.Format(Messages.ConsecutiveKills, new
-                {
-                    PlayerName = player.Name,
-                    Kills = currentKillingSpree
-                });
-                // Sample Message:
-                // Dave has had 3 consecutive kills without dying.
-                worldService.SendClientMessage(Color.Orange, message);
-                player.AddHealth(40);
-            }
+                PlayerName = player.Name,
+                Kills = currentKillingSpree
+            });
+
+            // Sample Message:
+            // Dave has had 3 consecutive kills without dying.
+            worldService.SendClientMessage(Color.Orange, message);
+            player.AddHealth(40);
         }
     }
 }
