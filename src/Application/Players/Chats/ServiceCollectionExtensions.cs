@@ -8,13 +8,12 @@ public static class ChatServicesExtensions
             .AddSingleton<IChatMessage, PrivateAdminChat>()
             .AddSingleton<IChatMessage, PrivateModeratorChat>()
             .AddSingleton<IChatMessage, PrivateTeamChat>()
-            .AddSingleton<IChatMessage, PrivateVipChat>();
-
-        services.AddSingleton<IDictionary<char, IChatMessage>>(sp =>
-        {
-            var chats = sp.GetRequiredService<IEnumerable<IChatMessage>>();
-            return chats.ToDictionary(c => c.Id);
-        });
+            .AddSingleton<IChatMessage, PrivateVipChat>()
+            .AddSingleton<IDictionary<char, IChatMessage>>(sp =>
+            {
+                var chats = sp.GetRequiredService<IEnumerable<IChatMessage>>();
+                return chats.ToDictionary(c => c.Id);
+            });
 
         return services;
     }

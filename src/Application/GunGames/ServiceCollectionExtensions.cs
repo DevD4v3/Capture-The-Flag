@@ -28,13 +28,12 @@ public static class GunGameExtensions
             .AddSingleton<IGunGameResultHandler, PlayerLeveledDown>()
             .AddSingleton<IGunGameResultHandler, PlayerLeveledUp>()
             .AddSingleton<IGunGameResultHandler, PlayerReachedFinalLevel>()
-            .AddSingleton<IGunGameResultHandler, PlayerScoredFinalKill>();
-
-        services.AddSingleton<IDictionary<GunGameResult, IGunGameResultHandler>>(sp =>
-        {
-            var handlers = sp.GetRequiredService<IEnumerable<IGunGameResultHandler>>();
-            return handlers.ToDictionary(h => h.Result, h => h);
-        });
+            .AddSingleton<IGunGameResultHandler, PlayerScoredFinalKill>()
+            .AddSingleton<IDictionary<GunGameResult, IGunGameResultHandler>>(sp =>
+            {
+                var handlers = sp.GetRequiredService<IEnumerable<IGunGameResultHandler>>();
+                return handlers.ToDictionary(h => h.Result);
+            });
 
         return services;
     }
