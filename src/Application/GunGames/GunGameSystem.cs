@@ -86,9 +86,9 @@ public class GunGameSystem(
             return;
         }
 
-        var dialog = new ListDialog("GunGame Mode", "Select", "Close");
+        var dialog = new ListDialog("Select a Weapon Progression", "Select", "Close");
         foreach (WeaponProgressionType type in Enum.GetValues<WeaponProgressionType>())
-            dialog.Add(type.ToString());
+            dialog.Add(type.GetDisplayName());
 
         ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
