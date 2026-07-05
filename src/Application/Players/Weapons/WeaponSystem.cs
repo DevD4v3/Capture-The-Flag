@@ -3,6 +3,7 @@
 public class WeaponSystem(
     IEntityManager entityManager,
     IDialogService dialogService,
+    IGunGameMode gunGameMode,
     WeaponCatalog weaponCatalog,
     WeaponCatalogSettings weaponCatalogSettings) : ISystem
 {
@@ -15,6 +16,13 @@ public class WeaponSystem(
     [Event]
     public async Task OnPlayerRequestSpawn(Player player)
     {
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Orange, GunGameMessages.GunGameModeStarted);
+            player.SendClientMessage(Color.Orange, GunGameMessages.GunGameModeObjective);
+            return;
+        }
+
         await ShowWeapons(player);
         player.SendClientMessage(Color.Orange, Messages.WeaponListUsage);
         player.SendClientMessage(Color.Orange, Messages.WeaponPackUsage);
@@ -40,6 +48,9 @@ public class WeaponSystem(
     [Event]
     public void OnPlayerSpawn(Player player)
     {
+        if (gunGameMode.IsEnabled)
+            return;
+
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
         // Don't user foreach for performance reasons.
@@ -60,6 +71,12 @@ public class WeaponSystem(
     [PlayerCommand("weapons")]
     public async Task ShowWeapons(Player player)
     {
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponListUnavailable);
+            return;
+        }
+
         var dialog = new ListDialog("Select Weapons", "Select", "Close");
         var weapons = weaponCatalog.GetAll();
         foreach (IWeapon weapon in weapons)
@@ -99,6 +116,12 @@ public class WeaponSystem(
     [PlayerCommand("weaponpack")]
     public async Task ShowWeaponPackage(Player player)
     {
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponPackUnavailable);
+            return;
+        }
+
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
         if (selectedWeapons.IsEmpty())
@@ -133,6 +156,12 @@ public class WeaponSystem(
     [PlayerCommand("weaponcatalog")]
     public async Task ShowCatalogs(Player player)
     {
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponCatalogUnavailable);
+            return;
+        }
+
         if (player.HasLowerRoleThan(RoleId.Admin))
             return;
 
