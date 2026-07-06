@@ -1,11 +1,9 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-public class WeaponSystem(
-    IEntityManager entityManager,
+public class WeaponSelectionSystem(
     IDialogService dialogService,
     IGunGameMode gunGameMode,
-    WeaponCatalog weaponCatalog,
-    WeaponCatalogSettings weaponCatalogSettings) : ISystem
+    WeaponCatalog weaponCatalog) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -29,23 +27,6 @@ public class WeaponSystem(
     }
 
     [Event]
-    public async Task OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
-    {
-        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Walk | Keys.CtrlBack))
-        {
-            GiveParachute(player);
-        }
-        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
-        {
-            await ShowWeapons(player);
-        }
-        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.CtrlBack))
-        {
-            await ShowWeaponPackage(player);
-        }
-    }
-
-    [Event]
     public void OnPlayerSpawn(Player player)
     {
         if (gunGameMode.IsEnabled)
@@ -59,6 +40,23 @@ public class WeaponSystem(
         {
             IWeapon weapon = selectedWeapons[i];
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
+        }
+    }
+
+    [Event]
+    public async Task OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    {
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Walk | Keys.CtrlBack))
+        {
+            GiveParachute(player);
+        }
+        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
+        {
+            await ShowWeapons(player);
+        }
+        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.CtrlBack))
+        {
+            await ShowWeaponPackage(player);
         }
     }
 
@@ -85,6 +83,12 @@ public class WeaponSystem(
         ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
             return;
+
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponListUnavailable);
+            return;
+        }
 
         Result<IWeapon> weaponResult = weaponCatalog.GetByName(response.Item.Text);
         if (weaponResult.IsFailed)
@@ -138,6 +142,12 @@ public class WeaponSystem(
         if (response.IsRightButtonOrDisconnected())
             return;
 
+        if (gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.WeaponPackUnavailable);
+            return;
+        }
+
         Result<IWeapon> weaponResult = weaponCatalog.GetByName(response.Item.Text);
         if (weaponResult.IsFailed)
         {
@@ -151,57 +161,5 @@ public class WeaponSystem(
         selectedWeapons.Remove(weaponSelectedFromDialog);
         player.RemoveWeapon(weaponSelectedFromDialog.Id);
         await ShowWeaponPackage(player);
-    }
-
-    [PlayerCommand("weaponcatalog")]
-    public async Task ShowCatalogs(Player player)
-    {
-        if (gunGameMode.IsEnabled)
-        {
-            player.SendClientMessage(Color.Red, Messages.WeaponCatalogUnavailable);
-            return;
-        }
-
-        if (player.HasLowerRoleThan(RoleId.Admin))
-            return;
-
-        var dialog = new ListDialog("Weapon Catalogs", "Select", "Close");
-        foreach (WeaponCatalogType type in Enum.GetValues<WeaponCatalogType>())
-            dialog.Add(type.GetDisplayName());
-
-        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
-        if (response.IsRightButtonOrDisconnected())
-            return;
-
-        WeaponCatalogType selectedCatalog = (WeaponCatalogType)response.ItemIndex;
-        if (weaponCatalogSettings.Type == selectedCatalog)
-        {
-            player.SendClientMessage(Color.Red, Messages.WeaponCatalogAlreadyActive);
-            return;
-        }
-
-        weaponCatalogSettings.Change(selectedCatalog);
-        var catalogName = selectedCatalog.GetDisplayName();
-        var message = Smart.Format(Messages.WeaponCatalogChangedTo, new { Name = catalogName });
-
-        foreach (Player currentPlayer in entityManager.GetComponents<Player>())
-        {
-            var weaponSelection = currentPlayer.GetComponent<WeaponSelectionComponent>();
-            WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
-
-            // Ensure the player's weapon pack only contains weapons
-            // available in the newly selected catalog.
-            selectedWeapons.RemoveAll(weapon =>
-            {
-                bool shouldRemove = !weaponCatalog.Contains(weapon);
-
-                if (shouldRemove)
-                    currentPlayer.RemoveWeapon(weapon.Id);
-
-                return shouldRemove;
-            });
-
-            currentPlayer.SendClientMessage(Color.Yellow, message);
-        }
     }
 }
