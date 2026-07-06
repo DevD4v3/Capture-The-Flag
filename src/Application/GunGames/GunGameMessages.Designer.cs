@@ -61,6 +61,15 @@ namespace CTF.Application.GunGames {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GunGame started with the &apos;{Progression}&apos; progression ({KillsRequiredPerLevel} kills per level)..
+        /// </summary>
+        internal static string GunGameConfiguration {
+            get {
+                return ResourceManager.GetString("GunGameConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GunGame mode is already active..
         /// </summary>
         internal static string GunGameModeAlreadyActive {

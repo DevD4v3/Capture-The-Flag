@@ -94,9 +94,17 @@ public class GunGameSystem(
         if (response.IsRightButtonOrDisconnected())
             return;
 
-        gunGameSession.WeaponProgressionType = (WeaponProgressionType)response.ItemIndex;
+        var selectedProgression = (WeaponProgressionType)response.ItemIndex;
+        gunGameSession.WeaponProgressionType = selectedProgression;
         gunGameSession.KillsRequiredPerLevel = new KillsRequiredPerLevel(killsRequiredPerLevel);
 
+        var message = Smart.Format(GunGameMessages.GunGameConfiguration, new
+        {
+            Progression = selectedProgression.GetDisplayName(),
+            KillsRequiredPerLevel = killsRequiredPerLevel
+        });
+
+        player.SendClientMessage(Color.Yellow, message);
         StartGunGame();
     }
 
@@ -144,7 +152,7 @@ public class GunGameSystem(
         IsEnabled = false;
         var players = entityManager.GetComponents<Player>();
 
-        foreach (var player in players)
+        foreach (Player player in players)
             RestorePlayerWeapons(player);
 
         worldService.GameText(
