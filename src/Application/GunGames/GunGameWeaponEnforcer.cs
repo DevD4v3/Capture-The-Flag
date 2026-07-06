@@ -17,7 +17,9 @@ public class GunGameWeaponEnforcer(
             return;
 
         Weapon currentWeapon = player.Weapon;
-        if (currentWeapon == Weapon.None || currentWeapon == Weapon.Knife)
+        if (currentWeapon == Weapon.None  || 
+            currentWeapon == Weapon.Knife || 
+            currentWeapon == Weapon.Parachute)
             return;
 
         var playerProgression = player.GetComponent<PlayerProgression>();
