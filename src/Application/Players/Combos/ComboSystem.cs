@@ -45,9 +45,7 @@ public class ComboSystem : ISystem
             return;
 
         if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.AnalogLeft))
-        {
             await ShowCombos(player);
-        }
     }
 
     [PlayerCommand("combos")]
@@ -62,6 +60,12 @@ public class ComboSystem : ISystem
         TablistDialogResponse response = await _dialogService.ShowAsync(player, _tablistDialog);
         if (response.IsRightButtonOrDisconnected())
             return;
+
+        if (_gunGameMode.IsEnabled)
+        {
+            player.SendClientMessage(Color.Red, Messages.CombosUnavailable);
+            return;
+        }
 
         string selectedItemName = response.Item.Columns[0];
         ICombo selectedCombo = _combos.First(combo => combo.Name == selectedItemName);
