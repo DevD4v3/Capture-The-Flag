@@ -8,8 +8,9 @@ public class KillingSpreeUpdater(
     private const int MinimumKillingSpree = 2;
     private const int EarnedCoins = 20;
 
-    public void Update(Player player, PlayerInfo playerInfo)
+    public void Update(Player player)
     {
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         playerInfo.StatsPerRound.AddKillingSpree();
         int currentKillingSpree = playerInfo.StatsPerRound.KillingSpree;
 

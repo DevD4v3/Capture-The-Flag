@@ -48,8 +48,8 @@ public class PlayerStatsSystem(
         killerInfo.AddTotalKills();
         killer.AddScore();
         playerRepository.UpdateTotalKills(killerInfo);
-        killingSpreeUpdater.Update(killer, killerInfo);
-        playerRankUpdater.Update(killer, killerInfo);
+        killingSpreeUpdater.Update(killer);
+        playerRankUpdater.Update(killer);
         playerStatsRenderer.UpdateTextDraw(killer);
     }
 

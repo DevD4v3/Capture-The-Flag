@@ -4,8 +4,9 @@ public class PlayerRankUpdater(
     IPlayerRepository playerRepository,
     IGunGameMode gunGameMode)
 {
-    public void Update(Player player, PlayerInfo playerInfo)
+    public void Update(Player player)
     {
+        PlayerInfo playerInfo = player.GetRequiredInfo();
         if (!playerInfo.CanMoveUpToNextRank())
             return;
 
