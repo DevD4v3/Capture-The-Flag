@@ -10,14 +10,14 @@ public class WeaponCatalogSystem(
     [PlayerCommand("weaponcatalog")]
     public async Task ShowCatalogs(Player player)
     {
+        if (player.HasLowerRoleThan(RoleId.Admin))
+            return;
+
         if (gunGameMode.IsEnabled)
         {
             player.SendClientMessage(Color.Red, Messages.WeaponCatalogUnavailable);
             return;
         }
-
-        if (player.HasLowerRoleThan(RoleId.Admin))
-            return;
 
         var dialog = new ListDialog("Weapon Catalogs", "Select", "Close");
         foreach (WeaponCatalogType type in Enum.GetValues<WeaponCatalogType>())
