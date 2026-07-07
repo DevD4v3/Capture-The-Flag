@@ -31,9 +31,9 @@ public class PlayerRankUpdater(
         if (gunGameMode.IsEnabled)
             return;
 
-        player.Armour = 100;
-        player.Health = 100;
-        playerInfo.StatsPerRound.AddCoins(100);
+        player.Armour = EarnedHealth;
+        player.Health = EarnedArmour;
+        playerInfo.StatsPerRound.AddCoins(EarnedCoins);
 
         var rankUpAwardSummary = Smart.Format(Messages.RankUpAwardSummary, new
         {
