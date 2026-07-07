@@ -23,8 +23,10 @@ public class GunGameReward(PlayerStatsRenderer playerStatsRenderer)
         var weaponReward = _weaponRewards[Random.Shared.Next(_weaponRewards.Length)];
         var winnerRewardSummary = Smart.Format(GunGameMessages.WinnerRewardSummary, new
         {
-            Rewards = $"+{WinnerEarnedHealth} Health, +{WinnerEarnedArmour} Armour, " +
-                      $"+{WinnerEarnedCoins} Coins, +{weaponReward.Weapon.Name}"
+            Health = WinnerEarnedHealth,
+            Armour = WinnerEarnedArmour,
+            Coins  = WinnerEarnedCoins,
+            Weapon = weaponReward.Weapon.Name
         });
         PlayerInfo winnerInfo = winner.GetRequiredInfo();
         winner.AddHealth(WinnerEarnedHealth);
@@ -44,9 +46,11 @@ public class GunGameReward(PlayerStatsRenderer playerStatsRenderer)
 
         var teamRewardSummary = Smart.Format(GunGameMessages.TeamRewardSummary, new
         {
-            Team = winnerInfo.Team.Name,
-            Rewards = $"+{TeamEarnedHealth} Health, +{TeamEarnedArmour} Armour, " +
-                      $"+{TeamEarnedCoins} Coins, +{TeamEarnedScore} Score"
+            Team   = winnerInfo.Team.Name,
+            Health = TeamEarnedHealth,
+            Armour = TeamEarnedArmour,
+            Coins  = TeamEarnedCoins,
+            Score  = TeamEarnedScore
         });
 
         foreach (Player teammate in winnerInfo.Team.Members)

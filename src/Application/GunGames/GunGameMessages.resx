@@ -166,12 +166,12 @@
     <value>{Team} Team has been rewarded thanks to {Killer}'s Final Kill!</value>
   </data>
   <data name="TeamRewardSummary" xml:space="preserve">
-    <value>Team reward: {Rewards}.</value>
+    <value>Team reward: +{Health} Health, +{Armour} Armour, +{Coins} Coins, +{Score} Score.</value>
   </data>
   <data name="WinnerRewardGranted" xml:space="preserve">
     <value>You received the GunGame winner reward!</value>
   </data>
   <data name="WinnerRewardSummary" xml:space="preserve">
-    <value>Winner reward: {Rewards}.</value>
+    <value>Winner reward: +{Health} Health, +{Armour} Armour, +{Coins} Coins, +{Weapon}.</value>
   </data>
 </root>

@@ -205,7 +205,7 @@ namespace CTF.Application.GunGames {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team reward: {Rewards}..
+        ///   Looks up a localized string similar to Team reward: +{Health} Health, +{Armour} Armour, +{Coins} Coins, +{Score} Score..
         /// </summary>
         internal static string TeamRewardSummary {
             get {
@@ -223,7 +223,7 @@ namespace CTF.Application.GunGames {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Winner reward: {Rewards}..
+        ///   Looks up a localized string similar to Winner reward: +{Health} Health, +{Armour} Armour, +{Coins} Coins, +{Weapon}..
         /// </summary>
         internal static string WinnerRewardSummary {
             get {
