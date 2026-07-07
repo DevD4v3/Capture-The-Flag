@@ -8,7 +8,11 @@
 /// </remarks>
 public abstract class WeaponCatalogBase
 {
-    private readonly List<IWeapon> _weapons;
+    private readonly List<IWeapon> _weapons = 
+    [
+        WeaponDefinitions.Knife,
+        WeaponDefinitions.Parachute
+    ];
 
     /// <summary>
     /// Initializes the catalog with the weapons that are
@@ -16,13 +20,7 @@ public abstract class WeaponCatalogBase
     /// </summary>
     protected WeaponCatalogBase()
     {
-        List<IWeapon> weapons = 
-        [
-            WeaponDefinitions.Knife,
-            WeaponDefinitions.Parachute
-        ];
-        Define(weapons);
-        _weapons = weapons;
+        Define(_weapons);
     }
 
     /// <summary>
