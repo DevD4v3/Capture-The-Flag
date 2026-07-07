@@ -15,6 +15,9 @@ public abstract class WeaponProgressionBase
     protected WeaponProgressionBase()
     {
         Define(_weapons);
+        if (_weapons.Count == 0)
+            throw new InvalidOperationException(
+                "A weapon progression must define at least one weapon.");
     }
 
     /// <summary>
