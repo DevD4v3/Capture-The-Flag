@@ -7,6 +7,8 @@ public class KillingSpreeUpdater(
 {
     private const int MinimumKillingSpree = 2;
     private const int EarnedCoins = 20;
+    private const int EarnedHealth = 10;
+    private const int ConsecutiveKillsBonusHealth = 40;
 
     public void Update(Player player)
     {
@@ -28,7 +30,7 @@ public class KillingSpreeUpdater(
 
         player.GameText($"KILL X{currentKillingSpree}", TimeSpan.FromSeconds(3), GameTextStyle.Style3);
         playerInfo.StatsPerRound.AddCoins(EarnedCoins);
-        player.AddHealth(10);
+        player.AddHealth(EarnedHealth);
 
         if (currentKillingSpree % 3 == 0)
         {
@@ -41,7 +43,7 @@ public class KillingSpreeUpdater(
             // Sample Message:
             // Dave has had 3 consecutive kills without dying.
             worldService.SendClientMessage(Color.Orange, message);
-            player.AddHealth(40);
+            player.AddHealth(ConsecutiveKillsBonusHealth);
         }
     }
 }

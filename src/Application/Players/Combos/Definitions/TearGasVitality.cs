@@ -2,15 +2,19 @@
 
 public class TearGasVitality : ICombo
 {
-    public string Name => "100 Health, 100 Armour and Tear gas";
+    private const int Health = 100;
+    private const int Armour = 100;
+    private const int TearGasAmmo = 30;
+
+    public string Name => $"{Health} Health, {Armour} Armour and Tear gas";
     public int RequiredCoins => 100;
 
     public Result Give(Player player)
     {
         PlayerInfo playerInfo = player.GetRequiredInfo();
-        player.Health = 100;
-        player.Armour = 100;
-        player.GiveWeapon(Weapon.Teargas, ammo: 30);
+        player.Health = Health;
+        player.Armour = Armour;
+        player.GiveWeapon(Weapon.Teargas, TearGasAmmo);
         playerInfo.StatsPerRound.ResetCoins();
         return Result.Success();
     }

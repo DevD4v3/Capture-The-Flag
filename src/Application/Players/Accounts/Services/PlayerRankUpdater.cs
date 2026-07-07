@@ -4,6 +4,10 @@ public class PlayerRankUpdater(
     IPlayerRepository playerRepository,
     IGunGameMode gunGameMode)
 {
+    private const int EarnedHealth = 100;
+    private const int EarnedArmour = 100;
+    private const int EarnedCoins  = 100;
+
     public void Update(Player player)
     {
         PlayerInfo playerInfo = player.GetRequiredInfo();
@@ -30,6 +34,15 @@ public class PlayerRankUpdater(
         player.Armour = 100;
         player.Health = 100;
         playerInfo.StatsPerRound.AddCoins(100);
-        player.SendClientMessage(Color.Orange, Messages.RankUpAward);
+
+        var rankUpAwardSummary = Smart.Format(Messages.RankUpAwardSummary, new
+        {
+            Health = EarnedHealth,
+            Armour = EarnedArmour,
+            Coins  = EarnedCoins
+        });
+
+        player.SendClientMessage(Color.Orange, Messages.RankUpAwardGranted);
+        player.SendClientMessage(Color.Orange, rankUpAwardSummary);
     }
 }

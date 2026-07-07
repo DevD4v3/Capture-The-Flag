@@ -943,11 +943,20 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have gained +100 coins, +100 armour, and +100 health.
+        ///   Looks up a localized string similar to You have received the following rank-up rewards:.
         /// </summary>
-        internal static string RankUpAward {
+        internal static string RankUpAwardGranted {
             get {
-                return ResourceManager.GetString("RankUpAward", resourceCulture);
+                return ResourceManager.GetString("RankUpAwardGranted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to +{Health} Health, +{Armour} Armour, +{Coins} Coins.
+        /// </summary>
+        internal static string RankUpAwardSummary {
+            get {
+                return ResourceManager.GetString("RankUpAwardSummary", resourceCulture);
             }
         }
         
