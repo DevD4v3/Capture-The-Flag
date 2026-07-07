@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.TopPlayers.Models;
+﻿namespace CTF.Application.Players.TopPlayers;
 
 public class TopPlayersByMaxKillingSpree
 {
