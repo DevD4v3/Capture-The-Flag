@@ -402,8 +402,8 @@
   <data name="PromotedToRole" xml:space="preserve">
     <value>Promoted to {RoleName} role</value>
   </data>
-  <data name="RankUpAward" xml:space="preserve">
-    <value>You have gained +100 coins, +100 armour, and +100 health</value>
+  <data name="RankUpAwardGranted" xml:space="preserve">
+    <value>You have received the following rank-up rewards:</value>
   </data>
   <data name="ReceiveArmourFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Armour}% armour from {PlayerName}!</value>
@@ -563,5 +563,8 @@
   </data>
   <data name="CombosUnavailable" xml:space="preserve">
     <value>Combos are unavailable while GunGame mode is active.</value>
+  </data>
+  <data name="RankUpAwardSummary" xml:space="preserve">
+    <value>+{Health} Health, +{Armour} Armour, +{Coins} Coins</value>
   </data>
 </root>

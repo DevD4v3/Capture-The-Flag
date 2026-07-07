@@ -11,6 +11,9 @@ public class OnFlagReturned(
     PlayerStatsRenderer playerStatsRenderer,
     FlagAutoReturnTimer flagAutoReturnTimer) : IFlagEvent
 {
+    private const int EarnedCoins = 5;
+    private const int EarnedScore = 2;
+
     public FlagStatus FlagStatus => FlagStatus.Returned;
 
     public void Handle(Team team, Player player)
@@ -29,9 +32,9 @@ public class OnFlagReturned(
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
 
         PlayerInfo playerInfo = player.GetRequiredInfo();
-        playerInfo.StatsPerRound.AddCoins(5);
+        playerInfo.StatsPerRound.AddCoins(EarnedCoins);
         playerInfo.AddReturnedFlags();
-        player.AddScore(2);
+        player.AddScore(EarnedScore);
         playerRepository.UpdateReturnedFlags(playerInfo);
         playerStatsRenderer.UpdateTextDraw(player);
     }

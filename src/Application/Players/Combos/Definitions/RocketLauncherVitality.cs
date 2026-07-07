@@ -2,7 +2,10 @@
 
 public class RocketLauncherVitality(ComboSettings comboSettings) : ICombo
 {
-    public string Name => "100 Health and Rocket launcher(RPG)";
+    private const int Health = 100;
+    private const int RocketLauncherAmmo = 2;
+
+    public string Name => $"{Health} Health and Rocket launcher(RPG)";
     public int RequiredCoins => 100;
 
     public Result Give(Player player)
@@ -14,8 +17,8 @@ public class RocketLauncherVitality(ComboSettings comboSettings) : ICombo
         }
 
         PlayerInfo playerInfo = player.GetRequiredInfo();
-        player.Health = 100;
-        player.GiveWeapon(Weapon.RocketLauncher, ammo: 2);
+        player.Health = Health;
+        player.GiveWeapon(Weapon.RocketLauncher, RocketLauncherAmmo);
         playerInfo.StatsPerRound.ResetCoins();
         return Result.Success();
     }
