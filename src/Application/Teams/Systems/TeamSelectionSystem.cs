@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Systems;
 
-public class ChangeTeamSystem(
+public class TeamSelectionSystem(
     IWorldService worldService,
     IDialogService dialogService,
     TeamTextDrawRenderer teamTextDrawRenderer,
@@ -21,6 +21,7 @@ public class ChangeTeamSystem(
             "Name",
             "Members"
         };
+
         var tablistDialog = new TablistDialog(
             caption: "Select a team", 
             button1: "Select", 

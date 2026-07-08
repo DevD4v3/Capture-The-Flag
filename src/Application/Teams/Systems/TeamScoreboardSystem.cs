@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Systems;
 
-public class ScoreBoardSystem(IDialogService dialogService) : ISystem
+public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
 {
     [Event]
     public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
@@ -16,9 +16,11 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
     {
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
+
         var caption = 
             $"{alphaTeam.ColorHex}Alpha Score: {alphaTeam.StatsPerRound.Score} " +
             $"{betaTeam.ColorHex}Beta Score: {betaTeam.StatsPerRound.Score}";
+
         var columnHeaders = new[]
         {
             "Name",
@@ -26,6 +28,7 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
             "Kills",
             "Deaths"
         };
+
         var tablistDialog = new TablistDialog(
             caption,
             button1: "Close",
@@ -35,10 +38,12 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
         var alphaTeamMembers = alphaTeam
             .Members
             .OrderByDescending(player => player.Score);
+
         foreach (Player teamMember in alphaTeamMembers) 
         {
             PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
-            string[] columns = [
+            string[] columns = 
+            [
                 $"{alphaTeam.ColorHex}{teamMember.Name}",
                 $"{alphaTeam.ColorHex}{teamMember.Score}",
                 $"{alphaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Kills}",
@@ -50,10 +55,12 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
         var betaTeamMembers = betaTeam
             .Members
             .OrderByDescending(player => player.Score);
+
         foreach (Player teamMember in betaTeamMembers)
         {
             PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
-            string[] columns = [
+            string[] columns = 
+            [
                 $"{betaTeam.ColorHex}{teamMember.Name}",
                 $"{betaTeam.ColorHex}{teamMember.Score}",
                 $"{betaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Kills}",
