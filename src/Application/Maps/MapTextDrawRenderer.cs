@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Maps.Services;
+﻿namespace CTF.Application.Maps;
 
 public class MapTextDrawRenderer
 {

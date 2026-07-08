@@ -25,7 +25,6 @@ global using CTF.Application.Teams.ClassSelection;
 global using CTF.Application.Teams.Flags;
 global using CTF.Application.Teams.Flags.Systems;
 global using CTF.Application.Maps;
-global using CTF.Application.Maps.Services;
 global using CTF.Application.GunGames;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;

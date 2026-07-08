@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Maps.Systems;
+﻿namespace CTF.Application.Maps;
 
 public class MapRotationSystem(
     IWorldService worldService,

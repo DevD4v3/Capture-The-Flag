@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Maps.Systems;
+﻿namespace CTF.Application.Maps;
 
 public class MapInitializationSystem(
     IWorldService worldService,

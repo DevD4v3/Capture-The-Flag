@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Maps.Services;
+﻿namespace CTF.Application.Maps;
 
 /// <summary>
 /// Represents a service to load information from a map.
