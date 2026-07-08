@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Maps.Systems;
 
-public class SetDefaultMapSystem(
+public class MapInitializationSystem(
     IWorldService worldService,
     IServerService serverService,
     MapInfoService mapInfoService,
@@ -18,6 +18,7 @@ public class SetDefaultMapSystem(
         {
             mapInfoService.Load(mapResult.Value);
         }
+
         CurrentMap currentMap = mapInfoService.CurrentMap;
         serverService.SetMapName(currentMap.Name);
         serverService.SendRconCommand($"loadfs {currentMap.Name}");
