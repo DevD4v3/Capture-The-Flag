@@ -7,7 +7,6 @@ public class OnFlagDropped(
     IPlayerRepository playerRepository,
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     FlagAutoReturnTimer flagAutoReturnTimer) : IFlagEvent
 {
     public FlagStatus FlagStatus => FlagStatus.Dropped;
@@ -15,7 +14,7 @@ public class OnFlagDropped(
     public void Handle(Team team, Player player)
     {
         teamPickupService.CreateFlagFromVector3(team, player.Position);
-        teamSoundsService.PlayFlagDroppedSound(team);
+        team.Sounds.PlayFlagDroppedSound();
         flagAutoReturnTimer.Start(team);
         team.Flag.Drop();
         var message = Smart.Format(Messages.OnFlagDropped, new

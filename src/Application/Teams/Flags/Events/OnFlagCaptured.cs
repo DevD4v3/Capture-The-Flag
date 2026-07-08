@@ -7,7 +7,6 @@ public class OnFlagCaptured(
     IPlayerRepository playerRepository,
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     PlayerStatsRenderer playerStatsRenderer,
     FlagCarrierSettings flagCarrierSettings) : IFlagEvent
 {
@@ -20,7 +19,7 @@ public class OnFlagCaptured(
     {
         teamPickupService.CreateExteriorMarker(team);
         teamPickupService.DestroyFlag(team);
-        teamSoundsService.PlayFlagTakenSound(team);
+        team.Sounds.PlayFlagTakenSound();
         var message = Smart.Format(Messages.OnFlagCaptured, new
         {
             PlayerName = player.Name,

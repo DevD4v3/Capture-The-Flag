@@ -6,7 +6,6 @@
 public class OnFlagTaken(
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     FlagAutoReturnTimer flagAutoReturnTimer,
     FlagCarrierSettings flagCarrierSettings) : IFlagEvent
 {
@@ -15,7 +14,7 @@ public class OnFlagTaken(
     public void Handle(Team team, Player player)
     {
         teamPickupService.DestroyFlag(team);
-        teamSoundsService.PlayFlagTakenSound(team);
+        team.Sounds.PlayFlagTakenSound();
         flagAutoReturnTimer.Stop(team);
         var message = Smart.Format(Messages.OnFlagTaken, new
         {

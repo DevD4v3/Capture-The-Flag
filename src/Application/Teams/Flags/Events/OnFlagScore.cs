@@ -7,7 +7,6 @@ public class OnFlagScore(
     IPlayerRepository playerRepository,
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     TeamTextDrawRenderer teamTextDrawRenderer,
     PlayerStatsRenderer playerStatsRenderer) : IFlagEvent
 {
@@ -23,7 +22,7 @@ public class OnFlagScore(
     {
         teamPickupService.CreateFlagFromBasePosition(team.RivalTeam);
         teamPickupService.DestroyExteriorMarker(team.RivalTeam);
-        teamSoundsService.PlayTeamScoresSound(team);
+        team.Sounds.PlayTeamScoresSound();
         teamTextDrawRenderer.UpdateTeamScore(team);
 
         var message = Smart.Format(Messages.OnFlagScore, new

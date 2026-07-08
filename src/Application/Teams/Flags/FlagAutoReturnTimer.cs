@@ -7,7 +7,6 @@ public class FlagAutoReturnTimer(
     ITimerService timerService,
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     FlagAutoReturnSettings flagAutoReturnSettings)
 {
     private TimerReference _alphaTeamTimer;
@@ -19,7 +18,7 @@ public class FlagAutoReturnTimer(
         {
             teamPickupService.CreateFlagFromBasePosition(team);
             teamPickupService.DestroyExteriorMarker(team);
-            teamSoundsService.PlayFlagReturnedSound(team);
+            team.Sounds.PlayFlagReturnedSound();
             team.Flag.ReturnToBase();
             var message = Smart.Format(Messages.FlagAutoReturn, new
             {

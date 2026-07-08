@@ -3,7 +3,6 @@
 public class ReturnFlagSystem(
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     FlagAutoReturnTimer flagAutoReturnTimer) : ISystem
 {
     [PlayerCommand("returnflag")]
@@ -37,7 +36,7 @@ public class ReturnFlagSystem(
         team.Flag.ReturnToBase();
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyExteriorMarker(team);
-        teamSoundsService.PlayFlagReturnedSound(team);
+        team.Sounds.PlayFlagReturnedSound();
         flagAutoReturnTimer.Stop(team);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         worldService.SendClientMessage(Color.Yellow, message);
