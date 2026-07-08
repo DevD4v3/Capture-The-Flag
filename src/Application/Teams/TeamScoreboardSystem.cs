@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Systems;
+﻿namespace CTF.Application.Teams;
 
 public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
 {

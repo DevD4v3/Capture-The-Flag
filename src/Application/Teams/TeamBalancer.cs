@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Services;
+﻿namespace CTF.Application.Teams;
 
 /// <summary>
 /// Balances players between two teams based on their score.

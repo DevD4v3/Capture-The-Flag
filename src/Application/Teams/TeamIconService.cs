@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Services;
+﻿namespace CTF.Application.Teams;
 
 public class TeamIconService
 {
