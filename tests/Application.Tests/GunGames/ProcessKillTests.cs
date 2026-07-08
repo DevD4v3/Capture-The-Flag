@@ -42,6 +42,7 @@ public class ProcessKillTests
         // Assert
         result.Should().Be(GunGameResult.ScoredFinalKill);
         killer.WeaponLevel.Value.Should().Be(_maxLevel.Value);
+        killer.KillsTowardsNextLevel.Should().Be(0);
         victim.WeaponLevel.Should().Be(WeaponLevel.First);
     }
 
@@ -157,5 +158,42 @@ public class ProcessKillTests
         result.Should().Be(GunGameResult.ReachedFinalLevel);
         killer.WeaponLevel.Value.Should().Be(_maxLevel.Value);
         killer.KillsTowardsNextLevel.Should().Be(0);
+    }
+
+    [Test]
+    public void ProcessKill_WhenPlayerAtFinalLevelKillsWithNonKnifeFinalWeapon_ShouldReturnScoredFinalKill()
+    {
+        // Arrange
+        var session = new GunGameSession
+        {
+            WeaponProgressionType = WeaponProgressionType.Classic,
+            KillsRequiredPerLevel = new KillsRequiredPerLevel(2)
+        };
+
+        var progressions = new Dictionary<WeaponProgressionType, WeaponProgressionBase>
+        {
+            [WeaponProgressionType.Classic] = new NonKnifeFinalWeaponProgression()
+        };
+
+        var weaponProgression = new WeaponProgression(session, progressions);
+        var gunGame = new GunGame(weaponProgression, session.KillsRequiredPerLevel);
+        var killer = new PlayerProgression();
+        var victim = new PlayerProgression();
+
+        MaxWeaponLevel maxLevel = weaponProgression.MaxLevel;
+        Weapon finalLevelWeapon = Weapon.Minigun;
+
+        killer.LevelUp(maxLevel);
+        killer.LevelUp(maxLevel);
+        killer.LevelUp(maxLevel);
+
+        // Act
+        GunGameResult result = gunGame.ProcessKill(killer, victim, finalLevelWeapon);
+
+        // Assert
+        result.Should().Be(GunGameResult.ScoredFinalKill);
+        killer.WeaponLevel.Value.Should().Be(maxLevel.Value);
+        killer.KillsTowardsNextLevel.Should().Be(0);
+        victim.WeaponLevel.Should().Be(WeaponLevel.First);
     }
 }

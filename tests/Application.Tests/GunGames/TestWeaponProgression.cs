@@ -15,3 +15,19 @@ public class TestWeaponProgression : WeaponProgressionBase
         ]);
     }
 }
+
+public class NonKnifeFinalWeaponProgression : WeaponProgressionBase
+{
+    public override WeaponProgressionType Type => WeaponProgressionType.Classic;
+
+    protected override void Define(List<IWeapon> weapons)
+    {
+        weapons.AddRange(
+        [
+            WeaponDefinitions.Colt45,
+            WeaponDefinitions.MP5,
+            WeaponDefinitions.Knife,
+            WeaponDefinitions.Minigun
+        ]);
+    }
+}
