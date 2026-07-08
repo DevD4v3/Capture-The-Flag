@@ -10,7 +10,6 @@ public class FlagCarrierPauseHandler(
     IWorldService worldService,
     ITimerService timerService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     FlagCarrierSettings flagCarrierSettings) : ISystem
 {
     [Event]
@@ -60,7 +59,7 @@ public class FlagCarrierPauseHandler(
             player.HideOnRadarMap();
             teamPickupService.CreateFlagFromBasePosition(rivalTeam);
             teamPickupService.DestroyExteriorMarker(rivalTeam);
-            teamSoundsService.PlayFlagReturnedSound(rivalTeam);
+            rivalTeam.Sounds.PlayFlagReturnedSound();
             var message = Smart.Format(Messages.FlagAutoReturn2, new
             {
                 rivalTeam.ColorName,

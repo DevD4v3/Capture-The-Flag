@@ -7,7 +7,6 @@ public class OnFlagReturned(
     IPlayerRepository playerRepository,
     IWorldService worldService,
     TeamPickupService teamPickupService,
-    TeamSoundsService teamSoundsService,
     PlayerStatsRenderer playerStatsRenderer,
     FlagAutoReturnTimer flagAutoReturnTimer) : IFlagEvent
 {
@@ -20,7 +19,7 @@ public class OnFlagReturned(
     {
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyExteriorMarker(team);
-        teamSoundsService.PlayFlagReturnedSound(team);
+        team.Sounds.PlayFlagReturnedSound();
         flagAutoReturnTimer.Stop(team);
         var message = Smart.Format(Messages.OnFlagReturned, new
         {
