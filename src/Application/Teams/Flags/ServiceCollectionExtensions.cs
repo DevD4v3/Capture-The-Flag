@@ -19,8 +19,7 @@ public static class FlagServicesExtensions
 
         services
             .AddSingleton<FlagAutoReturnTimer>()
-            .AddSingleton<FlagStateResetter>()
-            .AddSingleton<OnFlagDropped>();
+            .AddSingleton<FlagStateResetter>();
 
         return services;
     }
