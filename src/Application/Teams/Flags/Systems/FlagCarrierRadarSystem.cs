@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Flags.Systems;
 
-public class FlagCarrierSystem(
+public class FlagCarrierRadarSystem(
     FlagCarrierSettings flagCarrierSettings,
     IWorldService worldService) : ISystem
 {
