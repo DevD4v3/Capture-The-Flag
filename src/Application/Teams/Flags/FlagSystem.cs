@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Flags.Systems;
+﻿namespace CTF.Application.Teams.Flags;
 
 public class FlagSystem(
     IWorldService worldService,

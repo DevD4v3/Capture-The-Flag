@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Flags.Systems;
+﻿namespace CTF.Application.Teams.Flags.Carriers;
 
 /// <summary>
 /// A system that handles the pause logic for flag carriers.

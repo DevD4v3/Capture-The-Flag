@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Flags;
+﻿namespace CTF.Application.Teams.Flags.AutoReturn;
 
 /// <summary>
 /// A timer service that automatically returns the flag to its base if it is not picked up by a player within a certain time limit.

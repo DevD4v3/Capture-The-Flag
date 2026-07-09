@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Flags;
+﻿namespace CTF.Application.Teams.Flags.AutoReturn;
 
 /// <summary>
 /// Represents settings for automatic flag return.
