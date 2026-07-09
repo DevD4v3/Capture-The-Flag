@@ -5,8 +5,7 @@ public class FlagSystem(
     IDictionary<FlagStatus, IFlagEvent> flagEvents,
     TeamPickupService teamPickupService,
     FlagAutoReturnTimer flagAutoReturnTimer,
-    PlayerStatsRenderer playerStatsRenderer,
-    OnFlagDropped onFlagDropped) : ISystem
+    PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
@@ -15,7 +14,8 @@ public class FlagSystem(
         if (playerInfo.IsCarryingEnemyFlag())
         {
             Team currentTeam = playerInfo.Team;
-            onFlagDropped.Handle(currentTeam.RivalTeam, player);
+            IFlagEvent flagDropped = flagEvents[FlagStatus.Dropped];
+            flagDropped.Handle(currentTeam.RivalTeam, player);
         }
     }
 
@@ -26,7 +26,8 @@ public class FlagSystem(
         if (victimInfo.IsCarryingEnemyFlag())
         {
             Team currentTeam = victimInfo.Team;
-            onFlagDropped.Handle(currentTeam.RivalTeam, victim);
+            IFlagEvent flagDropped = flagEvents[FlagStatus.Dropped];
+            flagDropped.Handle(currentTeam.RivalTeam, victim);
             if (killer.IsValidPlayer())
             {
                 PlayerInfo killerInfo = killer.GetRequiredInfo();
