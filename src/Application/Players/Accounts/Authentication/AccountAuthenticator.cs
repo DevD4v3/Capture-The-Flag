@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Services;
+﻿namespace CTF.Application.Players.Accounts.Authentication;
 
 public class AccountAuthenticator(
     IPasswordHasher passwordHasher,

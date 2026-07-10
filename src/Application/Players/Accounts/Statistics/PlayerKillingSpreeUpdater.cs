@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Services;
+﻿namespace CTF.Application.Players.Accounts.Statistics;
 
 public class PlayerKillingSpreeUpdater(
     IWorldService worldService,

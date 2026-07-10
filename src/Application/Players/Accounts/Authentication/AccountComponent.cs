@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts;
+﻿namespace CTF.Application.Players.Accounts.Authentication;
 
 public class AccountComponent : Component
 {

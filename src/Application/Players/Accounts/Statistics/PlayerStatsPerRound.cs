@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts;
+﻿namespace CTF.Application.Players.Accounts.Statistics;
 
 public class PlayerStatsPerRound
 {

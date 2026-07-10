@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Services;
+﻿namespace CTF.Application.Players.Accounts.Statistics;
 
 public class PlayerStatsRenderer(IWorldService worldService)
 {

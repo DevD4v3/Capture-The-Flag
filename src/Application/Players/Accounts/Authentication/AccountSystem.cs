@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Systems;
+﻿namespace CTF.Application.Players.Accounts.Authentication;
 
 public class AccountSystem(
     IPlayerRepository playerRepository,

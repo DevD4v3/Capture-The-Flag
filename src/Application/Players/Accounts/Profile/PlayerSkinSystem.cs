@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Systems;
+﻿namespace CTF.Application.Players.Accounts.Profile;
 
 public class PlayerSkinSystem(IPlayerRepository playerRepository) : ISystem
 {

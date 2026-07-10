@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts.Systems;
+﻿namespace CTF.Application.Players.Accounts.Statistics;
 
 public class PlayerKillsSystem(
     IPlayerRepository playerRepository,
