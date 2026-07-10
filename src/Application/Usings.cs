@@ -14,6 +14,7 @@ global using DotEnv.Core;
 global using Microsoft.Extensions.DependencyInjection;
 
 global using GameMode.Common;
+global using CTF.Application.Players;
 global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Accounts.Authentication;
@@ -28,7 +29,6 @@ global using CTF.Application.Players.Chats;
 global using CTF.Application.Players.Chats.Definitions;
 global using CTF.Application.Players.Vitalities;
 global using CTF.Application.Players.GeneralCommands.Resources;
-global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
 global using CTF.Application.Teams.ClassSelection;
 global using CTF.Application.Teams.Flags;
