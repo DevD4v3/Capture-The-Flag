@@ -1,5 +1,13 @@
 ﻿namespace CTF.Application.Players.AntiCBug;
 
+/// <summary>
+/// Prevents players from abusing the GTA: San Andreas crouch bug (C-Bug).
+/// </summary>
+/// <remarks>
+/// C-Bug is a bug in GTA: San Andreas that allows players to manipulate the
+/// reload animation of certain weapons, particularly the Desert Eagle, to fire
+/// much faster than the game's normal mechanics would allow.
+/// </remarks>
 public class AntiCBugSystem(
     UnixTimeSeconds unixTimeSeconds,
     AntiCBugSettings antiCBugSettings) : ISystem
