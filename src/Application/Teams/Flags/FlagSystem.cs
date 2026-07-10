@@ -28,7 +28,7 @@ public class FlagSystem(
             Team currentTeam = victimInfo.Team;
             IFlagEvent flagDropped = flagEvents[FlagStatus.Dropped];
             flagDropped.Handle(currentTeam.RivalTeam, victim);
-            if (killer.IsValidPlayer())
+            if (killer is not null)
             {
                 PlayerInfo killerInfo = killer.GetRequiredInfo();
                 killerInfo.StatsPerRound.AddCoins(4);
