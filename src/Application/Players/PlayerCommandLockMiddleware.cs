@@ -1,5 +1,9 @@
 ﻿namespace CTF.Application.Players;
 
+/// <summary>
+/// Middleware executed before <c>OnPlayerCommandText</c> to prevent command execution
+/// when the player does not meet the required conditions.
+/// </summary>
 public class PlayerCommandLockMiddleware(
     IEntityManager entityManager,
     EventDelegate next,
