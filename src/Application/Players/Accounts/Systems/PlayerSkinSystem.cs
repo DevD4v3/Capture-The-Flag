@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class ChangeSkinSystem(IPlayerRepository playerRepository) : ISystem
+public class PlayerSkinSystem(IPlayerRepository playerRepository) : ISystem
 {
     [PlayerCommand("skin")]
     public void SetSkin(Player player, [CommandParameter(Name = "skinId")]int newSkinId)

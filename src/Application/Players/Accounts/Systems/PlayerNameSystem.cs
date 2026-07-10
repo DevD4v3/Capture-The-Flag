@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class ChangeNameSystem(
+public class PlayerNameSystem(
     IPlayerRepository playerRepository,
     IWorldService worldService) : ISystem
 {

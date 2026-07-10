@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class ChangePasswordSystem(
+public class PlayerPasswordSystem(
     IPlayerRepository playerRepository,
     IDialogService dialogService) : ISystem
 {

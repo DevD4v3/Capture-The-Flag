@@ -6,7 +6,7 @@ public static class PlayerServicesExtensions
     {
         services
             .AddSingleton<PlayerRankUpdater>()
-            .AddSingleton<KillingSpreeUpdater>()
+            .AddSingleton<PlayerKillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
             .AddSingleton<AuthenticationDialog>()
             .AddSingleton<AccountAuthenticator>()

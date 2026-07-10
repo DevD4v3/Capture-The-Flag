@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts.Services;
 
-public class KillingSpreeUpdater(
+public class PlayerKillingSpreeUpdater(
     IWorldService worldService,
     IPlayerRepository playerRepository,
     IGunGameMode gunGameMode)

@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class ChangeRoleSystem(
+public class PlayerRoleSystem(
     IPlayerRepository playerRepository,
     IDialogService dialogService,
     ServerOwnerSettings serverOwnerSettings) : ISystem

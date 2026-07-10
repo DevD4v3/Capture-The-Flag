@@ -5,7 +5,7 @@ public class PlayerStatsSystem(
     IDialogService dialogService,
     IPlayerRepository playerRepository,
     PlayerRankUpdater playerRankUpdater,
-    KillingSpreeUpdater killingSpreeUpdater,
+    PlayerKillingSpreeUpdater killingSpreeUpdater,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [Event]
