@@ -6,7 +6,7 @@
 /// <remarks>
 /// It checks if the carrier is paused and updates the timer. If the timer runs out, the flag is returned to the base.
 /// </remarks>
-public class FlagCarrierPauseHandler(
+public class FlagCarrierPauseSystem(
     IWorldService worldService,
     ITimerService timerService,
     TeamPickupService teamPickupService,

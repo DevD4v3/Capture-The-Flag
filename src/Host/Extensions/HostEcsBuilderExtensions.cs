@@ -5,8 +5,8 @@ public static class HostEcsBuilderExtensions
     public static IEcsBuilder RegisterPauseEventHandlers(this IEcsBuilder builder) 
     {
         var playerPauseSystem = builder.Services.GetRequiredService<PlayerPauseSystem>();
-        var flagCarrierPauseHandler = builder.Services.GetRequiredService<FlagCarrierPauseHandler>();
-        playerPauseSystem.PauseEvent += flagCarrierPauseHandler.OnPlayerPauseStateChange;
+        var flagCarrierPauseSystem = builder.Services.GetRequiredService<FlagCarrierPauseSystem>();
+        playerPauseSystem.PauseEvent += flagCarrierPauseSystem.OnPlayerPauseStateChange;
         return builder;
     }
 
