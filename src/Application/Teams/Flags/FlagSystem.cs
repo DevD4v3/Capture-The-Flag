@@ -7,6 +7,10 @@ public class FlagSystem(
     FlagAutoReturnTimer flagAutoReturnTimer,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
+    private const int CarrierKillEarnedCoins  = 4;
+    private const int CarrierKillEarnedHealth = 10;
+    private const int CarrierKillEarnedScore  = 2;
+
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
@@ -31,9 +35,9 @@ public class FlagSystem(
             if (killer is not null)
             {
                 PlayerInfo killerInfo = killer.GetRequiredInfo();
-                killerInfo.StatsPerRound.AddCoins(4);
-                killer.AddHealth(10);
-                killer.AddScore(2);
+                killerInfo.StatsPerRound.AddCoins(CarrierKillEarnedCoins);
+                killer.AddHealth(CarrierKillEarnedHealth);
+                killer.AddScore(CarrierKillEarnedScore);
                 playerStatsRenderer.UpdateTextDraw(killer);
             }
         }
