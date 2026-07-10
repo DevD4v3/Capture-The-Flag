@@ -13,12 +13,13 @@ public class PlayerScoreSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        Result result = targetPlayer.SetScore(score);
-        if (result.IsFailed)
+        if (score < 0)
         {
-            currentPlayer.SendClientMessage(Color.Red, result.Message);
+            currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);
             return;
         }
+
+        targetPlayer.SetScore(score);
 
         {
             var message = Smart.Format(Messages.SetScoreToPlayer, new
@@ -48,12 +49,13 @@ public class PlayerScoreSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        Result result = targetPlayer.AddScore(score);
-        if (result.IsFailed)
+        if (score < 0)
         {
-            currentPlayer.SendClientMessage(Color.Red, result.Message);
+            currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);
             return;
         }
+
+        targetPlayer.AddScore(score);
 
         {
             var message = Smart.Format(Messages.AddScoreToPlayer, new
@@ -80,15 +82,16 @@ public class PlayerScoreSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
+        if (score < 0)
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);
+            return;
+        }
+
         IEnumerable<Player> players = entityManager.GetComponents<Player>();
         foreach (Player targetPlayer in players)
         {
-            Result result = targetPlayer.AddScore(score);
-            if (result.IsFailed)
-            {
-                currentPlayer.SendClientMessage(Color.Red, result.Message);
-                return;
-            }
+            targetPlayer.AddScore(score);
         }
 
         var message = Smart.Format(Messages.AddScoreToAllPlayers, new
@@ -96,6 +99,7 @@ public class PlayerScoreSystem(
             PlayerName = currentPlayer.Name,
             Score = score
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }
