@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Maps;
+﻿namespace CTF.Application.Maps.Rotation;
 
 public class MapRotationService(
     IServerService serverService,
