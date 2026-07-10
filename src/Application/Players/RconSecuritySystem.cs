@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players;
 
-public class RconSystem(IEntityManager entityManager) : ISystem
+public class RconSecuritySystem(IEntityManager entityManager) : ISystem
 {
     /// <summary>
     /// This callback is called when someone attempts to log in to RCON in-game, 

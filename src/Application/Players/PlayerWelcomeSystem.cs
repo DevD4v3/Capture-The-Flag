@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players;
 
-public class WelcomeSystem : ISystem
+public class PlayerWelcomeSystem : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
