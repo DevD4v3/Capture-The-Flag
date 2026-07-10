@@ -15,7 +15,7 @@ global using Microsoft.Extensions.DependencyInjection;
 
 global using GameMode.Common;
 global using CTF.Application.Players;
-global using CTF.Application.Players.AFK;
+global using CTF.Application.Players.Pause;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Accounts.Authentication;
 global using CTF.Application.Players.Accounts.Statistics;
