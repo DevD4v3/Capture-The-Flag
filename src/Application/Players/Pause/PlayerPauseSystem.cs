@@ -1,6 +1,6 @@
 ﻿using SampSharp.OpenMp.Core.Std.Chrono;
 
-namespace CTF.Application.Players.AFK;
+namespace CTF.Application.Players.Pause;
 
 public class PlayerPauseSystem(
     ITimerService timerService,

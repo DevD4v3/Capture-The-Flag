@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.AFK;
+﻿namespace CTF.Application.Players.Pause;
 
 public class PlayerDataComponent : Component
 {
