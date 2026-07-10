@@ -32,7 +32,7 @@ public static class HostEcsBuilderExtensions
     {
         builder
             .UseMiddleware<PlayerCommandLockMiddleware>(name: "OnPlayerCommandText")
-            .UseMiddleware<PlayerRequestSpawnMiddleware>(name: "OnPlayerRequestSpawn");
+            .UseMiddleware<PlayerSpawnLockMiddleware>(name: "OnPlayerRequestSpawn");
 
         return builder;
     }

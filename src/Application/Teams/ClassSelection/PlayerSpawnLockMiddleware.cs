@@ -1,17 +1,22 @@
 ﻿namespace CTF.Application.Teams.ClassSelection;
 
-public class PlayerRequestSpawnMiddleware(
+/// <summary>
+/// Middleware executed before <c>OnPlayerRequestSpawn</c> to prevent players
+/// from spawning when the required conditions are not met.
+/// </summary>
+public class PlayerSpawnLockMiddleware(
     IEntityManager entityManager,
     EventDelegate next,
     MapRotationService mapRotationService)
 {
     /// <summary>
-    /// Invokes the middleware logic to handle player spawn requests.
+    /// Invokes the middleware logic to block spawn requests from class selection
+    /// when the required conditions are not met.
     /// </summary>
     /// <param name="context">Contains context information about the fired event.</param>
     /// <returns>
-    /// <see langword="false"/> if any condition is met to prevent the player from spawning.
-    /// Otherwise, it proceeds to the next middleware or action.
+    /// <see langword="false"/> if spawning from class selection is blocked;
+    /// otherwise, proceeds to the next middleware or action.
     /// </returns>
     public object Invoke(EventContext context)
     {
