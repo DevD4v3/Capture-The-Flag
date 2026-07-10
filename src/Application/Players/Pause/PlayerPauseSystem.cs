@@ -2,6 +2,14 @@
 
 namespace CTF.Application.Players.Pause;
 
+/// <summary>
+/// Detects when players enter or leave the paused state.
+/// </summary>
+/// <remarks>
+/// The paused state is detected by monitoring <c>OnPlayerUpdate</c>. If no update
+/// packets are received from the client for a period of time, the player is
+/// considered paused. Once updates resume, the player is considered active again.
+/// </remarks>
 public class PlayerPauseSystem(
     ITimerService timerService,
     IEntityManager entityManager,
