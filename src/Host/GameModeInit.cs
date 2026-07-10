@@ -8,8 +8,8 @@ public class GameModeInit(
     public void OnGameModeInit()
     {
         Console.WriteLine("\n----------------------------------");
-        Console.WriteLine(" GameMode Capture The Flag");
-        Console.WriteLine("     Team DeathMatch");
+        Console.WriteLine("       Red vs Blue");
+        Console.WriteLine("    Capture the Flag");
         Console.WriteLine("----------------------------------\n");
 
         serverService.SendRconCommand("loadfs EntryMap");

@@ -529,7 +529,8 @@
     <value>{Name} has been removed from your weapon package</value>
   </data>
   <data name="Welcome1" xml:space="preserve">
-    <value>&gt;&gt;&gt; Welcome to Capture The Flag TDM! We're excited to have you here!</value>
+    <value>&gt;&gt;&gt; Welcome to Red vs Blue!
+Capture the Flag is about to begin.</value>
   </data>
   <data name="Welcome2" xml:space="preserve">
     <value>&gt;&gt;&gt; Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!</value>

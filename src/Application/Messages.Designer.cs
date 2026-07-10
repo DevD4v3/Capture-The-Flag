@@ -1366,7 +1366,8 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &gt;&gt;&gt; Welcome to Capture The Flag TDM! We&apos;re excited to have you here!.
+        ///   Looks up a localized string similar to &gt;&gt;&gt; Welcome to Red vs Blue!
+        ///Capture the Flag is about to begin..
         /// </summary>
         internal static string Welcome1 {
             get {
