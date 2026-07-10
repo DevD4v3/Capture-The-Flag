@@ -40,6 +40,18 @@ public class FlagSystem(
     }
 
     [Event]
+    public void OnTeamChange(Player player, Team selectedTeam)
+    {
+        PlayerInfo playerInfo = player.GetRequiredInfo();
+
+        if (!playerInfo.IsCarryingEnemyFlag())
+            return;
+
+        IFlagEvent flagDropped = flagEvents[FlagStatus.Dropped];
+        flagDropped.Handle(selectedTeam, player);
+    }
+
+    [Event]
     public void OnPlayerPickUpPickup(Player player, Pickup pickup)
     {
         if (pickup.Model == (int)FlagModel.Red)

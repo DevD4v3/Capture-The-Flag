@@ -3,9 +3,11 @@
 public class TeamSelectionSystem(
     IWorldService worldService,
     IDialogService dialogService,
-    TeamTextDrawRenderer teamTextDrawRenderer,
-    OnFlagDropped onFlagDropped) : ISystem
+    TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
 {
+    public delegate void TeamChangeEventHandler(Player player, Team selectedTeam);
+    public event TeamChangeEventHandler TeamChangeEvent;
+
     [PlayerCommand("team")]
     public async Task ShowTeams(Player player)
     {
@@ -73,10 +75,7 @@ public class TeamSelectionSystem(
             return;
         }
 
-        if (playerInfo.IsCarryingEnemyFlag())
-        {
-            onFlagDropped.Handle(selectedTeam, player);
-        }
+        TeamChangeEvent?.Invoke(player, selectedTeam);
 
         Team rivalTeam = selectedTeam.RivalTeam;
         selectedTeam.Members.Add(player);

@@ -53,6 +53,7 @@ public class Startup : IEcsStartup
             .RegisterMiddlewares()
             .RegisterPauseEventHandlers()
             .RegisterMapEventHandlers()
+            .RegisterTeamEventHandlers()
             .EnableStreamerEvents();
     }
 }

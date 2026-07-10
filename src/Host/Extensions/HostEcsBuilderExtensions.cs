@@ -20,6 +20,14 @@ public static class HostEcsBuilderExtensions
         return builder;
     }
 
+    public static IEcsBuilder RegisterTeamEventHandlers(this IEcsBuilder builder)
+    {
+        var teamSelectionSystem = builder.Services.GetRequiredService<TeamSelectionSystem>();
+        var flagSystem = builder.Services.GetRequiredService<FlagSystem>();
+        teamSelectionSystem.TeamChangeEvent += flagSystem.OnTeamChange;
+        return builder;
+    }
+
     public static IEcsBuilder RegisterMiddlewares(this IEcsBuilder builder)
     {
         builder
