@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams;
+﻿namespace CTF.Application.Teams.Matches;
 
 public class MatchResult
 {

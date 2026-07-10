@@ -16,6 +16,8 @@ global using CTF.Application.Players.Accounts.Roles;
 global using CTF.Application.Players.Vitalities;
 global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
+global using CTF.Application.Teams.Matches;
+global using CTF.Application.Teams.Statistics;
 global using CTF.Application.Teams.Flags;
 global using CTF.Application.Maps;
 global using CTF.Application.GunGames;

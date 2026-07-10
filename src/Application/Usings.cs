@@ -35,6 +35,8 @@ global using CTF.Application.Teams.Flags;
 global using CTF.Application.Teams.Flags.Events;
 global using CTF.Application.Teams.Flags.AutoReturn;
 global using CTF.Application.Teams.Flags.Carriers;
+global using CTF.Application.Teams.Statistics;
+global using CTF.Application.Teams.Matches;
 global using CTF.Application.Maps;
 
 global using CTF.Application.GunGames;
