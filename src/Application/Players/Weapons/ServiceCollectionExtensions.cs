@@ -11,6 +11,7 @@ public static class WeaponServicesExtensions
             .AddSingleton<WeaponCatalogBase, RifleOnlyWeaponCatalog>()
             .AddSingleton<WeaponCatalogBase, WarWeaponCatalog>()
             .AddSingleton<WeaponCatalogBase, HeavyWeaponCatalog>()
+            .AddSingleton<WeaponCatalogBase, MeleeWeaponCatalog>()
             .AddSingleton<WeaponCatalog>()
             .AddSingleton<IDictionary<WeaponCatalogType, WeaponCatalogBase>>(sp =>
             {

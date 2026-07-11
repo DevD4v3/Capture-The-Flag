@@ -21,5 +21,8 @@ public enum WeaponCatalogType
     War,
 
     [DisplayName("Heavy Weapons")]
-    Heavy
+    Heavy,
+
+    [DisplayName("Melee Weapons")]
+    Melee
 }
