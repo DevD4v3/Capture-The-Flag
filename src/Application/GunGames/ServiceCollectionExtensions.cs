@@ -18,6 +18,7 @@ public static class GunGameExtensions
             .AddSingleton<WeaponProgressionBase, RiflesWeaponProgression>()
             .AddSingleton<WeaponProgressionBase, ShotgunsWeaponProgression>()
             .AddSingleton<WeaponProgressionBase, SmgsWeaponProgression>()
+            .AddSingleton<WeaponProgressionBase, PowerfulWeaponProgression>()
             .AddSingleton<IDictionary<WeaponProgressionType, WeaponProgressionBase>>(sp =>
             {
                 var progressions = sp.GetRequiredService<IEnumerable<WeaponProgressionBase>>();

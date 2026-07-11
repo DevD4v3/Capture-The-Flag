@@ -24,5 +24,8 @@ public enum WeaponProgressionType
     Rifles,
 
     [DisplayName("Hardcore")]
-    Hardcore
+    Hardcore,
+
+    [DisplayName("Powerful Weapons")]
+    Powerful
 }
