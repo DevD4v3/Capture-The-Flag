@@ -10,22 +10,19 @@
 
 <p align="center">
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
+    <img src="https://img.shields.io/badge/Mode-Capture%20the%20Flag-red" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/.NET-10.0-blue" />
+    <img src="https://img.shields.io/badge/Teams-Red%20vs%20Blue-blue" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/Framework-SampSharp.net-purple" />
+    <img src="https://img.shields.io/badge/.NET-10-blueviolet" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/GameMode-CSharp-yellow" />
+    <img src="https://img.shields.io/badge/Framework-SampSharp-purple" />
   </a>
   <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/Mode-Team%20Deathmatch%20+%20Ranks-green" />
-  </a>
-  <a href="https://github.com/DevD4v3/Capture-The-Flag">
-    <img src="https://img.shields.io/badge/License-AGPL%203.0-orange" />
+    <img src="https://img.shields.io/badge/License-AGPL--3.0-orange" />
   </a>
 </p>
 
