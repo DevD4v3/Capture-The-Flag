@@ -349,7 +349,7 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team&apos;s flag and bring it back to their own base to score a point.
+        ///   Looks up a localized string similar to ~r~Welcome to Capture the Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team&apos;s flag and bring it back to their own base to score a point.
         /// </summary>
         internal static string GameModeDescription {
             get {

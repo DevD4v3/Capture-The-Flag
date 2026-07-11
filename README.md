@@ -1,4 +1,4 @@
-<h1 align="center">🎮 Capture The Flag</h1>
+<h1 align="center">🎮 Capture the Flag</h1>
 
 <p align="center">
   <strong>A fast-paced C# game mode for open.mp — featuring two teams, two flags, and pure competitive chaos.</strong>
@@ -35,7 +35,7 @@
   </a>
 </p>
 
-**Capture The Flag** is a game mode for [open.mp](https://github.com/openmultiplayer) (Open Multiplayer, a multiplayer mod for GTA San Andreas) created with the [SampSharp](https://github.com/ikkentim/SampSharp) framework.
+**Capture the Flag** is a game mode for [open.mp](https://github.com/openmultiplayer) (Open Multiplayer, a multiplayer mod for GTA San Andreas) created with the [SampSharp](https://github.com/ikkentim/SampSharp) framework.
 
 There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own base.
 

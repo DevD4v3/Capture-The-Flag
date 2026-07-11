@@ -138,7 +138,7 @@
 {Color1}Use the '#' symbol at the start of your message to access the private admin chat.</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>{Color1}Capture The Flag is an open source project. 
+    <value>{Color1}Capture the Flag is an open source project. 
 {Color1}Check out its official repository: 
 {Color2}https://github.com/DevD4v3/Capture-The-Flag
 {Color1}Creator and programmer: {Color2}DevD4v3 (David Roman)
@@ -190,7 +190,7 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}Use the '&amp;' symbol at the start of your message to access the private moderator chat.</value>
   </data>
   <data name="Public1" xml:space="preserve">
-    <value>{Color1}/help: {Color2}Display an introduction to the Capture The Flag game mode.
+    <value>{Color1}/help: {Color2}Display an introduction to the Capture the Flag mode.
 {Color1}/credits: {Color2}Show credits for the game and contributors.
 {Color1}/ranks: {Color2}List the different player ranks and their requirements.
 {Color1}/mystats: {Color2}Display the statistics of the current player.

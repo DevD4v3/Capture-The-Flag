@@ -76,7 +76,7 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {Color1}Capture The Flag is an open source project. 
+        ///   Looks up a localized string similar to {Color1}Capture the Flag is an open source project. 
         ///{Color1}Check out its official repository: 
         ///{Color2}https://github.com/DevD4v3/Capture-The-Flag
         ///{Color1}Creator and programmer: {Color2}DevD4v3 (David Roman)
@@ -128,13 +128,14 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {Color1}/help: {Color2}Display an introduction to the Capture The Flag game mode.
+        ///   Looks up a localized string similar to {Color1}/help: {Color2}Display an introduction to the Capture the Flag mode.
         ///{Color1}/credits: {Color2}Show credits for the game and contributors.
         ///{Color1}/ranks: {Color2}List the different player ranks and their requirements.
         ///{Color1}/mystats: {Color2}Display the statistics of the current player.
         ///{Color1}/stats: {Color2}Show the statistics of a specified player.
         ///{Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
-        ///{Color1}/changepass: {Color2}Change your account passwor [rest of string was truncated]&quot;;.
+        ///{Color1}/changepass: {Color2}Change your account password.
+        ///{ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Public1 {
             get {

@@ -205,7 +205,7 @@
     <value>The {ColorName} flag has returned to its base position after {PlayerName} was paused for {Seconds} seconds!</value>
   </data>
   <data name="GameModeDescription" xml:space="preserve">
-    <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
+    <value>~r~Welcome to Capture the Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
   </data>
   <data name="GiveJetpackToPlayers" xml:space="preserve">
     <value>{PlayerName} has given all players a jetpack</value>
