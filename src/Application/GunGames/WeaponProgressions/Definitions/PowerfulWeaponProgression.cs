@@ -21,6 +21,7 @@ public class PowerfulWeaponProgression : WeaponProgressionBase
             WeaponDefinitions.RocketLauncher,
             WeaponDefinitions.Heatseeker,
             WeaponDefinitions.Minigun,
+            WeaponDefinitions.Chainsaw,
             WeaponDefinitions.Grenade
         ]);
     }
