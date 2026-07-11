@@ -33,15 +33,21 @@ public class GunGameSystem(
     [Event]
     public void OnPlayerDeath(Player victim, Player killer, Weapon reason)
     {
-        if (!IsEnabled)
-            return;
-
-        if (killer is null)
+        if (!IsEnabled || killer is null)
             return;
 
         var killerProgression = killer.GetComponent<PlayerProgression>();
         var victimProgression = victim.GetComponent<PlayerProgression>();
         var gunGame = new GunGame(weaponProgression, gunGameSession.KillsRequiredPerLevel);
+
+        IWeapon expectedWeapon = weaponProgression.GetWeapon(killerProgression.WeaponLevel);
+
+        // open.mp reports explosive and fire-based kills using generic death reasons,
+        // without preserving the weapon that caused the kill. Since GunGame restricts
+        // players to a single expected weapon, these ambiguous reasons can be mapped
+        // back to the expected weapon before being processed by the domain.
+        if (reason is Weapon.Explosion or Weapon.FlameThrower)
+            reason = expectedWeapon.Id;
 
         GunGameResult result = gunGame.ProcessKill(killerProgression, victimProgression, reason);
         if (result == GunGameResult.None)
