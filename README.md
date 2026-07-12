@@ -32,7 +32,7 @@
   </a>
 </p>
 
-**Capture the Flag** is a game mode for [open.mp](https://github.com/openmultiplayer) (Open Multiplayer, a multiplayer mod for GTA San Andreas) created with the [SampSharp](https://github.com/ikkentim/SampSharp) framework.
+**Capture the Flag** is a game mode for [open.mp](https://github.com/openmultiplayer) (Open Multiplayer, a multiplayer mod for GTA San Andreas) built with C# and the [SampSharp](https://github.com/ikkentim/SampSharp) framework.
 
 There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own base.
 
