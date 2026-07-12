@@ -202,6 +202,7 @@ Unlike traditional GunGame servers, this mode does **not** replace Capture the F
 - Knife kills steal one weapon level from the victim.
 - The first player to complete the progression wins the GunGame match.
 - Capture the Flag objectives remain active while GunGame is enabled.
+- Completing GunGame does not end the Capture the Flag match. Instead, the event concludes, the winner receives a special reward, their teammates receive a smaller bonus, and normal Capture the Flag gameplay continues.
 
 #### Available Weapon Progressions
 
@@ -287,7 +288,7 @@ The `/combos` command is disabled while GunGame is active.
 
 Additionally, Coins are no longer awarded for player eliminations or ranking up during GunGame. This prevents players from accumulating enough Coins to redeem a combo immediately after the event ends. Rewards related to the core Capture the Flag gameplay, such as capturing the enemy flag, returning the friendly flag, and scoring points for the team, remain unchanged.
 
-This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression.
+This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression. Since GunGame is integrated into the ongoing Capture the Flag match, the winner's teammates also receive a smaller bonus consisting of additional Health, Armour, and Coins.
 
 ## Screenshots
 
