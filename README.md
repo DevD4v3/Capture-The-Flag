@@ -37,7 +37,28 @@
 There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own base.
 
 ## Index
+- [Features](#features)
 - [Gameplay](#gameplay)
+  - [Gameplay Rules](#gameplay-rules)
+    - [Game Objective](#game-objective)
+    - [Flag Rules](#flag-rules)
+    - [Death and Respawn](#death-and-respawn)
+    - [Match End Conditions](#match-end-conditions)
+    - [Round Transition Rules](#round-transition-rules)
+- [Additional Game Modes](#additional-game-modes)
+  - [GunGame](#gungame)
+    - [Commands](#commands)
+    - [Rules](#rules)
+    - [Available Weapon Progressions](#available-weapon-progressions)
+- [Weapon System](#weapon-system)
+  - [Weapon Catalogs](#weapon-catalogs)
+  - [Player Commands](#player-commands)
+  - [Admin Commands](#admin-commands)
+  - [GunGame Integration](#gungame-integration)
+- [Combo System](#combo-system)
+  - [Coins](#coins)
+  - [Available Combos](#available-combos)
+  - [GunGame Integration](#gungame-integration-1)
 - [Screenshots](#screenshots)
 - [Technologies used](#technologies-used)
   - [Programming Languages](#programming-languages)
@@ -61,6 +82,21 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Mappers](#mappers)
 - [Contribution](#contribution)
 - [License](#license)
+
+## Features
+
+- Capture the Flag gameplay.
+- Configurable Weapon Packs.
+- Multiple weapon catalogs.
+- In-game coin economy.
+- Redeemable combat combos.
+- Optional GunGame mode.
+- Multiple GunGame weapon progressions.
+- Automatic team balancing.
+- Automatic map rotation.
+- Player ranks and statistics.
+- SQLite and MariaDB support.
+- Docker support.
 
 ## Gameplay
 
@@ -143,6 +179,113 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
   - Respawn is automatic
   - The system decides the spawn and team assignment
 
+
+## Additional Game Modes
+
+### GunGame
+
+Besides the default Capture the Flag gameplay, the server includes an optional GunGame mode that can be enabled by administrators at runtime.
+
+Unlike traditional GunGame servers, this mode does **not** replace Capture the Flag. Both game modes run simultaneously on the current map, allowing players to continue capturing flags while progressing through weapon levels.
+
+#### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/gungameon <kills-per-level>` | Enables GunGame. |
+| `/gungameoff` | Disables GunGame. |
+
+#### Rules
+
+- Players start with the first weapon in the selected progression.
+- Every configured number of kills advances the player to the next weapon.
+- Knife kills steal one weapon level from the victim.
+- The first player to complete the progression wins the GunGame match.
+- Capture the Flag objectives remain active while GunGame is enabled.
+
+#### Available Weapon Progressions
+
+- Classic
+- Reverse Classic
+- Pistols Only
+- SMGs Only
+- Shotguns Only
+- Rifles Only
+- Powerful Weapons
+
+## Weapon System
+
+When players spawn, they are presented with a weapon selection menu containing the weapons available in the currently active weapon catalog.
+
+Selected weapons are automatically saved to the player's **Weapon Pack**, allowing them to reuse the same weapons across future spawns without having to select their weapons again.
+
+### Weapon Catalogs
+
+Administrators can change the active weapon catalog at runtime.
+
+Available catalogs include:
+
+- Walking Weapons
+- Run Weapons
+- Run & Walk Weapons
+- Rifles Only
+- War Weapons
+- Heavy Weapons
+- Melee Weapons
+
+### Player Commands
+
+| Command | Description |
+|---------|-------------|
+| `/weapons` | Opens the list of available weapons from the current catalog. |
+| `/weaponpack` | Displays the player's saved Weapon Pack. Weapons can be removed individually from this menu. |
+
+### Admin Commands
+
+| Command | Description |
+|---------|-------------|
+| `/weaponcatalog` | Changes the active weapon catalog at runtime. |
+
+### GunGame Integration
+
+When GunGame is enabled:
+
+- Weapon selection is disabled.
+- The Weapon Pack menu is disabled.
+- Weapon catalog changes are disabled.
+
+This prevents conflicts with the GunGame weapon progression, where players are restricted to a single expected weapon.
+
+## Combo System
+
+Players earn **Coins** by participating in the match.
+
+Coins are awarded for actions such as:
+
+- Eliminating enemy players.
+- Capturing the enemy flag.
+- Returning the friendly flag.
+- Scoring a point for the team.
+- Ranking up.
+
+Once a player reaches **100 Coins**, they can use the `/combos` command to exchange all their coins for a temporary combat package.
+
+Redeeming a combo resets the player's coin balance back to **0**.
+
+### Available Combos
+
+- +100 Health, +100 Armour and Flamethrower
+- +100 Health, +100 Armour and Grenades
+- +100 Health, +100 Armour and Molotov Cocktails
+- +100 Health and Rocket Launcher (RPG) *(disabled by default; admins can enable it with `/rpgon`)*
+- +100 Health, +100 Armour and Satchel Charges
+- +100 Health, +100 Armour and Tear Gas
+
+### GunGame Integration
+
+The `/combos` command is disabled while GunGame is active.
+
+This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression.
 
 ## Screenshots
 
