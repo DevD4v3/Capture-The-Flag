@@ -285,6 +285,8 @@ Redeeming a combo resets the player's coin balance back to **0**.
 
 The `/combos` command is disabled while GunGame is active.
 
+Additionally, Coins are no longer awarded for player eliminations or ranking up during GunGame. This prevents players from accumulating enough Coins to redeem a combo immediately after the event ends. Rewards related to the core Capture the Flag gameplay, such as capturing the enemy flag, returning the friendly flag, and scoring points for the team, remain unchanged.
+
 This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression.
 
 ## Screenshots
