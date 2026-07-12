@@ -32,6 +32,12 @@ public class GunGameReward(PlayerStatsRenderer playerStatsRenderer)
         winner.AddHealth(WinnerEarnedHealth);
         winner.AddArmour(WinnerEarnedArmour);
         winner.GiveWeapon(weaponReward.Weapon.Id, weaponReward.Ammo);
+
+        // Although the detonator is automatically available when Satchel Charges
+        // are given, its HUD icon is not displayed unless it is explicitly granted.
+        if (weaponReward.Weapon.Id == Weapon.SatchelCharge)
+            winner.GiveWeapon(Weapon.Detonator, 1);
+
         winnerInfo.StatsPerRound.AddCoins(WinnerEarnedCoins);
         playerStatsRenderer.UpdateTextDraw(winner);
 
