@@ -20,7 +20,9 @@ public class MeleeWeaponCatalog : WeaponCatalogBase
             WeaponDefinitions.Vibrator,
             WeaponDefinitions.SilverVibrator,
             WeaponDefinitions.Cane,
-            WeaponDefinitions.Flower
+            WeaponDefinitions.Flower,
+            WeaponDefinitions.Spraycan,
+            WeaponDefinitions.FireExtinguisher
         ]);
     }
 }
