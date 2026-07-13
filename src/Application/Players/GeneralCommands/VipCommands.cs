@@ -13,7 +13,13 @@ public class VipCommands : ISystem
             Color1 = Color.Yellow,
             Color2 = Color.White
         });
-        var dialog = new MessageDialog(caption: "VIP Commands", content, "Close");
+
+        var dialog = new MessageDialog(
+            caption: "VIP Commands", 
+            content, 
+            button1: "Close"
+        );
+
         dialogService.ShowAsync(player, dialog);
     }
 

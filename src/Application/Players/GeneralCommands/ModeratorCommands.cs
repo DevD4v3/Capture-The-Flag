@@ -13,7 +13,13 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
             Color1 = Color.Yellow,
             Color2 = Color.White
         });
-        var dialog = new MessageDialog(caption: "Moderator Commands", content, "Close");
+
+        var dialog = new MessageDialog(
+            caption: "Moderator Commands",
+            content,
+            button1: "Close"
+        );
+
         dialogService.ShowAsync(player, dialog);
     }
 
@@ -38,6 +44,7 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
             TargetPlayer = targetPlayer.Name,
             Reason = reason
         });
+
         worldService.SendClientMessage(Color.Red, message);
         targetPlayer.Kick();
     }
@@ -110,7 +117,9 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
             WarningsNumber = warningsComponent.Value,
             Reason = reason
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
+
         if (warningsComponent.Value == 3)
         {
             targetPlayer.Kick();
@@ -119,7 +128,9 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
 
     [Event]
     public void OnPlayerConnect(Player player)
-        => player.AddComponent<WarningsComponent>();
+    {
+        player.AddComponent<WarningsComponent>();
+    }
 
     private class WarningsComponent : Component
     {

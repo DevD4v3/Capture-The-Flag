@@ -17,7 +17,13 @@ public class AdminCommands(
             Color1 = Color.Yellow,
             Color2 = Color.White
         });
-        var dialog = new MessageDialog(caption: "Admin Commands", content, "Close");
+
+        var dialog = new MessageDialog(
+            caption: "Admin Commands", 
+            content, 
+            button1: "Close"
+        );
+
         dialogService.ShowAsync(player, dialog);
     }
 
@@ -28,14 +34,17 @@ public class AdminCommands(
             return;
 
         var players = entityManager.GetComponents<Player>();
+
         foreach (Player player in players)
         {
             player.SpecialAction = SpecialAction.UseJetpack;
         }
+
         var message = Smart.Format(Messages.GiveJetpackToPlayers, new 
         { 
             PlayerName = currentPlayer.Name 
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
     }
 
@@ -103,8 +112,10 @@ public class AdminCommands(
                 TargetPlayer = targetPlayer.Name,
                 Reason = reason
             });
+
             worldService.SendClientMessage(Color.Red, message);
         }
+
         targetPlayer.Ban(reason);
     }
 
@@ -127,18 +138,25 @@ public class AdminCommands(
 
         var path = Path.Combine(Directory.GetCurrentDirectory(), "bans.json");
         var content = File.ReadAllText(path);
+
         var options = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         };
+
         var bannedPlayers = JsonSerializer.Deserialize<BannedPlayer[]>(content, options);
+
         if (bannedPlayers.Length == 0)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.NoMatchFound);
             return;
         }
 
-        var dialog = new ListDialog(caption: $"Banned Players: {bannedPlayers.Length}", "Close");
+        var dialog = new ListDialog(
+            caption: $"Banned Players: {bannedPlayers.Length}", 
+            button1: "Close"
+        );
+
         foreach (BannedPlayer bannedPlayer in bannedPlayers)
         {
             dialog.Add(bannedPlayer.ToString());
