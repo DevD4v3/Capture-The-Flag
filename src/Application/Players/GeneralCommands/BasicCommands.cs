@@ -1,9 +1,52 @@
-﻿namespace CTF.Application.Players.GeneralCommands.Public;
+﻿namespace CTF.Application.Players.GeneralCommands;
 
-public class PublicCommands(
+public class BasicCommands(
     IEntityManager entityManager,
     IDialogService dialogService) : ISystem
 {
+    [PlayerCommand("cmds")]
+    public async Task ShowFirstCommandsPage(Player player)
+    {
+        var content = Smart.Format(DetailedCommandInfo.Public1, new
+        {
+            Color1 = Color.Yellow,
+            Color2 = Color.White
+        });
+
+        var dialog = new MessageDialog(
+            caption: "Commands [1/2]",
+            content,
+            button1: "Next",
+            button2: "Close"
+        );
+
+        MessageDialogResponse response = await dialogService.ShowAsync(player, dialog);
+
+        if (response.Response == DialogResponse.LeftButton)
+            await ShowSecondCommandsPage(player);
+    }
+
+    private async Task ShowSecondCommandsPage(Player player)
+    {
+        var content = Smart.Format(DetailedCommandInfo.Public2, new
+        {
+            Color1 = Color.Yellow,
+            Color2 = Color.White
+        });
+
+        var dialog = new MessageDialog(
+            caption: "Commands [2/2]",
+            content,
+            button1: "Previous",
+            button2: "Close"
+        );
+
+        MessageDialogResponse response = await dialogService.ShowAsync(player, dialog);
+
+        if (response.Response == DialogResponse.LeftButton)
+            await ShowFirstCommandsPage(player);
+    }
+
     [PlayerCommand("help")]
     public void ShowHelp(Player player)
     {
@@ -12,7 +55,13 @@ public class PublicCommands(
             Color1 = Color.Yellow,
             Color2 = Color.White
         });
-        var dialog = new MessageDialog(caption: "Help", content, "Close");
+
+        var dialog = new MessageDialog(
+            caption: "Help", 
+            content, 
+            button1: "Close"
+        );
+
         dialogService.ShowAsync(player, dialog);
     }
 
@@ -24,7 +73,13 @@ public class PublicCommands(
             Color1 = Color.Yellow,
             Color2 = Color.White
         });
-        var dialog = new MessageDialog(caption: "Credits", content, "Close");
+
+        var dialog = new MessageDialog(
+            caption: "Credits",
+            content,
+            button1: "Close"
+        );
+
         dialogService.ShowAsync(player, dialog);
     }
 
@@ -32,11 +87,13 @@ public class PublicCommands(
     public void Kill(Player player)
     {
         PlayerInfo playerInfo = player.GetRequiredInfo();
+
         if (playerInfo.Team == Team.None)
         {
             player.SendClientMessage(Color.Red, Messages.NoTeam);
             return;
         }
+
         player.Health = 0;
     }
 
@@ -68,10 +125,12 @@ public class PublicCommands(
             TargetPlayer = targetPlayer.Name,
             Reason = reason
         });
-        foreach (Player player in admins)
+
+        foreach (Player admin in admins)
         {
-            player.SendClientMessage(Color.Red, message);
+            admin.SendClientMessage(Color.Red, message);
         }
+
         currentPlayer.SendClientMessage(Color.Yellow, Messages.ReportSuccessfullySent);
         currentPlayer.PlaySound(1058);
     }
