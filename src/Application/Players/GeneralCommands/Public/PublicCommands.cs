@@ -40,51 +40,6 @@ public class PublicCommands(
         player.Health = 0;
     }
 
-    [PlayerCommand("admins")]
-    public void ShowAdmins(Player currentPlayer)
-    {
-        IEnumerable<PlayerInfo> admins = entityManager
-            .GetComponents<Player>()
-            .Select(player => player.GetRequiredInfo())
-            .Where(playerInfo => playerInfo.RoleId >= RoleId.Moderator)
-            .OrderByDescending(playerInfo => playerInfo.RoleId);
-
-        int count = admins.Count();
-        if (count == 0)
-        {
-            currentPlayer.SendClientMessage(Color.Red, Messages.NoAdminsConnected);
-            return;
-        }
-        var dialog = new ListDialog(caption: $"Admins: {count}", "Close", "");
-        foreach (PlayerInfo playerInfo in admins)
-        {
-            dialog.Add(playerInfo.Name);
-        }
-        dialogService.ShowAsync(currentPlayer, dialog);
-    }
-
-    [PlayerCommand("vips")]
-    public void ShowVIPs(Player currentPlayer)
-    {
-        IEnumerable<PlayerInfo> vips = entityManager
-            .GetComponents<Player>()
-            .Select(player => player.GetRequiredInfo())
-            .Where(playerInfo => playerInfo.RoleId >= RoleId.VIP);
-
-        int count = vips.Count();
-        if (count == 0)
-        {
-            currentPlayer.SendClientMessage(Color.Red, Messages.NoVIPsConnected);
-            return;
-        }
-        var dialog = new ListDialog(caption: $"VIPs: {count}", "Close", "");
-        foreach (PlayerInfo playerInfo in vips)
-        {
-            dialog.Add(playerInfo.Name);
-        }
-        dialogService.ShowAsync(currentPlayer, dialog);
-    }
-
     [PlayerCommand("report")]
     public void ReportPlayer(
         Player currentPlayer,
