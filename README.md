@@ -92,7 +92,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - Redeemable combat combos.
 - Optional GunGame mode.
 - Multiple GunGame weapon progressions.
-- Automatic team balancing.
+- Performance-based team balancing.
 - Automatic map rotation.
 - Player ranks and statistics.
 - SQLite and MariaDB support.
@@ -258,12 +258,13 @@ When GunGame is enabled:
 This prevents conflicts with the GunGame weapon progression, where players are restricted to a single expected weapon.
 
 ## Combo System
-
+### Coins
 Players earn **Coins** by participating in the match.
 
 Coins are awarded for actions such as:
 
-- Eliminating enemy players.
+- Achieving kill streaks.
+- Eliminating the enemy flag carrier.
 - Capturing the enemy flag.
 - Returning the friendly flag.
 - Scoring a point for the team.
@@ -286,7 +287,7 @@ Redeeming a combo resets the player's coin balance back to **0**.
 
 The `/combos` command is disabled while GunGame is active.
 
-Additionally, Coins are no longer awarded for player eliminations or ranking up during GunGame. This prevents players from accumulating enough Coins to redeem a combo immediately after the event ends. Rewards related to the core Capture the Flag gameplay, such as capturing the enemy flag, returning the friendly flag, and scoring points for the team, remain unchanged.
+Additionally, Coins are no longer awarded for achieving kill streaks or ranking up during GunGame. This prevents players from accumulating enough Coins to redeem a combo immediately after the event ends. Rewards related to the core Capture the Flag gameplay, such as eliminating the enemy flag carrier, capturing the enemy flag, returning the friendly flag, and scoring points for the team, remain unchanged.
 
 This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression. Since GunGame is integrated into the ongoing Capture the Flag match, the winner's teammates also receive a smaller bonus consisting of additional Health, Armour, and Coins.
 
