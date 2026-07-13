@@ -28,7 +28,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Update="Players\GeneralCommands\Resources\DetailedCommandInfo.Designer.cs">
+    <Compile Update="Players\GeneralCommands\DetailedCommandInfo.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DetailedCommandInfo.resx</DependentUpon>
@@ -44,7 +44,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Players\GeneralCommands\Resources\DetailedCommandInfo.resx">
+    <EmbeddedResource Update="Players\GeneralCommands\DetailedCommandInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DetailedCommandInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>

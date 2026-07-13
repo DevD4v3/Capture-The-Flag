@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTF.Application.Players.GeneralCommands.Resources {
+namespace CTF.Application.Players.GeneralCommands {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CTF.Application.Players.GeneralCommands.Resources.DetailedCommandInfo", typeof(DetailedCommandInfo).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CTF.Application.Players.GeneralCommands.DetailedCommandInfo", typeof(DetailedCommandInfo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
