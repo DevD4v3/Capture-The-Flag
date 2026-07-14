@@ -251,11 +251,11 @@ Available catalogs include:
 
 When GunGame is enabled:
 
-- Weapon selection is disabled.
-- The Weapon Pack menu is disabled.
-- Weapon catalog changes are disabled.
+- `/weapons` is disabled.
+- `/weaponpack` is disabled.
+- `/weaponcatalog` is disabled.
 
-This prevents conflicts with the GunGame weapon progression, where players are restricted to a single expected weapon.
+This prevents conflicts with the GunGame weapon progression, where players are restricted to a single assigned weapon.
 
 ## Combo System
 ### Coins
