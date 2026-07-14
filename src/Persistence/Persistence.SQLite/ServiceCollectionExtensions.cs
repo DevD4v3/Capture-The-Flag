@@ -23,7 +23,7 @@ public static class PersistenceSQLiteServicesExtensions
 
         var sqlPath = Path.Combine(sqlBasePath, typeof(PersistenceSQLiteServicesExtensions).Namespace, "sql");
         ISqlCollection sqlCollection = new YeSqlLoader()
-            .Exclude("schema.sql")
+            .Exclude("schema.sql", "seed_data.sql")
             .LoadFromDirectories(sqlPath);
 
         var schemaFile = Path.Combine(sqlPath, "schema.sql");

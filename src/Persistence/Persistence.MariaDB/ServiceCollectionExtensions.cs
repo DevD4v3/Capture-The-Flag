@@ -27,7 +27,7 @@ public static class PersistenceMariaDBServicesExtensions
 
         var sqlPath = Path.Combine(sqlBasePath, typeof(PersistenceMariaDBServicesExtensions).Namespace, "sql");
         ISqlCollection sqlCollection = new YeSqlLoader()
-            .Exclude("schema.sql")
+            .Exclude("schema.sql", "seed_data.sql")
             .LoadFromDirectories(sqlPath);
 
         var schemaFile = Path.Combine(sqlPath, "schema.sql");
