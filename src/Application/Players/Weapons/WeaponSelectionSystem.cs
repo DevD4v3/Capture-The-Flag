@@ -117,7 +117,7 @@ public class WeaponSelectionSystem(
         await ShowWeapons(player);
     }
 
-    [PlayerCommand("weaponpack")]
+    [PlayerCommand("weaponpack"), Alias("pack")]
     public async Task ShowWeaponPackage(Player player)
     {
         if (gunGameMode.IsEnabled)
