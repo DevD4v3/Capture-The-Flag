@@ -10,7 +10,10 @@ public class SqliteRepositoryManager : IRepositoryManager
     public SqliteRepositoryManager()
     {
         var services = new ServiceCollection();
-        IConfiguration configuration = EnvConfigurationBuilder.Instance;
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddEnvFile(".env.test", optional: false)
+            .Build();
+
         services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceSQLiteServices(configuration, TestPaths.Sql);

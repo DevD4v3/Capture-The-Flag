@@ -10,7 +10,10 @@ public class MariaDbRepositoryManager : IRepositoryManager
     public MariaDbRepositoryManager()
     {
         var services = new ServiceCollection();
-        IConfiguration configuration = EnvConfigurationBuilder.Instance;
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddEnvFile(".env.test", optional: false)
+            .Build();
+
         services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceMariaDBServices(configuration, TestPaths.Sql);
