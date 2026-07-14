@@ -3,6 +3,7 @@
 public class InMemoryRepositoryManager : IRepositoryManager
 {
     private readonly ServiceProvider _serviceProvider;
+
     public IPlayerRepository PlayerRepository { get; }
     public ITopPlayersRepository TopPlayersRepository { get; }
     public InMemoryRepositoryManager()
