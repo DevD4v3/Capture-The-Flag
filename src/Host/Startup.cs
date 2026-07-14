@@ -11,7 +11,7 @@ public class Startup : IEcsStartup
 
     public void ConfigureServices(IServiceCollection services, IConfiguration _)
     {
-        var envVars = new EnvLoader()
+        new EnvLoader()
             #if DEBUG
             .EnableFileNotFoundException()
             #endif
