@@ -2,7 +2,9 @@
 
 public class MariaDbRepositoryManager : IRepositoryManager
 {
+    private readonly ISqlCollection _seedSqlCollection;
     private readonly ServiceProvider _serviceProvider;
+
     public IPlayerRepository PlayerRepository { get; }
     public ITopPlayersRepository TopPlayersRepository { get; }
     public MariaDbRepositoryManager()
@@ -13,6 +15,17 @@ public class MariaDbRepositoryManager : IRepositoryManager
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceMariaDBServices(configuration, TestPaths.Sql);
         _serviceProvider = services.BuildServiceProvider();
+
+        var sqlFile = Path.Combine(
+            TestPaths.Sql,
+            typeof(PersistenceMariaDBServicesExtensions).Namespace,
+            "sql",
+            "seed_data.sql"
+        );
+
+        _seedSqlCollection = new YeSqlLoader()
+            .LoadFromFiles(sqlFile);
+
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
         TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();
     }
@@ -25,14 +38,14 @@ public class MariaDbRepositoryManager : IRepositoryManager
 
     public void InitializeSeedData() => ExecuteCommand("InitializeSeedData");
     public void RemoveSeedData() => ExecuteCommand("RemoveSeedData");
+
     private void ExecuteCommand(string tagName)
     {
         var settings = _serviceProvider.GetRequiredService<MariaDbSettings>();
-        var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
         using var connection = new MySqlConnection(settings.ConnectionString);
         connection.Open();
         MySqlCommand command = connection.CreateCommand();
-        command.CommandText = sqlCollection[tagName];
+        command.CommandText = _seedSqlCollection[tagName];
         command.ExecuteNonQuery();
     }
 }

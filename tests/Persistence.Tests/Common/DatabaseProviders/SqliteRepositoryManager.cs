@@ -2,7 +2,9 @@
 
 public class SqliteRepositoryManager : IRepositoryManager
 {
+    private readonly ISqlCollection _seedSqlCollection;
     private readonly ServiceProvider _serviceProvider;
+
     public IPlayerRepository PlayerRepository { get; }
     public ITopPlayersRepository TopPlayersRepository { get; }
     public SqliteRepositoryManager()
@@ -13,6 +15,17 @@ public class SqliteRepositoryManager : IRepositoryManager
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceSQLiteServices(configuration, TestPaths.Sql);
         _serviceProvider = services.BuildServiceProvider();
+
+        var sqlFile = Path.Combine(
+            TestPaths.Sql, 
+            typeof(PersistenceSQLiteServicesExtensions).Namespace, 
+            "sql",
+            "seed_data.sql"
+        );
+
+        _seedSqlCollection = new YeSqlLoader()
+            .LoadFromFiles(sqlFile);
+
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
         TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();
     }
@@ -25,15 +38,15 @@ public class SqliteRepositoryManager : IRepositoryManager
 
     public void InitializeSeedData() => ExecuteCommand("InitializeSeedData");
     public void RemoveSeedData() => ExecuteCommand("RemoveSeedData");
+
     private void ExecuteCommand(string tagName)
     {
         var settings = _serviceProvider.GetRequiredService<SQLiteSettings>();
-        var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
         using var connection = new SqliteConnection(settings.ConnectionString);
         connection.Open();
         connection.CreateRegexpFunction();
         SqliteCommand command = connection.CreateCommand();
-        command.CommandText = sqlCollection[tagName];
+        command.CommandText = _seedSqlCollection[tagName];
         command.ExecuteNonQuery();
     }
 }
