@@ -24,6 +24,7 @@ internal class PlayerRepository(
         command.Parameters.AddWithValue("$dropped_flags",     player.DroppedFlags);
         command.Parameters.AddWithValue("$returned_flags",    player.ReturnedFlags);
         command.Parameters.AddWithValue("$head_shots",        player.HeadShots);
+        command.Parameters.AddWithValue("$gungame_wins",      player.GunGameWins);
         command.Parameters.AddWithValue("$role_id",           player.RoleId);
         command.Parameters.AddWithValue("$skin_id",           player.SkinId);
         command.Parameters.AddWithValue("$rank_id",           player.RankId);
@@ -81,6 +82,7 @@ internal class PlayerRepository(
         playerInfo.SetValue(value: reader.GetInt32("dropped_flags"),      propertyName: nameof(PlayerInfo.DroppedFlags));
         playerInfo.SetValue(value: reader.GetInt32("returned_flags"),     propertyName: nameof(PlayerInfo.ReturnedFlags));
         playerInfo.SetValue(value: reader.GetInt32("head_shots"),         propertyName: nameof(PlayerInfo.HeadShots));
+        playerInfo.SetValue(value: reader.GetInt32("gungame_wins"),       propertyName: nameof(PlayerInfo.GunGameWins));
         playerInfo.SetValue(value: reader.GetDateTime("created_at"),      propertyName: nameof(PlayerInfo.CreatedAt));
         playerInfo.SetValue(value: reader.GetDateTime("last_connection"), propertyName: nameof(PlayerInfo.LastConnection));
         return playerInfo;
@@ -100,6 +102,9 @@ internal class PlayerRepository(
 
     public void UpdateHeadShots(PlayerInfo player)
         => Update(player.AccountId, "head_shots", player.HeadShots);
+
+    public void UpdateGunGameWins(PlayerInfo player)
+        => Update(player.AccountId, "gungame_wins", player.GunGameWins);
 
     public void UpdateLastConnection(PlayerInfo player)
         => Update(player.AccountId, "last_connection", player.LastConnection);

@@ -22,6 +22,7 @@ public class FakePlayer
     public int DroppedFlags { get; set; }
     public int ReturnedFlags { get; set; }
     public int HeadShots { get; set; }
+    public int GunGameWins { get; set; }
     public int SkinId { get; set; } = NoSkin;
     public RoleId RoleId { get; set; } = RoleId.Basic;
     public RankId RankId { get; set; } = RankId.Noob;

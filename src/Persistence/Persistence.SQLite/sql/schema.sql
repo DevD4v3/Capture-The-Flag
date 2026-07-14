@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS players (
   dropped_flags INTEGER NOT NULL CHECK(dropped_flags >= 0),
   returned_flags INTEGER NOT NULL CHECK(returned_flags >= 0),
   head_shots INTEGER NOT NULL CHECK(head_shots >= 0),
+  gungame_wins INTEGER NOT NULL CHECK(gungame_wins >= 0),
   role_id INTEGER NOT NULL CHECK(role_id >= 0 AND role_id <= 3),
   skin_id INTEGER NOT NULL CHECK(skin_id >= -1 AND skin_id <= 311),
   rank_id INTEGER NOT NULL CHECK(rank_id >= 0 AND rank_id <= 14),

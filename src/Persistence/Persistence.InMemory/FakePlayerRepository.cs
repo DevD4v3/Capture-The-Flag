@@ -17,6 +17,7 @@ internal class FakePlayerRepository(
             DroppedFlags     = player.DroppedFlags,
             ReturnedFlags    = player.ReturnedFlags,
             HeadShots        = player.HeadShots,
+            GunGameWins      = player.GunGameWins,
             SkinId           = player.SkinId,
             RoleId           = player.RoleId,
             RankId           = player.RankId,
@@ -62,6 +63,7 @@ internal class FakePlayerRepository(
         playerInfo.SetValue(value: fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
         playerInfo.SetValue(value: fakePlayer.ReturnedFlags,  propertyName: nameof(PlayerInfo.ReturnedFlags));
         playerInfo.SetValue(value: fakePlayer.HeadShots,      propertyName: nameof(PlayerInfo.HeadShots));
+        playerInfo.SetValue(value: fakePlayer.GunGameWins,    propertyName: nameof(PlayerInfo.GunGameWins));
         playerInfo.SetValue(value: fakePlayer.CreatedAt,      propertyName: nameof(PlayerInfo.CreatedAt));
         playerInfo.SetValue(value: fakePlayer.LastConnection, propertyName: nameof(PlayerInfo.LastConnection));
         return playerInfo;
@@ -81,6 +83,9 @@ internal class FakePlayerRepository(
 
     public void UpdateHeadShots(PlayerInfo player)
         => players[player.AccountId].HeadShots = player.HeadShots;
+
+    public void UpdateGunGameWins(PlayerInfo player)
+        => players[player.AccountId].GunGameWins = player.GunGameWins;
 
     public void UpdateLastConnection(PlayerInfo player)
         => players[player.AccountId].LastConnection = player.LastConnection;
