@@ -207,6 +207,21 @@ public class PlayerInfoTests
     }
 
     [Test]
+    public void AddGunGameWins_WhenCalledTwice_ShouldBeIncreasedTo2()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        int expectedGunGameWins = 2;
+
+        // Act
+        player.AddGunGameWins();
+        player.AddGunGameWins();
+
+        // Assert
+        player.GunGameWins.Should().Be(expectedGunGameWins);
+    }
+
+    [Test]
     public void HasSurpassedMaxKillingSpree_WhenNewRecordIsAchieved_ShouldReturnTrue()
     {
         // Arrange

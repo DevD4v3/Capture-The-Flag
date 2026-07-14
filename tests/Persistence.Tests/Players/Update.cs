@@ -208,6 +208,27 @@ public class UpdatePlayer
     }
 
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
+    public void ShouldUpdateGunGameWins(DatabaseProvider provider)
+    {
+        // Arrange
+        using IRepositoryManager repositoryManager = RepositoryManagerFactory.Create(provider);
+        repositoryManager.InitializeSeedData();
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
+        var playerName = "Moderator_Player";
+        int expectedGunGameWins = 2;
+        PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
+        playerInfo.AddGunGameWins();
+        playerInfo.AddGunGameWins();
+
+        // Act
+        playerRepository.UpdateGunGameWins(playerInfo);
+        PlayerInfo actual = playerRepository.GetOrDefault(playerName);
+
+        // Assert
+        actual.GunGameWins.Should().Be(expectedGunGameWins);
+    }
+
+    [TestCaseSource(typeof(RepositoryManagerTestCases))]
     public void ShouldUpdateRole(DatabaseProvider provider)
     {
         // Arrange
