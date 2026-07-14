@@ -22,6 +22,7 @@ public class PlayerLeveledUp(
             Level  = killerProgression.WeaponLevel,
             Weapon = newWeapon.Name
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }

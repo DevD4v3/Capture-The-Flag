@@ -20,6 +20,7 @@ public class PlayerReachedFinalLevel(
             Killer = context.Killer.Name,
             Weapon = newWeapon.Name
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }

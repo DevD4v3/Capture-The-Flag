@@ -52,6 +52,12 @@ public partial class PlayerInfo
     /// Indicates the number of shots that the player has made at the heads of other players.
     /// </summary>
     public int HeadShots { get; private set; }
+
+    /// <summary>
+    /// Indicates the number of times the player has won a GunGame match.
+    /// </summary>
+    public int GunGameWins { get; private set; }
+
     public RoleId RoleId { get; private set; } = RoleId.Basic;
     public int SkinId { get; private set; } = NoSkin;
     public RankId RankId { get; private set; } = RankId.Noob;
@@ -80,6 +86,7 @@ public partial class PlayerInfo
     public void AddDroppedFlags() => DroppedFlags++;
     public void AddReturnedFlags() => ReturnedFlags++;
     public void AddHeadShots() => HeadShots++;
+    public void AddGunGameWins() => GunGameWins++;
 
     public Result SetName(string value)
     {

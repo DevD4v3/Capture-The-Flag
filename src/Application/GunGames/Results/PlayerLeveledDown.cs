@@ -24,6 +24,7 @@ public class PlayerLeveledDown(
             Level  = victimProgression.WeaponLevel,
             Weapon = newWeapon.Name
         });
+
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }

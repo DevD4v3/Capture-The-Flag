@@ -15,6 +15,7 @@ public interface IPlayerRepository
     void UpdateDroppedFlags(PlayerInfo player);
     void UpdateReturnedFlags(PlayerInfo player);
     void UpdateHeadShots(PlayerInfo player);
+    void UpdateGunGameWins(PlayerInfo player);
     void UpdateRole(PlayerInfo player);
     void UpdateSkin(PlayerInfo player);
     void UpdateRank(PlayerInfo player);

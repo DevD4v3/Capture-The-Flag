@@ -116,6 +116,7 @@ public class PlayerStatsSystem(
         Dropped Flags: {playerInfo.DroppedFlags}
         Returned Flags: {playerInfo.ReturnedFlags}
         HeadShots: {playerInfo.HeadShots}
+        GunGame Wins: {playerInfo.GunGameWins}
         Role: {playerInfo.RoleId}
         Rank: {playerInfo.RankId}
         Registration Date: {createdAt}

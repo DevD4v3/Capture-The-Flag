@@ -7,7 +7,23 @@ internal class FakePlayerRepository(
     public void Create(PlayerInfo player)
     {
         var passwordHash = passwordHasher.HashPassword(player.Password);
-        var fakePlayer = new FakePlayer(player.Name, passwordHash);
+        var fakePlayer = new FakePlayer(player.Name, passwordHash)
+        {
+            TotalKills       = player.TotalKills,
+            TotalDeaths      = player.TotalDeaths,
+            MaxKillingSpree  = player.MaxKillingSpree,
+            BroughtFlags     = player.BroughtFlags,
+            CapturedFlags    = player.CapturedFlags,
+            DroppedFlags     = player.DroppedFlags,
+            ReturnedFlags    = player.ReturnedFlags,
+            HeadShots        = player.HeadShots,
+            GunGameWins      = player.GunGameWins,
+            SkinId           = player.SkinId,
+            RoleId           = player.RoleId,
+            RankId           = player.RankId,
+            CreatedAt        = player.CreatedAt,
+            LastConnection   = player.LastConnection
+        };
         players.Add(fakePlayer.Id, fakePlayer);
         // The Account ID is immutable and lacks a public setter; Reflection is used to modify it.
         player.SetValue(value: fakePlayer.Id, propertyName: nameof(PlayerInfo.AccountId));
@@ -47,6 +63,7 @@ internal class FakePlayerRepository(
         playerInfo.SetValue(value: fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
         playerInfo.SetValue(value: fakePlayer.ReturnedFlags,  propertyName: nameof(PlayerInfo.ReturnedFlags));
         playerInfo.SetValue(value: fakePlayer.HeadShots,      propertyName: nameof(PlayerInfo.HeadShots));
+        playerInfo.SetValue(value: fakePlayer.GunGameWins,    propertyName: nameof(PlayerInfo.GunGameWins));
         playerInfo.SetValue(value: fakePlayer.CreatedAt,      propertyName: nameof(PlayerInfo.CreatedAt));
         playerInfo.SetValue(value: fakePlayer.LastConnection, propertyName: nameof(PlayerInfo.LastConnection));
         return playerInfo;
@@ -66,6 +83,9 @@ internal class FakePlayerRepository(
 
     public void UpdateHeadShots(PlayerInfo player)
         => players[player.AccountId].HeadShots = player.HeadShots;
+
+    public void UpdateGunGameWins(PlayerInfo player)
+        => players[player.AccountId].GunGameWins = player.GunGameWins;
 
     public void UpdateLastConnection(PlayerInfo player)
         => players[player.AccountId].LastConnection = player.LastConnection;
