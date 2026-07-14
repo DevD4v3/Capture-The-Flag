@@ -7,7 +7,22 @@ internal class FakePlayerRepository(
     public void Create(PlayerInfo player)
     {
         var passwordHash = passwordHasher.HashPassword(player.Password);
-        var fakePlayer = new FakePlayer(player.Name, passwordHash);
+        var fakePlayer = new FakePlayer(player.Name, passwordHash)
+        {
+            TotalKills       = player.TotalKills,
+            TotalDeaths      = player.TotalDeaths,
+            MaxKillingSpree  = player.MaxKillingSpree,
+            BroughtFlags     = player.BroughtFlags,
+            CapturedFlags    = player.CapturedFlags,
+            DroppedFlags     = player.DroppedFlags,
+            ReturnedFlags    = player.ReturnedFlags,
+            HeadShots        = player.HeadShots,
+            SkinId           = player.SkinId,
+            RoleId           = player.RoleId,
+            RankId           = player.RankId,
+            CreatedAt        = player.CreatedAt,
+            LastConnection   = player.LastConnection
+        };
         players.Add(fakePlayer.Id, fakePlayer);
         // The Account ID is immutable and lacks a public setter; Reflection is used to modify it.
         player.SetValue(value: fakePlayer.Id, propertyName: nameof(PlayerInfo.AccountId));
