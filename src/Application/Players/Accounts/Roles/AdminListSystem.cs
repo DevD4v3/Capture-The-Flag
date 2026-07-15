@@ -2,7 +2,8 @@
 
 public class AdminListSystem(
     IDialogService dialogService,
-    IEntityManager entityManager) : ISystem
+    IEntityManager entityManager,
+    ServerOwnerSettings serverOwnerSettings) : ISystem
 {
     [PlayerCommand("admins")]
     public void Show(Player player)
@@ -11,7 +12,8 @@ public class AdminListSystem(
             .GetComponents<Player>()
             .Select(player => player.GetRequiredInfo())
             .Where(info => info.RoleId >= RoleId.Moderator)
-            .OrderByDescending(info => info.RoleId)
+            .OrderByDescending(IsServerOwner)
+            .ThenByDescending(info => info.RoleId)
             .ToList();
 
         if (admins.Count == 0)
@@ -21,9 +23,16 @@ public class AdminListSystem(
         }
 
         var content = new StringBuilder();
+        Color ownerColor = Color.Gold;
 
         foreach (PlayerInfo admin in admins)
         {
+            if (IsServerOwner(admin))
+            {
+                content.AppendLine($"{ownerColor}[Server Owner] {Color.White}{admin.Name}");
+                continue;
+            }
+
             Color color = admin.RoleId switch
             {
                 >= RoleId.Admin => Color.Red,
@@ -42,4 +51,7 @@ public class AdminListSystem(
 
         dialogService.ShowAsync(player, dialog);
     }
+
+    private bool IsServerOwner(PlayerInfo playerInfo)
+        => playerInfo.Name.Equals(serverOwnerSettings.Name, StringComparison.OrdinalIgnoreCase);
 }
