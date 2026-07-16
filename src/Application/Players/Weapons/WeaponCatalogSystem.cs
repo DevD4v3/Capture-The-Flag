@@ -8,11 +8,9 @@ public class WeaponCatalogSystem(
     WeaponCatalogSettings weaponCatalogSettings) : ISystem
 {
     [PlayerCommand("weaponcatalog")]
+    [RequiresRole(RoleId.Admin)]
     public async Task ShowCatalogs(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (gunGameMode.IsEnabled)
         {
             player.SendClientMessage(Color.Red, Messages.WeaponCatalogUnavailable);

@@ -83,13 +83,11 @@ public class FlagSystem(
     }
 
     [PlayerCommand("returnflag")]
+    [RequiresRole(RoleId.Moderator)]
     public void ReturnToBasePosition(
         Player player,
         [CommandParameter(Name = "red/blue")]string color)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         Team team = color.ToLower() switch
         {
             "red" => Team.Alpha,

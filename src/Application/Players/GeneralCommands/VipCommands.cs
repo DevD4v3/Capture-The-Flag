@@ -3,11 +3,9 @@
 public class VipCommands : ISystem
 {
     [PlayerCommand("cmdsvip")]
+    [RequiresRole(RoleId.VIP)]
     public void ShowVipCommands(Player player, IDialogService dialogService)
     {
-        if (player.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         var content = Smart.Format(DetailedCommandInfo.VIP, new 
         { 
             Color1 = Color.Yellow,
@@ -24,29 +22,23 @@ public class VipCommands : ISystem
     }
 
     [PlayerCommand("saw")]
+    [RequiresRole(RoleId.VIP)]
     public void Saw(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         player.GiveWeapon(Weapon.Chainsaw, 1);
     }
 
     [PlayerCommand("spray")]
+    [RequiresRole(RoleId.VIP)]
     public void Spray(Player player) 
     {
-        if (player.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         player.GiveWeapon(Weapon.Spraycan, IWeapon.UnlimitedAmmo);
     }
 
     [PlayerCommand("teargas")]
+    [RequiresRole(RoleId.VIP)]
     public void Teargas(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         player.GiveWeapon(Weapon.Teargas, IWeapon.UnlimitedAmmo);
     }
 }

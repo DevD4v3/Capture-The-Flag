@@ -5,14 +5,12 @@ public class PlayerScoreSystem(
     IWorldService worldService) : ISystem
 {
     [PlayerCommand("setscore")]
+    [RequiresRole(RoleId.Admin)]
     public void SetScoreToPlayer(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int score)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (score < 0)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);
@@ -41,14 +39,12 @@ public class PlayerScoreSystem(
     }
 
     [PlayerCommand("addscore")]
+    [RequiresRole(RoleId.Admin)]
     public void AddScoreToPlayer(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int score)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (score < 0)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);
@@ -77,11 +73,9 @@ public class PlayerScoreSystem(
     }
 
     [PlayerCommand("addallscore")]
+    [RequiresRole(RoleId.Admin)]
     public void AddScoreToAllPlayers(Player currentPlayer, int score)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (score < 0)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.ValueCannotBeNegative);

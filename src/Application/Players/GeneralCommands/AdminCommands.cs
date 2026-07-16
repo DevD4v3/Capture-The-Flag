@@ -7,11 +7,9 @@ public class AdminCommands(
     IDialogService dialogService) : ISystem
 {
     [PlayerCommand("cmdsadmin")]
+    [RequiresRole(RoleId.Admin)]
     public void ShowAdminCommands(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         var content = Smart.Format(DetailedCommandInfo.Admin, new
         {
             Color1 = Color.Yellow,
@@ -28,11 +26,9 @@ public class AdminCommands(
     }
 
     [PlayerCommand("jetall")]
+    [RequiresRole(RoleId.Admin)]
     public void GiveJetpackToPlayers(Player currentPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         var players = entityManager.GetComponents<Player>();
 
         foreach (Player player in players)
@@ -49,13 +45,11 @@ public class AdminCommands(
     }
 
     [PlayerCommand("goto")]
+    [RequiresRole(RoleId.Admin)]
     public void GoToPlayerPosition(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
@@ -66,13 +60,11 @@ public class AdminCommands(
     }
 
     [PlayerCommand("get")]
+    [RequiresRole(RoleId.Admin)]
     public void BringPlayerToMyPosition(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
@@ -83,14 +75,12 @@ public class AdminCommands(
     }
 
     [PlayerCommand("ban")]
+    [RequiresRole(RoleId.Admin)]
     public void BanPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         string reason)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
@@ -120,22 +110,18 @@ public class AdminCommands(
     }
 
     [PlayerCommand("unban")]
+    [RequiresRole(RoleId.Admin)]
     public void UnbanPlayer(Player currentPlayer, string ip)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         var message = Smart.Format(Messages.SuccessfullyUnbanned, new { Ip = ip });
         currentPlayer.SendClientMessage(Color.Yellow, message);
         serverService.SendRconCommand($"unbanip {ip}");
     }
 
     [PlayerCommand("bannedips")]
+    [RequiresRole(RoleId.Admin)]
     public void ShowBannedIPs(Player currentPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         var path = Path.Combine(Directory.GetCurrentDirectory(), "bans.json");
         var content = File.ReadAllText(path);
 

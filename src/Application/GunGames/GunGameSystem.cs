@@ -75,11 +75,9 @@ public class GunGameSystem(
     }
 
     [PlayerCommand("gungameon")]
+    [RequiresRole(RoleId.Moderator)]
     public async Task GunGameOn(Player player, int killsRequiredPerLevel)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         if (IsEnabled)
         {
             player.SendClientMessage(Color.Red, GunGameMessages.GunGameModeAlreadyActive);
@@ -115,11 +113,9 @@ public class GunGameSystem(
     }
 
     [PlayerCommand("gungameoff")]
+    [RequiresRole(RoleId.Moderator)]
     public void GunGameOff(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         if (!IsEnabled)
         {
             player.SendClientMessage(Color.Red, GunGameMessages.GunGameModeNotActive);

@@ -11,11 +11,9 @@ public class RocketLauncherSystem(
     }
 
     [PlayerCommand("rpgon")]
+    [RequiresRole(RoleId.Moderator)]
     public void EnableRocketLauncher(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         var message = Smart.Format(Messages.EnableRocketLauncher, new
         {
             PlayerName = player.Name
@@ -25,11 +23,9 @@ public class RocketLauncherSystem(
     }
 
     [PlayerCommand("rpgoff")]
+    [RequiresRole(RoleId.Moderator)]
     public void DisableRocketLauncher(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         var message = Smart.Format(Messages.DisableRocketLauncher, new
         {
             PlayerName = player.Name

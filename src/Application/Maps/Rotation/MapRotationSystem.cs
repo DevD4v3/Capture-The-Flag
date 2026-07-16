@@ -32,29 +32,23 @@ public class MapRotationSystem(
     }
 
     [PlayerCommand("startrt")]
+    [RequiresRole(RoleId.Moderator)]
     public void StartRotationTimer(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         mapRotationService.StartRotationTimer();
     }
 
     [PlayerCommand("stoprt")]
+    [RequiresRole(RoleId.Moderator)]
     public void StopRotationTimer(Player player)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         mapRotationService.StopRotationTimer();
     }
 
     [PlayerCommand("settimeleft")]
+    [RequiresRole(RoleId.Moderator)]
     public void SetTimeLeft(Player player, int minutes)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator)) 
-            return;
-
         var interval = new Minutes(minutes);
         TimeLeft timeLeft = mapRotationService.TimeLeft;
         Result result = timeLeft.SetInterval(interval);
@@ -68,11 +62,9 @@ public class MapRotationSystem(
     }
 
     [PlayerCommand("maps")]
+    [RequiresRole(RoleId.Moderator)]
     public async Task ShowMaps(Player player, string findBy = default)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         var listDialog = new ListDialog(string.Empty, "Select", "Close");
         IEnumerable<IMap> maps = string.IsNullOrEmpty(findBy) ?
             mapCollection.GetAll() :

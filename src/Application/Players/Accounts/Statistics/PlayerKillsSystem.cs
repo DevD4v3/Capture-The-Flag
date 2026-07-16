@@ -5,14 +5,12 @@ public class PlayerKillsSystem(
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [PlayerCommand("settotalkills")]
+    [RequiresRole(RoleId.Admin)]
     public void SetTotalKillsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int kills)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (targetPlayer.IsUnauthenticated())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.UnauthenticatedPlayer);

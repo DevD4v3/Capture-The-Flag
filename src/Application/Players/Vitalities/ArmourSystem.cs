@@ -7,14 +7,12 @@ public class ArmourSystem(
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addarmour")]
+    [RequiresRole(RoleId.Moderator)]
     public void AddArmourToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         float amount)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         Result<Vitality> result = Vitality.Create(amount);
         if (result.IsFailed)
         {
@@ -43,11 +41,9 @@ public class ArmourSystem(
     }
 
     [PlayerCommand("addallarmour")]
+    [RequiresRole(RoleId.Moderator)]
     public void AddArmourToAllPlayers(Player currentPlayer, float amount)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         Result<Vitality> result = Vitality.Create(amount);
         if (result.IsFailed)
         {
@@ -70,11 +66,9 @@ public class ArmourSystem(
     }
 
     [PlayerCommand("armour")]
+    [RequiresRole(RoleId.VIP)]
     public void RestoreArmour(Player currentPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
         if (waitTimeComponent.Value > unixTimeSeconds.Value)
         {
