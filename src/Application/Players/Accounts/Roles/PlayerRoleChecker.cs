@@ -13,6 +13,9 @@ public class PlayerRoleChecker : IPermissionChecker
             ignoreCase: true
         );
 
-        return !playerInfo.HasLowerRoleThan(minimumRequiredRole);
+        if (playerInfo.HasLowerRoleThan(minimumRequiredRole))
+            return false;
+
+        return true;
     }
 }
