@@ -75,7 +75,7 @@ public class GunGameSystem(
     }
 
     [PlayerCommand("gungameon")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public async Task GunGameOn(Player player, int killsRequiredPerLevel)
     {
         if (IsEnabled)
@@ -113,7 +113,7 @@ public class GunGameSystem(
     }
 
     [PlayerCommand("gungameoff")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void GunGameOff(Player player)
     {
         if (!IsEnabled)

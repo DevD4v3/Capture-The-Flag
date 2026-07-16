@@ -8,7 +8,7 @@ public class WeaponCatalogSystem(
     WeaponCatalogSettings weaponCatalogSettings) : ISystem
 {
     [PlayerCommand("weaponcatalog")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public async Task ShowCatalogs(Player player)
     {
         if (gunGameMode.IsEnabled)

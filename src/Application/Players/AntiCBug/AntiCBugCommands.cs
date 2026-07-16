@@ -14,7 +14,7 @@ public class AntiCBugCommands(
     AntiCBugSettings antiCBugSettings) : ISystem
 {
     [PlayerCommand("anticbugoff")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void Disable(Player player)
     {
         var message = Smart.Format(Messages.DisableAntiCBug, new
@@ -26,7 +26,7 @@ public class AntiCBugCommands(
     }
 
     [PlayerCommand("anticbugon")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void Enable(Player player)
     {
         var message = Smart.Format(Messages.EnableAntiCBug, new

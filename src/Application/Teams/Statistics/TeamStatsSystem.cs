@@ -25,7 +25,7 @@ public class TeamStatsSystem(
     }
 
     [PlayerCommand("rstats")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ResetStats(Player player) 
     {
         Team alphaTeam = Team.Alpha;

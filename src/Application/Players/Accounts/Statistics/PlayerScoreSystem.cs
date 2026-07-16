@@ -5,7 +5,7 @@ public class PlayerScoreSystem(
     IWorldService worldService) : ISystem
 {
     [PlayerCommand("setscore")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void SetScoreToPlayer(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -39,7 +39,7 @@ public class PlayerScoreSystem(
     }
 
     [PlayerCommand("addscore")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddScoreToPlayer(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -73,7 +73,7 @@ public class PlayerScoreSystem(
     }
 
     [PlayerCommand("addallscore")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddScoreToAllPlayers(Player currentPlayer, int score)
     {
         if (score < 0)

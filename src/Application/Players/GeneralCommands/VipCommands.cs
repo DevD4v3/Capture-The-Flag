@@ -3,7 +3,7 @@
 public class VipCommands : ISystem
 {
     [PlayerCommand("cmdsvip")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void ShowVipCommands(Player player, IDialogService dialogService)
     {
         var content = Smart.Format(DetailedCommandInfo.VIP, new 
@@ -22,21 +22,21 @@ public class VipCommands : ISystem
     }
 
     [PlayerCommand("saw")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void Saw(Player player)
     {
         player.GiveWeapon(Weapon.Chainsaw, 1);
     }
 
     [PlayerCommand("spray")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void Spray(Player player) 
     {
         player.GiveWeapon(Weapon.Spraycan, IWeapon.UnlimitedAmmo);
     }
 
     [PlayerCommand("teargas")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void Teargas(Player player)
     {
         player.GiveWeapon(Weapon.Teargas, IWeapon.UnlimitedAmmo);

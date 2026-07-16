@@ -7,7 +7,7 @@ public class ArmourSystem(
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addarmour")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void AddArmourToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -41,7 +41,7 @@ public class ArmourSystem(
     }
 
     [PlayerCommand("addallarmour")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void AddArmourToAllPlayers(Player currentPlayer, float amount)
     {
         Result<Vitality> result = Vitality.Create(amount);
@@ -66,7 +66,7 @@ public class ArmourSystem(
     }
 
     [PlayerCommand("armour")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void RestoreArmour(Player currentPlayer)
     {
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();

@@ -5,7 +5,7 @@ public class PlayerKillsSystem(
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [PlayerCommand("settotalkills")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void SetTotalKillsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,

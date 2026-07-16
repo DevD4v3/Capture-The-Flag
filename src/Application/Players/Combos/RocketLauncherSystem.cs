@@ -11,7 +11,7 @@ public class RocketLauncherSystem(
     }
 
     [PlayerCommand("rpgon")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void EnableRocketLauncher(Player player)
     {
         var message = Smart.Format(Messages.EnableRocketLauncher, new
@@ -23,7 +23,7 @@ public class RocketLauncherSystem(
     }
 
     [PlayerCommand("rpgoff")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void DisableRocketLauncher(Player player)
     {
         var message = Smart.Format(Messages.DisableRocketLauncher, new

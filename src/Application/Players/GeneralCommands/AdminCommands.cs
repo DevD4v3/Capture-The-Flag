@@ -7,7 +7,7 @@ public class AdminCommands(
     IDialogService dialogService) : ISystem
 {
     [PlayerCommand("cmdsadmin")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void ShowAdminCommands(Player player)
     {
         var content = Smart.Format(DetailedCommandInfo.Admin, new
@@ -26,7 +26,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("jetall")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void GiveJetpackToPlayers(Player currentPlayer)
     {
         var players = entityManager.GetComponents<Player>();
@@ -45,7 +45,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("goto")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void GoToPlayerPosition(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer)
@@ -60,7 +60,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("get")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void BringPlayerToMyPosition(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer)
@@ -75,7 +75,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("ban")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void BanPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -110,7 +110,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("unban")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void UnbanPlayer(Player currentPlayer, string ip)
     {
         var message = Smart.Format(Messages.SuccessfullyUnbanned, new { Ip = ip });
@@ -119,7 +119,7 @@ public class AdminCommands(
     }
 
     [PlayerCommand("bannedips")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void ShowBannedIPs(Player currentPlayer)
     {
         var path = Path.Combine(Directory.GetCurrentDirectory(), "bans.json");

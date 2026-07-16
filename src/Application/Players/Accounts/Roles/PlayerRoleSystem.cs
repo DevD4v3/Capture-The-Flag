@@ -6,7 +6,7 @@ public class PlayerRoleSystem(
     ServerOwnerSettings serverOwnerSettings) : ISystem
 {
     [PlayerCommand("setrole")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void SetRole(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer, 

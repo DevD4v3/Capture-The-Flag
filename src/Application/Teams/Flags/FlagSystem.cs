@@ -83,7 +83,7 @@ public class FlagSystem(
     }
 
     [PlayerCommand("returnflag")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ReturnToBasePosition(
         Player player,
         [CommandParameter(Name = "red/blue")]string color)

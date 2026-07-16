@@ -3,7 +3,7 @@
 public class ModeratorCommands(IWorldService worldService) : ISystem
 {
     [PlayerCommand("cmdsmoderator")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ShowModeratorCommands(Player player, IDialogService dialogService)
     {
         var content = Smart.Format(DetailedCommandInfo.Moderator, new
@@ -22,7 +22,7 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("kick")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void Kick(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -46,7 +46,7 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("setspawn")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void SetSpawn(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer)
@@ -75,7 +75,7 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("clearallchat")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ClearAllChat(Player currentPlayer)
     {
         for (int i = 0; i < 200; i++)
@@ -85,7 +85,7 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("warn")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void Warn(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,

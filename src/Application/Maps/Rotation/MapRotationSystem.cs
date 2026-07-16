@@ -32,21 +32,21 @@ public class MapRotationSystem(
     }
 
     [PlayerCommand("startrt")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void StartRotationTimer(Player player)
     {
         mapRotationService.StartRotationTimer();
     }
 
     [PlayerCommand("stoprt")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void StopRotationTimer(Player player)
     {
         mapRotationService.StopRotationTimer();
     }
 
     [PlayerCommand("settimeleft")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void SetTimeLeft(Player player, int minutes)
     {
         var interval = new Minutes(minutes);
@@ -62,7 +62,7 @@ public class MapRotationSystem(
     }
 
     [PlayerCommand("maps")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public async Task ShowMaps(Player player, string findBy = default)
     {
         var listDialog = new ListDialog(string.Empty, "Select", "Close");

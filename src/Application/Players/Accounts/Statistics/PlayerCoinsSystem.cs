@@ -8,7 +8,7 @@ public class PlayerCoinsSystem(
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addcoins")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddCoinsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -42,7 +42,7 @@ public class PlayerCoinsSystem(
     }
 
     [PlayerCommand("addallcoins")]
-    [RequiresRole(RoleId.Admin)]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddCoinsToAllPlayers(Player currentPlayer, int coins)
     {
         IEnumerable<Player> players = entityManager.GetComponents<Player>();
@@ -67,7 +67,7 @@ public class PlayerCoinsSystem(
     }
 
     [PlayerCommand("givemecoins")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void GiveMeCoins(Player currentPlayer) 
     {
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();

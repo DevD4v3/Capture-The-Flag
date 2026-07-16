@@ -5,7 +5,7 @@ public class FlagCarrierRadarSystem(
     IWorldService worldService) : ISystem
 {
     [PlayerCommand("showrm")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ShowOnRadarMap(Player player)
     {
         var message = Smart.Format(Messages.ShowFlagCarriersOnRadarMap, new
@@ -19,7 +19,7 @@ public class FlagCarrierRadarSystem(
     }
 
     [PlayerCommand("hiderm")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void HideOnRadarMap(Player player)
     {
         var message = Smart.Format(Messages.HideFlagCarriersOnRadarMap, new

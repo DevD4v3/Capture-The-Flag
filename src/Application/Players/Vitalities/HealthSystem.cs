@@ -7,7 +7,7 @@ public class HealthSystem(
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addhealth")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void AddHealthToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
@@ -41,7 +41,7 @@ public class HealthSystem(
     }
 
     [PlayerCommand("addallhealth")]
-    [RequiresRole(RoleId.Moderator)]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void AddHealthToAllPlayers(Player currentPlayer, float amount)
     {
         Result<Vitality> result = Vitality.Create(amount);
@@ -66,7 +66,7 @@ public class HealthSystem(
     }
 
     [PlayerCommand("health")]
-    [RequiresRole(RoleId.VIP)]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void RestoreHealth(Player currentPlayer)
     {
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
