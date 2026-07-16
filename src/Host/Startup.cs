@@ -34,7 +34,10 @@ public class Startup : IEcsStartup
             .AddStreamer();
 
         services.RemoveAll<ICommandTextFormatter>();
+        services.RemoveAll<IPermissionChecker>();
         services.AddSingleton<ICommandTextFormatter, CommandUsageFormatter>();
+        services.AddSingleton<IPermissionChecker, PlayerRoleChecker>();
+
         services.AddHttpClient<IDiscordWebhookClient, DiscordWebhookClient>(httpClient =>
         {
             httpClient.Timeout = TimeSpan.FromSeconds(5);
