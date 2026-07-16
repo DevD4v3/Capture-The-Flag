@@ -4,15 +4,15 @@ public class PlayerRoleChecker : IPermissionChecker
 {
     public bool HasPermission(Player player, CommandDefinition command)
     {
-        if (!command.Tags.TryGetValue("role", out var value))
+        if (!command.Tags.TryGetValue("role", out var minimumRequiredRoleValue))
             return true;
 
         PlayerInfo playerInfo = player.GetRequiredInfo();
-        RoleId role = Enum.Parse<RoleId>(value, ignoreCase: true);
+        RoleId minimumRequiredRole = Enum.Parse<RoleId>(
+            minimumRequiredRoleValue, 
+            ignoreCase: true
+        );
 
-        if (playerInfo.HasLowerRoleThan(role))
-            return false;
-
-        return true;
+        return !playerInfo.HasLowerRoleThan(minimumRequiredRole);
     }
 }
