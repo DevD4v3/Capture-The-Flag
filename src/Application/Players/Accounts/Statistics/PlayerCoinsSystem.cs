@@ -8,14 +8,12 @@ public class PlayerCoinsSystem(
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addcoins")]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddCoinsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int coins)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
         Result result = targetPlayerInfo.StatsPerRound.AddCoins(coins);
         if (result.IsFailed)
@@ -44,11 +42,9 @@ public class PlayerCoinsSystem(
     }
 
     [PlayerCommand("addallcoins")]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void AddCoinsToAllPlayers(Player currentPlayer, int coins)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         IEnumerable<Player> players = entityManager.GetComponents<Player>();
         foreach (Player targetPlayer in players)
         {
@@ -71,11 +67,9 @@ public class PlayerCoinsSystem(
     }
 
     [PlayerCommand("givemecoins")]
+    [RequiresMinimumRole(RoleId.VIP)]
     public void GiveMeCoins(Player currentPlayer) 
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
-            return;
-
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
         if (waitTimeComponent.Value > unixTimeSeconds.Value)
         {

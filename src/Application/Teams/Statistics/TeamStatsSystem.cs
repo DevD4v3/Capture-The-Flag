@@ -25,11 +25,9 @@ public class TeamStatsSystem(
     }
 
     [PlayerCommand("rstats")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ResetStats(Player player) 
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
         alphaTeam.StatsPerRound.Reset();

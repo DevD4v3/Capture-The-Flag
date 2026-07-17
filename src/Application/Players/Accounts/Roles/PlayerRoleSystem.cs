@@ -6,14 +6,12 @@ public class PlayerRoleSystem(
     ServerOwnerSettings serverOwnerSettings) : ISystem
 {
     [PlayerCommand("setrole")]
+    [RequiresMinimumRole(RoleId.Admin)]
     public void SetRole(
         Player currentPlayer, 
         [CommandParameter(Name = "playerId")]Player targetPlayer, 
         int roleId)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);

@@ -3,11 +3,9 @@
 public class ModeratorCommands(IWorldService worldService) : ISystem
 {
     [PlayerCommand("cmdsmoderator")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ShowModeratorCommands(Player player, IDialogService dialogService)
     {
-        if (player.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         var content = Smart.Format(DetailedCommandInfo.Moderator, new
         {
             Color1 = Color.Yellow,
@@ -24,14 +22,12 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("kick")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void Kick(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         string reason)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
@@ -50,13 +46,11 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("setspawn")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void SetSpawn(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         if (targetPlayer.IsUnauthenticated())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.UnauthenticatedPlayer);
@@ -81,11 +75,9 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("clearallchat")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void ClearAllChat(Player currentPlayer)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         for (int i = 0; i < 200; i++)
         {
             worldService.SendClientMessage(" ");
@@ -93,14 +85,12 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
     }
 
     [PlayerCommand("warn")]
+    [RequiresMinimumRole(RoleId.Moderator)]
     public void Warn(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         string reason)
     {
-        if (currentPlayer.HasLowerRoleThan(RoleId.Moderator))
-            return;
-
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
