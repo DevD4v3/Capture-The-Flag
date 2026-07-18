@@ -196,6 +196,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot perform this action on the server owner..
+        /// </summary>
+        internal static string CannotPerformActionOnServerOwner {
+            get {
+                return ResourceManager.GetString("CannotPerformActionOnServerOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chat is currently disabled while you select your class. Please finish your selection before chatting!.
         /// </summary>
         internal static string ChatDisabled {

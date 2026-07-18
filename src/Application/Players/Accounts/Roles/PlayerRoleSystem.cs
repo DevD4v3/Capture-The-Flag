@@ -24,6 +24,12 @@ public class PlayerRoleSystem(
             return;
         }
 
+        if (targetPlayer.IsServerOwner(serverOwnerSettings.Name))
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.CannotPerformActionOnServerOwner);
+            return;
+        }
+
         PlayerInfo targetPlayerInfo = targetPlayer.GetRequiredInfo();
         RoleId newRoleId = (RoleId)roleId;
         RoleId oldRoleId = targetPlayerInfo.RoleId;
