@@ -568,4 +568,7 @@ Capture the Flag is about to begin.</value>
   <data name="RankUpAwardSummary" xml:space="preserve">
     <value>+{Health} Health, +{Armour} Armour, +{Coins} Coins</value>
   </data>
+  <data name="CannotPerformActionOnServerOwner" xml:space="preserve">
+    <value>You cannot perform this action on the server owner.</value>
+  </data>
 </root>

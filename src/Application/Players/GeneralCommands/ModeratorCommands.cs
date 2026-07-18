@@ -1,6 +1,8 @@
 ﻿namespace CTF.Application.Players.GeneralCommands;
 
-public class ModeratorCommands(IWorldService worldService) : ISystem
+public class ModeratorCommands(
+    IWorldService worldService,
+    ServerOwnerSettings serverOwnerSettings) : ISystem
 {
     [PlayerCommand("cmdsmoderator")]
     [RequiresMinimumRole(RoleId.Moderator)]
@@ -31,6 +33,12 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
+            return;
+        }
+
+        if (targetPlayer.IsServerOwner(serverOwnerSettings.Name))
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.CannotPerformActionOnServerOwner);
             return;
         }
 
@@ -94,6 +102,12 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
         if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
+            return;
+        }
+
+        if (targetPlayer.IsServerOwner(serverOwnerSettings.Name))
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.CannotPerformActionOnServerOwner);
             return;
         }
 

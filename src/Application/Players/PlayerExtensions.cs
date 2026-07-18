@@ -67,4 +67,22 @@ public static class PlayerExtensions
         player.Color = Team.None.ColorHex;
         return currentTeam;
     }
+
+    /// <summary>
+    /// Determines whether the specified player is the server owner.
+    /// </summary>
+    /// <param name="player">
+    /// The player to check.
+    /// </param>
+    /// <param name="ownerName">
+    /// The name configured as the server owner.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if the player's name matches the configured
+    /// server owner name; otherwise, <see langword="false"/>.
+    /// </returns>
+    public static bool IsServerOwner(this Player player, string ownerName)
+        => player.Name.Equals(
+            ownerName,
+            StringComparison.OrdinalIgnoreCase);
 }
