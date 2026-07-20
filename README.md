@@ -61,9 +61,9 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [GunGame Integration](#gungame-integration-1)
 - [Screenshots](#screenshots)
 - [Technologies used](#technologies-used)
-  - [Programming Languages](#programming-languages)
-  - [Softwares](#softwares)
-  - [Frameworks and libraries](#frameworks-and-libraries)
+  - [Software](#software)
+  - [DevD4v3 libraries](#devd4v3-libraries)
+  - [Third-party frameworks and libraries](#third-party-frameworks-and-libraries)
   - [Testing](#testing)
 - [Software Engineering](#software-engineering)
   - [Programming Paradigms](#programming-paradigms)
@@ -361,35 +361,30 @@ This prevents players from obtaining weapons outside the GunGame progression. In
 
 ## Technologies used
 
-### Programming Languages
-- [C Sharp](https://github.com/dotnet/csharplang)
-- [Pawn](https://github.com/compuphase/pawn)
-
-### Softwares
-- [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools)
+### Software
 - [Open Multiplayer](https://github.com/openmultiplayer)
-- [CompileApp-FS](https://github.com/DevD4v3/CompileApp-FS)
-- [Visual Studio 2022](https://visualstudio.microsoft.com)
-- [vscode](https://github.com/microsoft/vscode)
+- [Visual Studio 2026](https://visualstudio.microsoft.com)
 - [MariaDB](https://github.com/mariadb)
 - [SQLite](https://www.sqlite.org)
 - [DB Browser for SQLite](https://sqlitebrowser.org)
 - [HeidiSQL](https://github.com/HeidiSQL)
-- [GitHub Actions](https://github.com/actions)
 - [Git](https://github.com/git/git)
 - [draw.io](https://app.diagrams.net)
 - [Docker](https://github.com/docker)
 - [Portainer](https://github.com/portainer/portainer)
 
-### Frameworks and libraries
-- [.NET SDK 10.0](https://github.com/dotnet/runtime)
-- [SampSharp](https://github.com/ikkentim/SampSharp)
-- [SampSharp.OpenMp.Streamer](https://github.com/OpenSamp/SampSharp.OpenMp.Streamer)
-- [omp-streamer-component](https://github.com/OpenSamp/omp-streamer-component)
+### DevD4v3 libraries
+- [SampSharp.MapObjects](https://github.com/DevD4v3/SampSharp.MapObjects)
 - [GameMode.Common](https://github.com/DevD4v3/GameMode.Common)
 - [DotEnv.Core](https://github.com/DevD4v3/dotenv.core)
 - [YeSql.Net](https://github.com/ose-net/yesql.net)
 - [seztion-parser](https://github.com/DevD4v3/seztion-parser)
+  
+### Third-party frameworks and libraries
+- [.NET SDK 10.0](https://dotnet.microsoft.com/en-us/download/dotnet)
+- [SampSharp](https://github.com/ikkentim/SampSharp)
+- [SampSharp.OpenMp.Streamer](https://github.com/OpenSamp/SampSharp.OpenMp.Streamer)
+- [omp-streamer-component](https://github.com/OpenSamp/omp-streamer-component)
 - [SmartFormat](https://github.com/axuno/SmartFormat)
 - [MySqlConnector](https://github.com/mysql-net/MySqlConnector)
 - [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite)
@@ -404,6 +399,7 @@ This prevents players from obtaining weapons outside the GunGame progression. In
 ### Testing
 - [NUnit](https://github.com/nunit/nunit)
 - [Fluent Assertions](https://github.com/fluentassertions/fluentassertions)
+- [NSubstitute](https://github.com/nsubstitute/NSubstitute)
 
 ## Software Engineering
 
@@ -600,16 +596,17 @@ This project would not have been possible without the following people and proje
 
 ## Contribution
 
-Any contribution is welcome! Remember that you can contribute not only in the code, but also in the documentation or even improve the tests.
+Contributions of all kinds are welcome! You can help by improving the code, documentation, or tests.
 
-Follow the steps below:
+To contribute:
 
-- Fork it
-- Create your custom branch (git checkout -b my-new-change)
-- Commit your changes (git commit -am 'Add some change')
-- Push to the branch (git push origin my-new-change)
-- Create new Pull Request
+- Fork the repository.
+- Create a feature branch (`git checkout -b my-new-change`).
+- Commit your changes (`git commit -am "Add some change"`).
+- Push to your branch (`git push origin my-new-change`).
+- Open a Pull Request.
+
 
 ## License
 
-This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/DevD4v3/Capture-The-Flag/blob/main/LICENSE)
+This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](https://github.com/DevD4v3/Capture-The-Flag/blob/main/LICENSE) file for details.
