@@ -3,6 +3,7 @@ global using SampSharp.Entities.SAMP;
 global using SampSharp.Entities.SAMP.Commands;
 global using SampSharp.Streamer.Entities;
 global using SampSharp.OpenMp.Core;
+global using SampSharp.MapObjects;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
 global using Microsoft.Extensions.Configuration;
