@@ -3,6 +3,7 @@
 public class MapInitializationSystem(
     IWorldService worldService,
     IServerService serverService,
+    IMapObjectService mapObjects,
     MapInfoService mapInfoService,
     MapCollection mapCollection,
     TeamPickupService teamPickupService,
@@ -21,7 +22,7 @@ public class MapInitializationSystem(
 
         CurrentMap currentMap = mapInfoService.CurrentMap;
         serverService.SetMapName(currentMap.Name);
-        serverService.SendRconCommand($"loadfs {currentMap.Name}");
+        mapObjects.Load(currentMap.Name);
         mapTextDrawRenderer.UpdateMapName(currentMap);
 
         worldService.SetWeather(currentMap.Weather);
