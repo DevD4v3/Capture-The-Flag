@@ -12,8 +12,6 @@ public class GameModeInit(
         Console.WriteLine("    Capture the Flag");
         Console.WriteLine("----------------------------------\n");
 
-        serverService.SendRconCommand("loadfs EntryMap");
-        serverService.SendRconCommand("loadfs RemoveBuilding");
         serverService.SetServerName(serverSettings.HostName);
         serverService.SetLanguage(serverSettings.LanguageText);
         serverService.SetWebsiteUrl(serverSettings.WebUrl);
