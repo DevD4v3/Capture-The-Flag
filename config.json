@@ -106,7 +106,7 @@
         "main_scripts": [
             "empty 1"
         ],
-        "side_scripts": []
+        "side_scripts": ["filterscripts/EntryMap"]
     },
     "rcon": {
         "allow_teleport": false,
