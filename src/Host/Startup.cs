@@ -31,7 +31,8 @@ public class Startup : IEcsStartup
             .AddSingleton(configuration)
             .AddSingleton(TimeProvider.System)
             .AddSingleton<UnixTimeSeconds>()
-            .AddStreamer();
+            .AddStreamer()
+            .AddMapObjects();
 
         services.RemoveAll<ICommandTextFormatter>();
         services.RemoveAll<IPermissionChecker>();

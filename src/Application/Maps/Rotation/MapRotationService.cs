@@ -2,6 +2,7 @@
 
 public class MapRotationService(
     IServerService serverService,
+    IMapObjectService mapObjects,
     IWorldService worldService,
     ITimerService timerService,
     MapInfoService mapInfoService,
@@ -64,7 +65,7 @@ public class MapRotationService(
         LoadingMapEvent?.Invoke();
         var matchResult = MatchResult.Create(Team.Alpha, Team.Beta);
         worldService.SendClientMessage(Color.Yellow, matchResult.Announcement);
-        serverService.SendRconCommand($"unloadfs {mapInfoService.CurrentMap.Name}");
+        mapObjects.Unload();
 
         IEnumerable<Player> players = MatchPlayers.GetAll();
         foreach (Player player in players)
@@ -75,7 +76,7 @@ public class MapRotationService(
         worldService.SendClientMessage(Color.Orange, message);
         mapInfoService.Load(nextMap);
         flagStateResetter.Reset(Team.Alpha, Team.Beta);
-        serverService.SendRconCommand($"loadfs {nextMap.Name}");
+        mapObjects.Load(nextMap.Name);
         serverService.SetMapName(nextMap.Name);
     }
 
