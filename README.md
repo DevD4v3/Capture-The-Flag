@@ -59,6 +59,13 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Coins](#coins)
   - [Available Combos](#available-combos)
   - [GunGame Integration](#gungame-integration-1)
+- [Creating a custom map](#creating-a-custom-map)
+  - [Create the map definition](#create-the-map-definition)
+    - [Material colors](#material-colors)
+  - [Register the map](#register-the-map)
+  - [Create the gameplay configuration](#create-the-gameplay-configuration)
+    - [Supported sections](#supported-sections)
+    - [Example](#example)
 - [Screenshots](#screenshots)
 - [Technologies used](#technologies-used)
   - [Software](#software)
@@ -290,6 +297,161 @@ The `/combos` command is disabled while GunGame is active.
 Additionally, Coins are no longer awarded for achieving kill streaks or ranking up during GunGame. This prevents players from accumulating enough Coins to redeem a combo immediately after the event ends. Rewards related to the core Capture the Flag gameplay, such as eliminating the enemy flag carrier, capturing the enemy flag, returning the friendly flag, and scoring points for the team, remain unchanged.
 
 This prevents players from obtaining weapons outside the GunGame progression. Instead, the winner is rewarded with **100 Coins, fully restored Health and Armour, and a special weapon** after completing the entire weapon progression. Since GunGame is integrated into the ongoing Capture the Flag match, the winner's teammates also receive a smaller bonus consisting of additional Health, Armour, and Coins.
+
+## Creating a custom map
+
+Adding a new map requires three steps.
+
+### Create the map definition
+
+Create a new class under:
+
+```text
+src/Host/CustomMapObjects/
+```
+
+that inherits from `MapDefinition`.
+
+Example:
+
+```csharp
+public class AimHeadshotV3 : MapDefinition
+{
+    public override string Name => "AimHeadshotV3";
+
+    protected override void OnLoad()
+    {
+        CreateObject(
+            modelId: 6989,
+            position: new Vector3(-166.94000f, 138.17999f, -79.50000f),
+            rotation: new Vector3(0.00000f, 0.00000f, -17.46000f)
+        );
+
+        GlobalObject object0 = CreateObject(
+            modelId: 3885,
+            position: new Vector3(-152.15030f, 52.53920f, 2.75850f),
+            rotation: new Vector3(0.00000f, 0.00000f, 146.00000f)
+        );
+
+        object0.SetMaterial(
+            materialIndex: 0,
+            modelId: 10357,
+            txdName: "tvtower_sfs",
+            textureName: "ws_transmit_red",
+            materialColor: Color.FromInteger(0xFFFFFFFF, ColorFormat.ARGB)
+        );
+    }
+}
+```
+
+> Map objects are loaded through [SampSharp.MapObjects](https://github.com/DevD4v3/SampSharp.MapObjects).
+
+#### Material colors
+
+When using `SetMaterial`, always create material colors using the **ARGB** format:
+
+```csharp
+Color.FromInteger(0xFFFFFFFF, ColorFormat.ARGB)
+```
+
+The `SetMaterial` method expects colors in **ARGB** format. Creating a `Color` instance directly, for example:
+
+```csharp
+new Color(0xFFFFFFFF)
+```
+
+uses **RGBA** by default.
+
+Although values such as `0xFFFFFFFF` and `0x00000000` produce the same result, other colors may be interpreted incorrectly, resulting in materials with incorrect colors or invisible textures.
+
+### Register the map
+
+Register the map definition in `src/Host/Startup.cs`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services, IConfiguration _)
+{
+    // ...
+
+    services.AddMapDefinition<AimHeadshotV3>();
+
+    // ...
+}
+```
+
+### Create the gameplay configuration
+
+Create an INI file under:
+
+```text
+src/Application/Maps/Files/
+```
+
+The file name **must** match the value returned by `MapDefinition.Name`, as it is used as the unique identifier of the map.
+
+For example:
+
+```csharp
+public override string Name => "AimHeadshotV3";
+```
+
+must correspond to:
+
+```text
+AimHeadshotV3.ini
+```
+
+This file contains gameplay-specific configuration for the map.
+
+#### Supported sections
+
+| Section | Description |
+|----------|-------------|
+| `AlphaTeamLocations` | Alpha team spawn locations |
+| `BetaTeamLocations` | Beta team spawn locations |
+| `RedFlagLocation` | Red flag position |
+| `BlueFlagLocation` | Blue flag position |
+| `Interior` *(optional)* | Interior ID |
+| `Weather` *(optional)* | Weather ID (0-20) |
+| `WorldTime` *(optional)* | World Time (0-23) |
+
+#### Example
+
+```ini
+# Format: X,Y,Z,Angle
+[AlphaTeamLocations]
+-669.9301,2567.7261,233.1899,4.0968
+-662.3662,2568.0757,233.1899,4.4101
+
+[BetaTeamLocations]
+-656.4174,2739.6848,219.2168,177.9750
+-650.9906,2739.0764,219.2168,177.9750
+
+# Format: X,Y,Z
+[RedFlagLocation]
+-729.1639,2635.3447,223.3559
+
+[BlueFlagLocation]
+-576.2537,2731.9312,233.3905
+
+# See https://open.mp/docs/scripting/resources/interiorids
+[Interior]
+10
+
+# Valid values: 0-20
+# See https://open.mp/docs/scripting/resources/weatherid
+[Weather]
+1
+
+# Valid values: 0-23
+# See https://open.mp/docs/scripting/functions/SetWorldTime
+[WorldTime]
+12
+```
+
+> **Note**
+>
+> A class that inherits from `MapDefinition` defines the map objects loaded through [SampSharp.MapObjects](https://github.com/DevD4v3/SampSharp.MapObjects), while the INI file contains gameplay-specific settings such as team spawn locations, flag locations, interior, weather, and world time.
 
 ## Screenshots
 
