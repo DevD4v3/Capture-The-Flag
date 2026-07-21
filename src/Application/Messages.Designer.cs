@@ -664,7 +664,7 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You do not have permissions to use this command.
+        ///   Looks up a localized string similar to You do not have permissions to use this command. Required role: {Role}..
         /// </summary>
         internal static string NoPermissions {
             get {

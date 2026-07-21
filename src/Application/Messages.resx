@@ -307,7 +307,7 @@
     <value>No match found</value>
   </data>
   <data name="NoPermissions" xml:space="preserve">
-    <value>You do not have permissions to use this command</value>
+    <value>You do not have permissions to use this command. Required role: {Role}.</value>
   </data>
   <data name="NoTeam" xml:space="preserve">
     <value>You do not belong to any team</value>

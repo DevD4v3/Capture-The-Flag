@@ -14,7 +14,15 @@ public class PlayerRoleChecker : IPermissionChecker
         );
 
         if (playerInfo.HasLowerRoleThan(minimumRequiredRole))
+        {
+            var message = Smart.Format(
+                Messages.NoPermissions, 
+                new { Role = minimumRequiredRole.ToString() }
+            );
+
+            player.SendClientMessage(Color.Red, message);
             return false;
+        }
 
         return true;
     }
