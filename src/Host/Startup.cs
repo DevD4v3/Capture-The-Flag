@@ -6,7 +6,11 @@ public class Startup : IEcsStartup
     {
         context.UseEntities()
             .UseConsoleCommands()
-            .UsePlayerCommands(opts => opts.UsageMessageColor = Color.Red);
+            .UsePlayerCommands(opts => 
+            {
+                opts.UsageMessageColor = Color.Red;
+                opts.PermissionDeniedMessage = default;
+            });
     }
 
     public void ConfigureServices(IServiceCollection services, IConfiguration _)
