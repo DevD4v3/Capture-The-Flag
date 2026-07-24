@@ -65,7 +65,7 @@ public class MapInfoService
     private static SpawnLocation[] GetSpawnLocations(ISectionData section)
     {
         var locations = new SpawnLocation[section.Count];
-        for(int i = 0; i < section.Count; i++)
+        for (int i = 0; i < section.Count; i++)
         {
             string data = section[i];
             string[] coordinates = data.Split(',');

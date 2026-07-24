@@ -44,11 +44,11 @@ public class TeamTextDrawRenderer
 
     public void UpdateTeamScore(Team team)
     {
-        if(team.Id == TeamId.Alpha)
+        if (team.Id == TeamId.Alpha)
         {
             _alphaScore.Text = team.GetScoreAsText();
         }
-        else if(team.Id == TeamId.Beta)
+        else if (team.Id == TeamId.Beta)
         {
             _betaScore.Text = team.GetScoreAsText();
         }
@@ -171,7 +171,7 @@ public class TeamTextDrawRenderer
         _alphaTeamMembers.Font = TextDrawFont.Slim;
         _alphaTeamMembers.LetterSize = new Vector2(0.320832f, 1.399999f);
         _alphaTeamMembers.TextSize = new Vector2(400.000000f, 17.000000f);
-        _alphaTeamMembers.Outline = 1; 
+        _alphaTeamMembers.Outline = 1;
         _alphaTeamMembers.Shadow = 0;
         _alphaTeamMembers.Alignment = TextDrawAlignment.Left;
         _alphaTeamMembers.ForeColor = new Color(-16776961);

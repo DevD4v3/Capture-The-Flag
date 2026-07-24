@@ -7,7 +7,7 @@ public class PlayerNameSystem(
     [PlayerCommand("changename")]
     public void ChangeName(Player player, string newName)
     {
-        if(playerRepository.Exists(newName)) 
+        if (playerRepository.Exists(newName))
         {
             player.SendClientMessage(Color.Red, Messages.PlayerNameAlreadyExists);
             return;

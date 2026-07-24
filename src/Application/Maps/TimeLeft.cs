@@ -58,7 +58,7 @@ public class TimeLeft
     /// </summary>
     public void Decrease()
     {
-        if(_interval == 0) 
+        if (_interval == 0)
             return;
 
         _interval--;

@@ -16,7 +16,7 @@ internal class TopPlayersRepository(
         command.Parameters.AddWithValue("@max_players", maxPlayers.Value);
 
         using MySqlDataReader reader = command.ExecuteReader();
-        while(reader.Read()) 
+        while (reader.Read())
         {
             yield return new TopPlayersByMaxKillingSpree
             {

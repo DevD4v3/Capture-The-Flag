@@ -25,13 +25,13 @@ public class TeamPickupService
         {
             CreateFlagFromVector3(team, currentMap.FlagLocations.Red);
         }
-        else if(team.Id == TeamId.Beta) 
+        else if (team.Id == TeamId.Beta)
         {
             CreateFlagFromVector3(team, currentMap.FlagLocations.Blue);
         }
     }
 
-    public void CreateFlagFromVector3(Team team, Vector3 position) 
+    public void CreateFlagFromVector3(Team team, Vector3 position)
     {
         ArgumentNullException.ThrowIfNull(team);
         DestroyFlag(team);
@@ -53,15 +53,15 @@ public class TeamPickupService
         }
     }
 
-    public void DestroyFlag(Team team) 
+    public void DestroyFlag(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        if(team.Id == TeamId.Alpha) 
+        if (team.Id == TeamId.Alpha)
         {
             _redFlagPickup?.Destroy();
             _redFlagPickup = default;
         }
-        else if(team.Id == TeamId.Beta)
+        else if (team.Id == TeamId.Beta)
         {
             _blueFlagPickup?.Destroy();
             _blueFlagPickup = default;
@@ -87,7 +87,7 @@ public class TeamPickupService
                 position: currentMap.FlagLocations.Red
             );
         }
-        else if(team.Id == TeamId.Beta)
+        else if (team.Id == TeamId.Beta)
         {
             _blueExteriorMarker = _worldService.CreatePickup(
                 model: (int)ExteriorMarker.Blue,

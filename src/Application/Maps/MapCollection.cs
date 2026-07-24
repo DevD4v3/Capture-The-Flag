@@ -13,8 +13,8 @@ public class MapCollection
     public IReadOnlyList<IMap> GetAll() => _maps;
     public IEnumerable<IMap> GetAll(string findBy)
     {
-        foreach(Map map in _maps) 
-        { 
+        foreach (Map map in _maps)
+        {
             if (map.Name.StartsWith(findBy, StringComparison.OrdinalIgnoreCase))
                 yield return map;
         }

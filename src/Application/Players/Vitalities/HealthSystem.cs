@@ -14,7 +14,7 @@ public class HealthSystem(
         float amount)
     {
         Result<Vitality> result = Vitality.Create(amount);
-        if(result.IsFailed)
+        if (result.IsFailed)
         {
             currentPlayer.SendClientMessage(Color.Red, result.Message);
             return;

@@ -7,7 +7,7 @@ public class Vitality
 
     public static Result<Vitality> Create(float amount)
     {
-        if(amount < 0 || amount > 100) 
+        if (amount < 0 || amount > 100)
             return Result<Vitality>.Failure(Messages.InvalidVitality);
 
         return Result<Vitality>.Success(new Vitality(amount));

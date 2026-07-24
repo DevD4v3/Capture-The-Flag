@@ -19,7 +19,7 @@ public class PlayerStatsPerRound
             return Result.Failure(Messages.InvalidAddCoins);
 
         Coins += value;
-        if(Coins > 100) 
+        if (Coins > 100) 
             Coins = 100;
 
         return Result.Success();
@@ -31,7 +31,7 @@ public class PlayerStatsPerRound
             return Result.Failure(Messages.InvalidSubtractCoins);
 
         Coins -= -value;
-        if(Coins < 0) 
+        if (Coins < 0) 
             Coins = 0;
 
         return Result.Success();

@@ -23,13 +23,13 @@ public class TeamIconService
         {
             CreateFromVector3(team, currentMap.FlagLocations.Red);
         }
-        else if(team.Id == TeamId.Beta) 
+        else if (team.Id == TeamId.Beta)
         {
             CreateFromVector3(team, currentMap.FlagLocations.Blue);
         }
     }
 
-    public void CreateFromVector3(Team team, Vector3 position) 
+    public void CreateFromVector3(Team team, Vector3 position)
     {
         ArgumentNullException.ThrowIfNull(team);
         CurrentMap currentMap = _mapInfoService.CurrentMap;
@@ -44,7 +44,7 @@ public class TeamIconService
                 color: Team.Alpha.Flag.ColorHex
             );
         }
-        else if(team.Id == TeamId.Beta)
+        else if (team.Id == TeamId.Beta)
         {
             _blueMapIcon = _streamerService.CreateDynamicMapIcon(
                 position: position,
@@ -59,7 +59,7 @@ public class TeamIconService
     public void Destroy(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        if(team.Id == TeamId.Alpha) 
+        if (team.Id == TeamId.Alpha)
         {
             _redMapIcon?.Destroy();
             _redMapIcon = default;

@@ -5,7 +5,7 @@ public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
     [Event]
     public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
-        if(KeyUtils.HasPressed(newKeys, oldKeys, Keys.No))
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.No))
         {
             ShowPlayers(player);
         }
@@ -17,7 +17,7 @@ public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
 
-        var caption = 
+        var caption =
             $"{alphaTeam.ColorHex}Alpha Score: {alphaTeam.StatsPerRound.Score} " +
             $"{betaTeam.ColorHex}Beta Score: {betaTeam.StatsPerRound.Score}";
 
@@ -39,10 +39,10 @@ public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
             .Members
             .OrderByDescending(player => player.Score);
 
-        foreach (Player teamMember in alphaTeamMembers) 
+        foreach (Player teamMember in alphaTeamMembers)
         {
             PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
-            string[] columns = 
+            string[] columns =
             [
                 $"{alphaTeam.ColorHex}{teamMember.Name}",
                 $"{alphaTeam.ColorHex}{teamMember.Score}",
@@ -59,7 +59,7 @@ public class TeamScoreboardSystem(IDialogService dialogService) : ISystem
         foreach (Player teamMember in betaTeamMembers)
         {
             PlayerInfo teamMemberInfo = teamMember.GetRequiredInfo();
-            string[] columns = 
+            string[] columns =
             [
                 $"{betaTeam.ColorHex}{teamMember.Name}",
                 $"{betaTeam.ColorHex}{teamMember.Score}",

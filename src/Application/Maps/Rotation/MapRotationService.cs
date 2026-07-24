@@ -37,7 +37,7 @@ public class MapRotationService(
         _timerReference ??= timerService.Start(action: OnTimer, interval: TimeSpan.FromMilliseconds(1000));
     }
 
-    public void StopRotationTimer() 
+    public void StopRotationTimer()
     {
         if (_timerReference is null)
             return;
@@ -48,7 +48,7 @@ public class MapRotationService(
 
     private void OnTimer(IServiceProvider serviceProvider)
     {
-        if(_timeLeft.IsCompleted())
+        if (_timeLeft.IsCompleted())
         {
             _loadTime.Decrease();
             mapTextDrawRenderer.UpdateLoadTime(_loadTime);

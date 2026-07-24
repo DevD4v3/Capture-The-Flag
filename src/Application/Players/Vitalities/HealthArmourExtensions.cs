@@ -9,9 +9,11 @@ public static class HealthArmourExtensions
     /// <param name="amount">The amount of health to be added.</param>
     public static void AddHealth(this Player player, float amount)
     {
-        if(amount < 0) 
+        if (amount < 0)
             amount = -amount;
+
         float total = player.Health + amount;
+
         if (total > 100)
             player.Health = 100;
         else
@@ -27,7 +29,9 @@ public static class HealthArmourExtensions
     {
         if (amount < 0)
             amount = -amount;
+
         float total = player.Armour + amount;
+
         if (total > 100)
             player.Armour = 100;
         else

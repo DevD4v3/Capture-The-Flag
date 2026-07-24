@@ -17,7 +17,7 @@ public class TeamMembers : IEnumerable<Player>
     public void Remove(Player player)
     {
         bool playerIsNotFound = !_players.Remove(player.Id);
-        if(playerIsNotFound)
+        if (playerIsNotFound)
         {
             var message = Smart.Format(Messages.PlayerNotFound, new { player.Name });
             throw new ArgumentException(message, nameof(player));

@@ -24,7 +24,7 @@ public class MapRotationSystem(
     }
 
     [Event]
-    public void OnPlayerDisconnect(Player player, DisconnectReason reason) 
+    public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
         _connectedPlayers--;
         if (_connectedPlayers == 0)
@@ -52,7 +52,7 @@ public class MapRotationSystem(
         var interval = new Minutes(minutes);
         TimeLeft timeLeft = mapRotationService.TimeLeft;
         Result result = timeLeft.SetInterval(interval);
-        if(result.IsFailed)
+        if (result.IsFailed)
         {
             player.SendClientMessage(Color.Red, result.Message);
             return;
@@ -106,7 +106,7 @@ public class MapRotationSystem(
         MessageDialogResponse confirmationDialogResponse = await dialogService.ShowAsync(player, confirmationDialog);
         if (confirmationDialogResponse.Response == DialogResponse.Disconnected)
             return;
-        
+
         if (mapRotationService.IsMapLoading)
         {
             player.SendClientMessage(Color.Red, Messages.MapIsLoading);
@@ -126,7 +126,7 @@ public class MapRotationSystem(
             worldService.SendClientMessage(Color.Orange, message);
             mapRotationService.ForceNextMap(selectedMap);
         }
-        else if(confirmationDialogResponse.Response == DialogResponse.RightButtonOrCancel)
+        else if (confirmationDialogResponse.Response == DialogResponse.RightButtonOrCancel)
         {
             var message = Smart.Format(Messages.NextMapSelection, new
             {
