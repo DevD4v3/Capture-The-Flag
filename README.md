@@ -50,6 +50,10 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
     - [Commands](#commands)
     - [Rules](#rules)
     - [Available Weapon Progressions](#available-weapon-progressions)
+- [Account System](#account-system)
+  - [Authentication](#authentication)
+    - [Authentication Flow](#authentication-flow)
+  - [Authorization](#authorization)
 - [Weapon System](#weapon-system)
   - [Weapon Catalogs](#weapon-catalogs)
   - [Player Commands](#player-commands)
@@ -101,6 +105,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - Multiple GunGame weapon progressions.
 - Performance-based team balancing.
 - Automatic map rotation.
+- Support for creating custom maps.
 - Player ranks and statistics.
 - SQLite and MariaDB support.
 - Docker support.
@@ -186,7 +191,6 @@ You can also check the full playlist: https://www.youtube.com/playlist?list=PLBM
   - Respawn is automatic
   - The system decides the spawn and team assignment
 
-
 ## Additional Game Modes
 
 ### GunGame
@@ -220,6 +224,46 @@ Unlike traditional GunGame servers, this mode does **not** replace Capture the F
 - Shotguns Only
 - Rifles Only
 - Powerful Weapons
+
+## Account System
+
+The game mode includes a built-in account system that requires players to authenticate when they join the server.
+
+### Authentication
+
+Authentication is based on the player's nickname:
+
+- If the nickname has never been registered before, the player is prompted to create a password (signup).
+- If the nickname already exists, the player is prompted to enter their password (login).
+
+Passwords are securely hashed before being stored in the database.
+
+### Authentication Flow
+
+1. A player connects to the server.
+2. The system searches for an existing account using the player's nickname.
+3. If no account exists:
+   - The player is asked to create a password.
+   - A new account is created.
+   - The player is authenticated automatically.
+4. If the account already exists:
+   - The player is asked to enter their password.
+   - If the password is correct, the player is authenticated.
+   - Otherwise, the player is prompted to try again.
+5. After multiple consecutive failed login attempts, the player is automatically kicked from the server.
+
+The entire authentication process is handled automatically, allowing new players to register and existing players to log in without requiring any commands (such as `/register` or `/login`).
+
+### Authorization
+
+Player accounts can be assigned one of the following roles:
+
+- Basic
+- VIP
+- Moderator
+- Admin
+
+Privileged commands declare the minimum required role. Before a command is executed, the system verifies whether the player's account has the required role.
 
 ## Weapon System
 
