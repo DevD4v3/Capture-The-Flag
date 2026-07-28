@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Chats;
 
-public class ChatSystem(IDictionary<char, IChatMessage> chats) : ISystem
+public class ChatSystem(FrozenDictionary<char, IChatMessage> chats) : ISystem
 {
     /// <summary>
     /// This callback is called when a player sends a message in chat.

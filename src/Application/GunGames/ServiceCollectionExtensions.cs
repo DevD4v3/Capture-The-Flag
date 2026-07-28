@@ -19,10 +19,10 @@ public static class GunGameExtensions
             .AddWeaponProgression<ShotgunsWeaponProgression>()
             .AddWeaponProgression<SmgsWeaponProgression>()
             .AddWeaponProgression<PowerfulWeaponProgression>()
-            .AddSingleton<IDictionary<WeaponProgressionType, WeaponProgressionBase>>(sp =>
+            .AddSingleton(sp =>
             {
                 var progressions = sp.GetRequiredService<IEnumerable<WeaponProgressionBase>>();
-                return progressions.ToDictionary(w => w.Type);
+                return progressions.ToFrozenDictionary(w => w.Type);
             });
 
         services
@@ -30,10 +30,10 @@ public static class GunGameExtensions
             .AddGunGameResultHandler<PlayerLeveledUp>()
             .AddGunGameResultHandler<PlayerReachedFinalLevel>()
             .AddGunGameResultHandler<PlayerScoredFinalKill>()
-            .AddSingleton<IDictionary<GunGameResult, IGunGameResultHandler>>(sp =>
+            .AddSingleton(sp =>
             {
                 var handlers = sp.GetRequiredService<IEnumerable<IGunGameResultHandler>>();
-                return handlers.ToDictionary(h => h.Result);
+                return handlers.ToFrozenDictionary(h => h.Result);
             });
 
         return services;

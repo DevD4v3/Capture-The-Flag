@@ -9,7 +9,7 @@
 /// </remarks>
 public class WeaponProgression(
     GunGameSession gunGameSession,
-    IDictionary<WeaponProgressionType, WeaponProgressionBase> progressions)
+    FrozenDictionary<WeaponProgressionType, WeaponProgressionBase> progressions)
 {
     private WeaponProgressionBase Current
         => progressions[gunGameSession.WeaponProgressionType];

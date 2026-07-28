@@ -11,10 +11,10 @@ public static class FlagServicesExtensions
             .AddFlagEvent<OnFlagDropped>()
             .AddFlagEvent<OnFlagScore>()
             .AddFlagEvent<OnFlagTaken>()
-            .AddSingleton<IDictionary<FlagStatus, IFlagEvent>>(sp =>
+            .AddSingleton(sp =>
             {
                 var flagEvents = sp.GetRequiredService<IEnumerable<IFlagEvent>>();
-                return flagEvents.ToDictionary(f => f.FlagStatus);
+                return flagEvents.ToFrozenDictionary(f => f.FlagStatus);
             });
 
         services

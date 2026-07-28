@@ -1,5 +1,6 @@
 ﻿global using System.Collections;
 global using System.Numerics;
+global using System.Collections.Frozen;
 global using NUnit.Framework;
 global using NSubstitute;
 global using FluentAssertions;

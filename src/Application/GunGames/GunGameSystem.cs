@@ -4,7 +4,7 @@ public class GunGameSystem(
     IEntityManager entityManager,
     IWorldService worldService,
     IDialogService dialogService,
-    IDictionary<GunGameResult, IGunGameResultHandler> handlers,
+    FrozenDictionary<GunGameResult, IGunGameResultHandler> handlers,
     WeaponProgression weaponProgression,
     GunGameSession gunGameSession,
     GunGameReward gunGameReward) : ISystem, IGunGameMode
