@@ -11,14 +11,14 @@ public static class GunGameExtensions
             .AddSingleton<IGunGameMode>(sp => sp.GetRequiredService<GunGameSystem>());
 
         services
-            .AddSingleton<WeaponProgressionBase, ClassicWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, HardcoreWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, PistolsWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, ReverseClassicWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, RiflesWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, ShotgunsWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, SmgsWeaponProgression>()
-            .AddSingleton<WeaponProgressionBase, PowerfulWeaponProgression>()
+            .AddWeaponProgression<ClassicWeaponProgression>()
+            .AddWeaponProgression<HardcoreWeaponProgression>()
+            .AddWeaponProgression<PistolsWeaponProgression>()
+            .AddWeaponProgression<ReverseClassicWeaponProgression>()
+            .AddWeaponProgression<RiflesWeaponProgression>()
+            .AddWeaponProgression<ShotgunsWeaponProgression>()
+            .AddWeaponProgression<SmgsWeaponProgression>()
+            .AddWeaponProgression<PowerfulWeaponProgression>()
             .AddSingleton<IDictionary<WeaponProgressionType, WeaponProgressionBase>>(sp =>
             {
                 var progressions = sp.GetRequiredService<IEnumerable<WeaponProgressionBase>>();
@@ -26,16 +26,30 @@ public static class GunGameExtensions
             });
 
         services
-            .AddSingleton<IGunGameResultHandler, PlayerLeveledDown>()
-            .AddSingleton<IGunGameResultHandler, PlayerLeveledUp>()
-            .AddSingleton<IGunGameResultHandler, PlayerReachedFinalLevel>()
-            .AddSingleton<IGunGameResultHandler, PlayerScoredFinalKill>()
+            .AddGunGameResultHandler<PlayerLeveledDown>()
+            .AddGunGameResultHandler<PlayerLeveledUp>()
+            .AddGunGameResultHandler<PlayerReachedFinalLevel>()
+            .AddGunGameResultHandler<PlayerScoredFinalKill>()
             .AddSingleton<IDictionary<GunGameResult, IGunGameResultHandler>>(sp =>
             {
                 var handlers = sp.GetRequiredService<IEnumerable<IGunGameResultHandler>>();
                 return handlers.ToDictionary(h => h.Result);
             });
 
+        return services;
+    }
+
+    private static IServiceCollection AddWeaponProgression<T>(this IServiceCollection services)
+        where T : WeaponProgressionBase
+    {
+        services.AddSingleton<WeaponProgressionBase, T>();
+        return services;
+    }
+
+    private static IServiceCollection AddGunGameResultHandler<T>(this IServiceCollection services)
+        where T : class, IGunGameResultHandler
+    {
+        services.AddSingleton<IGunGameResultHandler, T>();
         return services;
     }
 }

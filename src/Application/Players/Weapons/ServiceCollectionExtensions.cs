@@ -5,13 +5,13 @@ public static class WeaponServicesExtensions
     public static IServiceCollection AddWeaponServices(this IServiceCollection services)
     {
         services
-            .AddSingleton<WeaponCatalogBase, RunWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, WalkingWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, MixedWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, RifleOnlyWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, WarWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, HeavyWeaponCatalog>()
-            .AddSingleton<WeaponCatalogBase, MeleeWeaponCatalog>()
+            .AddWeaponCatalog<RunWeaponCatalog>()
+            .AddWeaponCatalog<WalkingWeaponCatalog>()
+            .AddWeaponCatalog<MixedWeaponCatalog>()
+            .AddWeaponCatalog<RifleOnlyWeaponCatalog>()
+            .AddWeaponCatalog<WarWeaponCatalog>()
+            .AddWeaponCatalog<HeavyWeaponCatalog>()
+            .AddWeaponCatalog<MeleeWeaponCatalog>()
             .AddSingleton<WeaponCatalog>()
             .AddSingleton<IDictionary<WeaponCatalogType, WeaponCatalogBase>>(sp =>
             {
@@ -19,6 +19,13 @@ public static class WeaponServicesExtensions
                 return catalogs.ToDictionary(w => w.Type);
             });
 
+        return services;
+    }
+
+    private static IServiceCollection AddWeaponCatalog<T>(this IServiceCollection services)
+        where T : WeaponCatalogBase
+    {
+        services.AddSingleton<WeaponCatalogBase, T>();
         return services;
     }
 }

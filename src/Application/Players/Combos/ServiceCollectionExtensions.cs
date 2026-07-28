@@ -6,13 +6,20 @@ public static class ComboServicesExtensions
     {
         services
             .AddSingleton<ComboSettings>()
-            .AddSingleton<ICombo, FlamethrowerVitality>()
-            .AddSingleton<ICombo, GrenadesVitality>()
-            .AddSingleton<ICombo, MolotovVitality>()
-            .AddSingleton<ICombo, RocketLauncherVitality>()
-            .AddSingleton<ICombo, SatchelChargesVitality>()
-            .AddSingleton<ICombo, TearGasVitality>();
+            .AddCombo<FlamethrowerVitality>()
+            .AddCombo<GrenadesVitality>()
+            .AddCombo<MolotovVitality>()
+            .AddCombo<RocketLauncherVitality>()
+            .AddCombo<SatchelChargesVitality>()
+            .AddCombo<TearGasVitality>();
 
+        return services;
+    }
+
+    private static IServiceCollection AddCombo<T>(this IServiceCollection services)
+        where T : class, ICombo
+    {
+        services.AddSingleton<ICombo, T>();
         return services;
     }
 }
