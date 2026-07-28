@@ -10,7 +10,7 @@
 /// </remarks>
 public class WeaponCatalog(
     WeaponCatalogSettings settings, 
-    IDictionary<WeaponCatalogType, WeaponCatalogBase> catalogs)
+    FrozenDictionary<WeaponCatalogType, WeaponCatalogBase> catalogs)
 {
     private WeaponCatalogBase Current => catalogs[settings.Type];
 

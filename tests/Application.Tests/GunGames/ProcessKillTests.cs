@@ -17,7 +17,7 @@ public class ProcessKillTests
         var progressions = new Dictionary<WeaponProgressionType, WeaponProgressionBase>
         {
             [WeaponProgressionType.Classic] = new TestWeaponProgression()
-        };
+        }.ToFrozenDictionary();
 
         var weaponProgression = new WeaponProgression(session, progressions);
         _gunGame = new GunGame(weaponProgression, session.KillsRequiredPerLevel);
@@ -173,7 +173,7 @@ public class ProcessKillTests
         var progressions = new Dictionary<WeaponProgressionType, WeaponProgressionBase>
         {
             [WeaponProgressionType.Classic] = new NonKnifeFinalWeaponProgression()
-        };
+        }.ToFrozenDictionary();
 
         var weaponProgression = new WeaponProgression(session, progressions);
         var gunGame = new GunGame(weaponProgression, session.KillsRequiredPerLevel);

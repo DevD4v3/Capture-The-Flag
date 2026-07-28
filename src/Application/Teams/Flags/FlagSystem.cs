@@ -2,7 +2,7 @@
 
 public class FlagSystem(
     IWorldService worldService,
-    IDictionary<FlagStatus, IFlagEvent> flagEvents,
+    FrozenDictionary<FlagStatus, IFlagEvent> flagEvents,
     TeamPickupService teamPickupService,
     FlagAutoReturnTimer flagAutoReturnTimer,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
