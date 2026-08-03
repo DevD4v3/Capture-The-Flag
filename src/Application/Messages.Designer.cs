@@ -682,6 +682,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have enough health to perform this action.
+        /// </summary>
+        internal static string NotEnoughHealth {
+            get {
+                return ResourceManager.GetString("NotEnoughHealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no VIP players connected at the moment.
         /// </summary>
         internal static string NoVIPsConnected {
@@ -903,15 +912,6 @@ namespace CTF.Application {
         internal static string PlayerNotFound {
             get {
                 return ResourceManager.GetString("PlayerNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You don&apos;t have enough health.
-        /// </summary>
-        internal static string PlayerWithInsufficientHealth {
-            get {
-                return ResourceManager.GetString("PlayerWithInsufficientHealth", resourceCulture);
             }
         }
         

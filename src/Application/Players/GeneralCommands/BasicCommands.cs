@@ -4,6 +4,9 @@ public class BasicCommands(
     IEntityManager entityManager,
     IDialogService dialogService) : ISystem
 {
+    private const float MinimumHealthToUseKillCommand = 15f;
+    private const float MinimumHealthToUseSpectatorCommand = 85f;
+
     [PlayerCommand("cmds")]
     public async Task ShowFirstCommandsPage(Player player)
     {
@@ -94,6 +97,12 @@ public class BasicCommands(
             return;
         }
 
+        if (player.Health < MinimumHealthToUseKillCommand)
+        {
+            player.SendClientMessage(Color.Red, Messages.NotEnoughHealth);
+            return;
+        }
+
         player.Health = 0;
     }
 
@@ -159,9 +168,9 @@ public class BasicCommands(
             return;
         }
 
-        if (currentPlayer.Health < 85)
+        if (currentPlayer.Health < MinimumHealthToUseSpectatorCommand)
         {
-            currentPlayer.SendClientMessage(Color.Red, Messages.PlayerWithInsufficientHealth);
+            currentPlayer.SendClientMessage(Color.Red, Messages.NotEnoughHealth);
             return;
         }
 

@@ -6,6 +6,8 @@ public class ClassSelectionSystem(
     TeamTextDrawRenderer teamTextDrawRenderer,
     ClassSelectionSettings classSelectionSettings) : ISystem
 {
+    private const float MinimumHealthToUseClassSelectionCommand = 85f;
+
     [Event]
     public void OnGameModeInit(IServerService serverService)
     {
@@ -97,9 +99,9 @@ public class ClassSelectionSystem(
             return;
         }
 
-        if (player.Health < 85)
+        if (player.Health < MinimumHealthToUseClassSelectionCommand)
         {
-            player.SendClientMessage(Color.Red, Messages.PlayerWithInsufficientHealth);
+            player.SendClientMessage(Color.Red, Messages.NotEnoughHealth);
             return;
         }
 
