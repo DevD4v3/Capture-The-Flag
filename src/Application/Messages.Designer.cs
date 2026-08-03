@@ -682,7 +682,7 @@ namespace CTF.Application {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You don&apos;t have enough health to perform this action..
+        ///   Looks up a localized string similar to You don&apos;t have enough health to perform this action.
         /// </summary>
         internal static string NotEnoughHealth {
             get {

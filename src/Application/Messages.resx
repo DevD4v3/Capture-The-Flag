@@ -388,7 +388,7 @@
     <value>Player '{Name}' is not found</value>
   </data>
   <data name="NotEnoughHealth" xml:space="preserve">
-    <value>You don't have enough health to perform this action.</value>
+    <value>You don't have enough health to perform this action</value>
   </data>
   <data name="PrivateMessagesBlocked" xml:space="preserve">
     <value>That player has private messages blocked</value>
