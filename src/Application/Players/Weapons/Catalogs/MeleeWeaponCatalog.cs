@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
-public class MeleeWeaponCatalog : WeaponCatalogBase
+public class MeleeWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Melee;
 

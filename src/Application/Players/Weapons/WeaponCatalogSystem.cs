@@ -4,7 +4,7 @@ public class WeaponCatalogSystem(
     IEntityManager entityManager,
     IDialogService dialogService,
     IGunGameMode gunGameMode,
-    WeaponCatalog weaponCatalog,
+    ActiveWeaponCatalog weaponCatalog,
     WeaponCatalogSettings weaponCatalogSettings) : ISystem
 {
     [PlayerCommand("weaponcatalog")]

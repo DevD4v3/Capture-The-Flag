@@ -6,7 +6,7 @@
 /// <remarks>
 /// Derived classes define which weapons belong to a specific catalog.
 /// </remarks>
-public abstract class WeaponCatalogBase
+public abstract class WeaponCatalog
 {
     private readonly List<IWeapon> _weapons = 
     [
@@ -18,7 +18,7 @@ public abstract class WeaponCatalogBase
     /// Initializes the catalog with the weapons that are
     /// always available to players.
     /// </summary>
-    protected WeaponCatalogBase()
+    protected WeaponCatalog()
     {
         Define(_weapons);
     }
@@ -29,7 +29,7 @@ public abstract class WeaponCatalogBase
     public abstract WeaponCatalogType Type { get; }
 
     /// <summary>
-    /// Populates the catalog with weapon definitions.
+    /// Defines the weapons that belong to this catalog.
     /// </summary>
     protected abstract void Define(List<IWeapon> weapons);
 
@@ -39,7 +39,7 @@ public abstract class WeaponCatalogBase
     public int Count => _weapons.Count;
 
     /// <summary>
-    /// Gets all weapons defined by the catalog.
+    /// Gets all weapons defined in this catalog.
     /// </summary>
     public IReadOnlyList<IWeapon> GetAll() => _weapons;
 

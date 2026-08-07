@@ -1,12 +1,12 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
 /// <summary>
-/// Provides weapons that restrict player mobility while fighting.
+/// Defines a weapon catalog that restricts player mobility while fighting.
 /// </summary>
 /// <remarks>
 /// Players can only walk while using most weapons in this catalog.
 /// </remarks>
-public class WalkingWeaponCatalog : WeaponCatalogBase
+public class WalkingWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Walking;
 

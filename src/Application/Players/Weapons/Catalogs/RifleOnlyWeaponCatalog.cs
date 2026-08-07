@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
-public class RifleOnlyWeaponCatalog : WeaponCatalogBase
+public class RifleOnlyWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.RifleOnly;
 
