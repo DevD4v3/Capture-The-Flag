@@ -4,7 +4,8 @@ public class PlayerRoleChecker : IPermissionChecker
 {
     public bool HasPermission(Player player, CommandDefinition command)
     {
-        if (!command.Tags.TryGetValue("role", out var minimumRequiredRoleValue))
+        string minimumRequiredRoleValue = command.GetTag("role");
+        if (minimumRequiredRoleValue is null)
             return true;
 
         PlayerInfo playerInfo = player.GetRequiredInfo();
