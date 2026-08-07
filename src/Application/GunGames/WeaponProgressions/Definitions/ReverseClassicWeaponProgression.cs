@@ -5,7 +5,7 @@
 /// Players begin with the most difficult weapons and finish with the easiest,
 /// before reaching the final knife level.
 /// </summary>
-public class ReverseClassicWeaponProgression : WeaponProgressionBase
+public class ReverseClassicWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.ReverseClassic;
 

@@ -14,12 +14,12 @@ public class ProcessKillTests
             KillsRequiredPerLevel = new KillsRequiredPerLevel(2)
         };
 
-        var progressions = new Dictionary<WeaponProgressionType, WeaponProgressionBase>
+        var progressions = new Dictionary<WeaponProgressionType, WeaponProgression>
         {
             [WeaponProgressionType.Classic] = new TestWeaponProgression()
         }.ToFrozenDictionary();
 
-        var weaponProgression = new WeaponProgression(session, progressions);
+        var weaponProgression = new ActiveWeaponProgression(session, progressions);
         _gunGame = new GunGame(weaponProgression, session.KillsRequiredPerLevel);
         _maxLevel = weaponProgression.MaxLevel;
     }
@@ -170,12 +170,12 @@ public class ProcessKillTests
             KillsRequiredPerLevel = new KillsRequiredPerLevel(2)
         };
 
-        var progressions = new Dictionary<WeaponProgressionType, WeaponProgressionBase>
+        var progressions = new Dictionary<WeaponProgressionType, WeaponProgression>
         {
             [WeaponProgressionType.Classic] = new NonKnifeFinalWeaponProgression()
         }.ToFrozenDictionary();
 
-        var weaponProgression = new WeaponProgression(session, progressions);
+        var weaponProgression = new ActiveWeaponProgression(session, progressions);
         var gunGame = new GunGame(weaponProgression, session.KillsRequiredPerLevel);
         var killer = new PlayerProgression();
         var victim = new PlayerProgression();

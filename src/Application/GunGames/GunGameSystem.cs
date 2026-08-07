@@ -5,7 +5,7 @@ public class GunGameSystem(
     IWorldService worldService,
     IDialogService dialogService,
     FrozenDictionary<GunGameResult, IGunGameResultHandler> handlers,
-    WeaponProgression weaponProgression,
+    ActiveWeaponProgression weaponProgression,
     GunGameSession gunGameSession,
     GunGameReward gunGameReward) : ISystem, IGunGameMode
 {

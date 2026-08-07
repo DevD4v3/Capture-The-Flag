@@ -1,11 +1,11 @@
 ﻿namespace CTF.Application.GunGames.WeaponProgressions.Definitions;
 
 /// <summary>
-/// Defines the default GunGame weapon progression,
+/// Defines the classic GunGame weapon progression,
 /// where players advance through increasingly challenging
 /// weapons until reaching the final knife level.
 /// </summary>
-public class ClassicWeaponProgression : WeaponProgressionBase
+public class ClassicWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Classic;
 

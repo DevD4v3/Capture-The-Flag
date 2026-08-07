@@ -3,7 +3,7 @@
 /// <summary>
 /// Defines a GunGame weapon progression using only submachine guns.
 /// </summary>
-public class SmgsWeaponProgression : WeaponProgressionBase
+public class SmgsWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.SMGs;
 

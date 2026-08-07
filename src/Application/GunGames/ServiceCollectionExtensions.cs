@@ -7,7 +7,7 @@ public static class GunGameExtensions
         services
             .AddSingleton<GunGameReward>()
             .AddSingleton<GunGameSession>()
-            .AddSingleton<WeaponProgression>()
+            .AddSingleton<ActiveWeaponProgression>()
             .AddSingleton<IGunGameMode>(sp => sp.GetRequiredService<GunGameSystem>());
 
         services
@@ -21,7 +21,7 @@ public static class GunGameExtensions
             .AddWeaponProgression<PowerfulWeaponProgression>()
             .AddSingleton(sp =>
             {
-                var progressions = sp.GetRequiredService<IEnumerable<WeaponProgressionBase>>();
+                var progressions = sp.GetRequiredService<IEnumerable<WeaponProgression>>();
                 return progressions.ToFrozenDictionary(w => w.Type);
             });
 
@@ -40,9 +40,9 @@ public static class GunGameExtensions
     }
 
     private static IServiceCollection AddWeaponProgression<T>(this IServiceCollection services)
-        where T : WeaponProgressionBase
+        where T : WeaponProgression
     {
-        services.AddSingleton<WeaponProgressionBase, T>();
+        services.AddSingleton<WeaponProgression, T>();
         return services;
     }
 

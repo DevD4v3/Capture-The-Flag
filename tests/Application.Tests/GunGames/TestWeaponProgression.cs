@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.GunGames;
 
-public class TestWeaponProgression : WeaponProgressionBase
+public class TestWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Classic;
 
@@ -16,7 +16,7 @@ public class TestWeaponProgression : WeaponProgressionBase
     }
 }
 
-public class NonKnifeFinalWeaponProgression : WeaponProgressionBase
+public class NonKnifeFinalWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Classic;
 
