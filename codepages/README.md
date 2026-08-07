@@ -1,7 +1,12 @@
-These codepage files have been extracted from the Pawn binaries which can be
-downloaded from http://www.compuphase.com/pawn/pawn.htm
+# Code Pages
+
+These codepage files have been extracted from the Pawn binaries which can be downloaded from [http://www.compuphase.com/pawn/pawn.htm](http://www.compuphase.com/pawn/pawn.htm).
+
+## File Format
 
 Lines should comply with the following format:
+
+```text
 codepage value
 |     TAB
 |     | unicode value
@@ -9,5 +14,6 @@ codepage value
 |     | |     | (optional) comment
 v     v v     v v
 0x0000  0x0000  # COMMENT
+```
 
 Any line not starting with '0x' will be skipped.
