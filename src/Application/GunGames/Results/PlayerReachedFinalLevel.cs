@@ -5,7 +5,7 @@
 /// </summary>
 public class PlayerReachedFinalLevel(
     IWorldService worldService,
-    WeaponProgression weaponProgression) : IGunGameResultHandler
+    ActiveWeaponProgression weaponProgression) : IGunGameResultHandler
 {
     public GunGameResult Result => GunGameResult.ReachedFinalLevel;
     public void Handle(KillContext context)

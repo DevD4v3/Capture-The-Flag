@@ -9,7 +9,7 @@
 /// the final kill.
 /// </remarks>
 public readonly struct GunGame(
-    WeaponProgression weaponProgression,
+    ActiveWeaponProgression weaponProgression,
     KillsRequiredPerLevel killsRequiredPerLevel)
 {
 

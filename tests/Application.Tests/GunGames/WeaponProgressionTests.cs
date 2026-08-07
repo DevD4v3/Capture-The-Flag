@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.GunGames;
 
-public class WeaponProgressionBaseTests
+public class WeaponProgressionTests
 {
     private TestWeaponProgression _progression;
 
@@ -125,7 +125,7 @@ public class WeaponProgressionBaseTests
         isFinalLevel.Should().BeFalse();
     }
 
-    private class EmptyWeaponProgression : WeaponProgressionBase
+    private class EmptyWeaponProgression : WeaponProgression
     {
         public override WeaponProgressionType Type => WeaponProgressionType.Classic;
 

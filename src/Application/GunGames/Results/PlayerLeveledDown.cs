@@ -5,7 +5,7 @@
 /// </summary>
 public class PlayerLeveledDown(
     IWorldService worldService,
-    WeaponProgression weaponProgression) : IGunGameResultHandler
+    ActiveWeaponProgression weaponProgression) : IGunGameResultHandler
 {
     public GunGameResult Result => GunGameResult.LeveledDown;
 

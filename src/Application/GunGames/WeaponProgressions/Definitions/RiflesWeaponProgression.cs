@@ -3,7 +3,7 @@
 /// <summary>
 /// Defines a GunGame weapon progression using only rifles.
 /// </summary>
-public class RiflesWeaponProgression : WeaponProgressionBase
+public class RiflesWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Rifles;
 

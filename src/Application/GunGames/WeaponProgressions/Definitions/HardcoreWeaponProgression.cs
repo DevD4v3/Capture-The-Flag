@@ -3,7 +3,7 @@
 /// <summary>
 /// Defines a GunGame weapon progression using only high-skill weapons.
 /// </summary>
-public class HardcoreWeaponProgression : WeaponProgressionBase
+public class HardcoreWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Hardcore;
 

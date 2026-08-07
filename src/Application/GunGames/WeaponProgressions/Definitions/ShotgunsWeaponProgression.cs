@@ -3,7 +3,7 @@
 /// <summary>
 /// Defines a GunGame weapon progression using only shotguns.
 /// </summary>
-public class ShotgunsWeaponProgression : WeaponProgressionBase
+public class ShotgunsWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Shotguns;
 

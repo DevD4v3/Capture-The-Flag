@@ -3,7 +3,7 @@
 /// <summary>
 /// Defines a GunGame weapon progression featuring the most powerful weapons in GTA.
 /// </summary>
-public class PowerfulWeaponProgression : WeaponProgressionBase
+public class PowerfulWeaponProgression : WeaponProgression
 {
     public override WeaponProgressionType Type => WeaponProgressionType.Powerful;
 

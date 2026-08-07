@@ -8,7 +8,7 @@ namespace CTF.Application.GunGames;
 /// </summary>
 public class GunGameWeaponEnforcer(
     IGunGameMode gunGameMode,
-    WeaponProgression weaponProgression) : ISystem
+    ActiveWeaponProgression weaponProgression) : ISystem
 {
     [Event]
     public void OnPlayerUpdate(Player player, TimePoint _)
