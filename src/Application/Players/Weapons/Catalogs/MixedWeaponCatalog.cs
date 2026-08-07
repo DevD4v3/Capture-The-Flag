@@ -1,12 +1,12 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
 /// <summary>
-/// Provides a combination of walking and run weapons.
+/// Defines a weapon catalog that combines the Walking and Run weapon catalogs.
 /// </summary>
 /// <remarks>
 /// This catalog contains all weapons available from both categories.
 /// </remarks>
-public class MixedWeaponCatalog : WeaponCatalogBase
+public class MixedWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Mixed;
 

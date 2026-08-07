@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
-public class HeavyWeaponCatalog : WeaponCatalogBase
+public class HeavyWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Heavy;
 

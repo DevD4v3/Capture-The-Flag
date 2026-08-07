@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.Players.Weapons;
 
-public class WeaponCatalogBaseTests
+public class WeaponCatalogTests
 {
     [Test]
     public void GetById_WhenWeaponIdIsNotFound_ShouldReturnFailureResult()

@@ -3,7 +3,7 @@
 public class WeaponSelectionSystem(
     IDialogService dialogService,
     IGunGameMode gunGameMode,
-    WeaponCatalog weaponCatalog) : ISystem
+    ActiveWeaponCatalog weaponCatalog) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)

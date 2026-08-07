@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Tests.Players.Weapons;
 
-public class TestWeaponCatalog : WeaponCatalogBase
+public class TestWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Mixed;
 

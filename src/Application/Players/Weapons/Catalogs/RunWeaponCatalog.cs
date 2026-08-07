@@ -1,13 +1,13 @@
 ﻿namespace CTF.Application.Players.Weapons.Catalogs;
 
 /// <summary>
-/// Provides weapons that allow players to remain mobile while fighting.
+/// Defines a weapon catalog that allows players to remain mobile while fighting.
 /// </summary>
 /// <remarks>
 /// These weapons support the classic Run Weapons (RW) gameplay style,
 /// where players can move quickly while attacking.
 /// </remarks>
-public class RunWeaponCatalog : WeaponCatalogBase
+public class RunWeaponCatalog : WeaponCatalog
 {
     public override WeaponCatalogType Type => WeaponCatalogType.Run;
 
