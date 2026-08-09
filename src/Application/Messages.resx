@@ -571,4 +571,10 @@ Capture the Flag is about to begin.</value>
   <data name="CannotPerformActionOnServerOwner" xml:space="preserve">
     <value>You cannot perform this action on the server owner.</value>
   </data>
+  <data name="Winner" xml:space="preserve">
+    <value>{GameTextStyle} Winner: {TeamName}</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>~w~Tie!</value>
+  </data>
 </root>

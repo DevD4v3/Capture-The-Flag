@@ -1213,6 +1213,15 @@ namespace CTF.Application {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~w~Tie!.
+        /// </summary>
+        internal static string Tie {
+            get {
+                return ResourceManager.GetString("Tie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It&apos;s a tie! Both teams couldn&apos;t beat each other this time.
         /// </summary>
         internal static string TiedTeams {
@@ -1399,6 +1408,15 @@ namespace CTF.Application {
         internal static string Welcome3 {
             get {
                 return ResourceManager.GetString("Welcome3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {GameTextStyle} Winner: {TeamName}.
+        /// </summary>
+        internal static string Winner {
+            get {
+                return ResourceManager.GetString("Winner", resourceCulture);
             }
         }
         

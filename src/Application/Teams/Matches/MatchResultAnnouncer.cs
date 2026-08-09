@@ -12,6 +12,17 @@ public class MatchResultAnnouncer(IWorldService worldService)
                 Messages.TeamIsWinner,
                 new { result.Winner.Name });
 
+        string resultSummary = result.IsTie ?
+            Messages.Tie :
+            Smart.Format(
+                Messages.Winner,
+                new
+                {
+                    GameTextStyle = result.Winner.GameText,
+                    TeamName = result.Winner.Name
+                });
+
         worldService.SendClientMessage(Color.Yellow, resultMessage);
+        worldService.GameText(resultSummary, TimeSpan.FromSeconds(4), GameTextStyle.Style3);
     }
 }
