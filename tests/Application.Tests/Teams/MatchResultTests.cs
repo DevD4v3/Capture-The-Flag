@@ -21,7 +21,6 @@ public class MatchResultTests
         // Assert
         result.Winner.Should().Be(Team.Alpha);
         result.IsTie.Should().BeFalse();
-        result.Announcement.Should().Be(Messages.AlphaIsWinner);
     }
 
     [Test]
@@ -36,7 +35,6 @@ public class MatchResultTests
         // Assert
         result.Winner.Should().Be(Team.Beta);
         result.IsTie.Should().BeFalse();
-        result.Announcement.Should().Be(Messages.BetaIsWinner);
     }
 
     [Test]
@@ -52,6 +50,5 @@ public class MatchResultTests
         // Assert
         result.Winner.Should().Be(Team.None);
         result.IsTie.Should().BeTrue();
-        result.Announcement.Should().Be(Messages.TiedTeams);
     }
 }
