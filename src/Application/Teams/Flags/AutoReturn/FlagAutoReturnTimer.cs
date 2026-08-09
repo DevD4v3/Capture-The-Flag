@@ -26,7 +26,7 @@ public class FlagAutoReturnTimer(
                 team.ColorName
             });
             worldService.SendClientMessage(team.ColorHex, message);
-            worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
+            worldService.GameText($"~n~~n~~n~{team.GameTextColor}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
             Stop(team);
         }
 

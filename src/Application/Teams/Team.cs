@@ -10,36 +10,36 @@ public class Team
     {
         Alpha = new Team
         {
-            Id         = TeamId.Alpha,
-            SkinId     = SkinTeamId.Alpha,
-            Name       = "Alpha",
-            ColorName  = "red",
-            GameText   = "~r~",
-            ColorHex   = new Color(255, 32, 64, 00),
-            Sounds     = TeamSounds.Alpha,
-            Flag       = new Flag
+            Id            = TeamId.Alpha,
+            SkinId        = SkinTeamId.Alpha,
+            Name          = "Alpha",
+            ColorName     = "red",
+            GameTextColor = "~r~",
+            ColorHex      = new Color(255, 32, 64, 00),
+            Sounds        = TeamSounds.Alpha,
+            Flag          = new Flag
             {
-                Model  = FlagModel.Red,
-                Icon   = FlagIcon.Red,
-                Name   = "Red",
-                ColorHex = Color.Red
+                Model     = FlagModel.Red,
+                Icon      = FlagIcon.Red,
+                Name      = "Red",
+                ColorHex  = Color.Red
             }
         };
 
         Beta = new Team
         {
-            Id         = TeamId.Beta,
-            SkinId     = SkinTeamId.Beta,
-            Name       = "Beta",
-            ColorName  = "blue",
-            GameText   = "~b~",
-            ColorHex   = new Color(0, 136, 255, 00),
-            Sounds     = TeamSounds.Beta,
-            Flag       = new Flag
+            Id            = TeamId.Beta,
+            SkinId        = SkinTeamId.Beta,
+            Name          = "Beta",
+            ColorName     = "blue",
+            GameTextColor = "~b~",
+            ColorHex      = new Color(0, 136, 255, 00),
+            Sounds        = TeamSounds.Beta,
+            Flag          = new Flag
             {
-                Model  = FlagModel.Blue,
-                Icon   = FlagIcon.Blue,
-                Name   = "Blue",
+                Model     = FlagModel.Blue,
+                Icon      = FlagIcon.Blue,
+                Name      = "Blue",
                 ColorHex = Color.Blue
             }
         };
@@ -48,19 +48,19 @@ public class Team
         Beta.RivalTeam  = Alpha;
         None = new NoTeam
         {
-            Id         = TeamId.NoTeam,
-            SkinId     = SkinTeamId.NoTeam,
-            Name       = "NoTeam",
-            ColorName  = "white",
-            GameText   = "~w~",
-            ColorHex   = new Color(255, 255, 255, 00),
-            Sounds     = TeamSounds.None,
-            Flag       = new Flag
+            Id            = TeamId.NoTeam,
+            SkinId        = SkinTeamId.NoTeam,
+            Name          = "NoTeam",
+            ColorName     = "white",
+            GameTextColor = "~w~",
+            ColorHex      = new Color(255, 255, 255, 00),
+            Sounds        = TeamSounds.None,
+            Flag          = new Flag
             {
-                Model  = FlagModel.None,
-                Icon   = FlagIcon.White,
-                Name   = "NoTeam",
-                ColorHex = Color.White
+                Model     = FlagModel.None,
+                Icon      = FlagIcon.White,
+                Name      = "NoTeam",
+                ColorHex  = Color.White
             },
         };
         None.RivalTeam = None;
@@ -70,7 +70,17 @@ public class Team
     public SkinTeamId SkinId { get; private set; }
     public string Name { get; private set; }
     public string ColorName { get; private set; }
-    public string GameText { get; private set; }
+
+    /// <summary>
+    /// Gets the text color used by open.mp <c>GameText</c>.
+    /// </summary>
+    /// <remarks>
+    /// See the <see href="https://open.mp/docs/scripting/resources/gametextstyles#text-colors">
+    /// open.mp GameText text colors documentation
+    /// </see>.
+    /// </remarks>
+    public string GameTextColor { get; private set; }
+
     public Color ColorHex { get; private set; }
     public TeamSounds Sounds { get; private set; }
     public Flag Flag { get; private set; }

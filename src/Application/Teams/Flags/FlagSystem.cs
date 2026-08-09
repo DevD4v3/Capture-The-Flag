@@ -113,7 +113,7 @@ public class FlagSystem(
         teamPickupService.DestroyExteriorMarker(team);
         team.Sounds.PlayFlagReturnedSound();
         flagAutoReturnTimer.Stop(team);
-        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
+        worldService.GameText($"~n~~n~~n~{team.GameTextColor}{team.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         worldService.SendClientMessage(Color.Yellow, message);
     }
 }
