@@ -9,6 +9,7 @@ public static class TeamServicesExtensions
             .AddSingleton<TeamIconService>()
             .AddSingleton<TeamTextDrawRenderer>()
             .AddSingleton<TeamBalancer>()
+            .AddSingleton<MatchResultAnnouncer>()
             .AddSingleton<ClassSelectionTextDrawRenderer>()
             .AddFlagServices();
 
