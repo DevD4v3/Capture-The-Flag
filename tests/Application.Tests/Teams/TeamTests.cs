@@ -106,12 +106,11 @@ public class TeamTests
         actual.Should().BeFalse();
     }
 
-    [TestCase("~y~Alpha~n~~r~ not available", true)]
-    [TestCase("not available", false)]
-    public void GetAvailabilityMessage_WhenTeamIsFull_ShouldReturnUnavailableMessage(
-        string expectedMessage, bool entireMessage)
+    [Test]
+    public void GetAvailabilityMessage_WhenTeamIsFull_ShouldReturnUnavailableMessage()
     {
         // Arrange
+        var expectedMessage = "~y~Alpha~n~~r~ not available";
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
         alphaTeam.Members.Add(new FakePlayer(id: 1, name: "Bob"));
@@ -119,25 +118,24 @@ public class TeamTests
         betaTeam.Members.Add(new FakePlayer(id: 3, name: "Dave"));
 
         // Act
-        string actual = alphaTeam.GetAvailabilityMessage(entireMessage);
+        string actual = alphaTeam.GetAvailabilityMessage();
 
         // Assert
         actual.Should().Be(expectedMessage);
     }
 
-    [TestCase("~y~Alpha~n~~r~ available", true)]
-    [TestCase("available", false)]
-    public void GetAvailabilityMessage_WhenTeamIsNotFull_ShouldReturnAvailableMessage(
-        string expectedMessage, bool entireMessage)
+    [Test]
+    public void GetAvailabilityMessage_WhenTeamIsNotFull_ShouldReturnAvailableMessage()
     {
         // Arrange
+        var expectedMessage = "~y~Alpha~n~~r~ available";
         Team alphaTeam = Team.Alpha;
         Team betaTeam = Team.Beta;
         alphaTeam.Members.Add(new FakePlayer(id: 1, name: "Bob"));
         betaTeam.Members.Add(new FakePlayer(id: 3, name: "Dave"));
 
         // Act
-        string actual = alphaTeam.GetAvailabilityMessage(entireMessage);
+        string actual = alphaTeam.GetAvailabilityMessage();
 
         // Assert
         actual.Should().Be(expectedMessage);
