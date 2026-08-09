@@ -18,7 +18,7 @@ public class MatchResultAnnouncer(IWorldService worldService)
                 Messages.Winner,
                 new
                 {
-                    GameTextStyle = result.Winner.GameText,
+                    result.Winner.GameTextColor,
                     TeamName = result.Winner.Name
                 });
 

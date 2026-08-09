@@ -319,7 +319,7 @@
     <value>You already have that skin</value>
   </data>
   <data name="OnFlagAtBasePosition" xml:space="preserve">
-    <value>~n~~n~~n~{GameText}Defend this flag from enemy capture!</value>
+    <value>~n~~n~~n~{GameTextColor}Defend this flag from enemy capture!</value>
   </data>
   <data name="OnFlagCaptured" xml:space="preserve">
     <value>{PlayerName} has captured the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>
@@ -572,7 +572,7 @@ Capture the Flag is about to begin.</value>
     <value>You cannot perform this action on the server owner.</value>
   </data>
   <data name="Winner" xml:space="preserve">
-    <value>{GameTextStyle} Winner: {TeamName}</value>
+    <value>{GameTextColor} Winner: {TeamName}</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>~w~Tie!</value>

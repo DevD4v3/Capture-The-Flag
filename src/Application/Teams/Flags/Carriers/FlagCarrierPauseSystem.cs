@@ -67,7 +67,7 @@ public class FlagCarrierPauseSystem(
                 Seconds = flagCarrierSettings.PauseTime
             });
             worldService.SendClientMessage(rivalTeam.ColorHex, message);
-            worldService.GameText($"~n~~n~~n~{rivalTeam.GameText}{rivalTeam.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
+            worldService.GameText($"~n~~n~~n~{rivalTeam.GameTextColor}{rivalTeam.ColorName} flag returned!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
         }
     }
 

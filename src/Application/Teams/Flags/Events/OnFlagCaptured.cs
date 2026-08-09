@@ -27,7 +27,7 @@ public class OnFlagCaptured(
             team.ColorName
         });
         worldService.SendClientMessage(team.ColorHex, message);
-        worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag captured!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
+        worldService.GameText($"~n~~n~~n~{team.GameTextColor}{team.ColorName} flag captured!", TimeSpan.FromSeconds(5), GameTextStyle.Style3);
 
         PlayerInfo playerInfo = player.GetRequiredInfo();
         playerInfo.StatsPerRound.AddCoins(EarnedCoins);
