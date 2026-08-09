@@ -23,6 +23,6 @@ public class MatchResultAnnouncer(IWorldService worldService)
                 });
 
         worldService.SendClientMessage(Color.Yellow, resultMessage);
-        worldService.GameText(resultSummary, TimeSpan.FromSeconds(4), GameTextStyle.Style3);
+        worldService.GameText(resultSummary, TimeSpan.FromSeconds(2), GameTextStyle.Style3);
     }
 }
