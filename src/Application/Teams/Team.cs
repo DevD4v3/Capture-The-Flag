@@ -98,13 +98,10 @@ public class Team
         Flag.Reset();
     }
 
-    public virtual string GetAvailabilityMessage(bool entireMessage = true)
-    {
-        if (IsFull())
-            return entireMessage ? $"~y~{Name}~n~~r~ not available" : "not available";
-
-        return entireMessage ? $"~y~{Name}~n~~r~ available" : "available";
-    }
+    public virtual string GetAvailabilityMessage()
+        => IsFull() ? 
+        $"~y~{Name}~n~~r~ not available" : 
+        $"~y~{Name}~n~~r~ available";
 
     /// <summary>
     /// Handles a player's interaction with the team's flag.
@@ -149,7 +146,7 @@ public class Team
     private class NoTeam : Team
     {
         public NoTeam() { }
-        public override string GetAvailabilityMessage(bool entireMessage = true) => string.Empty;
+        public override string GetAvailabilityMessage() => string.Empty;
         public override FlagStatus HandleFlagInteraction(Player flagPicker) => FlagStatus.BasePosition;
         public override string GetMembersAsText() => string.Empty;
         public override string GetScoreAsText() => string.Empty;
