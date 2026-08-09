@@ -38,6 +38,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 
 ## Index
 - [Features](#features)
+- [History](#history)
 - [Gameplay](#gameplay)
   - [Gameplay Rules](#gameplay-rules)
     - [Game Objective](#game-objective)
@@ -109,6 +110,20 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - Player ranks and statistics.
 - SQLite and MariaDB support.
 - Docker support.
+
+## History
+
+### SampSharp v0.x (Legacy)
+
+The [v9.x versions of Capture the Flag](https://github.com/DevD4v3/Capture-The-Flag/releases/tag/v9.6.2) were built with **SampSharp v0.x (Legacy)**, the original implementation targeting SA-MP servers. While it continues to receive maintenance and bug fixes, it is no longer the primary development focus and has inherent architectural limitations.
+
+### SampSharp v1.x
+
+Starting with [v10.x of Capture the Flag](https://github.com/DevD4v3/Capture-The-Flag/releases/tag/v10.0.0), the project was migrated to **SampSharp v1.x**, the modern rewrite built from the ground up for the open.mp server.
+
+It embraces current .NET technologies, requires 64-bit architecture, and introduces the ECS (Entity Component System) framework.
+
+For more information about the differences between SampSharp versions and their platform support, see the [SampSharp Platform & Version Support](https://sampsharp.net/docs/support/platform-support.html) documentation.
 
 ## Gameplay
 
