@@ -24,7 +24,7 @@ public class PlayerRoleSystem(
             return;
         }
 
-        if (targetPlayer.IsServerOwner(serverOwnerSettings.Name))
+        if (targetPlayer.IsServerOwner())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.CannotPerformActionOnServerOwner);
             return;
