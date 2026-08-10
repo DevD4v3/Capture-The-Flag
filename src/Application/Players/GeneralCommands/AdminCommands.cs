@@ -4,8 +4,7 @@ public class AdminCommands(
     IEntityManager entityManager,
     IServerService serverService,
     IWorldService worldService,
-    IDialogService dialogService,
-    ServerOwnerSettings serverOwnerSettings) : ISystem
+    IDialogService dialogService) : ISystem
 {
     [PlayerCommand("cmdsadmin")]
     [RequiresMinimumRole(RoleId.Admin)]
@@ -88,7 +87,7 @@ public class AdminCommands(
             return;
         }
 
-        if (targetPlayer.IsServerOwner(serverOwnerSettings.Name))
+        if (targetPlayer.IsServerOwner())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.CannotPerformActionOnServerOwner);
             return;

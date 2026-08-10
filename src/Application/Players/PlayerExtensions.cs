@@ -74,15 +74,16 @@ public static class PlayerExtensions
     /// <param name="player">
     /// The player to check.
     /// </param>
-    /// <param name="ownerName">
-    /// The name configured as the server owner.
-    /// </param>
     /// <returns>
-    /// <see langword="true"/> if the player's name matches the configured
-    /// server owner name; otherwise, <see langword="false"/>.
+    /// <see langword="true"/> if the player is the server owner;
+    /// otherwise, <see langword="false"/>.
     /// </returns>
-    public static bool IsServerOwner(this Player player, string ownerName)
-        => player.Name.Equals(
+    public static bool IsServerOwner(this Player player)
+    {
+        var envReader = new EnvReader();
+        var ownerName = envReader["ServerOwner__Name"];
+        return player.Name.Equals(
             ownerName,
             StringComparison.OrdinalIgnoreCase);
+    }
 }
