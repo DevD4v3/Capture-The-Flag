@@ -17,6 +17,9 @@
     <File Path="tests/Persistence.Tests/.env.test" />
     <File Path="tests/Persistence.Tests/.env.test.example" />
   </Folder>
+  <Folder Name="/Solution Items/docs/">
+    <File Path="docs/architectural-decisions.md" />
+  </Folder>
   <Folder Name="/Solution Items/workflows/">
     <File Path=".github/workflows/build-and-publish.yml" />
     <File Path=".github/workflows/ci.yml" />

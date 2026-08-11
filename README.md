@@ -89,7 +89,8 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - [Supported RDBMS](#supported-rdbms)
   - [SQLite](#sqlite)
   - [MariaDB](#mariadb)
-- [Architectural overview](#architectural-overview)
+- [Architectural Overview](#architectural-overview)
+- [Architectural Decisions](#architectural-decisions)
 - [Credits](#credits)
   - [Mappers](#mappers)
 - [Contribution](#contribution)
@@ -755,7 +756,7 @@ MariaDB__Password=123456789
 ```
 - The database and its schema will be created automatically during server startup if they do not already exist.
 
-## Architectural overview
+## Architectural Overview
 
 <details>
 <summary><b>Show diagram</b></summary>
@@ -764,7 +765,7 @@ MariaDB__Password=123456789
 
 </details>
 
-### Main components
+### Main Components
 - **Application Core.** Contains all gameplay logic for the Capture the Flag game mode, including the rules and procedures that define how the game is played. It also defines the outbound ports required to interact with external systems.
 - **Persistence Adapters.** Provide concrete implementations of the outbound ports related to persistence. Each adapter encapsulates the data access logic for a specific storage technology, allowing the application core to remain independent of any specific persistence technology.
 - **Host Application.** Acts as the application's entry point and contains everything required to bootstrap the game mode.
@@ -773,6 +774,10 @@ MariaDB__Password=123456789
   - Register services in the DI container.
   - Register ECS systems.
   - Enable desired ECS system features.
+
+## Architectural Decisions
+
+For detailed architectural decisions and the reasoning behind them, see [Architectural Decisions](docs/architectural-decisions.md).
 
 ## Credits
 This project would not have been possible without the following people and projects:
