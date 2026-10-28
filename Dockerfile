@@ -39,7 +39,7 @@ FROM ubuntu:22.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget xz-utils
 WORKDIR /open-mp
 
-ENV OPENMP_VERSION="1.5.8.3079"
+ENV OPENMP_VERSION="1.6.7.3218"
 RUN wget https://github.com/SampSharp/openmultiplayer-x64-builds/releases/download/v${OPENMP_VERSION}/open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz --no-check-certificate \
     && tar -xf open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz \
     && rm -f open.mp-linux-x86_64-dynssl-v${OPENMP_VERSION}.tar.xz
